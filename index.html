@@ -154,11 +154,51 @@ h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weigh
 
 /* ── SEJA PARCEIRO ── */
 .partner{background:var(--bg2)}
-.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
-.partner-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
-.partner-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
-.partner-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)}
-.partner-card p{font-size:0.84rem;color:var(--text2);line-height:1.65}
+.partner-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3.5rem}
+@media(max-width:900px){.partner-intro{grid-template-columns:1fr;gap:2rem}}
+
+/* Planos */
+.planos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem}
+@media(max-width:1100px){.planos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.planos-grid{grid-template-columns:1fr}}
+.plano-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.25rem;display:flex;flex-direction:column;gap:0.75rem;cursor:pointer;transition:border-color 0.2s,transform 0.18s,box-shadow 0.2s;position:relative;overflow:hidden}
+.plano-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,214,0,0.06) 0%,transparent 70%);pointer-events:none;opacity:0;transition:opacity 0.25s}
+.plano-card:hover,.plano-card.ativo{border-color:rgba(255,214,0,0.45);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+.plano-card:hover::before,.plano-card.ativo::before{opacity:1}
+.plano-card.ativo{border-color:var(--accent)}
+.plano-badge{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(255,214,0,0.25);align-self:flex-start}
+.plano-badge.destaque{background:rgba(255,214,0,0.15);border-color:rgba(255,214,0,0.5)}
+.plano-nome{font-family:var(--font-display);font-size:1.6rem;color:var(--text);line-height:1}
+.plano-preco{font-family:var(--font-mono);font-size:1.25rem;color:var(--accent);font-weight:500}
+.plano-preco span{font-size:0.75rem;color:var(--text3);font-weight:400}
+.plano-desc{font-size:0.8rem;color:var(--text2);line-height:1.6;flex:1}
+.plano-escopo{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);letter-spacing:0.05em}
+.plano-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--border2);align-self:flex-end;margin-top:auto;transition:background 0.2s,border-color 0.2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plano-card.ativo .plano-check{background:var(--accent);border-color:var(--accent);color:#000}
+
+/* Formulário Parceria */
+.parceria-form{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:2rem;margin-top:0.5rem}
+.parceria-form h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--text)}
+.pf-row{display:flex;gap:0.75rem;margin-bottom:0.75rem}
+.pf-row.wrap{flex-wrap:wrap}
+.pf-input{flex:1;min-width:180px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:0.8rem 1rem;font-family:var(--font-body);font-size:0.88rem;color:var(--text);outline:none;transition:border-color 0.2s}
+.pf-input::placeholder{color:var(--text3)}
+.pf-input:focus{border-color:var(--accent)}
+.pf-select{flex:1;min-width:180px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:0.8rem 1rem;font-family:var(--font-body);font-size:0.88rem;color:var(--text2);outline:none;cursor:pointer;appearance:none}
+.pf-select:focus{border-color:var(--accent);color:var(--text)}
+.pf-textarea{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:0.8rem 1rem;font-family:var(--font-body);font-size:0.88rem;color:var(--text);outline:none;resize:vertical;min-height:90px;transition:border-color 0.2s}
+.pf-textarea::placeholder{color:var(--text3)}
+.pf-textarea:focus{border-color:var(--accent)}
+.pf-submit{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-family:var(--font-body);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap}
+.pf-submit:hover{background:var(--accent2);transform:translateY(-1px)}
+.pf-note{font-size:0.72rem;color:var(--text3);margin-top:0.75rem;font-family:var(--font-mono)}
+.pf-selected-plan{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);margin-bottom:1rem;padding:0.5rem 0.9rem;background:var(--accent-dim);border:1px solid rgba(255,214,0,0.2);border-radius:6px;display:inline-block}
+
+/* Escopo tags */
+.escopo-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem}
+.escopo-tag{font-family:var(--font-mono);font-size:0.68rem;padding:0.3rem 0.7rem;border-radius:6px;border:1px solid var(--border2);color:var(--text3);background:var(--bg3);cursor:default;letter-spacing:0.04em}
+
+/* Waitlist mantido */
 
 /* ── WAITLIST ── */
 .waitlist{background:var(--bg);position:relative;overflow:hidden}
@@ -394,16 +434,112 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   <div class="section-inner">
     <div class="section-label">// seja um parceiro</div>
     <h2>CRESÇA COM O <em>BORA-APP.</em></h2>
-    <p class="section-lead">Prefeituras, associações, contabilidades e plataformas podem integrar o BORA-APP para oferecer mais valor aos seus usuários.</p>
-    <div class="partner-grid">
-      <div class="partner-card"><h3>Prefeituras</h3><p>Integre o BORA-APP ao portal de serviços municipais e facilite a vida do empreendedor local com informações precisas e atualizadas.</p></div>
-      <div class="partner-card"><h3>Escritórios Contábeis</h3><p>Ofereça aos seus clientes uma ferramenta de consulta rápida de risco, fortalecendo a relação de assessoria e confiança.</p></div>
-      <div class="partner-card"><h3>Associações Empresariais</h3><p>Disponibilize o BORA-APP como benefício exclusivo para seus associados, apoiando tomadas de decisão mais seguras.</p></div>
-      <div class="partner-card"><h3>Plataformas e Fintechs</h3><p>Integre nossa API para enriquecer dados de cadastro de empresas, análise de crédito e compliance regulatório.</p></div>
+
+    <div class="partner-intro">
+      <p class="section-lead">Prefeituras, associações, contabilidades e plataformas podem patrocinar o BORA-APP e aparecer para exatamente o público certo — segmentado por atividade econômica, setor ou região.</p>
+      <div style="font-size:0.82rem;color:var(--text2);line-height:1.8;">
+        <div style="margin-bottom:0.5rem;color:var(--text);font-weight:600;font-family:var(--font-head)">Como funciona a segmentação</div>
+        Você escolhe o escopo de visibilidade: uma <strong style="color:var(--accent)">atividade específica</strong> (CNAE), um <strong style="color:var(--accent)">grupo ou seção</strong> econômica, um <strong style="color:var(--accent)">município</strong> ou um <strong style="color:var(--accent)">estado inteiro</strong>. Seu banner aparece contextualmente para quem consulta aquele nicho — sem desperdício de impressões.
+      </div>
     </div>
-    <div style="margin-top:2.5rem;text-align:center">
-      <a href="#waitlist" class="btn-primary">Quero ser parceiro →</a>
+
+    <!-- Planos -->
+    <div class="section-label" style="margin-bottom:1rem">// escolha seu plano</div>
+    <div class="planos-grid" id="planos-grid">
+
+      <div class="plano-card" data-plano="Vitrine" data-preco="R$ 297/mês" onclick="selecionarPlano(this)">
+        <div class="plano-badge">Básico</div>
+        <div class="plano-nome">VITRINE</div>
+        <div class="plano-preco">R$ 297 <span>/mês</span></div>
+        <div class="plano-desc">Ideal para negócios locais. Visibilidade em uma <strong>classe CNAE</strong> específica (ex: Restaurantes, Salões de beleza). Múltiplos parceiros por nicho.</div>
+        <div class="plano-escopo">Escopo: 1 Classe CNAE</div>
+        <div class="plano-check">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+      </div>
+
+      <div class="plano-card" data-plano="Bairro" data-preco="R$ 597/mês" onclick="selecionarPlano(this)">
+        <div class="plano-badge">Popular</div>
+        <div class="plano-nome">BAIRRO</div>
+        <div class="plano-preco">R$ 597 <span>/mês</span></div>
+        <div class="plano-desc">Alcance um <strong>grupo de atividades</strong> relacionadas ou um <strong>município inteiro</strong>. Mais abrangência sem perder a relevância.</div>
+        <div class="plano-escopo">Escopo: Grupo CNAE ou Município</div>
+        <div class="plano-check">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+      </div>
+
+      <div class="plano-card" data-plano="Regional" data-preco="R$ 1.197/mês" onclick="selecionarPlano(this)">
+        <div class="plano-badge">Avançado</div>
+        <div class="plano-nome">REGIONAL</div>
+        <div class="plano-preco">R$ 1.197 <span>/mês</span></div>
+        <div class="plano-desc">Visibilidade em uma <strong>divisão ou seção CNAE</strong> completa, ou cobertura de um <strong>estado inteiro</strong>. Para marcas com presença regional.</div>
+        <div class="plano-escopo">Escopo: Divisão/Seção CNAE ou Estado</div>
+        <div class="plano-check">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+      </div>
+
+      <div class="plano-card" data-plano="Destaque" data-preco="Sob consulta" onclick="selecionarPlano(this)">
+        <div class="plano-badge destaque">⭐ Destaque</div>
+        <div class="plano-nome">DESTAQUE</div>
+        <div class="plano-preco">Sob <span>consulta</span></div>
+        <div class="plano-desc">Qualquer escopo acima com <strong>badge de destaque exclusivo</strong> e prioridade de exibição. Vagas limitadas por nicho — sem exclusividade total.</div>
+        <div class="plano-escopo">Escopo: Qualquer nível + prioridade</div>
+        <div class="plano-check">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Formulário de Interesse -->
+    <div class="parceria-form" id="parceria-form">
+      <div id="pf-plan-badge" class="pf-selected-plan" style="display:none"></div>
+      <h3>Manifeste seu interesse</h3>
+      <div class="pf-row">
+        <input class="pf-input" type="text" placeholder="Nome / Razão social" id="pf-nome">
+        <input class="pf-input" type="email" placeholder="E-mail de contato" id="pf-email">
+      </div>
+      <div class="pf-row">
+        <select class="pf-select" id="pf-tipo">
+          <option value="" disabled selected>Tipo de organização</option>
+          <option>Prefeitura / Órgão público</option>
+          <option>Escritório de Contabilidade</option>
+          <option>Associação Empresarial</option>
+          <option>Fintech / Plataforma digital</option>
+          <option>Franquia ou Rede de negócios</option>
+          <option>Empresa de consultoria</option>
+          <option>Outra</option>
+        </select>
+        <select class="pf-select" id="pf-escopo">
+          <option value="" disabled selected>Escopo de interesse</option>
+          <optgroup label="Por atividade econômica (CNAE)">
+            <option>Atividade específica (Classe CNAE)</option>
+            <option>Grupo de atividades (Grupo CNAE)</option>
+            <option>Setor amplo (Divisão CNAE)</option>
+            <option>Segmento completo (Seção CNAE)</option>
+          </optgroup>
+          <optgroup label="Por geografia">
+            <option>Município específico</option>
+            <option>Estado inteiro</option>
+            <option>Multi-estados / Nacional</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="pf-row">
+        <input class="pf-input" type="text" placeholder="Detalhe o nicho ou região (ex: Restaurantes em Porto Alegre / Seção G – Comércio)" id="pf-detalhe">
+      </div>
+      <div class="pf-row">
+        <textarea class="pf-textarea" placeholder="Contexto ou dúvidas (opcional)" id="pf-msg"></textarea>
+      </div>
+      <div class="pf-row" style="align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <p class="pf-note" style="margin:0">Sem compromisso. Entraremos em contato em até 2 dias úteis.</p>
+        <button class="pf-submit" onclick="handleParceiroSubmit(this)">Enviar interesse →</button>
+      </div>
+      <div id="pf-msg-resp" style="margin-top:0.75rem;font-size:0.82rem;font-family:var(--font-mono);display:none"></div>
+    </div>
+
   </div>
 </section>
 
@@ -532,7 +668,91 @@ function showFormMsg(msg, tipo) {
   el.style.opacity = '1';
 }
 
-// ── SCROLL FADE-IN ───────────────────────────────────────────────
+// ── SELEÇÃO DE PLANO ────────────────────────────────────────────
+function selecionarPlano(card) {
+  document.querySelectorAll('.plano-card').forEach(c => c.classList.remove('ativo'));
+  card.classList.add('ativo');
+  const nome = card.dataset.plano;
+  const preco = card.dataset.preco;
+  const badge = document.getElementById('pf-plan-badge');
+  badge.textContent = `Plano selecionado: ${nome} — ${preco}`;
+  badge.style.display = 'inline-block';
+  // scroll suave ao form
+  document.getElementById('parceria-form').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── FORMULÁRIO DE PARCERIA ───────────────────────────────────────
+async function handleParceiroSubmit(btn) {
+  const nome   = document.getElementById('pf-nome').value.trim();
+  const email  = document.getElementById('pf-email').value.trim();
+  const tipo   = document.getElementById('pf-tipo').value;
+  const escopo = document.getElementById('pf-escopo').value;
+  const detalhe= document.getElementById('pf-detalhe').value.trim();
+  const msg    = document.getElementById('pf-msg').value.trim();
+  const planoCard = document.querySelector('.plano-card.ativo');
+  const plano  = planoCard ? planoCard.dataset.plano : 'Não selecionado';
+
+  if (!nome || !email) {
+    showPfMsg('Preencha nome e e-mail para continuar.', 'erro');
+    return;
+  }
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    showPfMsg('E-mail inválido.', 'erro');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+  btn.style.opacity = '0.7';
+
+  try {
+    // Insere na tb_waitlist com perfil especial de parceiro
+    const { error } = await db
+      .from('tb_waitlist')
+      .insert({
+        nome,
+        email,
+        perfil: `Parceiro/${plano}/${tipo || 'N/A'}/${escopo || 'N/A'}/${detalhe ? detalhe.substring(0,120) : ''}`.substring(0,250)
+      });
+
+    if (error && error.code === '23505') {
+      showPfMsg('Este e-mail já está registrado. Obrigado!', 'ok');
+      btn.textContent = 'Já registrado ✓';
+      btn.style.background = 'var(--accent)';
+      btn.style.color = '#000';
+      btn.style.opacity = '1';
+    } else if (error) {
+      throw error;
+    } else {
+      showPfMsg('Interesse registrado! Entraremos em contato em breve. 🎉', 'ok');
+      btn.textContent = 'Enviado! ✓';
+      btn.style.background = 'var(--green)';
+      btn.style.color = '#000';
+      btn.style.opacity = '1';
+      btn.style.cursor = 'default';
+      // Limpa campos
+      ['pf-nome','pf-email','pf-detalhe','pf-msg'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+    }
+  } catch (err) {
+    console.error('Parceiro form error:', err);
+    showPfMsg('Erro ao enviar. Tente novamente.', 'erro');
+    btn.disabled = false;
+    btn.textContent = 'Enviar interesse →';
+    btn.style.opacity = '1';
+  }
+}
+
+function showPfMsg(msg, tipo) {
+  const el = document.getElementById('pf-msg-resp');
+  el.textContent = msg;
+  el.style.color = tipo === 'ok' ? 'var(--green)' : 'var(--red)';
+  el.style.display = 'block';
+}
+
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -543,7 +763,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.audience-card, .feature-item, .step, .partner-card').forEach(el => {
+document.querySelectorAll('.audience-card, .feature-item, .step, .plano-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(16px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
