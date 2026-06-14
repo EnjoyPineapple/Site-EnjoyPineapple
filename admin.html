@@ -119,6 +119,9 @@
     </div>
     <button class="btn" id="login-btn" onclick="doLogin()">Entrar</button>
     <div id="login-error"></div>
+    <div style="margin-top:1.25rem;text-align:center">
+      <button onclick="doMagicLink()" style="background:none;border:none;font-family:var(--font-mono);font-size:0.72rem;color:var(--text2);cursor:pointer;text-decoration:underline;text-underline-offset:3px" id="magic-btn">Entrar sem senha (magic link)</button>
+    </div>
   </div>
 </div>
 
@@ -278,6 +281,19 @@ const state = {
 };
 
 // ── AUTH ────────────────────────────────────────────────────────────
+async function doMagicLink() {
+  const email = document.getElementById('login-email').value.trim();
+  if (!email) { alert('Digite seu e-mail primeiro.'); return; }
+  const btn = document.getElementById('magic-btn');
+  btn.textContent = 'Enviando...';
+  const { error } = await db.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: 'https://enjoypineapple.com.br/admin.html' }
+  });
+  if (error) { btn.textContent = 'Erro ao enviar.'; }
+  else { btn.textContent = 'Link enviado! Verifique seu e-mail ✓'; }
+}
+
 async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const pass  = document.getElementById('login-pass').value;
