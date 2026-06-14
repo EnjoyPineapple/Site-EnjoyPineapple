@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Enjoy Pineapple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
+      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+      --accent:#FFD600;--accent2:#e6bf00;
+      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+      --green:#00e5a0;--red:#ff5f5f;
+      --font-head:'Syne',sans-serif;--font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+    /* LOGIN */
+    #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+    .login-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:400px}
+    .login-logo{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem}
+    .login-logo img{width:36px;height:36px;border-radius:50%;object-fit:contain}
+    .login-logo span{font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--text)}
+    .login-logo span b{color:var(--accent)}
+    .login-box h1{font-family:var(--font-head);font-size:1.4rem;font-weight:700;margin-bottom:0.4rem}
+    .login-box p{font-size:0.85rem;color:var(--text2);margin-bottom:2rem}
+    .field{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.25rem}
+    label{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
+    input{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;width:100%}
+    input:focus{border-color:rgba(255,214,0,0.4)}
+    .btn{background:var(--accent);color:#000;border:none;border-radius:8px;padding:0.8rem 1.5rem;font-family:var(--font-body);font-size:0.9rem;font-weight:600;cursor:pointer;width:100%;transition:background 0.2s}
+    .btn:hover{background:var(--accent2)}
+    .btn:disabled{opacity:0.5;cursor:not-allowed}
+    #login-error{font-family:var(--font-mono);font-size:0.75rem;color:var(--red);margin-top:1rem;display:none}
+
+    /* ADMIN PANEL */
+    #admin-screen{display:none;min-height:100vh;flex-direction:column}
+    .admin-nav{background:rgba(7,9,12,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .admin-nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+    .admin-nav-logo img{width:28px;height:28px;border-radius:50%;object-fit:contain}
+    .admin-nav-logo span{font-family:var(--font-head);font-size:0.9rem;font-weight:800;color:var(--text)}
+    .admin-nav-logo span b{color:var(--accent)}
+    .admin-nav-right{display:flex;align-items:center;gap:1.5rem}
+    .admin-user{font-family:var(--font-mono);font-size:0.72rem;color:var(--text2)}
+    .logout-btn{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);background:none;border:1px solid var(--border);padding:0.35rem 0.8rem;border-radius:4px;cursor:pointer;transition:color 0.2s,border-color 0.2s}
+    .logout-btn:hover{color:var(--red);border-color:var(--red)}
+
+    .admin-body{flex:1;padding:2rem}
+    .admin-header{max-width:1400px;margin:0 auto 2rem}
+    .admin-header h2{font-family:var(--font-head);font-size:1.5rem;font-weight:800;margin-bottom:0.25rem}
+    .admin-header p{font-size:0.85rem;color:var(--text2)}
+
+    /* TABS */
+    .tabs{max-width:1400px;margin:0 auto;display:flex;gap:0.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:0}
+    .tab{font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;padding:0.75rem 1.25rem;cursor:pointer;transition:color 0.2s,border-color 0.2s;margin-bottom:-1px}
+    .tab:hover{color:var(--text)}
+    .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+    .tab-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--accent-dim, rgba(255,214,0,0.1));color:var(--accent);font-size:0.65rem;border-radius:10px;padding:0.1rem 0.45rem;margin-left:0.4rem}
+
+    /* PANES */
+    .pane{display:none;max-width:1400px;margin:0 auto}
+    .pane.active{display:block}
+
+    /* SUMMARY CARDS */
+    .summary-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
+    .summary-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem}
+    .summary-num{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+    .summary-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text2);margin-top:0.35rem}
+
+    /* TABLE */
+    .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .table-toolbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);gap:1rem;flex-wrap:wrap}
+    .table-title{font-family:var(--font-head);font-size:1rem;font-weight:700}
+    .table-search{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:0.45rem 0.9rem;color:var(--text);font-family:var(--font-body);font-size:0.82rem;outline:none;width:220px;transition:border-color 0.2s}
+    .table-search:focus{border-color:rgba(255,214,0,0.35)}
+    .table-search::placeholder{color:var(--text3)}
+    .data-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+    .data-table th{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--bg2)}
+    .data-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:rgba(255,255,255,0.02);color:var(--text)}
+    .badge{display:inline-block;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:4px}
+    .badge-green{background:rgba(0,229,160,0.1);color:var(--green);border:1px solid rgba(0,229,160,0.2)}
+    .badge-red{background:rgba(255,95,95,0.1);color:var(--red);border:1px solid rgba(255,95,95,0.2)}
+    .badge-yellow{background:rgba(255,214,0,0.1);color:var(--accent);border:1px solid rgba(255,214,0,0.2)}
+    .empty-row td{text-align:center;padding:3rem;color:var(--text3);font-family:var(--font-mono);font-size:0.78rem}
+
+    .pagination{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1.5rem;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:0.72rem;color:var(--text2)}
+    .page-btns{display:flex;gap:0.4rem}
+    .page-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:0.3rem 0.7rem;border-radius:4px;cursor:pointer;font-family:var(--font-mono);font-size:0.72rem;transition:border-color 0.2s,color 0.2s}
+    .page-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+    .page-btn:disabled{opacity:0.35;cursor:not-allowed}
+
+    .loading{text-align:center;padding:3rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--text3)}
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
+      <span>Enjoy <b>Pineapple</b></span>
+    </div>
+    <h1>Painel Admin</h1>
+    <p>Acesso restrito. Entre com sua conta Enjoy Pineapple.</p>
+    <div class="field">
+      <label for="login-email">E-mail</label>
+      <input type="email" id="login-email" placeholder="seu@email.com" />
+    </div>
+    <div class="field">
+      <label for="login-pass">Senha</label>
+      <input type="password" id="login-pass" placeholder="••••••••" />
+    </div>
+    <button class="btn" id="login-btn" onclick="doLogin()">Entrar</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen">
+  <nav class="admin-nav">
+    <a href="index.html" class="admin-nav-logo">
+      <img src="enjoypineapple.jpeg" alt="">
+      <span>Enjoy <b>Pineapple</b> · Admin</span>
+    </a>
+    <div class="admin-nav-right">
+      <span class="admin-user" id="admin-user-email"></span>
+      <button class="logout-btn" onclick="doLogout()">Sair</button>
+    </div>
+  </nav>
+
+  <div class="admin-body">
+    <div class="admin-header">
+      <h2>Painel de Dados</h2>
+      <p>Visualização em tempo real do Supabase — BORA App</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('leads')">Leads Parceiros <span class="tab-badge" id="badge-leads">—</span></button>
+      <button class="tab" onclick="switchTab('parceiros')">Parceiros App <span class="tab-badge" id="badge-parceiros">—</span></button>
+      <button class="tab" onclick="switchTab('consultas')">Consultas <span class="tab-badge" id="badge-consultas">—</span></button>
+      <button class="tab" onclick="switchTab('estatisticas')">Estatísticas <span class="tab-badge" id="badge-estatisticas">—</span></button>
+    </div>
+
+    <!-- LEADS -->
+    <div class="pane active" id="pane-leads">
+      <div class="summary-row" id="leads-summary"></div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-title">Propostas de Parceria</span>
+          <input class="table-search" id="leads-search" placeholder="Buscar por nome, empresa..." oninput="filterTable('leads')" />
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data</th><th>Nome</th><th>Empresa</th><th>E-mail</th><th>WhatsApp</th><th>Tipo</th><th>Município</th><th>Mensagem</th>
+              </tr>
+            </thead>
+            <tbody id="leads-body"><tr><td colspan="8" class="loading">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="leads-info"></span>
+          <div class="page-btns">
+            <button class="page-btn" id="leads-prev" onclick="changePage('leads',-1)" disabled>← Anterior</button>
+            <button class="page-btn" id="leads-next" onclick="changePage('leads',1)" disabled>Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARCEIROS -->
+    <div class="pane" id="pane-parceiros">
+      <div class="summary-row" id="parceiros-summary"></div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-title">Parceiros Cadastrados no App</span>
+          <input class="table-search" id="parceiros-search" placeholder="Buscar por nome..." oninput="filterTable('parceiros')" />
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th><th>Nome</th><th>Descrição</th><th>Categoria</th><th>Site</th><th>Ativo</th><th>Criado em</th>
+              </tr>
+            </thead>
+            <tbody id="parceiros-body"><tr><td colspan="7" class="loading">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="parceiros-info"></span>
+          <div class="page-btns">
+            <button class="page-btn" id="parceiros-prev" onclick="changePage('parceiros',-1)" disabled>← Anterior</button>
+            <button class="page-btn" id="parceiros-next" onclick="changePage('parceiros',1)" disabled>Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONSULTAS -->
+    <div class="pane" id="pane-consultas">
+      <div class="summary-row" id="consultas-summary"></div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-title">Consultas Realizadas</span>
+          <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th><th>Usuário</th><th>CNAE</th><th>Município</th><th>Data</th>
+              </tr>
+            </thead>
+            <tbody id="consultas-body"><tr><td colspan="5" class="loading">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="consultas-info"></span>
+          <div class="page-btns">
+            <button class="page-btn" id="consultas-prev" onclick="changePage('consultas',-1)" disabled>← Anterior</button>
+            <button class="page-btn" id="consultas-next" onclick="changePage('consultas',1)" disabled>Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTATÍSTICAS -->
+    <div class="pane" id="pane-estatisticas">
+      <div class="summary-row" id="estat-summary"></div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-title">Estatísticas por CNAE e Município</span>
+          <input class="table-search" id="estatisticas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('estatisticas')" />
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th><th>Município</th><th>CNAE</th><th>Total Consultas</th><th>Total Usuários</th><th>Atualizado em</th>
+              </tr>
+            </thead>
+            <tbody id="estatisticas-body"><tr><td colspan="6" class="loading">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="estatisticas-info"></span>
+          <div class="page-btns">
+            <button class="page-btn" id="estatisticas-prev" onclick="changePage('estatisticas',-1)" disabled>← Anterior</button>
+            <button class="page-btn" id="estatisticas-next" onclick="changePage('estatisticas',1)" disabled>Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+const PAGE_SIZE = 25;
+const state = {
+  leads:       { data:[], filtered:[], page:0 },
+  parceiros:   { data:[], filtered:[], page:0 },
+  consultas:   { data:[], filtered:[], page:0 },
+  estatisticas:{ data:[], filtered:[], page:0 },
+};
+
+// ── AUTH ────────────────────────────────────────────────────────────
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  const btn   = document.getElementById('login-btn');
+  const err   = document.getElementById('login-error');
+  btn.disabled = true; btn.textContent = 'Entrando...';
+  err.style.display = 'none';
+
+  const { data, error } = await db.auth.signInWithPassword({ email, password: pass });
+  if (error) {
+    err.textContent = 'E-mail ou senha incorretos.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Entrar';
+  } else {
+    showAdmin(data.user);
+  }
+}
+
+document.getElementById('login-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+async function doLogout() {
+  await db.auth.signOut();
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+}
+
+function showAdmin(user) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-screen').style.display = 'flex';
+  document.getElementById('admin-user-email').textContent = user.email;
+  loadAll();
+}
+
+// Check existing session
+db.auth.getSession().then(({ data }) => {
+  if (data.session) showAdmin(data.session.user);
+});
+
+// ── DATA LOADING ─────────────────────────────────────────────────────
+async function loadAll() {
+  await Promise.all([loadLeads(), loadParceiros(), loadConsultas(), loadEstatisticas()]);
+}
+
+async function loadLeads() {
+  const { data } = await db.from('tb_parceiros_leads').select('*').order('criado_em', { ascending: false });
+  state.leads.data = data || [];
+  state.leads.filtered = [...state.leads.data];
+  document.getElementById('badge-leads').textContent = state.leads.data.length;
+  renderSummary('leads', [
+    { num: state.leads.data.length, label: 'Total de propostas' },
+    { num: state.leads.data.filter(r => isToday(r.criado_em)).length, label: 'Hoje' },
+    { num: [...new Set(state.leads.data.map(r => r.tipo))].length, label: 'Tipos distintos' },
+  ]);
+  renderLeads();
+}
+
+async function loadParceiros() {
+  const { data } = await db.from('tb_parceiros').select('*').order('id_parceiro');
+  state.parceiros.data = data || [];
+  state.parceiros.filtered = [...state.parceiros.data];
+  document.getElementById('badge-parceiros').textContent = state.parceiros.data.length;
+  renderSummary('parceiros', [
+    { num: state.parceiros.data.length, label: 'Total de parceiros' },
+    { num: state.parceiros.data.filter(r => r.ativo).length, label: 'Ativos' },
+    { num: state.parceiros.data.filter(r => !r.ativo).length, label: 'Inativos' },
+  ]);
+  renderParceiros();
+}
+
+async function loadConsultas() {
+  const { data } = await db.from('tb_consultas').select('*').order('consultado_em', { ascending: false });
+  state.consultas.data = data || [];
+  state.consultas.filtered = [...state.consultas.data];
+  document.getElementById('badge-consultas').textContent = state.consultas.data.length;
+  renderSummary('consultas', [
+    { num: state.consultas.data.length, label: 'Total de consultas' },
+    { num: state.consultas.data.filter(r => isToday(r.consultado_em)).length, label: 'Hoje' },
+    { num: [...new Set(state.consultas.data.map(r => r.id_usuario))].length, label: 'Usuários únicos' },
+    { num: [...new Set(state.consultas.data.map(r => r.id_cnae))].length, label: 'CNAEs consultados' },
+  ]);
+  renderConsultas();
+}
+
+async function loadEstatisticas() {
+  const { data } = await db.from('tb_estatisticas_app').select('*').order('total_consultas', { ascending: false });
+  state.estatisticas.data = data || [];
+  state.estatisticas.filtered = [...state.estatisticas.data];
+  document.getElementById('badge-estatisticas').textContent = state.estatisticas.data.length;
+  const totalConsultas = state.estatisticas.data.reduce((a, r) => a + (r.total_consultas || 0), 0);
+  const totalUsuarios  = state.estatisticas.data.reduce((a, r) => a + (r.total_usuarios  || 0), 0);
+  renderSummary('estat', [
+    { num: totalConsultas, label: 'Total de consultas' },
+    { num: totalUsuarios,  label: 'Total de usuários' },
+    { num: [...new Set(state.estatisticas.data.map(r => r.id_municipio))].length, label: 'Municípios ativos' },
+    { num: [...new Set(state.estatisticas.data.map(r => r.id_cnae))].length, label: 'CNAEs ativos' },
+  ]);
+  renderEstatisticas();
+}
+
+// ── RENDER ───────────────────────────────────────────────────────────
+function renderSummary(key, items) {
+  const el = document.getElementById(`${key}-summary`);
+  el.innerHTML = items.map(i => `
+    <div class="summary-card">
+      <div class="summary-num">${i.num.toLocaleString('pt-BR')}</div>
+      <div class="summary-label">${i.label}</div>
+    </div>`).join('');
+}
+
+function renderLeads() {
+  const { filtered, page } = state.leads;
+  const rows = paginate(filtered, page);
+  const body = document.getElementById('leads-body');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="8" class="empty-row">Nenhuma proposta encontrada.</td></tr>`; updatePagination('leads'); return; }
+  body.innerHTML = rows.map(r => `<tr>
+    <td>${fmtDate(r.criado_em)}</td>
+    <td style="color:var(--text);font-weight:500">${esc(r.nome)}</td>
+    <td>${esc(r.empresa)}</td>
+    <td><a href="mailto:${esc(r.email)}" style="color:var(--accent);text-decoration:none">${esc(r.email)}</a></td>
+    <td>${esc(r.telefone || '—')}</td>
+    <td><span class="badge badge-yellow">${esc(r.tipo)}</span></td>
+    <td>${esc(r.municipio)}</td>
+    <td title="${esc(r.mensagem || '')}">${r.mensagem ? esc(r.mensagem).substring(0,60)+(r.mensagem.length>60?'…':'') : '—'}</td>
+  </tr>`).join('');
+  updatePagination('leads');
+}
+
+function renderParceiros() {
+  const { filtered, page } = state.parceiros;
+  const rows = paginate(filtered, page);
+  const body = document.getElementById('parceiros-body');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="7" class="empty-row">Nenhum parceiro encontrado.</td></tr>`; updatePagination('parceiros'); return; }
+  body.innerHTML = rows.map(r => `<tr>
+    <td style="color:var(--text3)">#${r.id_parceiro}</td>
+    <td style="color:var(--text);font-weight:500">${esc(r.nome)}</td>
+    <td>${r.descricao ? esc(r.descricao).substring(0,60)+(r.descricao.length>60?'…':'') : '—'}</td>
+    <td><span class="badge badge-yellow">${esc(r.categoria_restrita || 'Todos')}</span></td>
+    <td>${r.site_url ? `<a href="${esc(r.site_url)}" target="_blank" style="color:var(--accent);text-decoration:none">Ver site</a>` : '—'}</td>
+    <td><span class="badge ${r.ativo ? 'badge-green' : 'badge-red'}">${r.ativo ? 'Ativo' : 'Inativo'}</span></td>
+    <td>${fmtDate(r.criado_em)}</td>
+  </tr>`).join('');
+  updatePagination('parceiros');
+}
+
+function renderConsultas() {
+  const { filtered, page } = state.consultas;
+  const rows = paginate(filtered, page);
+  const body = document.getElementById('consultas-body');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="5" class="empty-row">Nenhuma consulta encontrada.</td></tr>`; updatePagination('consultas'); return; }
+  body.innerHTML = rows.map(r => `<tr>
+    <td style="color:var(--text3)">#${r.id_consulta}</td>
+    <td style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text2)">${r.id_usuario ? r.id_usuario.substring(0,12)+'…' : '—'}</td>
+    <td><span class="badge badge-yellow">${r.id_cnae || '—'}</span></td>
+    <td>${r.id_municipio || '—'}</td>
+    <td>${fmtDate(r.consultado_em)}</td>
+  </tr>`).join('');
+  updatePagination('consultas');
+}
+
+function renderEstatisticas() {
+  const { filtered, page } = state.estatisticas;
+  const rows = paginate(filtered, page);
+  const body = document.getElementById('estatisticas-body');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="6" class="empty-row">Nenhuma estatística encontrada.</td></tr>`; updatePagination('estatisticas'); return; }
+  body.innerHTML = rows.map(r => `<tr>
+    <td style="color:var(--text3)">#${r.id_estatistica}</td>
+    <td>${r.id_municipio || '—'}</td>
+    <td><span class="badge badge-yellow">${r.id_cnae || '—'}</span></td>
+    <td style="color:var(--text);font-weight:600">${(r.total_consultas||0).toLocaleString('pt-BR')}</td>
+    <td>${(r.total_usuarios||0).toLocaleString('pt-BR')}</td>
+    <td>${fmtDate(r.atualizado_em)}</td>
+  </tr>`).join('');
+  updatePagination('estatisticas');
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────
+function paginate(arr, page) { return arr.slice(page * PAGE_SIZE, (page+1) * PAGE_SIZE); }
+
+function updatePagination(key) {
+  const { filtered, page } = state[key];
+  const total = filtered.length;
+  const pages = Math.ceil(total / PAGE_SIZE);
+  const start = total ? page * PAGE_SIZE + 1 : 0;
+  const end   = Math.min((page+1) * PAGE_SIZE, total);
+  document.getElementById(`${key}-info`).textContent = total ? `${start}–${end} de ${total}` : '0 resultados';
+  document.getElementById(`${key}-prev`).disabled = page === 0;
+  document.getElementById(`${key}-next`).disabled = page >= pages - 1;
+}
+
+function changePage(key, dir) {
+  state[key].page += dir;
+  renders[key]();
+}
+
+const renders = {
+  leads: renderLeads,
+  parceiros: renderParceiros,
+  consultas: renderConsultas,
+  estatisticas: renderEstatisticas,
+};
+
+function filterTable(key) {
+  const q = document.getElementById(`${key}-search`).value.toLowerCase();
+  state[key].filtered = state[key].data.filter(r =>
+    Object.values(r).some(v => v && String(v).toLowerCase().includes(q))
+  );
+  state[key].page = 0;
+  renders[key]();
+}
+
+function switchTab(key) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  event.target.closest('.tab').classList.add('active');
+  document.getElementById(`pane-${key}`).classList.add('active');
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' });
+}
+
+function isToday(iso) {
+  if (!iso) return false;
+  const d = new Date(iso);
+  const n = new Date();
+  return d.toDateString() === n.toDateString();
+}
+
+function esc(str) {
+  return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
