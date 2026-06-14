@@ -56,7 +56,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .sector-carousel{position:absolute;inset:0;z-index:0;overflow:hidden}
 .sector-track{display:flex;height:100%;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);will-change:transform}
 .sector-slide{min-width:100%;height:100%;position:relative;flex-shrink:0}
-.sector-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.sector-slide img{width:100%;height:100%;object-fit:cover;object-position:bottom;display:block}
 /* gradiente: opaco à esquerda (protege texto), desfoca à direita */
 .sector-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,12,0.97) 0%, rgba(7,9,12,0.92) 38%, rgba(7,9,12,0.6) 60%, rgba(7,9,12,0.15) 100%)}
 .sector-label{position:absolute;bottom:2rem;right:3rem;z-index:2;font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:-0.01em;text-shadow:0 2px 12px rgba(0,0,0,0.6);opacity:0.9}
