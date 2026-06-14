@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BORA-APP — Classificação de Risco de Atividades Econômicas</title>
+<title>Enjoy Pineapple — Resolvemos os abacaxis do empreendedor brasileiro</title>
+<meta name="description" content="A Enjoy Pineapple cria soluções que transformam problemas complexos em caminhos claros. Conheça o BORA, nosso app de classificação de risco de atividades econômicas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -22,9 +23,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-he
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;gap:0.75rem}
-.nav-logo img{width:38px;height:38px;object-fit:contain;border-radius:8px}
-.logo-text{font-family:var(--font-head);font-size:1.25rem;font-weight:800;letter-spacing:-0.02em;color:var(--text)}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo img{width:36px;height:36px;object-fit:contain;border-radius:50%}
+.logo-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
 .logo-text span{color:var(--accent)}
 nav ul{list-style:none;display:flex;gap:2rem}
 nav a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;transition:color 0.2s}
@@ -49,108 +50,176 @@ h1 em{font-style:normal;color:var(--accent)}
 .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
 .btn-secondary{border:1px solid var(--border2);color:var(--text);padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:400;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;background:transparent;transition:border-color 0.2s,background 0.2s}
 .btn-secondary:hover{border-color:var(--accent);background:var(--accent-dim)}
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
-.stat-num{font-family:var(--font-display);font-size:2.2rem;color:var(--accent);line-height:1}
-.stat-label{font-size:0.72rem;color:var(--text3);margin-top:0.25rem;font-family:var(--font-mono);letter-spacing:0.05em;text-transform:uppercase}
 
-/* ── APP MOCKUP ── */
-.hero-visual{position:relative}
-.app-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)}
-.app-card-header{background:var(--surface2);padding:1rem 1.25rem;display:flex;align-items:center;gap:0.75rem;border-bottom:1px solid var(--border)}
-.app-dots{display:flex;gap:6px}
-.app-dots span{width:10px;height:10px;border-radius:50%}
-.app-dots span:nth-child(1){background:#ff5f57}
-.app-dots span:nth-child(2){background:#ffbd2e}
-.app-dots span:nth-child(3){background:#28ca41}
-.app-title-bar{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.75rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
-.app-body{padding:1.5rem}
-.app-search{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:0.75rem 1rem;font-family:var(--font-mono);font-size:0.8rem;color:var(--text2);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
-.app-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem;border-radius:8px;margin-bottom:0.5rem;border:1px solid var(--border);background:var(--bg2);transition:border-color 0.2s}
-.app-row:hover{border-color:var(--border2)}
-.app-row-left{display:flex;align-items:center;gap:0.75rem}
-.cnae-code{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:0.2rem 0.5rem;border-radius:4px;min-width:70px;text-align:center}
-.cnae-name{font-size:0.8rem;color:var(--text);font-weight:400}
-.cnae-sub{font-size:0.68rem;color:var(--text3)}
-.badge{padding:0.25rem 0.65rem;border-radius:100px;font-size:0.68rem;font-family:var(--font-mono);font-weight:500;letter-spacing:0.03em}
-.badge-green{background:rgba(0,229,160,0.12);color:var(--green);border:1px solid rgba(0,229,160,0.2)}
-.badge-yellow{background:rgba(255,214,0,0.12);color:var(--accent);border:1px solid rgba(255,214,0,0.25)}
-.badge-red{background:rgba(255,95,95,0.12);color:var(--red);border:1px solid rgba(255,95,95,0.2)}
-.app-footer-bar{margin-top:1.25rem;padding:0.85rem 1rem;background:rgba(255,214,0,0.07);border:1px solid rgba(255,214,0,0.2);border-radius:8px;display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--accent);font-family:var(--font-mono)}
-.floating-pill{position:absolute;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 0.9rem;font-size:0.72rem;display:flex;align-items:center;gap:0.5rem;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
-.floating-pill.top-right{top:-1.5rem;right:-2rem;color:var(--accent);font-family:var(--font-mono)}
-.floating-pill.bottom-left{bottom:-1.5rem;left:-2rem;color:var(--text2);font-family:var(--font-body)}
-.fp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* ── PHONE MOCKUP ── */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.phone-wrap{position:relative}
+.phone{width:240px;background:#0a0a0a;border-radius:36px;border:2px solid #2a2a2a;box-shadow:0 40px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.05),inset 0 0 0 1px rgba(255,255,255,0.03);overflow:hidden;position:relative}
+.phone-notch{width:80px;height:22px;background:#0a0a0a;border-radius:0 0 14px 14px;margin:0 auto;position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
+.phone-cam{width:10px;height:10px;background:#1a1a1a;border-radius:50%;border:1px solid #333}
+.phone-screen{background:#e8eaed;min-height:480px;padding:0;position:relative;overflow:hidden}
 
-/* ── DOWNLOAD BADGES ── */
-.store-badges{display:flex;gap:0.75rem;margin-top:1rem;flex-wrap:wrap}
-.store-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 1rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s;cursor:pointer}
-.store-badge:hover{border-color:var(--accent);transform:translateY(-2px)}
-.store-badge svg{flex-shrink:0;opacity:0.85}
-.store-badge-text{display:flex;flex-direction:column}
-.store-badge-text .small{font-size:0.62rem;color:var(--text3);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em}
-.store-badge-text .big{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.1}
-.store-badge.coming{opacity:0.5;pointer-events:none}
+/* Home screen mockup */
+.ps-topbar{background:#111;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.ps-brand{font-size:14px;font-weight:800;color:#FFD600;font-family:var(--font-head);letter-spacing:-0.5px}
+.ps-brand span{color:#fff}
+.ps-icons{display:flex;gap:10px}
+.ps-icon{width:20px;height:20px;background:#333;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ps-body{padding:12px}
+.ps-label{font-size:8px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.ps-muni{background:#fff;border-radius:8px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;border:1px solid #e0e0e0}
+.ps-muni-name{font-size:10px;font-weight:500;color:#333;display:flex;align-items:center;gap:4px}
+.ps-muni-pin{color:#FFD600;font-size:10px}
+.ps-trocar{font-size:9px;font-weight:700;color:#FFD600}
+.ps-search{background:#fff;border-radius:8px;padding:9px 10px;display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;margin-bottom:8px}
+.ps-search-icon{color:#aaa;font-size:10px}
+.ps-search-text{font-size:9px;color:#bbb}
+.ps-result{background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #e0e0e0;margin-bottom:6px}
+.ps-cnae{font-size:8px;font-weight:700;color:#FFD600}
+.ps-activity{font-size:9px;color:#333;font-weight:500;margin:2px 0}
+.ps-badges{display:flex;gap:4px;margin-top:4px}
+.ps-badge{padding:2px 6px;border-radius:20px;font-size:7px;font-weight:700}
+.ps-badge-green{background:#e6fff5;color:#00a870;border:1px solid #b3f0d8}
+.ps-badge-yellow{background:#fff8e1;color:#e6a800;border:1px solid #ffe082}
+.ps-badge-red{background:#fff0f0;color:#e53935;border:1px solid #ffcdd2}
+.ps-navbar{background:#111;padding:8px;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #222}
+.ps-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.ps-nav-circle{width:32px;height:32px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+.ps-nav-label{font-size:6px;color:#999;font-family:var(--font-body)}
+
+.phone-pill{position:absolute;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:0.55rem 0.85rem;font-size:0.68rem;display:flex;align-items:center;gap:0.45rem;box-shadow:0 8px 24px rgba(0,0,0,0.4);white-space:nowrap}
+.phone-pill.top-right{top:2rem;right:-6rem;color:var(--accent);font-family:var(--font-mono)}
+.phone-pill.bottom-left{bottom:2rem;left:-6rem;color:var(--text2);font-family:var(--font-body)}
+.pp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
 /* ── SECTIONS ── */
 section{padding:6rem 3rem}
 .section-inner{max-width:1200px;margin:0 auto}
 .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
 h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1rem}
-.section-lead{font-size:1rem;color:var(--text2);max-width:560px;line-height:1.75;font-weight:300}
+h2 em{font-style:normal;color:var(--accent)}
+.section-lead{font-size:1rem;color:var(--text2);max-width:580px;line-height:1.75;font-weight:300}
 
-/* ── PARTNER / PARA QUEM ── */
-.forwho{background:var(--bg2)}
-.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:3rem}
+/* ── MVV ── */
+.mvv{background:var(--bg2)}
+.mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.mvv-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 1.75rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.2s}
+.mvv-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
+.mvv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);opacity:0.6}
+.mvv-num{font-family:var(--font-display);font-size:3.5rem;color:rgba(255,214,0,0.08);position:absolute;top:1rem;right:1.5rem;line-height:1}
+.mvv-tag{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
+.mvv-card h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:0.75rem}
+.mvv-card p{font-size:0.88rem;color:var(--text2);line-height:1.7}
+.valores-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
+.valor-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.78rem;color:var(--accent);font-family:var(--font-mono)}
+
+/* ── PRODUCT: BORA ── */
+.product{background:var(--bg)}
+.product-inner{max-width:1200px;margin:0 auto}
+.product-header{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:5rem}
+.bora-logo-big{font-family:var(--font-display);font-size:clamp(5rem,10vw,9rem);line-height:1;color:var(--accent);letter-spacing:0.04em;text-shadow:0 0 80px rgba(255,214,0,0.15);margin-bottom:0.5rem}
+.bora-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem}
+.product-desc p{font-size:1rem;color:var(--text2);line-height:1.75;margin-bottom:1.25rem;font-weight:300}
+.store-badges{display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
+.store-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 1rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s;cursor:pointer}
+.store-badge:hover{border-color:var(--accent);transform:translateY(-2px)}
+.store-badge svg{flex-shrink:0;opacity:0.85}
+.store-badge-text{display:flex;flex-direction:column}
+.store-badge-text .small{font-size:0.62rem;color:var(--text3);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em}
+.store-badge-text .big{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.1}
+.store-badge.coming{opacity:0.45;pointer-events:none}
+
+/* ── APP SCREENS SHOWCASE ── */
+.screens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;align-items:end}
+.screen-item{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
+.screen-phone{width:150px;background:#0a0a0a;border-radius:22px;border:1.5px solid #2a2a2a;box-shadow:0 20px 50px rgba(0,0,0,0.6);overflow:hidden}
+.screen-phone .sp-top{background:#111;height:14px;display:flex;align-items:center;justify-content:center}
+.screen-phone .sp-dot{width:8px;height:8px;background:#1a1a1a;border-radius:50%;border:1px solid #2a2a2a}
+.screen-label{text-align:center}
+.screen-label h4{font-size:0.82rem;font-family:var(--font-head);font-weight:700;margin-bottom:0.25rem}
+.screen-label p{font-size:0.72rem;color:var(--text2)}
+
+/* Screen 1: Busca */
+.sc1-body{background:#e8eaed;padding:8px}
+.sc1-topbar{background:#111;padding:6px 8px;margin:-8px -8px 8px;display:flex;align-items:center;justify-content:space-between}
+.sc1-brand{font-size:10px;font-weight:800;color:#FFD600;font-family:var(--font-head)}
+.sc1-brand span{color:#fff}
+.sc1-muni{background:#fff;border-radius:6px;padding:5px 7px;margin-bottom:6px;border:1px solid #ddd;display:flex;align-items:center;justify-content:space-between}
+.sc1-muni-t{font-size:7px;color:#555;font-weight:500}
+.sc1-muni-r{font-size:6px;color:#FFD600;font-weight:700}
+.sc1-search{background:#fff;border-radius:6px;padding:6px 7px;border:1px solid #ddd;margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.sc1-st{font-size:7px;color:#aaa}
+.sc1-res{background:#fff;border-radius:6px;padding:6px 7px;border:1px solid #ddd;margin-bottom:4px}
+.sc1-code{font-size:7px;font-weight:700;color:#FFD600}
+.sc1-name{font-size:7px;color:#333;font-weight:500;margin:1px 0}
+.sc1-b{display:inline-block;padding:1px 5px;border-radius:10px;font-size:6px;font-weight:700;background:#e6fff5;color:#00a870;border:1px solid #b3f0d8;margin-top:2px}
+.sc1-nav{background:#111;padding:5px;display:flex;justify-content:space-around;margin:6px -8px -8px}
+.sc1-nc{display:flex;flex-direction:column;align-items:center;gap:1px}
+.sc1-nci{width:22px;height:22px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px}
+.sc1-nl{font-size:5px;color:#888}
+
+/* Screen 2: Resultado */
+.sc2-body{background:#e8eaed;padding:8px}
+.sc2-topbar{background:#111;padding:6px 8px;margin:-8px -8px 8px;display:flex;align-items:center;justify-content:space-between}
+.sc2-card{background:#fff;border-radius:8px;padding:8px;margin-bottom:6px;border:1px solid #ddd}
+.sc2-code{font-size:8px;font-weight:700;color:#FFD600;margin-bottom:2px}
+.sc2-title{font-size:8px;font-weight:600;color:#333;margin-bottom:6px}
+.sc2-risks{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px}
+.sc2-risk{background:#f0f7f0;border-radius:5px;padding:4px 5px;text-align:center}
+.sc2-risk-l{font-size:6px;color:#888}
+.sc2-risk-v{font-size:7px;font-weight:700;color:#1a7a40}
+.sc2-banner{background:#e8f5e9;border-radius:6px;padding:6px;border:1px solid #c8e6c9;text-align:center}
+.sc2-banner-t{font-size:7px;font-weight:800;color:#1a7a40}
+.sc2-banner-s{font-size:6px;color:#388e3c;margin-top:1px}
+.sc2-nav{background:#111;padding:5px;display:flex;justify-content:space-around;margin:6px -8px -8px}
+
+/* Screen 3: Legislação */
+.sc3-body{background:#222;padding:8px;min-height:200px}
+.sc3-back{font-size:7px;color:#fff;margin-bottom:4px}
+.sc3-sub{font-size:6px;color:#888;margin-bottom:8px}
+.sc3-alert{background:#FFD600;border-radius:6px;padding:6px 7px;margin-bottom:6px}
+.sc3-alert-t{font-size:7px;font-weight:700;color:#000;margin-bottom:2px}
+.sc3-alert-p{font-size:6px;color:#222;line-height:1.3}
+.sc3-label{font-size:6px;font-weight:700;color:#aaa;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:5px}
+.sc3-leg{background:#fff;border-radius:6px;padding:6px 7px;margin-bottom:4px}
+.sc3-leg-tag{display:inline-block;background:#3b9eff;color:#fff;font-size:5px;font-weight:700;padding:1px 4px;border-radius:3px;margin-bottom:2px}
+.sc3-leg-tag.municipal{background:#388e3c}
+.sc3-leg-title{font-size:7px;font-weight:600;color:#333}
+.sc3-leg-link{font-size:6px;color:#3b9eff}
+.sc3-footer{background:#FFD600;border-radius:6px;padding:5px 7px;display:flex;align-items:center;gap:4px;margin-top:4px}
+.sc3-foot-t{font-size:7px;font-weight:700;color:#000}
+.sc3-foot-s{font-size:5px;color:#333}
+
+/* Screen 4: Parceiros */
+.sc4-body{background:#222;padding:8px;min-height:200px}
+.sc4-header{background:#333;border-radius:7px;padding:7px;margin-bottom:7px}
+.sc4-ht{font-size:8px;font-weight:800;color:#FFD600;margin-bottom:2px}
+.sc4-hp{font-size:6px;color:#bbb;line-height:1.3}
+.sc4-section-label{font-size:6px;font-weight:700;color:#FFD600;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px}
+.sc4-item{display:flex;align-items:center;gap:5px;background:#333;border-radius:5px;padding:5px 6px;margin-bottom:3px}
+.sc4-item-icon{width:16px;height:16px;background:#444;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0}
+.sc4-item-t{font-size:7px;font-weight:600;color:#fff}
+.sc4-item-s{font-size:5px;color:#aaa}
+
+/* ── COMO FUNCIONA ── */
+.how{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;transition:border-color 0.2s;position:relative}
+.step:hover{border-color:rgba(255,214,0,0.3)}
+.step-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
+.step-num::after{content:'';flex:1;height:1px;background:var(--border)}
+.step h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:0.6rem}
+.step p{font-size:0.83rem;color:var(--text2);line-height:1.65}
+.step-connector{display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:1.25rem;padding-top:3rem}
+
+/* ── PARA QUEM ── */
+.forwho{background:var(--bg)}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:3rem}
 .audience-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
 .audience-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
 .audience-icon{width:44px;height:44px;background:var(--accent-dim);border:1px solid rgba(255,214,0,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.25rem}
 .audience-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
 .audience-card p{font-size:0.85rem;color:var(--text2);line-height:1.65}
-
-/* ── FEATURES ── */
-.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;align-items:start}
-.feature-list{display:flex;flex-direction:column;gap:1.5rem}
-.feature-item{display:flex;gap:1rem;padding:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s}
-.feature-item:hover{border-color:var(--border2)}
-.feature-icon{width:36px;height:36px;flex-shrink:0;background:var(--accent-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
-.feature-item h3{font-size:0.9rem;font-weight:500;margin-bottom:0.3rem}
-.feature-item p{font-size:0.82rem;color:var(--text2);line-height:1.6}
-.risk-visual{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:2rem;position:sticky;top:6rem}
-.risk-title{font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem}
-.risk-bar-wrap{margin-bottom:1rem}
-.risk-bar-label{display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:0.4rem}
-.risk-bar-label span:first-child{color:var(--text2)}
-.risk-bar-bg{height:8px;background:var(--bg3);border-radius:100px;overflow:hidden}
-.risk-bar-fill{height:100%;border-radius:100px;animation:grow 1.5s ease-out forwards;transform-origin:left}
-@keyframes grow{from{width:0}}
-.fill-green{background:var(--green)}
-.fill-yellow{background:var(--accent)}
-.fill-red{background:var(--red)}
-.risk-legend{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.5rem}
-.legend-item{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--text2)}
-.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-
-/* ── HOW IT WORKS ── */
-.how{background:var(--bg2)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
-.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;transition:border-color 0.2s}
-.step:hover{border-color:rgba(255,214,0,0.3)}
-.step-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
-.step h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:0.6rem}
-.step p{font-size:0.83rem;color:var(--text2);line-height:1.65}
-
-/* ── BORA-APP LOGO SECTION ── */
-.brand-section{background:var(--bg);padding:5rem 3rem}
-.brand-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.brand-logo-box{display:flex;flex-direction:column;align-items:center;gap:2rem}
-.bora-logo-display{font-family:var(--font-display);font-size:7rem;line-height:1;color:var(--accent);letter-spacing:0.05em;text-shadow:0 0 60px rgba(255,214,0,0.2)}
-.bora-sub-display{font-family:var(--font-mono);font-size:0.8rem;color:var(--text3);letter-spacing:0.2em;text-transform:uppercase}
-.ep-logo-wrap{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:2rem;display:flex;align-items:center;justify-content:center}
-.ep-logo-wrap img{width:160px;height:160px;object-fit:contain;filter:invert(1);opacity:0.9}
-.brand-info h2{margin-bottom:1rem}
-.brand-info p{font-size:0.95rem;color:var(--text2);line-height:1.75;margin-bottom:1.5rem}
-.brand-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.9rem;font-size:0.78rem;color:var(--text2);font-family:var(--font-mono);margin-right:0.5rem;margin-bottom:0.5rem}
-.brand-tag span{color:var(--accent)}
 
 /* ── SEJA PARCEIRO ── */
 .partner{background:var(--bg2)}
@@ -178,28 +247,42 @@ h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weigh
 .form-note{font-size:0.75rem;color:var(--text3);margin-top:1rem}
 
 /* ── FOOTER ── */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3rem}
+.footer-top{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.footer-brand{display:flex;flex-direction:column;gap:0.75rem}
 .footer-logo-wrap{display:flex;align-items:center;gap:0.65rem}
-.footer-logo-wrap img{width:28px;height:28px;object-fit:contain;border-radius:4px}
-.footer-logo{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-0.02em}
+.footer-logo-wrap img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+.footer-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.01em}
 .footer-logo span{color:var(--accent)}
-.footer-copy{font-size:0.78rem;color:var(--text3)}
-.footer-links{display:flex;gap:1.5rem}
-.footer-links a{font-size:0.78rem;color:var(--text3);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--text2)}
+.footer-brand p{font-size:0.78rem;color:var(--text3);max-width:260px;line-height:1.6}
+.footer-cnpj{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);margin-top:0.25rem}
+.footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:0 3rem}
+.footer-nav-col h4{font-size:0.72rem;font-family:var(--font-mono);color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem}
+.footer-nav-col a{display:block;font-size:0.82rem;color:var(--text2);text-decoration:none;margin-bottom:0.4rem;transition:color 0.2s}
+.footer-nav-col a:hover{color:var(--text)}
+.footer-bottom{max-width:1200px;margin:1.5rem auto 0;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.footer-copy{font-size:0.75rem;color:var(--text3)}
 
 /* ── ANIMATIONS ── */
 .fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 0.7s ease forwards}
 @keyframes fadeIn{to{opacity:1;transform:none}}
 .delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}.delay-4{animation-delay:0.4s}
 
+/* ── HERO STATS ── */
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--font-display);font-size:2.2rem;color:var(--accent);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--text3);margin-top:0.25rem;font-family:var(--font-mono);letter-spacing:0.05em;text-transform:uppercase}
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}nav ul{display:none}
-  .hero,.brand-section{padding:7rem 1.5rem 4rem}
-  .hero-inner,.brand-inner,.features-grid{grid-template-columns:1fr;gap:3rem}
+  .hero,.product{padding:7rem 1.5rem 4rem}
+  .hero-inner,.product-header{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{display:none}
   section{padding:4rem 1.5rem}
-  .steps{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:1rem;text-align:center}
+  .steps,.mvv-grid{grid-template-columns:1fr}
+  .screens-grid{grid-template-columns:repeat(2,1fr)}
+  footer .footer-top{flex-direction:column}
+  .footer-bottom{flex-direction:column;text-align:center}
   .form-row,.form-row-2{flex-direction:column}
 }
 </style>
@@ -208,15 +291,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="icon.png" alt="BORA-APP" style="width:38px;height:38px;object-fit:contain;border-radius:8px">
-    <div class="logo-text">BORA<span>.</span>APP</div>
-  </div>
+  <a href="#" class="nav-logo">
+    <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
+    <div class="logo-text">Enjoy<span>Pineapple</span></div>
+  </a>
   <ul>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#para-quem">Para quem</a></li>
-    <li><a href="#parceiro">Seja parceiro</a></li>
-    <li><a href="#waitlist" class="nav-cta">Lista de espera</a></li>
+    <li><a href="#bora">BORA</a></li>
+    <li><a href="#parceiro">Parceiros</a></li>
+    <li><a href="#waitlist" class="nav-cta">Acesso antecipado</a></li>
   </ul>
 </nav>
 
@@ -227,96 +310,320 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   <div class="hero-glow2"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge fade-in">⬤ &nbsp;Em breve — Acesso antecipado</div>
-      <h1 class="fade-in delay-1">RISCO DA<br>SUA <em>ATIVIDADE</em><br>CLARAMENTE<br>DEFINIDO.</h1>
-      <p class="hero-sub fade-in delay-2">O BORA-APP reúne a classificação de risco das atividades econômicas das legislações federal e municipal — tudo em um só lugar, sempre atualizado.</p>
+      <div class="hero-badge fade-in">⬤ &nbsp;Porto Alegre/RS · Desde 2016</div>
+      <h1 class="fade-in delay-1">O NOSSO<br>NEGÓCIO É O<br>SEU <em>AVANÇO.</em><br>NÓS CRIAMOS<br>SOLUÇÕES QUE<br>GERAM <em>VALOR</em><br>REAL.</h1>
+      <p class="hero-sub fade-in delay-2">A mudança começa quando a vontade de melhorar é maior do que o medo de fracassar.</p>
       <div class="hero-actions fade-in delay-3">
-        <a href="#waitlist" class="btn-primary">Quero acesso antecipado <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#sobre" class="btn-secondary">Saiba mais</a>
-      </div>
-      <div class="store-badges fade-in delay-4">
-        <a href="https://play.google.com/store" target="_blank" class="store-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
-          <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
-        </a>
-        <span class="store-badge coming">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
-        </span>
+        <a href="#bora" class="btn-primary">Conheça o BORA <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#sobre" class="btn-secondary">Nossa história</a>
       </div>
       <div class="hero-stats fade-in delay-4">
-        <div><div class="stat-num">5.570</div><div class="stat-label">municípios</div></div>
-        <div><div class="stat-num">1.300+</div><div class="stat-label">atividades</div></div>
-        <div><div class="stat-num">3</div><div class="stat-label">esferas legislativas</div></div>
+        <div><div class="stat-num">2016</div><div class="stat-label">Fundada em</div></div>
+        <div><div class="stat-num">1</div><div class="stat-label">Produto ativo</div></div>
+        <div><div class="stat-num">∞</div><div class="stat-label">Abacaxis resolvidos</div></div>
       </div>
     </div>
+
     <div class="hero-visual fade-in delay-2">
-      <div class="floating-pill top-right">⬤ &nbsp;Atualizado em tempo real</div>
-      <div class="app-card">
-        <div class="app-card-header">
-          <div class="app-dots"><span></span><span></span><span></span></div>
-          <div class="app-title-bar">bora-app.enjoypineapple.com.br</div>
-        </div>
-        <div class="app-body">
-          <div class="app-search">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            Buscar atividade ou CNAE…
-          </div>
-          <div class="app-row">
-            <div class="app-row-left">
-              <div class="cnae-code">47.81-4-00</div>
-              <div><div class="cnae-name">Comércio varejista de artigos</div><div class="cnae-sub">Porto Alegre — RS · Federal</div></div>
+      <div class="phone-pill top-right">⬤ &nbsp;App disponível no Android</div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-notch"><div class="phone-cam"></div></div>
+          <div class="phone-screen">
+            <div class="ps-topbar">
+              <div class="ps-brand">BORA <span>Mari</span></div>
+              <div class="ps-icons">
+                <div class="ps-icon">👤</div>
+                <div class="ps-icon">→</div>
+              </div>
             </div>
-            <span class="badge badge-green">BAIXO</span>
-          </div>
-          <div class="app-row">
-            <div class="app-row-left">
-              <div class="cnae-code">56.11-2-01</div>
-              <div><div class="cnae-name">Restaurantes e similares</div><div class="cnae-sub">Porto Alegre — RS · Municipal</div></div>
+            <div class="ps-body">
+              <div class="ps-label">Município</div>
+              <div class="ps-muni">
+                <div class="ps-muni-name"><span class="ps-muni-pin">📍</span> Porto Alegre — RS</div>
+                <div class="ps-trocar">Trocar ∨</div>
+              </div>
+              <div class="ps-label">Atividade Econômica</div>
+              <div class="ps-search">
+                <span class="ps-search-icon">🔍</span>
+                <span class="ps-search-text">Restaurante</span>
+              </div>
+              <div class="ps-result">
+                <div class="ps-cnae">5611-2/01</div>
+                <div class="ps-activity">Restaurantes e Similares</div>
+                <div class="ps-badges">
+                  <span class="ps-badge ps-badge-green">BAIXO RISCO</span>
+                </div>
+              </div>
+              <div class="ps-result" style="opacity:0.5">
+                <div class="ps-cnae">4781-4/00</div>
+                <div class="ps-activity">Comércio varejista de vestuário</div>
+                <div class="ps-badges">
+                  <span class="ps-badge ps-badge-green">BAIXO RISCO</span>
+                </div>
+              </div>
             </div>
-            <span class="badge badge-yellow">MÉDIO</span>
-          </div>
-          <div class="app-row">
-            <div class="app-row-left">
-              <div class="cnae-code">86.30-5-04</div>
-              <div><div class="cnae-name">Atividade laboratorial</div><div class="cnae-sub">Porto Alegre — RS · Sanitária</div></div>
+            <div class="ps-navbar">
+              <div class="ps-nav-item">
+                <div class="ps-nav-circle">👥</div>
+                <div class="ps-nav-label">Parceiros</div>
+              </div>
+              <div class="ps-nav-item">
+                <div class="ps-nav-circle">📚</div>
+                <div class="ps-nav-label">Legislação</div>
+              </div>
+              <div class="ps-nav-item">
+                <div class="ps-nav-circle">🛡️</div>
+                <div class="ps-nav-label">Licenças</div>
+              </div>
             </div>
-            <span class="badge badge-red">ALTO</span>
-          </div>
-          <div class="app-footer-bar">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            Federal + Municipal + Sanitária · Atualizado hoje
           </div>
         </div>
       </div>
-      <div class="floating-pill bottom-left"><span class="fp-dot" style="background:var(--blue)"></span>Ambiental em breve</div>
+      <div class="phone-pill bottom-left"><span class="pp-dot" style="background:var(--green)"></span>Risco calculado em segundos</div>
     </div>
   </div>
 </section>
 
-<!-- BRAND SECTION: BORA-APP + Enjoy Pineapple -->
-<section class="brand-section" id="sobre">
-  <div class="brand-inner">
-    <div class="brand-logo-box">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:2rem">
-        <img src="icon.png" alt="BORA-APP" style="width:220px;height:220px;object-fit:contain;border-radius:20px">
-        <div class="ep-logo-wrap">
-          <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple" style="width:130px;height:130px;object-fit:contain;filter:invert(1);opacity:0.85">
+<!-- SOBRE / MVV -->
+<section class="mvv" id="sobre">
+  <div class="section-inner">
+    <div class="section-label">// quem somos</div>
+    <h2>UMA EMPRESA QUE<br>APRECIA O <em>ABACAXI.</em></h2>
+    <p class="section-lead">Limpar um abacaxi é difícil, trabalhoso e cheio de obstáculos. Por isso chamamos de "abacaxi" os problemas mais complexos da vida — e nossa razão de existir é ajudar a resolver cada um deles.</p>
+    <div class="mvv-grid">
+      <div class="mvv-card">
+        <div class="mvv-num">01</div>
+        <div class="mvv-tag">// missão</div>
+        <h3>Por que existimos</h3>
+        <p>Ajudar pessoas e empresas a resolverem seus abacaxis — problemas difíceis, trabalhosos e cheios de obstáculos — com soluções práticas, acessíveis e confiáveis.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="mvv-num">02</div>
+        <div class="mvv-tag">// visão</div>
+        <h3>Onde queremos chegar</h3>
+        <p>Ser referência em formação de parcerias e negócios até 2030, crescendo de forma orgânica e sustentável ao lado dos nossos usuários.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="mvv-num">03</div>
+        <div class="mvv-tag">// valores</div>
+        <h3>Como trabalhamos</h3>
+        <div class="valores-list">
+          <span class="valor-tag">Ética</span>
+          <span class="valor-tag">Inovação</span>
+          <span class="valor-tag">Foco no Cliente</span>
+          <span class="valor-tag">Transparência</span>
+          <span class="valor-tag">Respeito à Diversidade</span>
         </div>
-        <div class="bora-sub-display" style="text-align:center">by Enjoy Pineapple</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO: BORA -->
+<section class="product" id="bora">
+  <div class="product-inner">
+    <div class="product-header">
+      <div>
+        <div class="section-label">// nosso produto</div>
+        <div class="bora-logo-big">BORA</div>
+        <div class="bora-tagline">Classificação de Risco de Atividades Econômicas</div>
+      </div>
+      <div class="product-desc">
+        <p>O BORA é o nosso app para empreendedores que precisam entender o risco da sua atividade econômica antes de abrir ou expandir um negócio.</p>
+        <p>Com dados federais e municipais consolidados, o BORA mostra a classificação de risco, a legislação aplicável, licenças necessárias e conecta você com parceiros especializados no seu setor.</p>
+        <div class="store-badges">
+          <a href="https://play.google.com/store" target="_blank" class="store-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
+            <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+          </a>
+          <span class="store-badge coming">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+          </span>
+        </div>
       </div>
     </div>
 
-    <div class="brand-info">
-      <div class="section-label">// quem somos</div>
-      <h2>UMA SOLUÇÃO <em>BRASILEIRA</em> PARA UM PROBLEMA BRASILEIRO.</h2>
-      <p>O BORA-APP é desenvolvido pela <strong>Enjoy Pineapple</strong>, startup comprometida em simplificar a relação entre cidadãos, empresários e a complexidade regulatória do Brasil.</p>
-      <p>Com 5.570 municípios, cada um com poder legislativo próprio, entender o risco de uma atividade econômica é um desafio diário para milhões de pessoas. O BORA-APP resolve isso.</p>
-      <div style="margin-top:1.5rem">
-        <span class="brand-tag">🌿 <span>Legislação Ambiental</span></span>
-        <span class="brand-tag">🏥 <span>Vigilância Sanitária</span></span>
-        <span class="brand-tag">⚖️ <span>Federal + Municipal</span></span>
-        <span class="brand-tag">🔄 <span>Atualização contínua</span></span>
+    <!-- 4 TELAS DO APP -->
+    <div class="screens-grid">
+
+      <!-- Tela 1: Busca -->
+      <div class="screen-item">
+        <div class="screen-phone">
+          <div class="sp-top"><div class="sp-dot"></div></div>
+          <div class="sc1-body">
+            <div class="sc1-topbar">
+              <div class="sc1-brand">BORA <span>Mari</span></div>
+            </div>
+            <div class="sc1-muni">
+              <div class="sc1-muni-t">📍 Porto Alegre — RS</div>
+              <div class="sc1-muni-r">Trocar ∨</div>
+            </div>
+            <div class="sc1-search">
+              <span>🔍</span>
+              <span class="sc1-st">Restaurante</span>
+            </div>
+            <div class="sc1-res">
+              <div class="sc1-code">5611-2/01</div>
+              <div class="sc1-name">Restaurantes e Similares</div>
+              <span class="sc1-b">BAIXO RISCO</span>
+            </div>
+            <div class="sc1-nav">
+              <div class="sc1-nc"><div class="sc1-nci">👥</div><div class="sc1-nl">Parceiros</div></div>
+              <div class="sc1-nc"><div class="sc1-nci">📚</div><div class="sc1-nl">Legislação</div></div>
+              <div class="sc1-nc"><div class="sc1-nci">🛡️</div><div class="sc1-nl">Licenças</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">
+          <h4>Busca Inteligente</h4>
+          <p>Por nome, CNAE ou sinônimo</p>
+        </div>
+      </div>
+
+      <!-- Tela 2: Resultado -->
+      <div class="screen-item">
+        <div class="screen-phone">
+          <div class="sp-top"><div class="sp-dot"></div></div>
+          <div class="sc2-body">
+            <div class="sc2-topbar" style="background:#111;padding:6px 8px;margin:-8px -8px 8px;display:flex;align-items:center;justify-content:space-between">
+              <span style="font-size:8px;font-weight:800;color:#FFD600;font-family:sans-serif">BORA <span style="color:#fff">Mari</span></span>
+            </div>
+            <div class="sc2-card">
+              <div class="sc2-code">5611-2/01</div>
+              <div class="sc2-title">Restaurantes e Similares</div>
+              <div class="sc2-risks">
+                <div class="sc2-risk">
+                  <div class="sc2-risk-l">Risco Federal</div>
+                  <div class="sc2-risk-v">Baixo Risco</div>
+                </div>
+                <div class="sc2-risk">
+                  <div class="sc2-risk-l">Porto Alegre</div>
+                  <div class="sc2-risk-v">Baixo Risco</div>
+                </div>
+              </div>
+              <div class="sc2-banner">
+                <div class="sc2-banner-t">BAIXO RISCO</div>
+                <div class="sc2-banner-s">Dispensado de alvará — auto-declaração suficiente.</div>
+              </div>
+            </div>
+            <div style="background:#e8f5e9;border-radius:6px;padding:5px 7px;font-size:6px;color:#388e3c">⌵ Condicionantes federais</div>
+          </div>
+        </div>
+        <div class="screen-label">
+          <h4>Classificação de Risco</h4>
+          <p>Federal + Municipal lado a lado</p>
+        </div>
+      </div>
+
+      <!-- Tela 3: Legislação -->
+      <div class="screen-item">
+        <div class="screen-phone">
+          <div class="sp-top"><div class="sp-dot"></div></div>
+          <div class="sc3-body">
+            <div class="sc3-back">← Voltar</div>
+            <div class="sc3-sub">5611-2/01 — Restaurantes e Similares</div>
+            <div class="sc3-alert">
+              <div class="sc3-alert-t">⚠ Plano Diretor Municipal</div>
+              <div class="sc3-alert-p">A instalação pode ser vedada por zoneamento urbano. Consulte sempre um parceiro local.</div>
+            </div>
+            <div class="sc3-label">Legislação Aplicável</div>
+            <div class="sc3-leg">
+              <span class="sc3-leg-tag">Federal</span>
+              <div class="sc3-leg-title">Resolução 57 · MPO-IBGE</div>
+              <div class="sc3-leg-link">Verificar fonte oficial ↗</div>
+            </div>
+            <div class="sc3-leg">
+              <span class="sc3-leg-tag municipal">Municipal</span>
+              <div class="sc3-leg-title">Decreto nº 23682/2026 · SMDETE</div>
+              <div class="sc3-leg-link">Verificar fonte oficial ↗</div>
+            </div>
+            <div class="sc3-footer">
+              <div>
+                <div class="sc3-foot-t">Fale com um parceiro local</div>
+                <div class="sc3-foot-s">Ele conhece as regras do seu município.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">
+          <h4>Legislação Aplicável</h4>
+          <p>Federal e municipal com links oficiais</p>
+        </div>
+      </div>
+
+      <!-- Tela 4: Parceiros -->
+      <div class="screen-item">
+        <div class="screen-phone">
+          <div class="sp-top"><div class="sp-dot"></div></div>
+          <div class="sc4-body">
+            <div class="sc4-header">
+              <div class="sc4-ht">Parceiros BORA</div>
+              <div class="sc4-hp">O BORA conecta empreendedores a quem pode ajudá-los.</div>
+            </div>
+            <div class="sc4-section-label">Especialistas no seu segmento</div>
+            <div class="sc4-item">
+              <div class="sc4-item-icon">🧾</div>
+              <div>
+                <div class="sc4-item-t">Contabilidade</div>
+                <div class="sc4-item-s">MEI, Simples Nacional, regularização fiscal</div>
+              </div>
+            </div>
+            <div class="sc4-item">
+              <div class="sc4-item-icon">⚖️</div>
+              <div>
+                <div class="sc4-item-t">Consultoria Jurídica</div>
+                <div class="sc4-item-s">Alvarás, licenças e contratos</div>
+              </div>
+            </div>
+            <div class="sc4-item">
+              <div class="sc4-item-icon">🌿</div>
+              <div>
+                <div class="sc4-item-t">Lic. Ambiental</div>
+                <div class="sc4-item-s">SMAMUS, FEPAM e órgãos ambientais</div>
+              </div>
+            </div>
+            <div class="sc4-item">
+              <div class="sc4-item-icon">🏥</div>
+              <div>
+                <div class="sc4-item-t">Vigilância Sanitária</div>
+                <div class="sc4-item-s">Adequação às normas da VISA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">
+          <h4>Rede de Parceiros</h4>
+          <p>Especialistas prontos para te ajudar</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-label">// como funciona</div>
+    <h2>SIMPLES COMO <em>DEVE SER.</em></h2>
+    <p class="section-lead">Três passos para entender o risco da sua atividade econômica em qualquer município do Brasil.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Selecione seu município</h3>
+        <p>Escolha o município onde a atividade será exercida. O BORA está crescendo para cobrir todo o Brasil — e cresce conforme a demanda dos usuários.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Busque a atividade</h3>
+        <p>Pesquise pelo código CNAE ou pelo nome da atividade em linguagem natural. O app encontra automaticamente a classificação correta.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Veja tudo consolidado</h3>
+        <p>Receba a classificação de risco federal e municipal, a legislação vigente com links oficiais, licenças necessárias e parceiros do seu setor.</p>
       </div>
     </div>
   </div>
@@ -329,62 +636,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
     <h2>FEITO PARA QUEM PRECISA DE <em>CLAREZA.</em></h2>
     <p class="section-lead">Profissionais e cidadãos que lidam com a complexidade da legislação econômica no Brasil.</p>
     <div class="audience-grid">
-      <div class="audience-card"><div class="audience-icon">🏢</div><h3>Empresários</h3><p>Saiba o risco da sua atividade antes de abrir ou expandir um negócio. Sem surpresas regulatórias.</p></div>
-      <div class="audience-card"><div class="audience-icon">🔍</div><h3>Fiscais</h3><p>Acesse a classificação atualizada por município e esfera legislativa em segundos.</p></div>
-      <div class="audience-card"><div class="audience-icon">📊</div><h3>Contadores</h3><p>Oriente seus clientes com precisão sobre obrigações regulatórias baseadas na atividade e localização.</p></div>
-      <div class="audience-card"><div class="audience-icon">📐</div><h3>Arquitetos e Engenheiros</h3><p>Entenda os requisitos legais para projetos em diferentes municípios com base na atividade pretendida.</p></div>
-      <div class="audience-card"><div class="audience-icon">🌱</div><h3>Empreendedores</h3><p>Transforme sua ideia em negócio com segurança jurídica, sabendo exatamente o que a lei exige.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FUNCIONALIDADES -->
-<section id="funcionalidades">
-  <div class="section-inner">
-    <div class="section-label">// funcionalidades</div>
-    <h2>TUDO QUE VOCÊ PRECISA PARA <em>DECIDIR</em> COM SEGURANÇA.</h2>
-    <div class="features-grid">
-      <div class="feature-list">
-        <div class="feature-item"><div class="feature-icon">📡</div><div><h3>Classificação federal e municipal</h3><p>Cada município pode legislar diferente sobre a mesma atividade. O BORA-APP compara e exibe o risco real.</p></div></div>
-        <div class="feature-item"><div class="feature-icon">🔄</div><div><h3>Atualização contínua</h3><p>A legislação federal adiciona, remove e modifica atividades constantemente. Ficamos de olho para você.</p></div></div>
-        <div class="feature-item"><div class="feature-icon">🌿</div><div><h3>Legislação ambiental e sanitária</h3><p>Em breve: as legislações municipais de meio ambiente e vigilância sanitária integradas à mesma consulta.</p></div></div>
-        <div class="feature-item"><div class="feature-icon">📍</div><div><h3>Consulta por município</h3><p>Selecione qualquer município brasileiro e veja as regras específicas que se aplicam à atividade desejada.</p></div></div>
-        <div class="feature-item"><div class="feature-icon">🔎</div><div><h3>Busca por CNAE ou atividade</h3><p>Digite o código CNAE ou o nome da atividade em linguagem natural. Rápido e sem burocracia.</p></div></div>
-      </div>
-      <div class="risk-visual">
-        <div class="risk-title">// distribuição de risco · Brasil</div>
-        <div class="risk-bar-wrap">
-          <div class="risk-bar-label"><span>Risco Baixo</span><span class="badge badge-green">BAIXO</span></div>
-          <div class="risk-bar-bg"><div class="risk-bar-fill fill-green" style="width:62%"></div></div>
-        </div>
-        <div class="risk-bar-wrap">
-          <div class="risk-bar-label"><span>Risco Médio</span><span class="badge badge-yellow">MÉDIO</span></div>
-          <div class="risk-bar-bg"><div class="risk-bar-fill fill-yellow" style="width:28%"></div></div>
-        </div>
-        <div class="risk-bar-wrap">
-          <div class="risk-bar-label"><span>Risco Alto</span><span class="badge badge-red">ALTO</span></div>
-          <div class="risk-bar-bg"><div class="risk-bar-fill fill-red" style="width:10%"></div></div>
-        </div>
-        <div class="risk-legend">
-          <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span>Baixo — Licenciamento simplificado</div>
-          <div class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span>Médio — Requer vistoria ou licença específica</div>
-          <div class="legend-item"><span class="legend-dot" style="background:var(--red)"></span>Alto — Múltiplos órgãos envolvidos</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMO FUNCIONA -->
-<section class="how">
-  <div class="section-inner">
-    <div class="section-label">// como funciona</div>
-    <h2>SIMPLES COMO <em>DEVE SER.</em></h2>
-    <p class="section-lead">Três passos para entender o risco da sua atividade em qualquer município do Brasil.</p>
-    <div class="steps">
-      <div class="step"><div class="step-num">01 ——</div><h3>Selecione seu município</h3><p>Escolha o município onde a atividade será exercida. Cobrimos todos os 5.570 municípios brasileiros.</p></div>
-      <div class="step"><div class="step-num">02 ——</div><h3>Busque a atividade</h3><p>Pesquise pelo código CNAE ou pelo nome da atividade econômica. Sugestões inteligentes facilitam.</p></div>
-      <div class="step"><div class="step-num">03 ——</div><h3>Veja a classificação completa</h3><p>Receba a classificação de risco federal, municipal, ambiental e sanitária — tudo consolidado.</p></div>
+      <div class="audience-card"><div class="audience-icon">🏢</div><h3>Empresários</h3><p>Saiba o risco da sua atividade antes de abrir ou expandir. Sem surpresas regulatórias.</p></div>
+      <div class="audience-card"><div class="audience-icon">📊</div><h3>Contadores</h3><p>Oriente seus clientes com precisão sobre obrigações regulatórias por atividade e município.</p></div>
+      <div class="audience-card"><div class="audience-icon">⚖️</div><h3>Advogados</h3><p>Acesse legislação federal e municipal consolidada para orientar seus clientes empresariais.</p></div>
+      <div class="audience-card"><div class="audience-icon">🌱</div><h3>Empreendedores</h3><p>Transforme sua ideia em negócio com segurança jurídica desde o primeiro passo.</p></div>
+      <div class="audience-card"><div class="audience-icon">📐</div><h3>Arquitetos e Engenheiros</h3><p>Entenda requisitos legais para projetos em diferentes municípios antes de projetar.</p></div>
     </div>
   </div>
 </section>
@@ -393,16 +649,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 <section class="partner" id="parceiro">
   <div class="section-inner">
     <div class="section-label">// seja um parceiro</div>
-    <h2>CRESÇA COM O <em>BORA-APP.</em></h2>
-    <p class="section-lead">Prefeituras, associações, contabilidades e plataformas podem integrar o BORA-APP para oferecer mais valor aos seus usuários.</p>
+    <h2>CRESÇA COM O <em>BORA.</em></h2>
+    <p class="section-lead">Especialistas, escritórios e plataformas que querem alcançar empreendedores no momento certo — quando eles mais precisam de ajuda.</p>
     <div class="partner-grid">
-      <div class="partner-card"><h3>Prefeituras</h3><p>Integre o BORA-APP ao portal de serviços municipais e facilite a vida do empreendedor local com informações precisas e atualizadas.</p></div>
-      <div class="partner-card"><h3>Escritórios Contábeis</h3><p>Ofereça aos seus clientes uma ferramenta de consulta rápida de risco, fortalecendo a relação de assessoria e confiança.</p></div>
-      <div class="partner-card"><h3>Associações Empresariais</h3><p>Disponibilize o BORA-APP como benefício exclusivo para seus associados, apoiando tomadas de decisão mais seguras.</p></div>
-      <div class="partner-card"><h3>Plataformas e Fintechs</h3><p>Integre nossa API para enriquecer dados de cadastro de empresas, análise de crédito e compliance regulatório.</p></div>
+      <div class="partner-card"><h3>Contabilidades</h3><p>Posicione seu escritório como referência para empreendedores que estão iniciando e precisam de orientação fiscal e societária.</p></div>
+      <div class="partner-card"><h3>Consultores Jurídicos</h3><p>Seja indicado no momento em que o empreendedor descobre que precisa de alvará, licença ou regularização.</p></div>
+      <div class="partner-card"><h3>Licenciamento Ambiental</h3><p>Alcance empresas que precisam de SMAMUS, FEPAM e demais órgãos ambientais — antes de qualquer outro canal.</p></div>
+      <div class="partner-card"><h3>Benefícios e Serviços</h3><p>Ofereça descontos e condições especiais para empreendedores cadastrados no BORA. Restaurantes, eventos e muito mais.</p></div>
     </div>
     <div style="margin-top:2.5rem;text-align:center">
-      <a href="#waitlist" class="btn-primary">Quero ser parceiro →</a>
+      <a href="#waitlist" class="btn-primary">Quero ser parceiro BORA →</a>
     </div>
   </div>
 </section>
@@ -413,7 +669,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   <div class="waitlist-inner">
     <div class="section-label">// acesso antecipado</div>
     <h2>SEJA O PRIMEIRO A <em>SABER.</em></h2>
-    <p class="section-lead">Cadastre-se na lista de espera e garanta acesso antecipado quando o BORA-APP estiver disponível.</p>
+    <p class="section-lead">Cadastre-se e garanta acesso antecipado ao BORA. Nós avisamos quando chegar a hora.</p>
     <div class="form-row">
       <input class="form-input" type="text" placeholder="Seu nome completo" id="f-nome">
     </div>
@@ -427,126 +683,102 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
         <option>Arquiteto / Engenheiro</option>
         <option>Advogado</option>
         <option>Empreendedor</option>
-        <option>Parceiro / Integrador</option>
+        <option>Parceiro / Especialista</option>
         <option>Outro</option>
       </select>
     </div>
     <div style="margin-top:0.75rem">
       <button class="form-submit" onclick="handleSubmit(this)">Quero acesso antecipado →</button>
     </div>
-    <p class="form-note">Sem spam. Você receberá apenas notificações sobre o lançamento do BORA-APP.</p>
+    <p class="form-note">Sem spam. Você receberá apenas notificações sobre o lançamento do BORA.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo-wrap">
-    <img src="icon.png" alt="BORA-APP" style="width:28px;height:28px;object-fit:contain;border-radius:4px">
-    <div class="footer-logo">BORA<span>.</span>APP</div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
+        <div class="footer-logo">Enjoy<span>Pineapple</span></div>
+      </div>
+      <p>Resolvemos os abacaxis do empreendedor brasileiro com soluções práticas, acessíveis e confiáveis.</p>
+      <div class="footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS</div>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-col">
+        <h4>Empresa</h4>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#sobre">Missão e Valores</a>
+        <a href="#parceiro">Seja parceiro</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>BORA App</h4>
+        <a href="#bora">O produto</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="suporte.html">Suporte</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 Enjoy Pineapple · Todos os direitos reservados</div>
-  <div class="footer-links">
-    <a href="privacidade.html">Privacidade</a>
-    <a href="termos.html">Termos de Uso</a>
-    <a href="suporte.html">Suporte</a>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Enjoy Pineapple · Todos os direitos reservados</div>
+    <div class="footer-copy">Feito com ♥ em Porto Alegre/RS</div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ── SUPABASE CONFIG ──────────────────────────────────────────────
 const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// ── WAITLIST FORM ────────────────────────────────────────────────
 async function handleSubmit(btn) {
   const nome   = document.getElementById('f-nome').value.trim();
   const email  = document.getElementById('f-email').value.trim();
   const perfil = document.getElementById('f-perfil').value;
-
-  // Validações
-  if (!nome || !email) {
-    showFormMsg('Preencha seu nome e e-mail para continuar.', 'erro');
-    return;
-  }
-  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-    showFormMsg('E-mail inválido.', 'erro');
-    return;
-  }
-
-  // Estado de loading
-  btn.disabled = true;
-  btn.textContent = 'Enviando…';
-  btn.style.opacity = '0.7';
-
+  if (!nome || !email) { showFormMsg('Preencha seu nome e e-mail para continuar.', 'erro'); return; }
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showFormMsg('E-mail inválido.', 'erro'); return; }
+  btn.disabled = true; btn.textContent = 'Enviando…'; btn.style.opacity = '0.7';
   try {
-    const { error } = await db
-      .from('tb_waitlist')
-      .insert({ nome, email, perfil: perfil || null });
-
+    const { error } = await db.from('tb_waitlist').insert({ nome, email, perfil: perfil || null });
     if (error) {
-      // E-mail duplicado (unique constraint)
       if (error.code === '23505') {
         showFormMsg('Este e-mail já está na lista. Obrigado!', 'ok');
-        btn.textContent = 'Já cadastrado ✓';
-        btn.style.background = '#FFD600';
-        btn.style.color = '#000';
-        btn.style.opacity = '1';
-      } else {
-        throw error;
-      }
+        btn.textContent = 'Já cadastrado ✓'; btn.style.background = '#FFD600'; btn.style.color = '#000'; btn.style.opacity = '1';
+      } else { throw error; }
     } else {
-      // Sucesso
       showFormMsg('Cadastro confirmado! Te avisamos no lançamento. 🎉', 'ok');
-      btn.textContent = 'Cadastrado! ✓';
-      btn.style.background = '#00e5a0';
-      btn.style.color = '#000';
-      btn.style.opacity = '1';
-      btn.style.cursor = 'default';
-      // Limpa campos
-      document.getElementById('f-nome').value = '';
-      document.getElementById('f-email').value = '';
-      document.getElementById('f-perfil').value = '';
+      btn.textContent = 'Cadastrado! ✓'; btn.style.background = '#00e5a0'; btn.style.color = '#000'; btn.style.opacity = '1'; btn.style.cursor = 'default';
+      document.getElementById('f-nome').value = ''; document.getElementById('f-email').value = ''; document.getElementById('f-perfil').value = '';
     }
   } catch (err) {
     console.error('Waitlist error:', err);
     showFormMsg('Erro ao cadastrar. Tente novamente.', 'erro');
-    btn.disabled = false;
-    btn.textContent = 'Quero acesso antecipado →';
-    btn.style.opacity = '1';
+    btn.disabled = false; btn.textContent = 'Quero acesso antecipado →'; btn.style.opacity = '1';
   }
 }
 
 function showFormMsg(msg, tipo) {
   let el = document.getElementById('form-msg');
   if (!el) {
-    el = document.createElement('p');
-    el.id = 'form-msg';
+    el = document.createElement('p'); el.id = 'form-msg';
     el.style.cssText = 'margin-top:0.75rem;font-size:0.82rem;font-family:var(--font-mono);transition:opacity 0.3s;';
     document.querySelector('.waitlist-inner').appendChild(el);
   }
-  el.textContent = msg;
-  el.style.color = tipo === 'ok' ? '#00e5a0' : '#ff5f5f';
-  el.style.opacity = '1';
+  el.textContent = msg; el.style.color = tipo === 'ok' ? '#00e5a0' : '#ff5f5f'; el.style.opacity = '1';
 }
 
-// ── SCROLL FADE-IN ───────────────────────────────────────────────
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'none';
-      observer.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; observer.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.audience-card, .feature-item, .step, .partner-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+document.querySelectorAll('.mvv-card, .audience-card, .step, .partner-card, .screen-item').forEach(el => {
+  el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
 </script>
