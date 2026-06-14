@@ -3,213 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suporte — BORA</title>
+  <title>Suporte — Enjoy Pineapple</title>
+  <meta name="description" content="Central de suporte do BORA. Tire suas dúvidas, fale com a gente ou consulte o FAQ.">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --yellow: #FFD600;
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #222222;
-      --text: #e8e8e8;
-      --muted: #888888;
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'Syne', sans-serif;
-      --font-mono: 'DM Mono', monospace;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
+      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+      --accent:#FFD600;--accent2:#e6bf00;
+      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+      --green:#00e5a0;
+      --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+      --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
     }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
+    nav{position:sticky;top:0;z-index:100;background:rgba(7,9,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+    .nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:50%}
+    .logo-text{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
+    .logo-text span{color:var(--accent)}
+    .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+    .nav-back:hover{color:var(--accent)}
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem; height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { font-family: var(--font-display); font-size: 1.6rem; color: var(--yellow); letter-spacing: 0.06em; text-decoration: none; }
-    .nav-back { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
-    .nav-back:hover { color: var(--yellow); }
+    .page-header{border-bottom:1px solid var(--border);padding:4rem 3rem 3rem;max-width:960px;margin:0 auto}
+    .page-tag{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+    .page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:0.02em;line-height:1;color:#fff;margin-bottom:1rem}
+    .page-sub{font-size:1rem;color:var(--text2);max-width:520px;line-height:1.65}
 
-    .page-header { border-bottom: 1px solid var(--border); padding: 4rem 2rem 3rem; max-width: 900px; margin: 0 auto; }
-    .page-tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--yellow); text-transform: uppercase; margin-bottom: 1rem; }
-    .page-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: 0.04em; line-height: 1; color: #fff; margin-bottom: 1rem; }
-    .page-sub { font-size: 1rem; color: var(--muted); max-width: 520px; }
-
-    .content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 6rem; }
-
-    /* CONTACT CARDS */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-    .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem;
-      transition: border-color 0.2s;
-    }
-    .contact-card:hover { border-color: var(--yellow); }
-    .card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      letter-spacing: 0.05em;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      line-height: 1.5;
-    }
-    .card-action {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--yellow);
-      text-decoration: none;
-      border: 1px solid rgba(255,214,0,0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 2px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .card-action:hover {
-      background: rgba(255,214,0,0.08);
-      border-color: var(--yellow);
-    }
-
-    /* FAQ */
-    .faq-header {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      letter-spacing: 0.05em;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-    .faq-sub {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      font-family: var(--font-mono);
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      padding: 1.25rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-    .faq-question:hover { color: var(--yellow); }
-    .faq-icon {
-      font-family: var(--font-mono);
-      font-size: 1.2rem;
-      color: var(--yellow);
-      flex-shrink: 0;
-      transition: transform 0.3s;
-      line-height: 1;
-    }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-    }
-    .faq-item.open .faq-answer { max-height: 500px; }
-    .faq-answer-inner {
-      padding-bottom: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .faq-answer-inner a { color: var(--yellow); text-decoration: none; }
-    .faq-answer-inner strong { color: var(--text); }
-
-    /* CATEGORIES */
-    .cat-section { margin-bottom: 3rem; }
-    .cat-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--yellow);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
+    .content{max-width:960px;margin:0 auto;padding:3rem 3rem 6rem}
 
     /* STATUS */
-    .status-bar {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 4rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .status-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
-      flex-shrink: 0;
-    }
-    .status-text {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--text);
-    }
-    .status-text span { color: var(--muted); }
+    .status-bar{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.25rem 1.5rem;margin-bottom:4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,229,160,0.5);flex-shrink:0;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    .status-text{font-family:var(--font-mono);font-size:0.8rem;color:var(--text)}
+    .status-text span{color:var(--text2)}
 
-    p { color: var(--text); margin-bottom: 1rem; font-size: 0.95rem; }
-    strong { color: #fff; font-weight: 600; }
+    /* CONTACT CARDS */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:4rem}
+    .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color 0.2s}
+    .contact-card:hover{border-color:rgba(255,214,0,0.3)}
+    .card-icon{font-size:1.5rem;margin-bottom:1rem}
+    .card-title{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
+    .card-desc{font-size:0.875rem;color:var(--text2);margin-bottom:1.25rem;line-height:1.55}
+    .card-action{display:inline-block;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);text-decoration:none;border:1px solid rgba(255,214,0,0.25);padding:0.5rem 1rem;border-radius:4px;transition:background 0.2s,border-color 0.2s}
+    .card-action:hover{background:rgba(255,214,0,0.08);border-color:rgba(255,214,0,0.5)}
 
-    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
-    .footer-text { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
-    .footer-text a { color: var(--yellow); text-decoration: none; }
+    /* FAQ */
+    .faq-header{font-family:var(--font-display);font-size:2.2rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
+    .faq-sub{font-family:var(--font-mono);font-size:0.78rem;color:var(--text2);margin-bottom:2.5rem}
+
+    .cat-section{margin-bottom:3rem}
+    .cat-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+
+    .faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+    .faq-question{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:1.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:var(--text);font-family:var(--font-body);font-size:0.95rem;font-weight:500;transition:color 0.2s}
+    .faq-question:hover{color:var(--accent)}
+    .faq-icon{font-family:var(--font-mono);font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform 0.3s;line-height:1}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+    .faq-item.open .faq-answer{max-height:500px}
+    .faq-answer-inner{padding-bottom:1.5rem;font-size:0.9rem;color:var(--text2);line-height:1.7}
+    .faq-answer-inner a{color:var(--accent);text-decoration:none}
+    .faq-answer-inner strong{color:var(--text)}
+
+    p{color:var(--text);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
+    strong{color:#fff;font-weight:600}
+
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
+    .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
+    .footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
+    .footer-text a:hover{color:var(--accent)}
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">BORA</a>
+    <a href="index.html" class="nav-logo">
+      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
+      <span class="logo-text">Enjoy <span>Pineapple</span></span>
+    </a>
     <a href="index.html" class="nav-back">← Voltar ao início</a>
   </nav>
 
@@ -221,7 +98,6 @@
 
   <div class="content">
 
-    <!-- STATUS -->
     <div class="status-bar">
       <div class="status-dot"></div>
       <div class="status-text">
@@ -229,7 +105,6 @@
       </div>
     </div>
 
-    <!-- CONTACT OPTIONS -->
     <div class="contact-grid">
       <div class="contact-card">
         <div class="card-icon">✉️</div>
@@ -253,11 +128,9 @@
       </div>
     </div>
 
-    <!-- FAQ -->
     <div class="faq-header">Perguntas frequentes</div>
     <p class="faq-sub">// FAQ — as dúvidas mais comuns dos usuários</p>
 
-    <!-- CONTA -->
     <div class="cat-section">
       <div class="cat-label">conta e cadastro</div>
 
@@ -310,7 +183,6 @@
       </div>
     </div>
 
-    <!-- APP -->
     <div class="cat-section">
       <div class="cat-label">usando o app</div>
 
@@ -345,8 +217,7 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            A classificação segue o modelo da <strong>Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios (REDESIM)</strong> e do CGSIM federal:
-            <br/><br/>
+            A classificação segue o modelo da <strong>REDESIM</strong> e do CGSIM federal:<br/><br/>
             <strong>Baixo risco:</strong> atividade pode ser exercida com registro simplificado, sem necessidade de vistoria prévia.<br/>
             <strong>Médio risco:</strong> requer licença municipal, com possível vistoria dependendo do município.<br/>
             <strong>Alto risco:</strong> exige licenças específicas (sanitária, ambiental, bombeiros) antes do início das atividades.
@@ -361,13 +232,12 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Seu código de indicação aparece na tela de Perfil. Compartilhe com colegas ou clientes — quando eles se cadastrarem usando seu código ou pelo link com <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--yellow);">?ref=SEUCODIGO</code>, o vínculo é registrado automaticamente. Veja os benefícios do programa dentro do app.
+            Seu código de indicação aparece na tela de Perfil. Compartilhe com colegas ou clientes — quando eles se cadastrarem usando seu código, o vínculo é registrado automaticamente. Veja os benefícios do programa dentro do app.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- DADOS -->
     <div class="cat-section">
       <div class="cat-label">privacidade e dados</div>
 
@@ -408,7 +278,6 @@
       </div>
     </div>
 
-    <!-- TÉCNICO -->
     <div class="cat-section">
       <div class="cat-label">problemas técnicos</div>
 
@@ -443,13 +312,12 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Ajude a melhorar o BORA! Envie um e-mail para <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a> com o assunto "Dado incorreto" e informe: o código CNAE consultado, o município, o dado que você viu no BORA e o dado correto (com a fonte, se possível). Agradecemos muito!
+            Ajude a melhorar o BORA! Envie um e-mail para <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a> com o assunto "Dado incorreto" e informe: o código CNAE consultado, o município, o dado que você viu no BORA e o dado correto (com a fonte, se possível).
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PREFEITURAS -->
     <div class="cat-section">
       <div class="cat-label">prefeituras e parceiros</div>
 
@@ -482,9 +350,9 @@
 
   <footer>
     <p class="footer-text">
-      © 2026 <a href="index.html">Enjoy Pineapple</a> · BORA App ·
-      <a href="privacidade.html">Privacidade</a> ·
-      <a href="termos.html">Termos</a> ·
+      © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
+      <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
+      <a href="termos.html">Termos</a> &nbsp;·&nbsp;
       <a href="suporte.html">Suporte</a>
     </p>
   </footer>
@@ -493,9 +361,7 @@
     function toggle(btn) {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      // close all
       document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      // open clicked if it was closed
       if (!isOpen) item.classList.add('open');
     }
   </script>
