@@ -54,8 +54,9 @@ h1 em{font-style:normal;color:var(--accent)}
 /* ── SECTOR CAROUSEL (hero background) ── */
 .hero-visual{display:none}
 .sector-carousel{position:absolute;inset:0;z-index:0;overflow:hidden}
-.sector-track{display:flex;height:100%;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);will-change:transform}
-.sector-slide{min-width:100%;height:100%;position:relative;flex-shrink:0}
+.sector-track{position:relative;height:100%}
+.sector-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.sector-slide.active{opacity:1;pointer-events:auto}
 .sector-slide img{width:100%;height:100%;object-fit:cover;display:block}
 /* gradiente: opaco à esquerda (protege texto), desfoca à direita */
 .sector-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,12,0.97) 0%, rgba(7,9,12,0.92) 38%, rgba(7,9,12,0.6) 60%, rgba(7,9,12,0.15) 100%)}
@@ -640,14 +641,15 @@ function showFormMsg(msg, tipo) {
   });
 
   function goTo(idx) {
+    slides[current].classList.remove('active');
     current = (idx + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
+    slides[current].classList.add('active');
     dotsWrap.querySelectorAll('.sector-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
     });
   }
 
-  goTo(current);
+  slides[current].classList.add('active');
   setInterval(() => goTo(current + 1), 3500);
 
   // swipe touch
