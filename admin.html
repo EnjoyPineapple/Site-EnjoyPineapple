@@ -313,6 +313,24 @@ function showAdmin(user) {
   loadAll();
 }
 
+// Captura token de recovery na URL e mostra campo de nova senha
+db.auth.onAuthStateChange((event, session) => {
+  if (event === 'PASSWORD_RECOVERY') {
+    const newPass = prompt('Digite sua nova senha para o painel admin:');
+    if (newPass) {
+      db.auth.updateUser({ password: newPass }).then(({ error }) => {
+        if (error) alert('Erro: ' + error.message);
+        else {
+          alert('Senha redefinida com sucesso! Faça login.');
+          window.location.hash = '';
+        }
+      });
+    }
+  } else if (event === 'SIGNED_IN' && session) {
+    showAdmin(session.user);
+  }
+});
+
 // Check existing session
 db.auth.getSession().then(({ data }) => {
   if (data.session) showAdmin(data.session.user);
