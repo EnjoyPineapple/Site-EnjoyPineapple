@@ -45,13 +45,15 @@
 
     /* CONTACT CARDS */
     .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:4rem}
-    .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color 0.2s}
-    .contact-card:hover{border-color:rgba(255,214,0,0.3)}
-    .card-icon{font-size:1.5rem;margin-bottom:1rem}
+    .contact-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid transparent;border-radius:8px;padding:2rem;transition:border-color 0.25s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+    .contact-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,214,0,0.04) 0%,transparent 65%);pointer-events:none}
+    .contact-card:hover{border-top-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+    .card-icon{width:40px;height:40px;background:rgba(255,214,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+    .card-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .card-title{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
-    .card-desc{font-size:0.875rem;color:var(--text2);margin-bottom:1.25rem;line-height:1.55}
-    .card-action{display:inline-block;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);text-decoration:none;border:1px solid rgba(255,214,0,0.25);padding:0.5rem 1rem;border-radius:4px;transition:background 0.2s,border-color 0.2s}
-    .card-action:hover{background:rgba(255,214,0,0.08);border-color:rgba(255,214,0,0.5)}
+    .card-desc{font-size:0.875rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
+    .card-action{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);text-decoration:none;background:rgba(255,214,0,0.06);border:1px solid rgba(255,214,0,0.2);padding:0.55rem 1rem;border-radius:4px;transition:background 0.2s,border-color 0.2s;word-break:break-all}
+    .card-action:hover{background:rgba(255,214,0,0.12);border-color:rgba(255,214,0,0.45)}
 
     /* FAQ */
     .faq-header{font-family:var(--font-display);font-size:2.2rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
@@ -107,21 +109,27 @@
 
     <div class="contact-grid">
       <div class="contact-card">
-        <div class="card-icon">✉️</div>
-        <div class="card-title">E-mail</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        </div>
+        <div class="card-title">Suporte</div>
         <p class="card-desc">Para dúvidas gerais, problemas de conta ou sugestões. Respondemos em até 2 dias úteis.</p>
         <a href="mailto:suporte@enjoypineapple.com.br" class="card-action">suporte@enjoypineapple.com.br</a>
       </div>
 
       <div class="contact-card">
-        <div class="card-icon">🔒</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
         <div class="card-title">Privacidade</div>
         <p class="card-desc">Para exercer seus direitos sob a LGPD: acesso, correção, exclusão de dados ou retirada de consentimento.</p>
         <a href="mailto:privacidade@enjoypineapple.com.br" class="card-action">privacidade@enjoypineapple.com.br</a>
       </div>
 
       <div class="contact-card">
-        <div class="card-icon">🏛️</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+        </div>
         <div class="card-title">Prefeituras</div>
         <p class="card-desc">Sua cidade quer integrar ao BORA ou atualizar dados de licenciamento? Fale com nosso time de parcerias.</p>
         <a href="mailto:parcerias@enjoypineapple.com.br" class="card-action">parcerias@enjoypineapple.com.br</a>
@@ -252,17 +260,6 @@
         </div>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Como uso o código de indicação?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Seu código de indicação aparece na tela de Perfil. Compartilhe com colegas ou clientes — quando eles se cadastrarem informando seu código, o vínculo é registrado automaticamente. Veja os benefícios do programa dentro do app.
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="cat-section">
