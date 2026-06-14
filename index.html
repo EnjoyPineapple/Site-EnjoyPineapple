@@ -132,9 +132,8 @@ h2 em{font-style:normal;color:var(--accent)}
 /* ── APP SCREENS SHOWCASE ── */
 .screens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;align-items:end}
 .screen-item{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
-.screen-phone{width:200px;background:#0a0a0a;border-radius:28px;border:2px solid #2a2a2a;box-shadow:0 24px 60px rgba(0,0,0,0.7);overflow:hidden}
-.screen-phone .sp-top{background:#111;height:18px;display:flex;align-items:center;justify-content:center}
-.screen-phone .sp-dot{width:10px;height:10px;background:#1a1a1a;border-radius:50%;border:1px solid #2a2a2a}
+.screen-frame{width:200px;border-radius:28px;border:2.5px solid #2a2a2a;box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);overflow:hidden;background:#0a0a0a}
+.screen-frame img{width:100%;height:420px;object-fit:cover;object-position:top;display:block}
 .screen-label{text-align:center}
 .screen-label h4{font-size:0.9rem;font-family:var(--font-head);font-weight:700;margin-bottom:0.25rem}
 .screen-label p{font-size:0.78rem;color:var(--text2)}
@@ -445,31 +444,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 
       <!-- Tela 1: Busca -->
       <div class="screen-item">
-        <div class="screen-phone">
-          <div class="sp-top"><div class="sp-dot"></div></div>
-          <div class="sc1-body">
-            <div class="sc1-topbar">
-              <div class="sc1-brand">BORA <span>Mari</span></div>
-            </div>
-            <div class="sc1-muni">
-              <div class="sc1-muni-t">📍 Porto Alegre — RS</div>
-              <div class="sc1-muni-r">Trocar ∨</div>
-            </div>
-            <div class="sc1-search">
-              <span>🔍</span>
-              <span class="sc1-st">Restaurante</span>
-            </div>
-            <div class="sc1-res">
-              <div class="sc1-code">5611-2/01</div>
-              <div class="sc1-name">Restaurantes e Similares</div>
-              <span class="sc1-b">BAIXO RISCO</span>
-            </div>
-            <div class="sc1-nav">
-              <div class="sc1-nc"><div class="sc1-nci">👥</div><div class="sc1-nl">Parceiros</div></div>
-              <div class="sc1-nc"><div class="sc1-nci">📚</div><div class="sc1-nl">Legislação</div></div>
-              <div class="sc1-nc"><div class="sc1-nci">🛡️</div><div class="sc1-nl">Licenças</div></div>
-            </div>
-          </div>
+        <div class="screen-frame">
+          <img src="screen1.png" alt="Busca Inteligente">
         </div>
         <div class="screen-label">
           <h4>Busca Inteligente</h4>
@@ -479,32 +455,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 
       <!-- Tela 2: Resultado -->
       <div class="screen-item">
-        <div class="screen-phone">
-          <div class="sp-top"><div class="sp-dot"></div></div>
-          <div class="sc2-body">
-            <div class="sc2-topbar" style="background:#111;padding:6px 8px;margin:-8px -8px 8px;display:flex;align-items:center;justify-content:space-between">
-              <span style="font-size:8px;font-weight:800;color:#FFD600;font-family:sans-serif">BORA <span style="color:#fff">Mari</span></span>
-            </div>
-            <div class="sc2-card">
-              <div class="sc2-code">5611-2/01</div>
-              <div class="sc2-title">Restaurantes e Similares</div>
-              <div class="sc2-risks">
-                <div class="sc2-risk">
-                  <div class="sc2-risk-l">Risco Federal</div>
-                  <div class="sc2-risk-v">Baixo Risco</div>
-                </div>
-                <div class="sc2-risk">
-                  <div class="sc2-risk-l">Porto Alegre</div>
-                  <div class="sc2-risk-v">Baixo Risco</div>
-                </div>
-              </div>
-              <div class="sc2-banner">
-                <div class="sc2-banner-t">BAIXO RISCO</div>
-                <div class="sc2-banner-s">Dispensado de alvará — auto-declaração suficiente.</div>
-              </div>
-            </div>
-            <div style="background:#e8f5e9;border-radius:6px;padding:5px 7px;font-size:6px;color:#388e3c">⌵ Condicionantes federais</div>
-          </div>
+        <div class="screen-frame">
+          <img src="screen2.png" alt="Classificação de Risco">
         </div>
         <div class="screen-label">
           <h4>Classificação de Risco</h4>
@@ -514,33 +466,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 
       <!-- Tela 3: Legislação -->
       <div class="screen-item">
-        <div class="screen-phone">
-          <div class="sp-top"><div class="sp-dot"></div></div>
-          <div class="sc3-body">
-            <div class="sc3-back">← Voltar</div>
-            <div class="sc3-sub">5611-2/01 — Restaurantes e Similares</div>
-            <div class="sc3-alert">
-              <div class="sc3-alert-t">⚠ Plano Diretor Municipal</div>
-              <div class="sc3-alert-p">A instalação pode ser vedada por zoneamento urbano. Consulte sempre um parceiro local.</div>
-            </div>
-            <div class="sc3-label">Legislação Aplicável</div>
-            <div class="sc3-leg">
-              <span class="sc3-leg-tag">Federal</span>
-              <div class="sc3-leg-title">Resolução 57 · MPO-IBGE</div>
-              <div class="sc3-leg-link">Verificar fonte oficial ↗</div>
-            </div>
-            <div class="sc3-leg">
-              <span class="sc3-leg-tag municipal">Municipal</span>
-              <div class="sc3-leg-title">Decreto nº 23682/2026 · SMDETE</div>
-              <div class="sc3-leg-link">Verificar fonte oficial ↗</div>
-            </div>
-            <div class="sc3-footer">
-              <div>
-                <div class="sc3-foot-t">Fale com um parceiro local</div>
-                <div class="sc3-foot-s">Ele conhece as regras do seu município.</div>
-              </div>
-            </div>
-          </div>
+        <div class="screen-frame">
+          <img src="screen3.png" alt="Legislação Aplicável">
         </div>
         <div class="screen-label">
           <h4>Legislação Aplicável</h4>
@@ -548,45 +475,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
         </div>
       </div>
 
-      <!-- Tela 4: Parceiros -->
+      <!-- Tela 4: Parceiros — PLACEHOLDER (substituir sc4-body antigo) -->
       <div class="screen-item">
-        <div class="screen-phone">
-          <div class="sp-top"><div class="sp-dot"></div></div>
-          <div class="sc4-body">
-            <div class="sc4-header">
-              <div class="sc4-ht">Parceiros BORA</div>
-              <div class="sc4-hp">O BORA conecta empreendedores a quem pode ajudá-los.</div>
-            </div>
-            <div class="sc4-section-label">Especialistas no seu segmento</div>
-            <div class="sc4-item">
-              <div class="sc4-item-icon">🧾</div>
-              <div>
-                <div class="sc4-item-t">Contabilidade</div>
-                <div class="sc4-item-s">MEI, Simples Nacional, regularização fiscal</div>
-              </div>
-            </div>
-            <div class="sc4-item">
-              <div class="sc4-item-icon">⚖️</div>
-              <div>
-                <div class="sc4-item-t">Consultoria Jurídica</div>
-                <div class="sc4-item-s">Alvarás, licenças e contratos</div>
-              </div>
-            </div>
-            <div class="sc4-item">
-              <div class="sc4-item-icon">🌿</div>
-              <div>
-                <div class="sc4-item-t">Lic. Ambiental</div>
-                <div class="sc4-item-s">SMAMUS, FEPAM e órgãos ambientais</div>
-              </div>
-            </div>
-            <div class="sc4-item">
-              <div class="sc4-item-icon">🏥</div>
-              <div>
-                <div class="sc4-item-t">Vigilância Sanitária</div>
-                <div class="sc4-item-s">Adequação às normas da VISA</div>
-              </div>
-            </div>
-          </div>
+        <div class="screen-frame">
+          <img src="screen4.png" alt="Rede de Parceiros">
         </div>
         <div class="screen-label">
           <h4>Rede de Parceiros</h4>
