@@ -51,8 +51,18 @@ h1 em{font-style:normal;color:var(--accent)}
 .btn-secondary{border:1px solid var(--border2);color:var(--text);padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:400;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;background:transparent;transition:border-color 0.2s,background 0.2s}
 .btn-secondary:hover{border-color:var(--accent);background:var(--accent-dim)}
 
-/* ── PHONE MOCKUP ── */
-.hero-visual{position:relative;display:flex;justify-content:center}
+/* ── SECTOR CAROUSEL ── */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.sector-carousel{width:100%;max-width:480px;position:relative}
+.sector-track{display:flex;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.sector-slide{min-width:100%;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6)}
+.sector-slide img{width:100%;height:340px;object-fit:cover;display:block}
+.sector-label{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem 1.25rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-family:var(--font-head);font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:-0.01em}
+.sector-dots{display:flex;gap:8px;justify-content:center;margin-top:1.25rem}
+.sector-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:background 0.3s,width 0.3s;border:none;padding:0}
+.sector-dot.active{width:24px;border-radius:4px;background:var(--accent)}
+
+/* ── PHONE MOCKUP (mantido para referência, não usado) ── */
 .phone-wrap{position:relative}
 .phone{width:240px;background:#0a0a0a;border-radius:36px;border:2px solid #2a2a2a;box-shadow:0 40px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.05),inset 0 0 0 1px rgba(255,255,255,0.03);overflow:hidden;position:relative}
 .phone-notch{width:80px;height:22px;background:#0a0a0a;border-radius:0 0 14px 14px;margin:0 auto;position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
@@ -319,62 +329,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
     </div>
 
     <div class="hero-visual fade-in delay-2">
-      <div class="phone-pill top-right">⬤ &nbsp;App disponível no Android</div>
-      <div class="phone-wrap">
-        <div class="phone">
-          <div class="phone-notch"><div class="phone-cam"></div></div>
-          <div class="phone-screen">
-            <div class="ps-topbar">
-              <div class="ps-brand">BORA <span>Mari</span></div>
-              <div class="ps-icons">
-                <div class="ps-icon">👤</div>
-                <div class="ps-icon">→</div>
-              </div>
-            </div>
-            <div class="ps-body">
-              <div class="ps-label">Município</div>
-              <div class="ps-muni">
-                <div class="ps-muni-name"><span class="ps-muni-pin">📍</span> Porto Alegre — RS</div>
-                <div class="ps-trocar">Trocar ∨</div>
-              </div>
-              <div class="ps-label">Atividade Econômica</div>
-              <div class="ps-search">
-                <span class="ps-search-icon">🔍</span>
-                <span class="ps-search-text">Restaurante</span>
-              </div>
-              <div class="ps-result">
-                <div class="ps-cnae">5611-2/01</div>
-                <div class="ps-activity">Restaurantes e Similares</div>
-                <div class="ps-badges">
-                  <span class="ps-badge ps-badge-green">BAIXO RISCO</span>
-                </div>
-              </div>
-              <div class="ps-result" style="opacity:0.5">
-                <div class="ps-cnae">4781-4/00</div>
-                <div class="ps-activity">Comércio varejista de vestuário</div>
-                <div class="ps-badges">
-                  <span class="ps-badge ps-badge-green">BAIXO RISCO</span>
-                </div>
-              </div>
-            </div>
-            <div class="ps-navbar">
-              <div class="ps-nav-item">
-                <div class="ps-nav-circle">👥</div>
-                <div class="ps-nav-label">Parceiros</div>
-              </div>
-              <div class="ps-nav-item">
-                <div class="ps-nav-circle">📚</div>
-                <div class="ps-nav-label">Legislação</div>
-              </div>
-              <div class="ps-nav-item">
-                <div class="ps-nav-circle">🛡️</div>
-                <div class="ps-nav-label">Licenças</div>
-              </div>
-            </div>
+      <div class="sector-carousel">
+        <div class="sector-track" id="sectorTrack">
+          <div class="sector-slide">
+            <img src="sectors/agro.jpg" alt="Agronegócio">
+            <div class="sector-label">Para o agronegócio</div>
+          </div>
+          <div class="sector-slide">
+            <img src="sectors/indu.jpg" alt="Indústria">
+            <div class="sector-label">Para a indústria</div>
+          </div>
+          <div class="sector-slide">
+            <img src="sectors/const.jpg" alt="Construção">
+            <div class="sector-label">Para a construção</div>
+          </div>
+          <div class="sector-slide">
+            <img src="sectors/comercio.jpg" alt="Comércio">
+            <div class="sector-label">Para o comércio</div>
+          </div>
+          <div class="sector-slide">
+            <img src="sectors/transporte.jpg" alt="Transporte">
+            <div class="sector-label">Para o transporte</div>
+          </div>
+          <div class="sector-slide">
+            <img src="sectors/servi.jpg" alt="Serviços">
+            <div class="sector-label">Para os serviços</div>
           </div>
         </div>
+        <div class="sector-dots" id="sectorDots"></div>
       </div>
-      <div class="phone-pill bottom-left"><span class="pp-dot" style="background:var(--green)"></span>Risco calculado em segundos</div>
     </div>
   </div>
 </section>
@@ -657,6 +640,43 @@ function showFormMsg(msg, tipo) {
   }
   el.textContent = msg; el.style.color = tipo === 'ok' ? '#00e5a0' : '#ff5f5f'; el.style.opacity = '1';
 }
+
+// ── SECTOR CAROUSEL ─────────────────────────────────────────────
+(function() {
+  const track = document.getElementById('sectorTrack');
+  const dotsWrap = document.getElementById('sectorDots');
+  if (!track) return;
+  const slides = track.querySelectorAll('.sector-slide');
+  const total = slides.length;
+  let current = Math.floor(Math.random() * total);
+
+  // criar dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'sector-dot' + (i === current ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsWrap.querySelectorAll('.sector-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  goTo(current);
+  setInterval(() => goTo(current + 1), 3500);
+
+  // swipe touch
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+})();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
