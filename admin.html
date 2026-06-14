@@ -100,6 +100,28 @@
 </head>
 <body>
 
+<!-- RESET PASSWORD -->
+<div id="reset-screen" style="display:none;align-items:center;justify-content:center;min-height:100vh;padding:2rem">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
+      <span>Enjoy <b>Pineapple</b></span>
+    </div>
+    <h1>Nova senha</h1>
+    <p>Escolha uma senha segura para o painel admin.</p>
+    <div class="field">
+      <label for="new-pass">Nova senha</label>
+      <input type="password" id="new-pass" placeholder="••••••••" />
+    </div>
+    <div class="field">
+      <label for="new-pass-confirm">Confirmar senha</label>
+      <input type="password" id="new-pass-confirm" placeholder="••••••••" />
+    </div>
+    <button class="btn" id="reset-btn" onclick="doResetPassword()">Salvar senha</button>
+    <div id="reset-msg" style="font-family:var(--font-mono);font-size:0.75rem;margin-top:1rem;display:none"></div>
+  </div>
+</div>
+
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
@@ -329,19 +351,32 @@ function showAdmin(user) {
   loadAll();
 }
 
-// Captura token de recovery na URL e mostra campo de nova senha
+function showReset() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('reset-screen').style.display = 'flex';
+}
+
+async function doResetPassword() {
+  const p1 = document.getElementById('new-pass').value;
+  const p2 = document.getElementById('new-pass-confirm').value;
+  const msg = document.getElementById('reset-msg');
+  if (!p1 || p1.length < 6) { msg.style.display='block'; msg.style.color='var(--red)'; msg.textContent='Senha deve ter pelo menos 6 caracteres.'; return; }
+  if (p1 !== p2) { msg.style.display='block'; msg.style.color='var(--red)'; msg.textContent='Senhas não coincidem.'; return; }
+  document.getElementById('reset-btn').disabled = true;
+  const { error } = await db.auth.updateUser({ password: p1 });
+  if (error) {
+    msg.style.display='block'; msg.style.color='var(--red)'; msg.textContent='Erro: ' + error.message;
+    document.getElementById('reset-btn').disabled = false;
+  } else {
+    msg.style.display='block'; msg.style.color='var(--green)'; msg.textContent='Senha redefinida! Entrando...';
+    setTimeout(() => { window.location.hash = ''; location.reload(); }, 1500);
+  }
+}
+
 db.auth.onAuthStateChange((event, session) => {
   if (event === 'PASSWORD_RECOVERY') {
-    const newPass = prompt('Digite sua nova senha para o painel admin:');
-    if (newPass) {
-      db.auth.updateUser({ password: newPass }).then(({ error }) => {
-        if (error) alert('Erro: ' + error.message);
-        else {
-          alert('Senha redefinida com sucesso! Faça login.');
-          window.location.hash = '';
-        }
-      });
-    }
+    showReset();
   } else if (event === 'SIGNED_IN' && session) {
     showAdmin(session.user);
   }
