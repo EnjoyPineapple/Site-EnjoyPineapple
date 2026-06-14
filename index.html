@@ -300,6 +300,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 </style>
 </head>
 <body>
+<script>
+// Redireciona tokens de recuperação de senha para o admin
+(function(){
+  var h = window.location.hash;
+  if(h && h.includes('type=recovery')){
+    window.location.replace('admin.html' + h);
+  }
+})();
+</script>
 
 <!-- NAV -->
 <nav>
