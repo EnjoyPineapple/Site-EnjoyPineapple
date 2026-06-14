@@ -374,17 +374,30 @@ async function doResetPassword() {
   }
 }
 
+// Detecta token de recovery no hash da URL imediatamente
+(function() {
+  var hash = window.location.hash;
+  if (hash && hash.includes('access_token=') && hash.includes('type=recovery')) {
+    var params = new URLSearchParams(hash.substring(1));
+    var accessToken = params.get('access_token');
+    var refreshToken = params.get('refresh_token');
+    if (accessToken) {
+      db.auth.setSession({ access_token: accessToken, refresh_token: refreshToken || '' }).then(function() {
+        showReset();
+      });
+      return;
+    }
+  }
+  // Sem token de recovery: verifica sessão existente
+  db.auth.getSession().then(({ data }) => {
+    if (data.session) showAdmin(data.session.user);
+  });
+})();
+
 db.auth.onAuthStateChange((event, session) => {
-  if (event === 'PASSWORD_RECOVERY') {
-    showReset();
-  } else if (event === 'SIGNED_IN' && session) {
+  if (event === 'SIGNED_IN' && session && !window.location.hash.includes('type=recovery')) {
     showAdmin(session.user);
   }
-});
-
-// Check existing session
-db.auth.getSession().then(({ data }) => {
-  if (data.session) showAdmin(data.session.user);
 });
 
 // ── DATA LOADING ─────────────────────────────────────────────────────
