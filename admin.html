@@ -290,6 +290,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// Captura hash ANTES do Supabase processar e limpar a URL
+const _rawHash = window.location.hash;
+const _hashParams = new URLSearchParams(_rawHash.substring(1));
+const _isRecovery = _rawHash.includes('access_token=');
+
 const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
@@ -374,25 +379,26 @@ async function doResetPassword() {
   }
 }
 
-// Detecta token de recovery no hash da URL imediatamente
-(function() {
-  var hash = window.location.hash;
-  if (hash && hash.includes('access_token=')) {
-    var params = new URLSearchParams(hash.substring(1));
-    var accessToken = params.get('access_token');
-    var refreshToken = params.get('refresh_token');
-    if (accessToken) {
-      db.auth.setSession({ access_token: accessToken, refresh_token: refreshToken || '' }).then(function() {
-        showReset();
-      });
-      return;
-    }
+// Usa hash capturado antes do Supabase limpar a URL
+if (_isRecovery) {
+  var _accessToken = _hashParams.get('access_token');
+  var _refreshToken = _hashParams.get('refresh_token') || '';
+  if (_accessToken) {
+    db.auth.setSession({ access_token: _accessToken, refresh_token: _refreshToken }).then(function({ error }) {
+      if (!error) showReset();
+      else {
+        // Token expirado ou inválido
+        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('login-error').textContent = 'Link expirado. Solicite um novo.';
+      }
+    });
   }
-  // Sem token de recovery: verifica sessão existente
+} else {
+  // Sem token: verifica sessão existente
   db.auth.getSession().then(({ data }) => {
     if (data.session) showAdmin(data.session.user);
   });
-})();
+}
 
 db.auth.onAuthStateChange((event, session) => {
   if (event === 'SIGNED_IN' && session && !window.location.hash.includes('type=recovery')) {
