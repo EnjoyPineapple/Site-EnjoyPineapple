@@ -101,11 +101,12 @@
         <li><a href="#s6">Programa de indicações</a></li>
         <li><a href="#s7">Propriedade intelectual</a></li>
         <li><a href="#s8">Disponibilidade do serviço</a></li>
-        <li><a href="#s9">Limitação de responsabilidade</a></li>
-        <li><a href="#s10">Suspensão e encerramento</a></li>
-        <li><a href="#s11">Alterações nos termos</a></li>
-        <li><a href="#s12">Lei aplicável e foro</a></li>
-        <li><a href="#s13">Contato</a></li>
+        <li><a href="#s9">Segurança</a></li>
+        <li><a href="#s10">Limitação de responsabilidade</a></li>
+        <li><a href="#s11">Suspensão e encerramento</a></li>
+        <li><a href="#s12">Alterações nos termos</a></li>
+        <li><a href="#s13">Lei aplicável e foro</a></li>
+        <li><a href="#s14">Contato</a></li>
       </ol>
     </div>
 
@@ -210,20 +211,35 @@
     </div>
 
     <div class="section" id="s9">
-      <h2><span class="section-number">09.</span> Limitação de responsabilidade</h2>
+      <h2><span class="section-number">09.</span> Segurança</h2>
+      <p>A Enjoy Pineapple adota medidas técnicas e organizacionais para proteger sua conta e seus dados:</p>
+      <ul>
+        <li>Autenticação por e-mail e senha, com senhas armazenadas de forma criptografada (bcrypt) — nunca em texto simples.</li>
+        <li>Sessões gerenciadas por tokens JWT de curta duração, renovados automaticamente.</li>
+        <li>CPF processado exclusivamente no seu dispositivo — apenas o hash SHA-256 (irreversível) é transmitido e armazenado.</li>
+        <li>Banco de dados com Row Level Security (RLS): cada usuário acessa apenas seus próprios dados, mesmo em caso de falha de aplicação.</li>
+        <li>Comunicação entre app e servidores protegida por TLS 1.2 ou superior.</li>
+        <li>Infraestrutura hospedada no Supabase (AWS), certificado SOC 2 Type II.</li>
+      </ul>
+      <p><strong>Suas responsabilidades:</strong> a segurança da sua conta também depende de você. Escolha uma senha forte, não a compartilhe e notifique-nos imediatamente em caso de acesso suspeito pelo e-mail <a href="mailto:suporte@enjoypineapple.com.br" style="color:var(--accent);text-decoration:none;">suporte@enjoypineapple.com.br</a>.</p>
+      <p>Nenhum sistema é 100% seguro. Em caso de incidente de segurança que afete seus dados, notificaremos você e a ANPD o mais breve possível, conforme exigido pela LGPD.</p>
+    </div>
+
+    <div class="section" id="s10">
+      <h2><span class="section-number">10.</span> Limitação de responsabilidade</h2>
       <p>Na máxima extensão permitida pela lei brasileira, a Enjoy Pineapple não será responsável por:</p>
       <ul>
         <li>Decisões tomadas com base nas informações exibidas no BORA.</li>
         <li>Prejuízos decorrentes de imprecisões ou desatualizações das informações legislativas.</li>
         <li>Danos indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou impossibilidade de uso do aplicativo.</li>
         <li>Falhas de terceiros, incluindo provedores de internet e infraestrutura de nuvem.</li>
-        <li>Atos de terceiros que acessem sua conta de forma não autorizada por falha sua em proteger suas credenciais.</li>
+        <li>Acessos não autorizados à sua conta decorrentes de falha sua em proteger suas credenciais.</li>
       </ul>
-      <p>A responsabilidade total da Enjoy Pineapple perante você, por qualquer causa e independentemente da forma da ação, ficará sempre limitada ao valor pago por você pelo uso do serviço nos 12 meses anteriores ao evento que originou o dano (ou R$ 0,00 para usuários do plano gratuito).</p>
+      <p>A responsabilidade total da Enjoy Pineapple perante você ficará sempre limitada ao valor eventualmente pago pelo uso do serviço nos 12 meses anteriores ao evento que originou o dano.</p>
     </div>
 
-    <div class="section" id="s10">
-      <h2><span class="section-number">10.</span> Suspensão e encerramento</h2>
+    <div class="section" id="s11">
+      <h2><span class="section-number">11.</span> Suspensão e encerramento</h2>
       <p>A Enjoy Pineapple pode suspender ou encerrar sua conta, sem aviso prévio, se você violar estes Termos, especialmente nos casos de:</p>
       <ul>
         <li>Uso fraudulento ou criação de contas duplicadas.</li>
@@ -234,20 +250,20 @@
       <p>Você pode encerrar sua conta a qualquer momento diretamente pelo aplicativo ou solicitando pelo e-mail de suporte. Após o encerramento, seus dados serão tratados conforme a Política de Privacidade.</p>
     </div>
 
-    <div class="section" id="s11">
-      <h2><span class="section-number">11.</span> Alterações nos termos</h2>
+    <div class="section" id="s12">
+      <h2><span class="section-number">12.</span> Alterações nos termos</h2>
       <p>Podemos revisar estes Termos periodicamente. Comunicaremos alterações materiais com pelo menos <strong>30 dias de antecedência</strong> por e-mail e/ou notificação no aplicativo. A versão vigente sempre estará disponível em <strong>enjoypineapple.com.br/termos</strong>.</p>
       <p>Caso não concorde com as alterações, você poderá encerrar sua conta antes da data de vigência. O uso continuado após essa data implica aceitação dos novos termos.</p>
     </div>
 
-    <div class="section" id="s12">
-      <h2><span class="section-number">12.</span> Lei aplicável e foro</h2>
+    <div class="section" id="s13">
+      <h2><span class="section-number">13.</span> Lei aplicável e foro</h2>
       <p>Estes Termos são regidos pela legislação brasileira. As partes elegem o foro da comarca de <strong>Porto Alegre – RS</strong> para dirimir quaisquer controvérsias decorrentes deste instrumento, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
       <p>Em caso de conflito entre a versão destes Termos em português e qualquer tradução, prevalecerá a versão em português.</p>
     </div>
 
-    <div class="section" id="s13">
-      <h2><span class="section-number">13.</span> Contato</h2>
+    <div class="section" id="s14">
+      <h2><span class="section-number">14.</span> Contato</h2>
       <p>Para dúvidas, sugestões ou questões relacionadas a estes Termos:</p>
       <div class="contact-block">
         <p><strong>Enjoy Pineapple</strong></p>
