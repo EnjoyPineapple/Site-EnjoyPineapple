@@ -407,5 +407,46 @@
   });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+  document.getElementById('partnerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('form-msg');
+
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    msg.style.display = 'none';
+
+    const payload = {
+      nome:      document.getElementById('nome').value.trim(),
+      empresa:   document.getElementById('empresa').value.trim(),
+      email:     document.getElementById('email').value.trim(),
+      telefone:  document.getElementById('telefone').value.trim() || null,
+      tipo:      document.getElementById('tipo').value,
+      municipio: document.getElementById('municipio').value.trim(),
+      mensagem:  document.getElementById('mensagem').value.trim() || null,
+    };
+
+    const { error } = await db.from('tb_parceiros_leads').insert(payload);
+
+    msg.style.display = 'block';
+    if (error) {
+      msg.style.color = '#ff5f5f';
+      msg.textContent = 'Erro ao enviar. Tente novamente ou escreva para parcerias@enjoypineapple.com.br';
+      btn.textContent = 'Enviar proposta →';
+      btn.disabled = false;
+    } else {
+      msg.style.color = 'var(--green)';
+      msg.textContent = 'Proposta recebida! Entraremos em contato em até 2 dias úteis.';
+      btn.textContent = 'Enviado ✓';
+      document.getElementById('partnerForm').reset();
+    }
+  });
+</script>
 </body>
 </html>
