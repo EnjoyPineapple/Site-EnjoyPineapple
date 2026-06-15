@@ -373,39 +373,6 @@
   </p>
 </footer>
 
-<script>
-  document.getElementById('partnerForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const msg = document.getElementById('form-msg');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    const data = {
-      nome: document.getElementById('nome').value.trim(),
-      empresa: document.getElementById('empresa').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      telefone: document.getElementById('telefone').value.trim(),
-      tipo: document.getElementById('tipo').value,
-      municipio: document.getElementById('municipio').value.trim(),
-      mensagem: document.getElementById('mensagem').value.trim(),
-    };
-
-    // Fallback: envia por mailto se Supabase não configurado
-    const mailto = `mailto:parcerias@enjoypineapple.com.br`
-      + `?subject=Proposta de Parceria — ${encodeURIComponent(data.empresa)}`
-      + `&body=${encodeURIComponent(
-          `Nome: ${data.nome}\nEmpresa: ${data.empresa}\nE-mail: ${data.email}\nTelefone: ${data.telefone}\nTipo: ${data.tipo}\nMunicípio: ${data.municipio}\n\nMensagem:\n${data.mensagem}`
-        )}`;
-
-    msg.style.display = 'block';
-    msg.style.color = 'var(--green)';
-    msg.textContent = 'Proposta enviada! Entraremos em contato em até 2 dias úteis.';
-    btn.textContent = 'Enviado ✓';
-
-    setTimeout(() => { window.location.href = mailto; }, 800);
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
