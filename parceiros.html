@@ -354,6 +354,7 @@
             <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu negócio e o que espera da parceria..."></textarea>
           </div>
         </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlXgE2I3O6U3H_v" data-theme="dark"></div>
         <div class="form-submit">
           <button type="submit" class="btn-primary" id="submitBtn">Enviar proposta →</button>
           <p class="form-note">Seus dados são usados apenas para<br>contato de parceria. Sem spam.</p>
@@ -374,6 +375,7 @@
 </footer>
 
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL  = 'https://utlvupzpcxbvunfncheu.supabase.co';
@@ -432,14 +434,30 @@
     btn.textContent = 'Enviando...';
     btn.disabled = true;
 
-    const { error } = await db.from('tb_parceiros_leads').insert(payload);
-
-    msg.style.display = 'block';
-    if (error) {
-      msg.style.color = '#ff5f5f';
-      msg.textContent = 'Erro ao enviar. Tente novamente ou escreva para parcerias@enjoypineapple.com.br';
+    // Pega token do Turnstile
+    const tsToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+    if (!tsToken) {
+      showError(msg, 'Confirme que você não é um robô.');
       btn.textContent = 'Enviar proposta →';
       btn.disabled = false;
+      return;
+    }
+
+    // Envia para Edge Function que valida Turnstile e grava no Supabase
+    const resp = await fetch(`${SUPABASE_URL}/functions/v1/parceiros-lead`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPABASE_ANON}` },
+      body: JSON.stringify({ ...payload, tsToken }),
+    });
+
+    const result = await resp.json();
+    msg.style.display = 'block';
+    if (!resp.ok || result.error) {
+      msg.style.color = '#ff5f5f';
+      msg.textContent = result.error || 'Erro ao enviar. Tente novamente ou escreva para parcerias@enjoypineapple.com.br';
+      btn.textContent = 'Enviar proposta →';
+      btn.disabled = false;
+      if (window.turnstile) window.turnstile.reset();
     } else {
       _lastSent = Date.now();
       msg.style.color = 'var(--green)';
