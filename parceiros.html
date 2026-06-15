@@ -380,24 +380,57 @@
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bHZ1cHpwY3hidnVuZm5jaGV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NDAyMDUsImV4cCI6MjA5NjUxNjIwNX0.H3w3GRj8iASvYemv_PtSoHKu0GMZpvAIsnM8IJIpKDA';
   const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
+  // Rate limit: bloqueia reenvio por 60s após sucesso
+  let _lastSent = 0;
+
+  function showError(msg, text) {
+    msg.style.display = 'block';
+    msg.style.color = '#ff5f5f';
+    msg.textContent = text;
+  }
+
+  function validateForm(p, msg) {
+    if (!p.nome || p.nome.length < 2 || p.nome.length > 100)
+      return showError(msg, 'Nome inválido (2–100 caracteres).'), false;
+    if (!p.empresa || p.empresa.length < 2 || p.empresa.length > 150)
+      return showError(msg, 'Empresa inválida (2–150 caracteres).'), false;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email))
+      return showError(msg, 'E-mail inválido.'), false;
+    if (p.telefone && !/^\+?[\d\s\-().]{7,20}$/.test(p.telefone))
+      return showError(msg, 'Telefone inválido. Use apenas números, espaços ou + ( ) -.'), false;
+    if (!p.tipo)
+      return showError(msg, 'Selecione o tipo de parceria.'), false;
+    if (!p.municipio || p.municipio.length < 2 || p.municipio.length > 100)
+      return showError(msg, 'Município inválido.'), false;
+    if (p.mensagem && p.mensagem.length > 1000)
+      return showError(msg, 'Mensagem muito longa (máx. 1000 caracteres).'), false;
+    return true;
+  }
+
   document.getElementById('partnerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     const msg = document.getElementById('form-msg');
-
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
     msg.style.display = 'none';
+
+    // Rate limit client-side
+    if (Date.now() - _lastSent < 60000)
+      return showError(msg, 'Aguarde 1 minuto antes de enviar novamente.');
 
     const payload = {
       nome:      document.getElementById('nome').value.trim(),
       empresa:   document.getElementById('empresa').value.trim(),
-      email:     document.getElementById('email').value.trim(),
+      email:     document.getElementById('email').value.trim().toLowerCase(),
       telefone:  document.getElementById('telefone').value.trim() || null,
       tipo:      document.getElementById('tipo').value,
       municipio: document.getElementById('municipio').value.trim(),
       mensagem:  document.getElementById('mensagem').value.trim() || null,
     };
+
+    if (!validateForm(payload, msg)) return;
+
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
 
     const { error } = await db.from('tb_parceiros_leads').insert(payload);
 
@@ -408,6 +441,7 @@
       btn.textContent = 'Enviar proposta →';
       btn.disabled = false;
     } else {
+      _lastSent = Date.now();
       msg.style.color = 'var(--green)';
       msg.textContent = 'Proposta recebida! Entraremos em contato em até 2 dias úteis.';
       btn.textContent = 'Enviado ✓';
