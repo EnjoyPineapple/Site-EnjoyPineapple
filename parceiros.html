@@ -444,9 +444,9 @@
     }
 
     // Envia para Edge Function que valida Turnstile e grava no Supabase
-    const resp = await fetch(`${SUPABASE_URL}/functions/v1/parceiros-lead`, {
+    const resp = await fetch('https://parceiros-lead.pablo-2102.workers.dev', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPABASE_ANON}` },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, tsToken }),
     });
 
