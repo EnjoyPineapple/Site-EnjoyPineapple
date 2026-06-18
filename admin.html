@@ -207,6 +207,7 @@
       <button class="tab" onclick="switchTab('parceiros')">Parceiros App <span class="tab-badge" id="badge-parceiros">—</span></button>
       <button class="tab" onclick="switchTab('consultas')">Consultas <span class="tab-badge" id="badge-consultas">—</span></button>
       <button class="tab" onclick="switchTab('estatisticas')">Estatísticas <span class="tab-badge" id="badge-estatisticas">—</span></button>
+      <button class="tab" onclick="switchTab('contratos')">Contratos <span class="tab-badge" id="badge-contratos">—</span></button>
     </div>
 
     <!-- LEADS -->
@@ -340,6 +341,37 @@
       </div>
     </div>
 
+    <!-- CONTRATOS -->
+    <div class="pane" id="pane-contratos">
+      <div class="summary-row" id="contratos-summary"></div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
+        <button onclick="openContractModal()" style="background:var(--accent);color:#000;border:none;border-radius:6px;padding:0.5rem 1.25rem;font-family:var(--font-body);font-size:0.85rem;font-weight:600;cursor:pointer">+ Novo Contrato</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-title">Contratos de Parceria</span>
+          <input class="table-search" id="contratos-search" placeholder="Buscar por nome, empresa..." oninput="filterTable('contratos')" />
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nome</th><th>Empresa</th><th>Plano</th><th>Valor</th><th>CNAEs</th><th>Início</th><th>Status</th><th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="contratos-body"><tr><td colspan="8" class="loading">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="contratos-info"></span>
+          <div class="page-btns">
+            <button class="page-btn" id="contratos-prev" onclick="changePage('contratos',-1)" disabled>← Anterior</button>
+            <button class="page-btn" id="contratos-next" onclick="changePage('contratos',1)" disabled>Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -360,7 +392,24 @@ const state = {
   parceiros:   { data:[], filtered:[], page:0 },
   consultas:   { data:[], filtered:[], page:0 },
   estatisticas:{ data:[], filtered:[], page:0 },
+  contratos:   { data:[], filtered:[], page:0 },
 };
+
+const CONTRATO_STATUS_LABELS = {
+  pendente:  'Aguardando assinatura',
+  assinado:  'Assinado',
+  ativo:     'Ativo',
+  suspenso:  'Suspenso',
+  encerrado: 'Encerrado',
+};
+const CONTRATO_STATUS_BADGE = {
+  pendente:  'badge-gray',
+  assinado:  'badge-blue',
+  ativo:     'badge-green',
+  suspenso:  'badge-orange',
+  encerrado: 'badge-red',
+};
+const PLANO_VALORES = { essencial: 97, profissional: 197, premium: 397 };
 
 const STATUS_LABELS = {
   novo:                'Novo',
@@ -480,7 +529,7 @@ db.auth.onAuthStateChange((event, session) => {
 
 // ── DATA LOADING ─────────────────────────────────────────────────────
 async function loadAll() {
-  await Promise.all([loadLeads(), loadParceiros(), loadConsultas(), loadEstatisticas()]);
+  await Promise.all([loadLeads(), loadParceiros(), loadConsultas(), loadEstatisticas(), loadContratos()]);
 }
 
 async function loadLeads() {
@@ -550,6 +599,52 @@ async function loadEstatisticas() {
     { num: [...new Set(state.estatisticas.data.map(r => r.id_cnae))].length, label: 'CNAEs ativos' },
   ]);
   renderEstatisticas();
+}
+
+async function loadContratos() {
+  const { data } = await db.from('tb_contratos').select('*').order('criado_em', { ascending: false });
+  state.contratos.data = data || [];
+  state.contratos.filtered = [...state.contratos.data];
+  document.getElementById('badge-contratos').textContent = state.contratos.data.length;
+  renderSummary('contratos', [
+    { num: state.contratos.data.length, label: 'Total' },
+    { num: state.contratos.data.filter(r => r.status === 'pendente').length, label: 'Aguardando assinatura' },
+    { num: state.contratos.data.filter(r => r.status === 'assinado' || r.status === 'ativo').length, label: 'Assinados / Ativos' },
+    { num: state.contratos.data.filter(r => r.status === 'encerrado').length, label: 'Encerrados' },
+  ]);
+  renderContratos();
+}
+
+function renderContratos() {
+  const { filtered, page } = state.contratos;
+  const rows = paginate(filtered, page);
+  const body = document.getElementById('contratos-body');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="8" class="empty-row">Nenhum contrato encontrado.</td></tr>`; updatePagination('contratos'); return; }
+  body.innerHTML = rows.map(r => {
+    const status = r.status || 'pendente';
+    const badgeClass = CONTRATO_STATUS_BADGE[status] || 'badge-gray';
+    const badgeLabel = CONTRATO_STATUS_LABELS[status] || status;
+    const cnaesText = (r.cnaes || []).join(', ') || '—';
+    const link = `https://enjoypineapple.com.br/contrato.html?token=${r.token}`;
+    const assinadoInfo = r.assinado_em
+      ? `<div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--green);margin-top:0.2rem">✓ ${fmtDate(r.assinado_em)}</div>` : '';
+    return `<tr>
+      <td style="color:var(--text);font-weight:500">${esc(r.nome)}</td>
+      <td>${esc(r.empresa||'—')}</td>
+      <td><span class="badge badge-yellow" style="text-transform:capitalize">${r.plano}</span></td>
+      <td style="color:var(--text);font-weight:600">R$ ${Number(r.valor_mensal).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
+      <td style="font-size:0.75rem;max-width:160px;white-space:normal">${esc(cnaesText)}</td>
+      <td>${fmtDate(r.vigencia_inicio)}</td>
+      <td>
+        <span class="badge ${badgeClass}">${badgeLabel}</span>
+        ${assinadoInfo}
+      </td>
+      <td style="white-space:nowrap">
+        <button onclick="copyContractLink('${r.token}')" style="background:none;border:1px solid var(--border);color:var(--text2);padding:0.25rem 0.6rem;border-radius:4px;cursor:pointer;font-family:var(--font-mono);font-size:0.62rem;transition:border-color 0.2s" title="Copiar link de assinatura">📋 Link</button>
+      </td>
+    </tr>`;
+  }).join('');
+  updatePagination('contratos');
 }
 
 // ── RENDER ───────────────────────────────────────────────────────────
@@ -669,6 +764,7 @@ const renders = {
   parceiros: renderParceiros,
   consultas: renderConsultas,
   estatisticas: renderEstatisticas,
+  contratos: renderContratos,
 };
 
 function filterTable(key) {
@@ -759,9 +855,100 @@ async function saveNotes() {
 }
 
 function addParceiro(id) {
-  const lead = state.leads.data.find(r => r.id === id);
-  if (!lead) return;
-  alert(`Parceiro convertido: ${lead.nome} — ${lead.empresa}\n\nAdicione manualmente na aba "Parceiros App" no Supabase Table Editor (tb_parceiros).`);
+  openContractModal(id);
+}
+
+function openContractModal(leadId = null) {
+  const modal = document.getElementById('novo-contrato-modal');
+  modal.dataset.leadId = leadId || '';
+  document.getElementById('nc-nome').value = '';
+  document.getElementById('nc-empresa').value = '';
+  document.getElementById('nc-email').value = '';
+  document.getElementById('nc-telefone').value = '';
+  document.getElementById('nc-cpfcnpj').value = '';
+  document.getElementById('nc-plano').value = 'essencial';
+  document.getElementById('nc-valor').value = '97';
+  document.getElementById('nc-cnaes').value = '';
+  document.getElementById('nc-inicio').value = new Date().toISOString().split('T')[0];
+  document.getElementById('nc-renovacao').checked = true;
+  document.getElementById('nc-notas').value = '';
+  if (leadId) {
+    const lead = state.leads.data.find(r => r.id === leadId);
+    if (lead) {
+      document.getElementById('nc-nome').value = lead.nome || '';
+      document.getElementById('nc-empresa').value = lead.empresa || '';
+      document.getElementById('nc-email').value = lead.email || '';
+      document.getElementById('nc-telefone').value = lead.telefone || '';
+    }
+  }
+  modal.style.display = 'flex';
+}
+
+function closeContractModal() {
+  document.getElementById('novo-contrato-modal').style.display = 'none';
+}
+
+function updateNcValor() {
+  const plano = document.getElementById('nc-plano').value;
+  document.getElementById('nc-valor').value = PLANO_VALORES[plano] || 97;
+}
+
+async function saveContract() {
+  const nome     = document.getElementById('nc-nome').value.trim();
+  const empresa  = document.getElementById('nc-empresa').value.trim();
+  const email    = document.getElementById('nc-email').value.trim();
+  const telefone = document.getElementById('nc-telefone').value.trim();
+  const cpfcnpj  = document.getElementById('nc-cpfcnpj').value.trim();
+  const plano    = document.getElementById('nc-plano').value;
+  const valor    = parseFloat(document.getElementById('nc-valor').value);
+  const cnaesRaw = document.getElementById('nc-cnaes').value.trim();
+  const inicio   = document.getElementById('nc-inicio').value;
+  const renovacao= document.getElementById('nc-renovacao').checked;
+  const notas    = document.getElementById('nc-notas').value.trim();
+  const id_lead  = document.getElementById('novo-contrato-modal').dataset.leadId || null;
+  const btn      = document.getElementById('nc-save-btn');
+
+  if (!nome || !inicio) { alert('Preencha ao menos nome e data de início.'); return; }
+  const cnaes = cnaesRaw ? cnaesRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+  btn.disabled = true; btn.textContent = 'Salvando...';
+
+  const { data, error } = await db.from('tb_contratos').insert({
+    id_lead: id_lead ? parseInt(id_lead) : null,
+    nome, empresa: empresa||null, email: email||null,
+    telefone: telefone||null, cpf_cnpj: cpfcnpj||null,
+    plano, valor_mensal: valor,
+    cnaes: cnaes.length ? cnaes : null,
+    vigencia_inicio: inicio,
+    renovacao_automatica: renovacao,
+    notas: notas||null,
+  }).select().single();
+
+  btn.disabled = false; btn.textContent = 'Criar Contrato';
+
+  if (error) { alert('Erro ao criar contrato: ' + error.message); return; }
+
+  closeContractModal();
+  await loadContratos();
+
+  const link = `https://enjoypineapple.com.br/contrato.html?token=${data.token}`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(link).then(() =>
+      alert('Contrato criado!\n\nLink copiado para a área de transferência.\nEnvie pelo WhatsApp ao parceiro.')
+    ).catch(() => prompt('Contrato criado! Copie o link:', link));
+  } else {
+    prompt('Contrato criado! Copie o link:', link);
+  }
+}
+
+function copyContractLink(token) {
+  const link = `https://enjoypineapple.com.br/contrato.html?token=${token}`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(link).then(() => alert('Link copiado! Envie pelo WhatsApp ao parceiro.'))
+      .catch(() => prompt('Copie o link:', link));
+  } else {
+    prompt('Copie o link:', link);
+  }
 }
 
 function switchTab(key) {
@@ -788,6 +975,41 @@ function esc(str) {
   return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
+
+<!-- NOVO CONTRATO MODAL -->
+<div class="modal-overlay" id="novo-contrato-modal" style="display:none">
+  <div class="modal-box" style="max-width:600px;overflow-y:auto;max-height:90vh">
+    <h3>Novo Contrato de Parceria</h3>
+    <p class="modal-sub">Preencha os dados para gerar o link de assinatura.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+      <div class="field"><label>Nome completo *</label><input type="text" id="nc-nome" placeholder="Nome do parceiro" /></div>
+      <div class="field"><label>Empresa</label><input type="text" id="nc-empresa" placeholder="Razão social" /></div>
+      <div class="field"><label>E-mail</label><input type="email" id="nc-email" placeholder="email@empresa.com" /></div>
+      <div class="field"><label>Telefone / WhatsApp</label><input type="text" id="nc-telefone" placeholder="(51) 99999-9999" /></div>
+      <div class="field"><label>CPF / CNPJ</label><input type="text" id="nc-cpfcnpj" placeholder="000.000.000-00" /></div>
+      <div class="field">
+        <label>Plano *</label>
+        <select id="nc-plano" onchange="updateNcValor()" style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;width:100%">
+          <option value="essencial">Essencial — R$ 97/mês</option>
+          <option value="profissional">Profissional — R$ 197/mês</option>
+          <option value="premium">Premium — R$ 397/mês</option>
+        </select>
+      </div>
+      <div class="field"><label>Valor mensal (R$)</label><input type="number" id="nc-valor" value="97" min="1" /></div>
+      <div class="field"><label>Data início *</label><input type="date" id="nc-inicio" /></div>
+    </div>
+    <div class="field" style="margin-top:0.25rem"><label>CNAEs (separados por vírgula)</label><input type="text" id="nc-cnaes" placeholder="ex: 6920601, 6911701, 7410202" /></div>
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem">
+      <input type="checkbox" id="nc-renovacao" checked style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer" />
+      <label for="nc-renovacao" style="font-size:0.83rem;color:var(--text2);cursor:pointer">Renovação automática (12 meses)</label>
+    </div>
+    <div class="field"><label>Notas internas</label><textarea id="nc-notas" placeholder="Observações (não aparecem no contrato)..." style="width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:0.75rem;color:var(--text);font-family:var(--font-body);font-size:0.85rem;resize:vertical;min-height:70px;outline:none"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeContractModal()">Cancelar</button>
+      <button class="btn-save" id="nc-save-btn" onclick="saveContract()">Criar Contrato</button>
+    </div>
+  </div>
+</div>
 
 <!-- NOTES MODAL -->
 <div class="modal-overlay" id="notes-modal" style="display:none">

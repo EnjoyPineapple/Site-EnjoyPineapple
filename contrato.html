@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contrato de Parceria — BORA App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
+      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+      --accent:#FFD600;--accent2:#e6bf00;
+      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+      --green:#00e5a0;--red:#ff5f5f;
+      --font-head:'Syne',sans-serif;--font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+    .page{max-width:700px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+    .header{display:flex;align-items:center;gap:0.75rem;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    .header img{width:36px;height:36px;border-radius:50%;object-fit:contain}
+    .header h1{font-family:var(--font-head);font-size:1rem;font-weight:800}
+    .header h1 b{color:var(--accent)}
+    .header p{font-size:0.78rem;color:var(--text2)}
+
+    .center-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:1rem;padding:2rem}
+    .center-screen .icon{font-size:3rem}
+    .center-screen h2{font-family:var(--font-head);font-size:1.4rem;font-weight:800}
+    .center-screen p{font-size:0.9rem;color:var(--text2);max-width:400px}
+    .spinner{width:32px;height:32px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .contract-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem}
+    .contract-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+    .contract-title{font-family:var(--font-head);font-size:1.2rem;font-weight:800}
+    .contract-subtitle{font-size:0.82rem;color:var(--text2);margin-top:0.2rem}
+    .plan-badge{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:6px;background:rgba(255,214,0,0.1);color:var(--accent);border:1px solid rgba(255,214,0,0.2);white-space:nowrap}
+
+    .contract-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.5rem}
+    @media(max-width:480px){.contract-grid{grid-template-columns:1fr}}
+    .contract-field label{font-family:var(--font-mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);display:block;margin-bottom:0.25rem}
+    .contract-field .val{font-size:0.9rem;color:var(--text);font-weight:500}
+    .contract-field .val.big{font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--accent)}
+
+    .terms-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;max-height:280px;overflow-y:auto}
+    .terms-box h3{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:1rem}
+    .terms-item{margin-bottom:0.85rem}
+    .terms-item strong{color:var(--text);font-size:0.83rem}
+    .terms-item p{font-size:0.82rem;color:var(--text2);margin-top:0.15rem;line-height:1.65}
+
+    .sig-form{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:2rem}
+    .sig-form h2{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.25rem}
+    .sig-form .sub{font-size:0.82rem;color:var(--text2);margin-bottom:1.5rem}
+    .field{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.2rem}
+    .field label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
+    .field input{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;width:100%}
+    .field input:focus{border-color:rgba(255,214,0,0.4)}
+    .checkbox-row{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.5rem}
+    .checkbox-row input[type=checkbox]{width:18px;height:18px;margin-top:3px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+    .checkbox-row label{font-size:0.83rem;color:var(--text2);cursor:pointer;line-height:1.6}
+    .sign-btn{background:var(--accent);color:#000;border:none;border-radius:8px;padding:0.9rem 1.5rem;font-family:var(--font-body);font-size:0.95rem;font-weight:700;cursor:pointer;width:100%;transition:background 0.2s}
+    .sign-btn:hover{background:var(--accent2)}
+    .sign-btn:disabled{opacity:0.5;cursor:not-allowed}
+    .sig-error{font-family:var(--font-mono);font-size:0.75rem;color:var(--red);margin-top:0.75rem;display:none}
+
+    .legal-note{text-align:center;font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);margin-top:1.5rem;line-height:1.8}
+
+    .success-card{background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.2);border-radius:14px;padding:2rem;text-align:center}
+    .success-card .check{font-size:3rem;margin-bottom:0.75rem}
+    .success-card h2{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--green);margin-bottom:0.5rem}
+    .success-card p{font-size:0.88rem;color:var(--text2);margin-bottom:0.35rem}
+  </style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading-screen" class="page">
+  <div class="header">
+    <img src="enjoypineapple.jpeg" alt="">
+    <div><h1>Enjoy <b>Pineapple</b></h1><p>BORA App — Parceria</p></div>
+  </div>
+  <div class="center-screen">
+    <div class="spinner"></div>
+    <p>Carregando contrato...</p>
+  </div>
+</div>
+
+<!-- ERROR -->
+<div id="error-screen" style="display:none" class="page">
+  <div class="header">
+    <img src="enjoypineapple.jpeg" alt="">
+    <div><h1>Enjoy <b>Pineapple</b></h1><p>BORA App — Parceria</p></div>
+  </div>
+  <div class="center-screen">
+    <div class="icon">⚠️</div>
+    <h2>Link inválido</h2>
+    <p>Este link de assinatura não foi encontrado ou já expirou. Verifique se o link está correto ou entre em contato.</p>
+    <a href="mailto:pablo.2102@hotmail.com" style="color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;margin-top:0.5rem">pablo.2102@hotmail.com</a>
+  </div>
+</div>
+
+<!-- CONTRACT + FORM -->
+<div id="contract-screen" style="display:none" class="page">
+  <div class="header">
+    <img src="enjoypineapple.jpeg" alt="">
+    <div><h1>Enjoy <b>Pineapple</b></h1><p>BORA App — Contrato de Parceria</p></div>
+  </div>
+
+  <div class="contract-card">
+    <div class="contract-card-header">
+      <div>
+        <div class="contract-title" id="c-nome"></div>
+        <div class="contract-subtitle" id="c-empresa"></div>
+      </div>
+      <div class="plan-badge" id="c-plano"></div>
+    </div>
+    <div class="contract-grid">
+      <div class="contract-field">
+        <label>Valor mensal</label>
+        <div class="val big" id="c-valor"></div>
+      </div>
+      <div class="contract-field">
+        <label>Vigência</label>
+        <div class="val" id="c-vigencia"></div>
+      </div>
+      <div class="contract-field">
+        <label>CNAEs cobertos</label>
+        <div class="val" id="c-cnaes"></div>
+      </div>
+      <div class="contract-field">
+        <label>Renovação</label>
+        <div class="val" id="c-renovacao"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="terms-box">
+    <h3>Resumo das condições</h3>
+    <div class="terms-item">
+      <strong>Objeto</strong>
+      <p>Exibição do perfil do PARCEIRO no aplicativo BORA como profissional recomendado, nos CNAEs indicados acima.</p>
+    </div>
+    <div class="terms-item">
+      <strong>Exclusividade</strong>
+      <p>O PARCEIRO terá exclusividade de exibição nos CNAEs contratados por categoria profissional. Não há exclusividade geográfica (por cidade ou estado).</p>
+    </div>
+    <div class="terms-item">
+      <strong>Pagamento</strong>
+      <p>Mensalidade conforme plano escolhido, vencimento no dia 10 de cada mês. Atraso superior a 30 dias enseja suspensão e eventual rescisão.</p>
+    </div>
+    <div class="terms-item">
+      <strong>Vigência e rescisão</strong>
+      <p>12 meses com renovação automática. O PARCEIRO pode rescindir a qualquer momento com 30 dias de aviso, sem multa, desde que adimplente.</p>
+    </div>
+    <div class="terms-item">
+      <strong>LGPD</strong>
+      <p>Dados tratados conforme Lei 13.709/2018. Dados de usuários obtidos via app utilizáveis apenas para prestação do serviço consultado.</p>
+    </div>
+    <div class="terms-item">
+      <strong>Foro</strong>
+      <p>Comarca de Porto Alegre/RS.</p>
+    </div>
+  </div>
+
+  <div class="sig-form">
+    <h2>Assinatura eletrônica</h2>
+    <p class="sub">Confirme seus dados e assine digitalmente. Válido conforme MP 2.200-2/2001.</p>
+    <div class="field">
+      <label>Nome completo</label>
+      <input type="text" id="sig-nome" placeholder="Seu nome completo" autocomplete="name" />
+    </div>
+    <div class="field">
+      <label>CPF ou CNPJ</label>
+      <input type="text" id="sig-cpf" placeholder="000.000.000-00" autocomplete="off" />
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="sig-aceite" />
+      <label for="sig-aceite">Li e aceito todos os termos do Contrato de Parceria BORA, incluindo as condições de pagamento, exclusividade por CNAE, vigência e rescisão descritas acima.</label>
+    </div>
+    <button class="sign-btn" id="sign-btn" onclick="doSign()">Assinar Digitalmente</button>
+    <div class="sig-error" id="sig-error"></div>
+  </div>
+
+  <div class="legal-note">
+    Assinatura eletrônica com validade jurídica — MP 2.200-2/2001 · Art. 107 do Código Civil<br>
+    Enjoy Pineapple · CNPJ 23.904.939/0001-86 · Porto Alegre/RS
+  </div>
+</div>
+
+<!-- ALREADY SIGNED / SUCCESS -->
+<div id="signed-screen" style="display:none" class="page">
+  <div class="header">
+    <img src="enjoypineapple.jpeg" alt="">
+    <div><h1>Enjoy <b>Pineapple</b></h1><p>BORA App — Parceria</p></div>
+  </div>
+  <div class="success-card">
+    <div class="check">✅</div>
+    <h2>Contrato assinado!</h2>
+    <p id="signed-info"></p>
+    <p id="signed-date" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text3);margin-top:0.5rem"></p>
+  </div>
+  <div class="legal-note" style="margin-top:2rem">
+    Obrigado pela parceria! Em breve entraremos em contato para os próximos passos.<br>
+    Dúvidas: pablo.2102@hotmail.com
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL  = 'https://utlvupzpcxbvunfncheu.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bHZ1cHpwY3hidnVuZm5jaGV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NDAyMDUsImV4cCI6MjA5NjUxNjIwNX0.H3w3GRj8iASvYemv_PtSoHKu0GMZpvAIsnM8IJIpKDA';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const token = new URLSearchParams(window.location.search).get('token');
+
+const PLANO_LABELS = { essencial:'Plano Essencial', profissional:'Plano Profissional', premium:'Plano Premium' };
+
+function show(id) {
+  ['loading-screen','error-screen','contract-screen','signed-screen'].forEach(s => {
+    document.getElementById(s).style.display = s === id ? '' : 'none';
+  });
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('pt-BR');
+}
+
+async function loadContract() {
+  if (!token) { show('error-screen'); return; }
+  const { data, error } = await db.from('tb_contratos').select('*').eq('token', token).maybeSingle();
+  if (error || !data) { show('error-screen'); return; }
+
+  if (data.assinado_em || data.status === 'assinado') {
+    document.getElementById('signed-info').textContent =
+      `Contrato assinado por ${data.assinado_nome || data.nome}. Obrigado pela parceria!`;
+    document.getElementById('signed-date').textContent =
+      `Data: ${fmtDate(data.assinado_em)} · CPF/CNPJ: ${data.assinado_cpf || '—'}`;
+    show('signed-screen');
+    return;
+  }
+
+  document.getElementById('c-nome').textContent = data.nome;
+  document.getElementById('c-empresa').textContent = data.empresa || '';
+  document.getElementById('c-plano').textContent = PLANO_LABELS[data.plano] || data.plano;
+  document.getElementById('c-valor').textContent =
+    'R$ ' + Number(data.valor_mensal).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  document.getElementById('c-vigencia').textContent = `A partir de ${fmtDate(data.vigencia_inicio)}`;
+  document.getElementById('c-cnaes').textContent = (data.cnaes || []).join(', ') || '—';
+  document.getElementById('c-renovacao').textContent = data.renovacao_automatica ? 'Automática (12 meses)' : 'Manual';
+
+  if (data.nome) document.getElementById('sig-nome').value = data.nome;
+  show('contract-screen');
+}
+
+async function doSign() {
+  const nome   = document.getElementById('sig-nome').value.trim();
+  const cpf    = document.getElementById('sig-cpf').value.trim();
+  const aceite = document.getElementById('sig-aceite').checked;
+  const errEl  = document.getElementById('sig-error');
+  const btn    = document.getElementById('sign-btn');
+
+  errEl.style.display = 'none';
+  if (!nome)   { errEl.textContent = 'Informe seu nome completo.'; errEl.style.display='block'; return; }
+  if (!cpf)    { errEl.textContent = 'Informe seu CPF ou CNPJ.'; errEl.style.display='block'; return; }
+  if (!aceite) { errEl.textContent = 'Você precisa aceitar os termos para assinar.'; errEl.style.display='block'; return; }
+
+  btn.disabled = true; btn.textContent = 'Assinando...';
+
+  const { error } = await db.from('tb_contratos')
+    .update({
+      status: 'assinado',
+      assinado_em: new Date().toISOString(),
+      assinado_nome: nome,
+      assinado_cpf: cpf,
+    })
+    .eq('token', token)
+    .eq('status', 'pendente');
+
+  if (error) {
+    btn.disabled = false; btn.textContent = 'Assinar Digitalmente';
+    errEl.textContent = 'Erro ao registrar assinatura. Tente novamente.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  document.getElementById('signed-info').textContent = `Contrato assinado por ${nome}. Obrigado pela parceria!`;
+  document.getElementById('signed-date').textContent =
+    `Data: ${new Date().toLocaleDateString('pt-BR')} · CPF/CNPJ: ${cpf}`;
+  show('signed-screen');
+}
+
+loadContract();
+</script>
+</body>
+</html>
