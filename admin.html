@@ -96,6 +96,42 @@
     .page-btn:disabled{opacity:0.35;cursor:not-allowed}
 
     .loading{text-align:center;padding:3rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--text3)}
+
+    /* EXTRA BADGE COLORS */
+    .badge-blue{background:rgba(100,149,237,0.12);color:#6ea8fe;border:1px solid rgba(100,149,237,0.25)}
+    .badge-orange{background:rgba(255,160,0,0.12);color:#ffa040;border:1px solid rgba(255,160,0,0.25)}
+    .badge-gray{background:rgba(138,155,172,0.08);color:var(--text3);border:1px solid rgba(138,155,172,0.18)}
+
+    /* FILTER BAR */
+    .filter-bar{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;margin-bottom:1.25rem}
+    .filter-group{display:flex;gap:0.3rem;flex-wrap:wrap}
+    .filter-label{font-family:var(--font-mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);align-self:center}
+    .filter-btn{font-family:var(--font-mono);font-size:0.67rem;letter-spacing:0.04em;padding:0.28rem 0.7rem;border-radius:4px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all 0.15s}
+    .filter-btn:hover{color:var(--text);border-color:var(--border2)}
+    .filter-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,214,0,0.06)}
+
+    /* STATUS SELECT */
+    .status-wrap{display:inline-block;border-radius:4px;padding:0.18rem 0.45rem;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase}
+    .status-sel{appearance:none;-webkit-appearance:none;background:transparent;border:none;cursor:pointer;outline:none;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;padding:0;margin:0;width:100%}
+    .status-sel option{background:#1a2535;color:#f0f4f8;font-size:0.82rem;text-transform:none}
+
+    /* ADD PARCEIRO BTN */
+    .add-parceiro-btn{display:block;margin-top:0.3rem;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.04em;background:rgba(0,229,160,0.1);color:var(--green);border:1px solid rgba(0,229,160,0.3);border-radius:3px;padding:0.15rem 0.45rem;cursor:pointer;transition:background 0.15s;white-space:nowrap}
+    .add-parceiro-btn:hover{background:rgba(0,229,160,0.2)}
+
+    /* NOTES MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:300;display:flex;align-items:center;justify-content:center;padding:1rem}
+    .modal-box{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:1.75rem;width:100%;max-width:500px}
+    .modal-box h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.25rem}
+    .modal-sub{font-size:0.8rem;color:var(--text2);margin-bottom:1.25rem}
+    .modal-box textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.88rem;resize:vertical;min-height:120px;outline:none;line-height:1.6}
+    .modal-box textarea:focus{border-color:rgba(255,214,0,0.4)}
+    .modal-actions{display:flex;gap:0.75rem;margin-top:1.25rem;justify-content:flex-end}
+    .btn-cancel{background:var(--surface2);color:var(--text2);border:1px solid var(--border);border-radius:6px;padding:0.5rem 1.1rem;font-family:var(--font-body);font-size:0.85rem;cursor:pointer}
+    .btn-save{background:var(--accent);color:#000;border:none;border-radius:6px;padding:0.5rem 1.25rem;font-family:var(--font-body);font-size:0.85rem;font-weight:600;cursor:pointer}
+    .btn-cancel:hover{color:var(--text)}
+    .btn-save:hover{background:var(--accent2)}
+    .btn-save:disabled{opacity:0.5;cursor:not-allowed}
   </style>
 </head>
 <body>
@@ -176,6 +212,25 @@
     <!-- LEADS -->
     <div class="pane active" id="pane-leads">
       <div class="summary-row" id="leads-summary"></div>
+      <div class="filter-bar">
+        <span class="filter-label">Período</span>
+        <div class="filter-group" id="period-btns">
+          <button class="filter-btn active" onclick="setLeadPeriod('all',this)">Tudo</button>
+          <button class="filter-btn" onclick="setLeadPeriod('today',this)">Hoje</button>
+          <button class="filter-btn" onclick="setLeadPeriod('7d',this)">7 dias</button>
+          <button class="filter-btn" onclick="setLeadPeriod('30d',this)">30 dias</button>
+        </div>
+        <span class="filter-label">Status</span>
+        <div class="filter-group" id="status-btns">
+          <button class="filter-btn active" onclick="setLeadStatusFilter('all',this)">Todos</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('novo',this)">Novo</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('contato_realizado',this)">Contato</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('plano_enviado',this)">Plano</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('apresentacao_formal',this)">Apresentação</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('convertido',this)">Convertido</button>
+          <button class="filter-btn" onclick="setLeadStatusFilter('perdido',this)">Perdido</button>
+        </div>
+      </div>
       <div class="table-wrap">
         <div class="table-toolbar">
           <span class="table-title">Propostas de Parceria</span>
@@ -185,10 +240,10 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Data</th><th>Nome</th><th>Empresa</th><th>E-mail</th><th>WhatsApp</th><th>Tipo</th><th>Município</th><th>Mensagem</th>
+                <th>Data</th><th>Nome</th><th>Empresa</th><th>E-mail</th><th>WhatsApp</th><th>Tipo</th><th>Município</th><th>Status</th><th>Notas</th>
               </tr>
             </thead>
-            <tbody id="leads-body"><tr><td colspan="8" class="loading">Carregando...</td></tr></tbody>
+            <tbody id="leads-body"><tr><td colspan="9" class="loading">Carregando...</td></tr></tbody>
           </table>
         </div>
         <div class="pagination">
@@ -301,10 +356,27 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 const PAGE_SIZE = 25;
 const state = {
-  leads:       { data:[], filtered:[], page:0 },
+  leads:       { data:[], filtered:[], page:0, period:'all', statusFilter:'all' },
   parceiros:   { data:[], filtered:[], page:0 },
   consultas:   { data:[], filtered:[], page:0 },
   estatisticas:{ data:[], filtered:[], page:0 },
+};
+
+const STATUS_LABELS = {
+  novo:                'Novo',
+  contato_realizado:   'Contato feito',
+  plano_enviado:       'Plano enviado',
+  apresentacao_formal: 'Apresentação',
+  convertido:          'Convertido ✓',
+  perdido:             'Perdido',
+};
+const STATUS_BADGE = {
+  novo:                'badge-gray',
+  contato_realizado:   'badge-yellow',
+  plano_enviado:       'badge-orange',
+  apresentacao_formal: 'badge-blue',
+  convertido:          'badge-green',
+  perdido:             'badge-red',
 };
 
 // ── AUTH ────────────────────────────────────────────────────────────
@@ -412,14 +484,27 @@ async function loadAll() {
 }
 
 async function loadLeads() {
-  const { data } = await db.from('tb_parceiros_leads').select('*').order('criado_em', { ascending: false });
+  const { period } = state.leads;
+  let q = db.from('tb_parceiros_leads').select('*').order('criado_em', { ascending: false });
+  if (period === 'today') {
+    const s = new Date(); s.setHours(0,0,0,0);
+    q = q.gte('criado_em', s.toISOString());
+  } else if (period === '7d') {
+    const s = new Date(); s.setDate(s.getDate()-7);
+    q = q.gte('criado_em', s.toISOString());
+  } else if (period === '30d') {
+    const s = new Date(); s.setDate(s.getDate()-30);
+    q = q.gte('criado_em', s.toISOString());
+  }
+  const { data } = await q;
   state.leads.data = data || [];
-  state.leads.filtered = [...state.leads.data];
+  applyLeadFilters();
   document.getElementById('badge-leads').textContent = state.leads.data.length;
   renderSummary('leads', [
     { num: state.leads.data.length, label: 'Total de propostas' },
     { num: state.leads.data.filter(r => isToday(r.criado_em)).length, label: 'Hoje' },
-    { num: [...new Set(state.leads.data.map(r => r.tipo))].length, label: 'Tipos distintos' },
+    { num: state.leads.data.filter(r => (r.status||'novo') === 'convertido').length, label: 'Convertidos' },
+    { num: state.leads.data.filter(r => (r.status||'novo') === 'perdido').length, label: 'Perdidos' },
   ]);
   renderLeads();
 }
@@ -481,17 +566,34 @@ function renderLeads() {
   const { filtered, page } = state.leads;
   const rows = paginate(filtered, page);
   const body = document.getElementById('leads-body');
-  if (!rows.length) { body.innerHTML = `<tr><td colspan="8" class="empty-row">Nenhuma proposta encontrada.</td></tr>`; updatePagination('leads'); return; }
-  body.innerHTML = rows.map(r => `<tr>
-    <td>${fmtDate(r.criado_em)}</td>
-    <td style="color:var(--text);font-weight:500">${esc(r.nome)}</td>
-    <td>${esc(r.empresa)}</td>
-    <td><a href="mailto:${esc(r.email)}" style="color:var(--accent);text-decoration:none">${esc(r.email)}</a></td>
-    <td>${esc(r.telefone || '—')}</td>
-    <td><span class="badge badge-yellow">${esc(r.tipo)}</span></td>
-    <td>${esc(r.municipio)}</td>
-    <td title="${esc(r.mensagem || '')}">${r.mensagem ? esc(r.mensagem).substring(0,60)+(r.mensagem.length>60?'…':'') : '—'}</td>
-  </tr>`).join('');
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="9" class="empty-row">Nenhuma proposta encontrada.</td></tr>`; updatePagination('leads'); return; }
+  body.innerHTML = rows.map(r => {
+    const status = r.status || 'novo';
+    const badgeClass = STATUS_BADGE[status] || 'badge-gray';
+    const opts = Object.entries(STATUS_LABELS).map(([v,l]) =>
+      `<option value="${v}"${status===v?' selected':''}>${l}</option>`).join('');
+    const addBtn = status === 'convertido'
+      ? `<button class="add-parceiro-btn" onclick="addParceiro(${r.id})">+ Parceiros App</button>` : '';
+    const notasHtml = r.notas
+      ? esc(r.notas).substring(0,45)+(r.notas.length>45?'…':'')
+      : `<span style="color:var(--text3)">+ nota</span>`;
+    return `<tr>
+      <td>${fmtDate(r.criado_em)}</td>
+      <td style="color:var(--text);font-weight:500">${esc(r.nome)}</td>
+      <td>${esc(r.empresa)}</td>
+      <td><a href="mailto:${esc(r.email)}" style="color:var(--accent);text-decoration:none">${esc(r.email)}</a></td>
+      <td>${esc(r.telefone||'—')}</td>
+      <td><span class="badge badge-yellow">${esc(r.tipo)}</span></td>
+      <td>${esc(r.municipio)}</td>
+      <td style="min-width:140px;white-space:normal">
+        <div class="status-wrap ${badgeClass}">
+          <select class="status-sel" onchange="updateLeadStatus(${r.id},this.value)">${opts}</select>
+        </div>
+        ${addBtn}
+      </td>
+      <td style="cursor:pointer;min-width:110px;white-space:normal" onclick="openNotesModal(${r.id})">${notasHtml}</td>
+    </tr>`;
+  }).join('');
   updatePagination('leads');
 }
 
@@ -570,12 +672,96 @@ const renders = {
 };
 
 function filterTable(key) {
+  if (key === 'leads') { applyLeadFilters(); renderLeads(); return; }
   const q = document.getElementById(`${key}-search`).value.toLowerCase();
   state[key].filtered = state[key].data.filter(r =>
     Object.values(r).some(v => v && String(v).toLowerCase().includes(q))
   );
   state[key].page = 0;
   renders[key]();
+}
+
+function applyLeadFilters() {
+  const { data, statusFilter } = state.leads;
+  const q = document.getElementById('leads-search').value.toLowerCase();
+  state.leads.filtered = data.filter(r => {
+    const matchStatus = statusFilter === 'all' || (r.status||'novo') === statusFilter;
+    const matchSearch = !q || Object.values(r).some(v => v && String(v).toLowerCase().includes(q));
+    return matchStatus && matchSearch;
+  });
+  state.leads.page = 0;
+}
+
+function setLeadPeriod(period, btn) {
+  state.leads.period = period;
+  document.querySelectorAll('#period-btns .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadLeads();
+}
+
+function setLeadStatusFilter(status, btn) {
+  state.leads.statusFilter = status;
+  document.querySelectorAll('#status-btns .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyLeadFilters();
+  renderLeads();
+}
+
+async function updateLeadStatus(id, newStatus) {
+  const { error } = await db.from('tb_parceiros_leads').update({ status: newStatus }).eq('id', id);
+  if (!error) {
+    const lead = state.leads.data.find(r => r.id === id);
+    if (lead) lead.status = newStatus;
+    applyLeadFilters();
+    renderLeads();
+    renderSummary('leads', [
+      { num: state.leads.data.length, label: 'Total de propostas' },
+      { num: state.leads.data.filter(r => isToday(r.criado_em)).length, label: 'Hoje' },
+      { num: state.leads.data.filter(r => (r.status||'novo') === 'convertido').length, label: 'Convertidos' },
+      { num: state.leads.data.filter(r => (r.status||'novo') === 'perdido').length, label: 'Perdidos' },
+    ]);
+  } else {
+    alert('Erro ao atualizar status: ' + error.message);
+  }
+}
+
+function openNotesModal(id) {
+  const lead = state.leads.data.find(r => r.id === id);
+  if (!lead) return;
+  document.getElementById('notes-modal-title').textContent = lead.nome;
+  document.getElementById('notes-modal-sub').textContent = lead.empresa + (lead.email ? ' · ' + lead.email : '');
+  document.getElementById('notes-textarea').value = lead.notas || '';
+  document.getElementById('notes-modal').dataset.leadId = id;
+  document.getElementById('notes-modal').style.display = 'flex';
+}
+
+function closeNotesModal() {
+  document.getElementById('notes-modal').style.display = 'none';
+}
+
+async function saveNotes() {
+  const modal = document.getElementById('notes-modal');
+  const id = parseInt(modal.dataset.leadId);
+  const notas = document.getElementById('notes-textarea').value.trim();
+  const btn = document.getElementById('notes-save-btn');
+  btn.disabled = true; btn.textContent = 'Salvando...';
+  const { error } = await db.from('tb_parceiros_leads').update({ notas }).eq('id', id);
+  btn.disabled = false; btn.textContent = 'Salvar';
+  if (!error) {
+    const lead = state.leads.data.find(r => r.id === id);
+    if (lead) lead.notas = notas;
+    applyLeadFilters();
+    renderLeads();
+    closeNotesModal();
+  } else {
+    alert('Erro ao salvar nota: ' + error.message);
+  }
+}
+
+function addParceiro(id) {
+  const lead = state.leads.data.find(r => r.id === id);
+  if (!lead) return;
+  alert(`Parceiro convertido: ${lead.nome} — ${lead.empresa}\n\nAdicione manualmente na aba "Parceiros App" no Supabase Table Editor (tb_parceiros).`);
 }
 
 function switchTab(key) {
@@ -602,5 +788,19 @@ function esc(str) {
   return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
+
+<!-- NOTES MODAL -->
+<div class="modal-overlay" id="notes-modal" style="display:none">
+  <div class="modal-box">
+    <h3 id="notes-modal-title"></h3>
+    <p class="modal-sub" id="notes-modal-sub"></p>
+    <textarea id="notes-textarea" placeholder="Observações sobre este lead..."></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeNotesModal()">Cancelar</button>
+      <button class="btn-save" id="notes-save-btn" onclick="saveNotes()">Salvar</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
