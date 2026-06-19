@@ -293,7 +293,7 @@
         <div class="table-toolbar">
           <span class="table-title">Consultas Realizadas</span>
           <div style="display:flex;gap:8px;align-items:center">
-            <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">👁 Ocultar nomes</button>
+            <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">KickOff</button>
             <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
           </div>
         </div>
@@ -732,7 +732,7 @@ let usuarioOculto = true;
 function toggleUsuario() {
   usuarioOculto = !usuarioOculto;
   const btn = document.getElementById('btn-ocultar-usuario');
-  btn.textContent = usuarioOculto ? '👁 Ocultar nomes' : '👁 Mostrar nomes';
+  btn.textContent = usuarioOculto ? 'KickOff' : '👁 Ocultar nomes';
   renderConsultas();
 }
 
