@@ -586,7 +586,9 @@ async function loadConsultas() {
 }
 
 async function loadEstatisticas() {
-  const { data } = await db.from('tb_estatisticas_app').select('*').order('data', { ascending: false });
+  const { data } = await db.from('tb_estatisticas_app')
+    .select('*, tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
+    .order('data', { ascending: false });
   state.estatisticas.data = data || [];
   state.estatisticas.filtered = [...state.estatisticas.data];
   document.getElementById('badge-estatisticas').textContent = state.estatisticas.data.length;
@@ -730,8 +732,11 @@ function renderEstatisticas() {
   if (!rows.length) { body.innerHTML = `<tr><td colspan="6" class="empty-row">Nenhuma estatística encontrada.</td></tr>`; updatePagination('estatisticas'); return; }
   body.innerHTML = rows.map(r => `<tr>
     <td style="color:var(--text3)">#${r.id_estatistica}</td>
-    <td>${r.id_municipio || '—'}</td>
-    <td><span class="badge badge-yellow">${r.id_cnae || '—'}</span></td>
+    <td>${r.tb_municipios_brasil?.nome_municipio || r.id_municipio || '—'}</td>
+    <td>
+      <span class="badge badge-yellow">${r.tb_cgsim_base?.codigo_cnae || r.id_cnae || '—'}</span>
+      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.tb_cgsim_base?.descricao_oficial || ''}</span>
+    </td>
     <td style="color:var(--text3)">${r.data || '—'}</td>
     <td style="color:var(--text);font-weight:600">${(r.total_usuarios||0).toLocaleString('pt-BR')}</td>
     <td>${fmtDate(r.atualizado_em)}</td>
