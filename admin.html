@@ -572,8 +572,8 @@ async function loadParceiros() {
 }
 
 async function loadConsultas() {
-  const { data } = await db.from('tb_consultas')
-    .select('*, tb_usuarios(nome, perfil), tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
+  const { data } = await db.from('vw_consultas')
+    .select('*, tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
     .order('consultado_em', { ascending: false });
   state.consultas.data = data || [];
   state.consultas.filtered = [...state.consultas.data];
@@ -721,8 +721,9 @@ function renderConsultas() {
   body.innerHTML = rows.map(r => `<tr>
     <td style="color:var(--text3)">#${r.id_consulta}</td>
     <td>
-      <span style="color:var(--text);font-weight:500">${r.tb_usuarios?.nome || '—'}</span>
-      <span class="badge badge-yellow" style="display:inline-block;margin-left:6px;font-size:0.7rem">${perfilLabel[r.tb_usuarios?.perfil] || r.tb_usuarios?.perfil || '—'}</span>
+      <span style="color:var(--text);font-weight:500">${r.nome || '—'}</span>
+      <span class="badge badge-yellow" style="display:inline-block;margin-left:6px;font-size:0.7rem">${perfilLabel[r.perfil] || r.perfil || '—'}</span>
+      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.nome_ocupacao || r.secoes_cnae || ''}</span>
     </td>
     <td>
       <span class="badge badge-yellow">${r.tb_cgsim_base?.codigo_cnae || r.id_cnae || '—'}</span>
