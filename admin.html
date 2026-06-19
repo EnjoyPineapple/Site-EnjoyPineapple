@@ -292,7 +292,10 @@
       <div class="table-wrap">
         <div class="table-toolbar">
           <span class="table-title">Consultas Realizadas</span>
-          <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">👁 Ocultar nomes</button>
+            <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
+          </div>
         </div>
         <div style="overflow-x:auto">
           <table class="data-table">
@@ -725,18 +728,26 @@ function renderParceiros() {
   updatePagination('parceiros');
 }
 
+let usuarioOculto = false;
+function toggleUsuario() {
+  usuarioOculto = !usuarioOculto;
+  const btn = document.getElementById('btn-ocultar-usuario');
+  btn.textContent = usuarioOculto ? '👁 Mostrar nomes' : '👁 Ocultar nomes';
+  renderConsultas();
+}
+
 function renderConsultas() {
   const { filtered, page } = state.consultas;
   const rows = paginate(filtered, page);
   const body = document.getElementById('consultas-body');
   if (!rows.length) { body.innerHTML = `<tr><td colspan="5" class="empty-row">Nenhuma consulta encontrada.</td></tr>`; updatePagination('consultas'); return; }
   const perfilLabel = { empresario: 'Empresário', profissional: 'Profissional', cidadao: 'Cidadão', ambos: 'Emp. + Prof.' };
-  body.innerHTML = rows.map(r => `<tr>
+  body.innerHTML = rows.map((r, i) => `<tr>
     <td style="color:var(--text3)">#${r.id_consulta}</td>
     <td>
-      <span style="color:var(--text);font-weight:500">${r.nome || '—'}</span>
+      <span style="color:var(--text);font-weight:500">${usuarioOculto ? `Usuário ${i + 1}` : (r.nome || '—')}</span>
       <span class="badge badge-yellow" style="display:inline-block;margin-left:6px;font-size:0.7rem">${perfilLabel[r.perfil] || r.perfil || '—'}</span>
-      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.nome_ocupacao || r.secoes_cnae || ''}</span>
+      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${usuarioOculto ? '' : (r.nome_ocupacao || r.secoes_cnae || '')}</span>
     </td>
     <td>
       <span class="badge badge-yellow">${r.codigo_cnae || r.id_cnae || '—'}</span>
