@@ -572,7 +572,9 @@ async function loadParceiros() {
 }
 
 async function loadConsultas() {
-  const { data } = await db.from('tb_consultas').select('*').order('consultado_em', { ascending: false });
+  const { data } = await db.from('tb_consultas')
+    .select('*, tb_usuarios(nome, perfil), tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
+    .order('consultado_em', { ascending: false });
   state.consultas.data = data || [];
   state.consultas.filtered = [...state.consultas.data];
   document.getElementById('badge-consultas').textContent = state.consultas.data.length;
@@ -715,11 +717,18 @@ function renderConsultas() {
   const rows = paginate(filtered, page);
   const body = document.getElementById('consultas-body');
   if (!rows.length) { body.innerHTML = `<tr><td colspan="5" class="empty-row">Nenhuma consulta encontrada.</td></tr>`; updatePagination('consultas'); return; }
+  const perfilLabel = { empresario: 'Empresário', profissional: 'Profissional', cidadao: 'Cidadão', ambos: 'Emp. + Prof.' };
   body.innerHTML = rows.map(r => `<tr>
     <td style="color:var(--text3)">#${r.id_consulta}</td>
-    <td style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text2)">${r.id_usuario ? r.id_usuario.substring(0,12)+'…' : '—'}</td>
-    <td><span class="badge badge-yellow">${r.id_cnae || '—'}</span></td>
-    <td>${r.id_municipio || '—'}</td>
+    <td>
+      <span style="color:var(--text);font-weight:500">${r.tb_usuarios?.nome || '—'}</span>
+      <span class="badge badge-yellow" style="display:inline-block;margin-left:6px;font-size:0.7rem">${perfilLabel[r.tb_usuarios?.perfil] || r.tb_usuarios?.perfil || '—'}</span>
+    </td>
+    <td>
+      <span class="badge badge-yellow">${r.tb_cgsim_base?.codigo_cnae || r.id_cnae || '—'}</span>
+      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.tb_cgsim_base?.descricao_oficial || ''}</span>
+    </td>
+    <td>${r.tb_municipios_brasil?.nome_municipio || r.id_municipio || '—'}</td>
     <td>${fmtDate(r.consultado_em)}</td>
   </tr>`).join('');
   updatePagination('consultas');
