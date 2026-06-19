@@ -262,17 +262,17 @@
     <div class="pane" id="pane-parceiros">
       <div class="summary-row" id="parceiros-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
+        <div class="table-toolbar">
           <span class="table-title">Parceiros Cadastrados no App</span>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;align-items:center">
             <div id="parceiros-period-btns" style="display:flex;gap:4px">
               <button class="filter-btn active" onclick="setPeriod('parceiros','all',this)">Tudo</button>
               <button class="filter-btn" onclick="setPeriod('parceiros','today',this)">Hoje</button>
-              <button class="filter-btn" onclick="setPeriod('parceiros','7d',this)">7 dias</button>
-              <button class="filter-btn" onclick="setPeriod('parceiros','30d',this)">30 dias</button>
+              <button class="filter-btn" onclick="setPeriod('parceiros','7d',this)">7d</button>
+              <button class="filter-btn" onclick="setPeriod('parceiros','30d',this)">30d</button>
             </div>
-            <input type="date" id="parceiros-date-pick" onchange="setPeriod('parceiros','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
-            <input class="table-search" id="parceiros-search" placeholder="Buscar por nome..." oninput="filterTable('parceiros')" />
+            <input type="date" id="parceiros-date-pick" onchange="setPeriod('parceiros','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:0.75rem;width:130px" />
+            <input class="table-search" id="parceiros-search" placeholder="Buscar..." oninput="filterTable('parceiros')" style="width:150px" />
           </div>
         </div>
         <div style="overflow-x:auto">
@@ -299,19 +299,19 @@
     <div class="pane" id="pane-consultas">
       <div class="summary-row" id="consultas-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
+        <div class="table-toolbar">
           <span class="table-title">Consultas Realizadas</span>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;align-items:center">
             <div id="consultas-period-btns" style="display:flex;gap:4px">
               <button class="filter-btn active" onclick="setConsultasPeriod('all',this)">Tudo</button>
               <button class="filter-btn" onclick="setConsultasPeriod('today',this)">Hoje</button>
-              <button class="filter-btn" onclick="setConsultasPeriod('7d',this)">7 dias</button>
-              <button class="filter-btn" onclick="setConsultasPeriod('30d',this)">30 dias</button>
+              <button class="filter-btn" onclick="setConsultasPeriod('7d',this)">7d</button>
+              <button class="filter-btn" onclick="setConsultasPeriod('30d',this)">30d</button>
             </div>
-            <input type="date" id="consultas-date-pick" onchange="setConsultasPeriod('pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem;cursor:pointer" />
+            <input type="date" id="consultas-date-pick" onchange="setConsultasPeriod('pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:0.75rem;width:130px" />
             <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">KickOff</button>
-            <button onclick="exportCSV('consultas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
-            <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
+            <button onclick="exportCSV('consultas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ CSV</button>
+            <input class="table-search" id="consultas-search" placeholder="Buscar..." oninput="filterTable('consultas')" style="width:150px" />
           </div>
         </div>
         <div style="overflow-x:auto">
@@ -338,18 +338,18 @@
     <div class="pane" id="pane-estatisticas">
       <div class="summary-row" id="estat-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
+        <div class="table-toolbar">
           <span class="table-title">Estatísticas por CNAE e Município</span>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;align-items:center">
             <div id="estatisticas-period-btns" style="display:flex;gap:4px">
               <button class="filter-btn active" onclick="setPeriod('estatisticas','all',this)">Tudo</button>
               <button class="filter-btn" onclick="setPeriod('estatisticas','today',this)">Hoje</button>
-              <button class="filter-btn" onclick="setPeriod('estatisticas','7d',this)">7 dias</button>
-              <button class="filter-btn" onclick="setPeriod('estatisticas','30d',this)">30 dias</button>
+              <button class="filter-btn" onclick="setPeriod('estatisticas','7d',this)">7d</button>
+              <button class="filter-btn" onclick="setPeriod('estatisticas','30d',this)">30d</button>
             </div>
-            <input type="date" id="estatisticas-date-pick" onchange="setPeriod('estatisticas','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
-            <button onclick="exportCSV('estatisticas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
-            <input class="table-search" id="estatisticas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('estatisticas')" />
+            <input type="date" id="estatisticas-date-pick" onchange="setPeriod('estatisticas','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:0.75rem;width:130px" />
+            <button onclick="exportCSV('estatisticas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ CSV</button>
+            <input class="table-search" id="estatisticas-search" placeholder="Buscar..." oninput="filterTable('estatisticas')" style="width:150px" />
           </div>
         </div>
         <div style="overflow-x:auto">
@@ -379,17 +379,17 @@
         <button onclick="openContractModal()" style="background:var(--accent);color:#000;border:none;border-radius:6px;padding:0.5rem 1.25rem;font-family:var(--font-body);font-size:0.85rem;font-weight:600;cursor:pointer">+ Novo Contrato</button>
       </div>
       <div class="table-wrap">
-        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
+        <div class="table-toolbar">
           <span class="table-title">Contratos de Parceria</span>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;align-items:center">
             <div id="contratos-period-btns" style="display:flex;gap:4px">
               <button class="filter-btn active" onclick="setPeriod('contratos','all',this)">Tudo</button>
               <button class="filter-btn" onclick="setPeriod('contratos','today',this)">Hoje</button>
-              <button class="filter-btn" onclick="setPeriod('contratos','7d',this)">7 dias</button>
-              <button class="filter-btn" onclick="setPeriod('contratos','30d',this)">30 dias</button>
+              <button class="filter-btn" onclick="setPeriod('contratos','7d',this)">7d</button>
+              <button class="filter-btn" onclick="setPeriod('contratos','30d',this)">30d</button>
             </div>
-            <input type="date" id="contratos-date-pick" onchange="setPeriod('contratos','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
-            <input class="table-search" id="contratos-search" placeholder="Buscar por nome, empresa..." oninput="filterTable('contratos')" />
+            <input type="date" id="contratos-date-pick" onchange="setPeriod('contratos','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:0.75rem;width:130px" />
+            <input class="table-search" id="contratos-search" placeholder="Buscar..." oninput="filterTable('contratos')" style="width:150px" />
           </div>
         </div>
         <div style="overflow-x:auto">
