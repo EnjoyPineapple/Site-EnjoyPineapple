@@ -262,9 +262,18 @@
     <div class="pane" id="pane-parceiros">
       <div class="summary-row" id="parceiros-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar">
+        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
           <span class="table-title">Parceiros Cadastrados no App</span>
-          <input class="table-search" id="parceiros-search" placeholder="Buscar por nome..." oninput="filterTable('parceiros')" />
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <div id="parceiros-period-btns" style="display:flex;gap:4px">
+              <button class="filter-btn active" onclick="setPeriod('parceiros','all',this)">Tudo</button>
+              <button class="filter-btn" onclick="setPeriod('parceiros','today',this)">Hoje</button>
+              <button class="filter-btn" onclick="setPeriod('parceiros','7d',this)">7 dias</button>
+              <button class="filter-btn" onclick="setPeriod('parceiros','30d',this)">30 dias</button>
+            </div>
+            <input type="date" id="parceiros-date-pick" onchange="setPeriod('parceiros','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
+            <input class="table-search" id="parceiros-search" placeholder="Buscar por nome..." oninput="filterTable('parceiros')" />
+          </div>
         </div>
         <div style="overflow-x:auto">
           <table class="data-table">
@@ -329,9 +338,16 @@
     <div class="pane" id="pane-estatisticas">
       <div class="summary-row" id="estat-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar">
+        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
           <span class="table-title">Estatísticas por CNAE e Município</span>
-          <div style="display:flex;gap:8px;align-items:center">
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <div id="estatisticas-period-btns" style="display:flex;gap:4px">
+              <button class="filter-btn active" onclick="setPeriod('estatisticas','all',this)">Tudo</button>
+              <button class="filter-btn" onclick="setPeriod('estatisticas','today',this)">Hoje</button>
+              <button class="filter-btn" onclick="setPeriod('estatisticas','7d',this)">7 dias</button>
+              <button class="filter-btn" onclick="setPeriod('estatisticas','30d',this)">30 dias</button>
+            </div>
+            <input type="date" id="estatisticas-date-pick" onchange="setPeriod('estatisticas','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
             <button onclick="exportCSV('estatisticas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
             <input class="table-search" id="estatisticas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('estatisticas')" />
           </div>
@@ -363,9 +379,18 @@
         <button onclick="openContractModal()" style="background:var(--accent);color:#000;border:none;border-radius:6px;padding:0.5rem 1.25rem;font-family:var(--font-body);font-size:0.85rem;font-weight:600;cursor:pointer">+ Novo Contrato</button>
       </div>
       <div class="table-wrap">
-        <div class="table-toolbar">
+        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
           <span class="table-title">Contratos de Parceria</span>
-          <input class="table-search" id="contratos-search" placeholder="Buscar por nome, empresa..." oninput="filterTable('contratos')" />
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <div id="contratos-period-btns" style="display:flex;gap:4px">
+              <button class="filter-btn active" onclick="setPeriod('contratos','all',this)">Tudo</button>
+              <button class="filter-btn" onclick="setPeriod('contratos','today',this)">Hoje</button>
+              <button class="filter-btn" onclick="setPeriod('contratos','7d',this)">7 dias</button>
+              <button class="filter-btn" onclick="setPeriod('contratos','30d',this)">30 dias</button>
+            </div>
+            <input type="date" id="contratos-date-pick" onchange="setPeriod('contratos','pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem" />
+            <input class="table-search" id="contratos-search" placeholder="Buscar por nome, empresa..." oninput="filterTable('contratos')" />
+          </div>
         </div>
         <div style="overflow-x:auto">
           <table class="data-table">
@@ -740,37 +765,46 @@ function renderParceiros() {
 }
 
 let usuarioOculto = true;
-let consultasPeriod = 'all';
 
-function setConsultasPeriod(period, btn) {
-  consultasPeriod = period;
+const periodDateField = {
+  parceiros:   'criado_em',
+  consultas:   'consultado_em',
+  estatisticas:'data',
+  contratos:   'criado_em',
+};
+const periodState = { parceiros:'all', consultas:'all', estatisticas:'all', contratos:'all' };
+
+function setPeriod(key, period, btn) {
+  periodState[key] = period;
   if (btn) {
-    document.querySelectorAll('#consultas-period-btns .filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`#${key}-period-btns .filter-btn`).forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById('consultas-date-pick').value = '';
+    document.getElementById(`${key}-date-pick`).value = '';
   } else {
-    document.querySelectorAll('#consultas-period-btns .filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`#${key}-period-btns .filter-btn`).forEach(b => b.classList.remove('active'));
   }
-  filterTable('consultas');
+  filterTable(key);
 }
 
-function applyConsultasPeriod(data) {
-  const pick = document.getElementById('consultas-date-pick').value;
-  if (pick) {
-    return data.filter(r => r.consultado_em && r.consultado_em.startsWith(pick));
+function setConsultasPeriod(period, btn) { setPeriod('consultas', period, btn); }
+
+function applyPeriod(key, data) {
+  const field = periodDateField[key];
+  if (!field) return data;
+  const pick = document.getElementById(`${key}-date-pick`)?.value;
+  if (pick) return data.filter(r => r[field] && String(r[field]).startsWith(pick));
+  const period = periodState[key];
+  if (period === 'today') {
+    const today = new Date().toISOString().slice(0, 10);
+    return data.filter(r => r[field] && String(r[field]).startsWith(today));
   }
-  const now = new Date();
-  if (consultasPeriod === 'today') {
-    const today = now.toISOString().slice(0, 10);
-    return data.filter(r => r.consultado_em && r.consultado_em.startsWith(today));
+  if (period === '7d') {
+    const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+    return data.filter(r => r[field] && String(r[field]).slice(0, 10) >= cutoff);
   }
-  if (consultasPeriod === '7d') {
-    const cutoff = new Date(now - 7 * 864e5).toISOString();
-    return data.filter(r => r.consultado_em && r.consultado_em >= cutoff);
-  }
-  if (consultasPeriod === '30d') {
-    const cutoff = new Date(now - 30 * 864e5).toISOString();
-    return data.filter(r => r.consultado_em && r.consultado_em >= cutoff);
+  if (period === '30d') {
+    const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    return data.filter(r => r[field] && String(r[field]).slice(0, 10) >= cutoff);
   }
   return data;
 }
@@ -887,22 +921,18 @@ const renders = {
 
 function filterTable(key) {
   if (key === 'leads') { applyLeadFilters(); renderLeads(); return; }
-  const q = document.getElementById(`${key}-search`).value.toLowerCase();
+  const q = document.getElementById(`${key}-search`)?.value.toLowerCase() || '';
+  const byPeriod = applyPeriod(key, state[key].data);
   if (key === 'estatisticas') {
-    state.estatisticas.filtered = state.estatisticas.data.filter(r => {
+    state.estatisticas.filtered = byPeriod.filter(r => {
       const cnae = (r.tb_cgsim_base?.codigo_cnae || '') + ' ' + (r.tb_cgsim_base?.descricao_oficial || '');
       const municipio = r.tb_municipios_brasil?.nome_municipio || '';
-      return [cnae, municipio, r.data || ''].some(s => s.toLowerCase().includes(q));
+      return !q || [cnae, municipio, r.data || ''].some(s => s.toLowerCase().includes(q));
     });
-  } else if (key === 'consultas') {
-    const byPeriod = applyConsultasPeriod(state.consultas.data);
-    state.consultas.filtered = q
+  } else {
+    state[key].filtered = q
       ? byPeriod.filter(r => Object.values(r).some(v => v && typeof v !== 'object' && String(v).toLowerCase().includes(q)))
       : byPeriod;
-  } else {
-    state[key].filtered = state[key].data.filter(r =>
-      Object.values(r).some(v => v && typeof v !== 'object' && String(v).toLowerCase().includes(q))
-    );
   }
   state[key].page = 0;
   renders[key]();
