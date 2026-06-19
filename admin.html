@@ -573,7 +573,7 @@ async function loadParceiros() {
 
 async function loadConsultas() {
   const { data } = await db.from('vw_consultas')
-    .select('*, tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
+    .select('*')
     .order('consultado_em', { ascending: false });
   state.consultas.data = data || [];
   state.consultas.filtered = [...state.consultas.data];
@@ -726,10 +726,10 @@ function renderConsultas() {
       <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.nome_ocupacao || r.secoes_cnae || ''}</span>
     </td>
     <td>
-      <span class="badge badge-yellow">${r.tb_cgsim_base?.codigo_cnae || r.id_cnae || '—'}</span>
-      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.tb_cgsim_base?.descricao_oficial || ''}</span>
+      <span class="badge badge-yellow">${r.codigo_cnae || r.id_cnae || '—'}</span>
+      <span style="color:var(--text3);font-size:0.78rem;display:block;margin-top:2px">${r.descricao_oficial || ''}</span>
     </td>
-    <td>${r.tb_municipios_brasil?.nome_municipio || r.id_municipio || '—'}</td>
+    <td>${r.nome_municipio || r.id_municipio || '—'}</td>
     <td>${fmtDate(r.consultado_em)}</td>
   </tr>`).join('');
   updatePagination('consultas');
