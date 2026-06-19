@@ -191,6 +191,7 @@
       <span>Enjoy <b>Pineapple</b> · Admin</span>
     </a>
     <div class="admin-nav-right">
+      <span id="refresh-timer" style="font-size:0.78rem;color:#888;margin-right:12px;font-family:var(--font-mono)">↻ 30s</span>
       <span class="admin-user" id="admin-user-email"></span>
       <button class="logout-btn" onclick="doLogout()">Sair</button>
     </div>
@@ -475,10 +476,18 @@ function showAdmin(user) {
   document.getElementById('admin-screen').style.display = 'flex';
   document.getElementById('admin-user-email').textContent = user.email;
   loadAll();
+  let countdown = 30;
+  const timerEl = document.getElementById('refresh-timer');
   setInterval(() => {
-    loadConsultas();
-    loadEstatisticas();
-  }, 30000);
+    countdown--;
+    timerEl.textContent = `↻ ${countdown}s`;
+    if (countdown <= 0) {
+      countdown = 30;
+      timerEl.textContent = '↻ 30s';
+      loadConsultas();
+      loadEstatisticas();
+    }
+  }, 1000);
 }
 
 function showReset() {
