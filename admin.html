@@ -325,7 +325,7 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>ID</th><th>Município</th><th>CNAE</th><th>Total Consultas</th><th>Total Usuários</th><th>Atualizado em</th>
+                <th>ID</th><th>Município</th><th>CNAE</th><th>Data</th><th>Usuários únicos</th><th>Atualizado em</th>
               </tr>
             </thead>
             <tbody id="estatisticas-body"><tr><td colspan="6" class="loading">Carregando...</td></tr></tbody>
@@ -586,15 +586,14 @@ async function loadConsultas() {
 }
 
 async function loadEstatisticas() {
-  const { data } = await db.from('tb_estatisticas_app').select('*').order('total_consultas', { ascending: false });
+  const { data } = await db.from('tb_estatisticas_app').select('*').order('data', { ascending: false });
   state.estatisticas.data = data || [];
   state.estatisticas.filtered = [...state.estatisticas.data];
   document.getElementById('badge-estatisticas').textContent = state.estatisticas.data.length;
-  const totalConsultas = state.estatisticas.data.reduce((a, r) => a + (r.total_consultas || 0), 0);
-  const totalUsuarios  = state.estatisticas.data.reduce((a, r) => a + (r.total_usuarios  || 0), 0);
+  const totalVisualizacoes = state.estatisticas.data.reduce((a, r) => a + (r.total_usuarios || 0), 0);
   renderSummary('estat', [
-    { num: totalConsultas, label: 'Total de consultas' },
-    { num: totalUsuarios,  label: 'Total de usuários' },
+    { num: totalVisualizacoes, label: 'Total de visualizações' },
+    { num: [...new Set(state.estatisticas.data.map(r => r.id_cnae + '-' + r.id_municipio))].length, label: 'Total de usuários' },
     { num: [...new Set(state.estatisticas.data.map(r => r.id_municipio))].length, label: 'Municípios ativos' },
     { num: [...new Set(state.estatisticas.data.map(r => r.id_cnae))].length, label: 'CNAEs ativos' },
   ]);
@@ -733,8 +732,8 @@ function renderEstatisticas() {
     <td style="color:var(--text3)">#${r.id_estatistica}</td>
     <td>${r.id_municipio || '—'}</td>
     <td><span class="badge badge-yellow">${r.id_cnae || '—'}</span></td>
-    <td style="color:var(--text);font-weight:600">${(r.total_consultas||0).toLocaleString('pt-BR')}</td>
-    <td>${(r.total_usuarios||0).toLocaleString('pt-BR')}</td>
+    <td style="color:var(--text3)">${r.data || '—'}</td>
+    <td style="color:var(--text);font-weight:600">${(r.total_usuarios||0).toLocaleString('pt-BR')}</td>
     <td>${fmtDate(r.atualizado_em)}</td>
   </tr>`).join('');
   updatePagination('estatisticas');
