@@ -728,11 +728,11 @@ function renderParceiros() {
   updatePagination('parceiros');
 }
 
-let usuarioOculto = false;
+let usuarioOculto = true;
 function toggleUsuario() {
   usuarioOculto = !usuarioOculto;
   const btn = document.getElementById('btn-ocultar-usuario');
-  btn.textContent = usuarioOculto ? '👁 Mostrar nomes' : '👁 Ocultar nomes';
+  btn.textContent = usuarioOculto ? '👁 Ocultar nomes' : '👁 Mostrar nomes';
   renderConsultas();
 }
 
