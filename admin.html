@@ -294,6 +294,7 @@
           <span class="table-title">Consultas Realizadas</span>
           <div style="display:flex;gap:8px;align-items:center">
             <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">KickOff</button>
+            <button onclick="exportCSV('consultas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
             <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
           </div>
         </div>
@@ -323,7 +324,10 @@
       <div class="table-wrap">
         <div class="table-toolbar">
           <span class="table-title">Estatísticas por CNAE e Município</span>
-          <input class="table-search" id="estatisticas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('estatisticas')" />
+          <div style="display:flex;gap:8px;align-items:center">
+            <button onclick="exportCSV('estatisticas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
+            <input class="table-search" id="estatisticas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('estatisticas')" />
+          </div>
         </div>
         <div style="overflow-x:auto">
           <table class="data-table">
@@ -794,6 +798,42 @@ function updatePagination(key) {
 function changePage(key, dir) {
   state[key].page += dir;
   renders[key]();
+}
+
+function exportCSV(key) {
+  const perfilLabel = { empresario: 'Empresário', profissional: 'Profissional', cidadao: 'Cidadão', ambos: 'Emp. + Prof.' };
+  let headers, rows;
+  if (key === 'consultas') {
+    headers = ['ID', 'Nome', 'Perfil', 'Ocupacao', 'CNAE', 'Descricao CNAE', 'Municipio', 'Data'];
+    rows = state.consultas.data.map(r => [
+      r.id_consulta,
+      r.nome || '',
+      perfilLabel[r.perfil] || r.perfil || '',
+      r.nome_ocupacao || '',
+      r.codigo_cnae || r.id_cnae || '',
+      r.descricao_oficial || '',
+      r.nome_municipio || '',
+      r.consultado_em ? new Date(r.consultado_em).toLocaleString('pt-BR') : '',
+    ]);
+  } else {
+    headers = ['ID', 'Municipio', 'CNAE', 'Descricao CNAE', 'Data', 'Usuarios Unicos'];
+    rows = state.estatisticas.data.map(r => [
+      r.id_estatistica,
+      r.tb_municipios_brasil?.nome_municipio || r.id_municipio || '',
+      r.tb_cgsim_base?.codigo_cnae || r.id_cnae || '',
+      r.tb_cgsim_base?.descricao_oficial || '',
+      r.data || '',
+      r.total_usuarios || 0,
+    ]);
+  }
+  const csv = [headers, ...rows].map(row => row.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `bora_${key}_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 const renders = {
