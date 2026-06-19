@@ -807,9 +807,17 @@ const renders = {
 function filterTable(key) {
   if (key === 'leads') { applyLeadFilters(); renderLeads(); return; }
   const q = document.getElementById(`${key}-search`).value.toLowerCase();
-  state[key].filtered = state[key].data.filter(r =>
-    Object.values(r).some(v => v && String(v).toLowerCase().includes(q))
-  );
+  if (key === 'estatisticas') {
+    state.estatisticas.filtered = state.estatisticas.data.filter(r => {
+      const cnae = (r.tb_cgsim_base?.codigo_cnae || '') + ' ' + (r.tb_cgsim_base?.descricao_oficial || '');
+      const municipio = r.tb_municipios_brasil?.nome_municipio || '';
+      return [cnae, municipio, r.data || ''].some(s => s.toLowerCase().includes(q));
+    });
+  } else {
+    state[key].filtered = state[key].data.filter(r =>
+      Object.values(r).some(v => v && typeof v !== 'object' && String(v).toLowerCase().includes(q))
+    );
+  }
   state[key].page = 0;
   renders[key]();
 }
