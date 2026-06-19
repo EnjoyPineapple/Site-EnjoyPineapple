@@ -325,7 +325,7 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>ID</th><th>Município</th><th>CNAE</th><th>Data</th><th>Usuários únicos</th><th>Atualizado em</th>
+                <th>ID</th><th>Município</th><th>CNAE</th><th>Data</th><th>Usuários únicos</th>
               </tr>
             </thead>
             <tbody id="estatisticas-body"><tr><td colspan="6" class="loading">Carregando...</td></tr></tbody>
@@ -729,7 +729,7 @@ function renderEstatisticas() {
   const { filtered, page } = state.estatisticas;
   const rows = paginate(filtered, page);
   const body = document.getElementById('estatisticas-body');
-  if (!rows.length) { body.innerHTML = `<tr><td colspan="6" class="empty-row">Nenhuma estatística encontrada.</td></tr>`; updatePagination('estatisticas'); return; }
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="5" class="empty-row">Nenhuma estatística encontrada.</td></tr>`; updatePagination('estatisticas'); return; }
   body.innerHTML = rows.map(r => `<tr>
     <td style="color:var(--text3)">#${r.id_estatistica}</td>
     <td>${r.tb_municipios_brasil?.nome_municipio || r.id_municipio || '—'}</td>
@@ -739,7 +739,6 @@ function renderEstatisticas() {
     </td>
     <td style="color:var(--text3)">${r.data || '—'}</td>
     <td style="color:var(--text);font-weight:600">${(r.total_usuarios||0).toLocaleString('pt-BR')}</td>
-    <td>${fmtDate(r.atualizado_em)}</td>
   </tr>`).join('');
   updatePagination('estatisticas');
 }
