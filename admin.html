@@ -290,9 +290,16 @@
     <div class="pane" id="pane-consultas">
       <div class="summary-row" id="consultas-summary"></div>
       <div class="table-wrap">
-        <div class="table-toolbar">
+        <div class="table-toolbar" style="flex-wrap:wrap;gap:8px">
           <span class="table-title">Consultas Realizadas</span>
-          <div style="display:flex;gap:8px;align-items:center">
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <div id="consultas-period-btns" style="display:flex;gap:4px">
+              <button class="filter-btn active" onclick="setConsultasPeriod('all',this)">Tudo</button>
+              <button class="filter-btn" onclick="setConsultasPeriod('today',this)">Hoje</button>
+              <button class="filter-btn" onclick="setConsultasPeriod('7d',this)">7 dias</button>
+              <button class="filter-btn" onclick="setConsultasPeriod('30d',this)">30 dias</button>
+            </div>
+            <input type="date" id="consultas-date-pick" onchange="setConsultasPeriod('pick',null)" style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:0.78rem;cursor:pointer" />
             <button id="btn-ocultar-usuario" onclick="toggleUsuario()" class="page-btn" style="font-size:0.75rem;padding:4px 10px">KickOff</button>
             <button onclick="exportCSV('consultas')" class="page-btn" style="font-size:0.75rem;padding:4px 10px">⬇ Exportar CSV</button>
             <input class="table-search" id="consultas-search" placeholder="Buscar por CNAE, município..." oninput="filterTable('consultas')" />
@@ -733,6 +740,40 @@ function renderParceiros() {
 }
 
 let usuarioOculto = true;
+let consultasPeriod = 'all';
+
+function setConsultasPeriod(period, btn) {
+  consultasPeriod = period;
+  if (btn) {
+    document.querySelectorAll('#consultas-period-btns .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('consultas-date-pick').value = '';
+  } else {
+    document.querySelectorAll('#consultas-period-btns .filter-btn').forEach(b => b.classList.remove('active'));
+  }
+  filterTable('consultas');
+}
+
+function applyConsultasPeriod(data) {
+  const pick = document.getElementById('consultas-date-pick').value;
+  if (pick) {
+    return data.filter(r => r.consultado_em && r.consultado_em.startsWith(pick));
+  }
+  const now = new Date();
+  if (consultasPeriod === 'today') {
+    const today = now.toISOString().slice(0, 10);
+    return data.filter(r => r.consultado_em && r.consultado_em.startsWith(today));
+  }
+  if (consultasPeriod === '7d') {
+    const cutoff = new Date(now - 7 * 864e5).toISOString();
+    return data.filter(r => r.consultado_em && r.consultado_em >= cutoff);
+  }
+  if (consultasPeriod === '30d') {
+    const cutoff = new Date(now - 30 * 864e5).toISOString();
+    return data.filter(r => r.consultado_em && r.consultado_em >= cutoff);
+  }
+  return data;
+}
 function toggleUsuario() {
   usuarioOculto = !usuarioOculto;
   const btn = document.getElementById('btn-ocultar-usuario');
@@ -853,6 +894,11 @@ function filterTable(key) {
       const municipio = r.tb_municipios_brasil?.nome_municipio || '';
       return [cnae, municipio, r.data || ''].some(s => s.toLowerCase().includes(q));
     });
+  } else if (key === 'consultas') {
+    const byPeriod = applyConsultasPeriod(state.consultas.data);
+    state.consultas.filtered = q
+      ? byPeriod.filter(r => Object.values(r).some(v => v && typeof v !== 'object' && String(v).toLowerCase().includes(q)))
+      : byPeriod;
   } else {
     state[key].filtered = state[key].data.filter(r =>
       Object.values(r).some(v => v && typeof v !== 'object' && String(v).toLowerCase().includes(q))
