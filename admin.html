@@ -788,23 +788,30 @@ function setPeriod(key, period, btn) {
 
 function setConsultasPeriod(period, btn) { setPeriod('consultas', period, btn); }
 
+function localDateStr(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.getFullYear() + '-' +
+    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+    String(d.getDate()).padStart(2, '0');
+}
+
 function applyPeriod(key, data) {
   const field = periodDateField[key];
   if (!field) return data;
   const pick = document.getElementById(`${key}-date-pick`)?.value;
-  if (pick) return data.filter(r => r[field] && String(r[field]).startsWith(pick));
+  if (pick) return data.filter(r => localDateStr(r[field]) === pick);
   const period = periodState[key];
   if (period === 'today') {
-    const today = new Date().toISOString().slice(0, 10);
-    return data.filter(r => r[field] && String(r[field]).startsWith(today));
+    return data.filter(r => isToday(r[field]));
   }
   if (period === '7d') {
-    const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
-    return data.filter(r => r[field] && String(r[field]).slice(0, 10) >= cutoff);
+    const cutoff = new Date(Date.now() - 7 * 864e5);
+    return data.filter(r => r[field] && new Date(r[field]) >= cutoff);
   }
   if (period === '30d') {
-    const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-    return data.filter(r => r[field] && String(r[field]).slice(0, 10) >= cutoff);
+    const cutoff = new Date(Date.now() - 30 * 864e5);
+    return data.filter(r => r[field] && new Date(r[field]) >= cutoff);
   }
   return data;
 }
