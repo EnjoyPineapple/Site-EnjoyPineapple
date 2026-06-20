@@ -628,7 +628,6 @@ async function loadConsultas() {
     .select('*')
     .order('consultado_em', { ascending: false });
   state.consultas.data = data || [];
-  state.consultas.filtered = [...state.consultas.data];
   document.getElementById('badge-consultas').textContent = state.consultas.data.length;
   renderSummary('consultas', [
     { num: state.consultas.data.length, label: 'Total de consultas' },
@@ -636,7 +635,7 @@ async function loadConsultas() {
     { num: [...new Set(state.consultas.data.map(r => r.id_usuario))].length, label: 'Usuários únicos' },
     { num: [...new Set(state.consultas.data.map(r => r.id_cnae))].length, label: 'CNAEs consultados' },
   ]);
-  renderConsultas();
+  filterTable('consultas');
 }
 
 async function loadEstatisticas() {
@@ -644,7 +643,6 @@ async function loadEstatisticas() {
     .select('*, tb_cgsim_base(codigo_cnae, descricao_oficial), tb_municipios_brasil(nome_municipio)')
     .order('data', { ascending: false });
   state.estatisticas.data = data || [];
-  state.estatisticas.filtered = [...state.estatisticas.data];
   document.getElementById('badge-estatisticas').textContent = state.estatisticas.data.length;
   const totalVisualizacoes = state.estatisticas.data.reduce((a, r) => a + (r.total_usuarios || 0), 0);
   renderSummary('estat', [
@@ -653,7 +651,7 @@ async function loadEstatisticas() {
     { num: [...new Set(state.estatisticas.data.map(r => r.id_municipio))].length, label: 'Municípios ativos' },
     { num: [...new Set(state.estatisticas.data.map(r => r.id_cnae))].length, label: 'CNAEs ativos' },
   ]);
-  renderEstatisticas();
+  filterTable('estatisticas');
 }
 
 async function loadContratos() {
