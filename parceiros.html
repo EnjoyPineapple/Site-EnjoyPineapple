@@ -119,6 +119,26 @@
     .form-note{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);line-height:1.5}
     #form-msg{font-family:var(--font-mono);font-size:0.8rem;margin-top:1rem;display:none}
 
+    /* PLANO CONTADOR */
+    .contador{background:var(--bg2)}
+    .contador-grid{display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:start;margin-top:3rem}
+    .contador-features{display:flex;flex-direction:column;gap:1.1rem}
+    .cf-item{display:flex;gap:1rem;align-items:flex-start}
+    .cf-check{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .cf-check svg{width:13px;height:13px;stroke:#000;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .cf-item h4{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.2rem;color:#fff}
+    .cf-item p{font-size:0.85rem;color:var(--text2);line-height:1.6}
+    .contador-cta{background:var(--surface);border:1px solid rgba(255,214,0,0.25);border-radius:16px;padding:2.5rem;position:sticky;top:100px}
+    .trial-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);padding:0.35rem 1rem;border-radius:100px;font-family:var(--font-mono);font-size:0.7rem;font-weight:500;color:#000;letter-spacing:0.12em;margin-bottom:1.25rem}
+    .trial-badge::before{content:'';width:6px;height:6px;background:#000;border-radius:50%;opacity:0.5}
+    .contador-cta h3{font-family:var(--font-display);font-size:2rem;color:#fff;line-height:1.05;margin-bottom:1rem}
+    .contador-cta h3 em{font-style:normal;color:var(--accent)}
+    .contador-cta p{font-size:0.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.75rem}
+    .btn-contador{display:block;background:var(--accent);color:#000;padding:1rem 1.5rem;border-radius:8px;font-family:var(--font-body);font-size:0.95rem;font-weight:700;text-decoration:none;text-align:center;transition:background 0.2s,transform 0.15s;margin-bottom:1rem}
+    .btn-contador:hover{background:var(--accent2);transform:translateY(-2px)}
+    .cta-email{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);text-align:center;display:block}
+    @media(max-width:900px){.contador-grid{grid-template-columns:1fr}.contador-cta{position:static}}
+
     /* FOOTER */
     footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
     .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
@@ -303,6 +323,52 @@
 
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- PLANO CONTADOR -->
+<section class="contador" id="contadores">
+  <div class="section-inner">
+    <div class="section-label">// plano contador</div>
+    <h2>BORA<br><em>CONTADOR.</em></h2>
+    <p class="section-lead">A ferramenta que transforma a orientação de clientes em diferencial competitivo da sua contabilidade.</p>
+
+    <div class="contador-grid">
+      <div class="contador-features">
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Lista de clientes centralizada</h4><p>Organize todos os seus clientes com CNAE e município em um só lugar, sem planilhas.</p></div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Classificação de risco federal por CNAE</h4><p>Saiba de imediato se cada atividade é baixo, médio ou alto risco — antes mesmo de iniciar o processo.</p></div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Requisitos de alvará por município</h4><p>Identifique se a atividade do cliente exige alvará de funcionamento no município de atuação.</p></div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Licenças sanitárias e ambientais</h4><p>Verifique se há exigências de vigilância sanitária ou licença ambiental antes de abrir o CNPJ.</p></div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Legislação vigente por atividade</h4><p>Acesse as normas federais aplicáveis ao CNAE do cliente com um clique.</p></div>
+        </div>
+        <div class="cf-item">
+          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h4>Cobertura nacional — todo o Brasil</h4><p>Dados de municípios de todos os estados, atualizados e em constante expansão.</p></div>
+        </div>
+      </div>
+
+      <div class="contador-cta">
+        <div class="trial-badge">30 DIAS GRÁTIS</div>
+        <h3>TESTE SEM<br><em>COMPROMISSO.</em></h3>
+        <p>Ative o modo Contador no seu perfil e explore todas as funcionalidades durante 30 dias. Após o período, escolha o plano ideal para a sua contabilidade.</p>
+        <a href="mailto:parceiros@enjoypineapple.com.br?subject=Plano Contador BORA" class="btn-contador">Consultar planos →</a>
+        <span class="cta-email">parceiros@enjoypineapple.com.br</span>
+      </div>
     </div>
   </div>
 </section>
