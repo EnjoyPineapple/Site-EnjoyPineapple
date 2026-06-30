@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divide Aí — Em Breve · Enjoy Pineapple</title>
+<meta name="description" content="Divide Aí — o app de divisão de despesas entre amigos da Enjoy Pineapple. Em breve.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --accent:#00e5a0;--accent2:#00c88c;--accent-dim:rgba(0,229,160,0.08);
+  --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+  --ep:#FFD600;
+  --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+  --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
+.ep-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1}
+.ep-sym{height:1.2em;width:auto;fill:currentColor;color:var(--text);vertical-align:-0.1em}
+.ep-pine{font-family:var(--font-head);font-size:1.1rem;font-weight:400;letter-spacing:0.04em;color:var(--text2);margin-left:0.45em}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--text2);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
+nav a:hover{color:var(--text)}
+
+/* HERO */
+.hero{flex:1;display:flex;align-items:center;justify-content:center;padding:10rem 3rem 6rem;position:relative;overflow:hidden;text-align:center}
+.hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(0,229,160,0.06) 0%,transparent 65%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,160,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.015) 1px,transparent 1px);background-size:60px 60px}
+.hero-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+
+.coming-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.3);padding:0.4rem 1rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem}
+.coming-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.app-icon{width:96px;height:96px;background:var(--surface2);border:1px solid var(--border2);border-radius:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:2.5rem}
+
+h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,6rem);font-weight:400;letter-spacing:0.03em;line-height:0.95;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+
+.tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.5rem}
+
+.hero-desc{font-size:1.05rem;color:var(--text2);line-height:1.75;margin-bottom:3rem;font-weight:300}
+
+/* FEATURES */
+.features{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.feature-pill{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.6rem 1.1rem;font-size:0.82rem;color:var(--text2);display:flex;align-items:center;gap:0.5rem}
+.feature-pill span{font-size:1rem}
+
+/* FORM */
+.waitlist-form{max-width:420px;margin:0 auto}
+.form-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;display:block;margin-bottom:0.5rem;text-align:left}
+.form-row{display:flex;gap:0.6rem}
+.form-input{flex:1;background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:0.85rem 1rem;font-family:var(--font-body);font-size:0.9rem;color:var(--text);outline:none;transition:border-color 0.2s}
+.form-input::placeholder{color:var(--text3)}
+.form-input:focus{border-color:var(--accent)}
+.form-btn{background:var(--accent);color:#000;border:none;border-radius:8px;padding:0.85rem 1.5rem;font-family:var(--font-body);font-size:0.88rem;font-weight:700;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap}
+.form-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+.form-btn:disabled{opacity:0.5;cursor:default;transform:none}
+.form-note{font-size:0.72rem;color:var(--text3);margin-top:0.75rem;font-family:var(--font-mono)}
+.form-msg{font-size:0.82rem;font-family:var(--font-mono);margin-top:0.75rem;display:none}
+.form-msg.ok{color:var(--accent)}
+.form-msg.err{color:#ff5f5f}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 3rem;text-align:center}
+.footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
+.footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
+.footer-text a:hover{color:var(--ep)}
+
+@media(max-width:700px){
+  nav{padding:1rem 1.5rem}nav ul{display:none}
+  .hero{padding:8rem 1.5rem 4rem}
+  .form-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="ep-wordmark">
+      <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+    </div>
+  </a>
+  <ul>
+    <li><a href="index.html">Enjoy Pineapple</a></li>
+    <li><a href="bora.html">BORA</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="coming-badge"><span class="coming-dot"></span>Em desenvolvimento</div>
+    <div class="app-icon">÷</div>
+    <h1>DIVIDE<br><em>AÍ</em></h1>
+    <p class="tagline">Divisão de despesas entre amigos</p>
+    <p class="hero-desc">Divida contas, viagens e despesas com amigos sem complicação. Sem cadastro de cartão, sem taxas, sem drama.</p>
+
+    <div class="features">
+      <div class="feature-pill"><span>👥</span> Grupos de amigos</div>
+      <div class="feature-pill"><span>🧾</span> Divisão por item</div>
+      <div class="feature-pill"><span>📊</span> Quem deve pra quem</div>
+      <div class="feature-pill"><span>📱</span> Android &amp; iOS</div>
+    </div>
+
+    <div class="waitlist-form">
+      <label class="form-label" for="da-email">Avise-me quando lançar</label>
+      <div class="form-row">
+        <input class="form-input" type="email" id="da-email" placeholder="seu@email.com" autocomplete="email">
+        <button class="form-btn" onclick="entrarLista(this)">Avisar</button>
+      </div>
+      <p class="form-note">Sem spam. Só avisamos no lançamento.</p>
+      <p id="da-msg" class="form-msg"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-text">
+    Um produto <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp;
+    <a href="bora.html">BORA</a> &nbsp;·&nbsp;
+    <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
+    © 2026
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+async function entrarLista(btn) {
+  const email = document.getElementById('da-email').value.trim();
+  const msg = document.getElementById('da-msg');
+  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showMsg('Informe um e-mail válido.','err'); return; }
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    const { error } = await db.from('tb_waitlist').insert({ email, perfil: 'divide-ai' });
+    if (error && error.code === '23505') { showMsg('E-mail já cadastrado. Te avisamos no lançamento!','ok'); }
+    else if (error) throw error;
+    else { showMsg('Cadastrado! Te avisamos assim que lançar.','ok'); btn.textContent = '✓'; btn.style.background='#00c88c'; }
+  } catch { showMsg('Erro ao cadastrar. Tente novamente.','err'); btn.disabled=false; btn.textContent='Avisar'; }
+}
+function showMsg(text,tipo){ const el=document.getElementById('da-msg'); el.textContent=text; el.className='form-msg '+tipo; el.style.display='block'; }
+</script>
+</body>
+</html>

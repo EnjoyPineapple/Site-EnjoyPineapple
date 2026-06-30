@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BORA — Classificação de Risco de Atividades Econômicas</title>
+<meta name="description" content="O BORA organiza informações legais de atividades econômicas por CNAE e município. Risco federal, legislação vigente, licenças e parceiros — tudo em um só lugar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090c;--bg2:#0c1017;--bg3:#101620;--surface:#141d28;--surface2:#1a2535;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --accent:#FFD600;--accent2:#e6bf00;--accent-dim:rgba(255,214,0,0.08);--accent-glow:rgba(255,214,0,0.18);
+  --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+  --green:#00e5a0;--red:#ff5f5f;--blue:#3b9eff;
+  --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+  --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
+.ep-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1}
+.ep-sym{height:1.2em;width:auto;fill:currentColor;color:var(--text);vertical-align:-0.1em}
+.ep-pine{font-family:var(--font-head);font-size:1.1rem;font-weight:400;letter-spacing:0.04em;color:var(--text2);margin-left:0.45em}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;transition:color 0.2s}
+nav a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#000!important;padding:0.5rem 1.2rem;border-radius:6px;font-weight:600!important;transition:background 0.2s,transform 0.15s!important}
+.nav-cta:hover{background:var(--accent2)!important;transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,214,0,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.025) 1px,transparent 1px);background-size:60px 60px}
+.sector-carousel{position:absolute;inset:0;z-index:0;overflow:hidden}
+.sector-track{position:relative;height:100%}
+.sector-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.sector-slide.active{opacity:1;pointer-events:auto}
+.sector-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.sector-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(7,9,12,0.97) 0%,rgba(7,9,12,0.92) 38%,rgba(7,9,12,0.6) 60%,rgba(7,9,12,0.15) 100%)}
+.sector-label{position:absolute;bottom:2rem;right:3rem;z-index:2;font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:-0.01em;text-shadow:0 2px 12px rgba(0,0,0,0.6);opacity:0.9}
+.sector-dots{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+.sector-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:background 0.3s,width 0.3s;border:none;padding:0}
+.sector-dot.active{width:24px;border-radius:4px;background:var(--accent)}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.bora-hero-icon{width:72px;height:72px;border-radius:18px;margin-bottom:1.5rem;display:block}
+h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:520px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
+.store-badges{display:flex;gap:0.75rem;flex-wrap:wrap}
+.store-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 1rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
+.store-badge:hover{border-color:var(--accent);transform:translateY(-2px)}
+.store-badge svg{flex-shrink:0;opacity:0.85}
+.store-badge-text{display:flex;flex-direction:column}
+.store-badge-text .small{font-size:0.62rem;color:var(--text3);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em}
+.store-badge-text .big{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.1}
+.store-badge.coming{opacity:0.45;pointer-events:none}
+
+/* ── SECTIONS ── */
+section{padding:6rem 3rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1rem}
+h2 em{font-style:normal;color:var(--accent)}
+.section-lead{font-size:1rem;color:var(--text2);max-width:580px;line-height:1.75;font-weight:300}
+.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+
+/* ── O QUE É / NÃO É ── */
+.produto{background:var(--bg2)}
+.produto-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
+.produto-col p{font-size:0.95rem;color:var(--text2);line-height:1.75;margin-bottom:1rem;font-weight:300}
+.produto-col strong{color:var(--text)}
+.nao-list{list-style:none;padding:0;margin-top:0.75rem}
+.nao-list li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.88rem;color:var(--text2);padding:0.5rem 0;border-bottom:1px solid var(--border)}
+.nao-list li:last-child{border-bottom:none}
+.nao-list li::before{content:'✕';color:var(--red);font-size:0.75rem;flex-shrink:0;margin-top:0.15rem}
+.sim-list{list-style:none;padding:0;margin-top:0.75rem}
+.sim-list li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.88rem;color:var(--text2);padding:0.5rem 0;border-bottom:1px solid var(--border)}
+.sim-list li:last-child{border-bottom:none}
+.sim-list li::before{content:'✓';color:var(--green);font-size:0.75rem;flex-shrink:0;margin-top:0.15rem}
+.col-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
+.col-label.green{color:var(--green)}
+.col-label.red{color:var(--red)}
+
+/* ── SCREENS ── */
+.screens{background:var(--bg)}
+.screens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;align-items:end;margin-top:3.5rem}
+.screen-item{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
+.screen-frame{width:100%;max-width:220px;border-radius:28px;border:2px solid #333;box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);overflow:hidden;background:#0a0a0a}
+.screen-frame img{width:100%;height:auto;display:block}
+.screen-label{text-align:center}
+.screen-label h4{font-size:0.9rem;font-family:var(--font-head);font-weight:700;margin-bottom:0.25rem}
+.screen-label p{font-size:0.78rem;color:var(--text2)}
+
+/* ── COMO FUNCIONA ── */
+.how{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;transition:border-color 0.2s;position:relative}
+.step:hover{border-color:rgba(255,214,0,0.3)}
+.step-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
+.step-num::after{content:'';flex:1;height:1px;background:var(--border)}
+.step h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:0.6rem}
+.step p{font-size:0.83rem;color:var(--text2);line-height:1.65}
+
+/* ── PARA QUEM ── */
+.forwho{background:var(--bg)}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:3rem}
+.audience-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
+.audience-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
+.audience-icon{width:44px;height:44px;background:var(--accent-dim);border:1px solid rgba(255,214,0,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.25rem}
+.audience-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+.audience-card p{font-size:0.85rem;color:var(--text2);line-height:1.65}
+
+/* ── PARCEIROS ── */
+.partner{background:var(--bg2)}
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
+.partner-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
+.partner-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
+.partner-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)}
+.partner-card p{font-size:0.84rem;color:var(--text2);line-height:1.65}
+
+/* ── CTA ── */
+.cta{background:var(--bg);position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,214,0,0.05) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-inner h2{margin-bottom:1rem}
+.cta-inner .section-lead{margin:0 auto 2.5rem;text-align:center}
+.form-note{font-size:0.75rem;color:var(--text3);margin-top:1rem}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3rem}
+.footer-top{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.footer-brand{display:flex;flex-direction:column;gap:0.75rem}
+.footer-brand p{font-size:0.78rem;color:var(--text3);max-width:260px;line-height:1.6}
+.footer-cnpj{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);margin-top:0.25rem}
+.footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:0 3rem}
+.footer-nav-col h4{font-size:0.72rem;font-family:var(--font-mono);color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem}
+.footer-nav-col a{display:block;font-size:0.82rem;color:var(--text2);text-decoration:none;margin-bottom:0.4rem;transition:color 0.2s}
+.footer-nav-col a:hover{color:var(--text)}
+.footer-bottom{max-width:1200px;margin:1.5rem auto 0;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.footer-copy{font-size:0.75rem;color:var(--text3)}
+
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 0.7s ease forwards}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}nav ul{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  section{padding:4rem 1.5rem}
+  .steps,.produto-grid{grid-template-columns:1fr}
+  .screens-grid{grid-template-columns:repeat(2,1fr)}
+  footer .footer-top{flex-direction:column}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="ep-wordmark">
+      <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+    </div>
+  </a>
+  <ul>
+    <li><a href="index.html">Enjoy Pineapple</a></li>
+    <li><a href="parceiros.html">Parceiros</a></li>
+    <li><a href="parceiros.html#form" class="nav-cta">Seja um Parceiro</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sector-carousel">
+    <div class="sector-track" id="sectorTrack">
+      <div class="sector-slide"><img src="sectors/agro.jpg" alt="Agronegócio"><div class="sector-label">Para o agronegócio</div></div>
+      <div class="sector-slide"><img src="sectors/indu.jpg" alt="Indústria"><div class="sector-label">Para a indústria</div></div>
+      <div class="sector-slide"><img src="sectors/const.jpg" alt="Construção"><div class="sector-label">Para a construção</div></div>
+      <div class="sector-slide"><img src="sectors/comercio.jpg" alt="Comércio"><div class="sector-label">Para o comércio</div></div>
+      <div class="sector-slide"><img src="sectors/transporte.jpg" alt="Transporte"><div class="sector-label">Para o transporte</div></div>
+      <div class="sector-slide"><img src="sectors/servi.jpg" alt="Serviços"><div class="sector-label">Para os serviços</div></div>
+    </div>
+    <div class="sector-dots" id="sectorDots"></div>
+  </div>
+  <div class="hero-bg-grid"></div>
+  <div class="hero-inner">
+    <img src="icon.png" alt="BORA App" class="bora-hero-icon fade-in">
+    <div class="hero-badge fade-in delay-1">⬤ &nbsp;Produto Enjoy Pineapple</div>
+    <h1 class="fade-in delay-2">BORA</h1>
+    <p class="hero-tagline fade-in delay-2">Classificação de Risco de Atividades Econômicas</p>
+    <p class="hero-sub fade-in delay-3">Saiba o risco da sua atividade, a legislação aplicável, as licenças necessárias e conecte-se com especialistas — tudo em um só app.</p>
+    <div class="store-badges fade-in delay-3">
+      <a href="https://play.google.com/store" target="_blank" class="store-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
+        <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+      </a>
+      <span class="store-badge coming">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE É / NÃO É -->
+<section class="produto">
+  <div class="section-inner">
+    <div class="section-label">// o produto</div>
+    <h2>A INFORMAÇÃO CERTA,<br>NO MOMENTO <em>CERTO.</em></h2>
+    <div class="produto-grid">
+      <div class="produto-col">
+        <p>O BORA cruza dados públicos federais do CGSIM com a legislação municipal para exibir a classificação de risco de atividades econômicas por código CNAE — indicando licenças ambientais, sanitárias e demais exigências aplicáveis no município escolhido.</p>
+        <p>Cada orientação pode ser conferida diretamente na fonte: a legislação oficial correspondente fica disponível com link para o documento original.</p>
+        <div class="col-label green">// o que o BORA faz</div>
+        <ul class="sim-list">
+          <li>Classifica o risco federal e municipal da atividade</li>
+          <li>Exibe a legislação vigente com links oficiais</li>
+          <li>Indica licenças e documentos necessários</li>
+          <li>Conecta você com parceiros especializados no seu setor</li>
+          <li>Organiza informações públicas de forma acessível</li>
+        </ul>
+      </div>
+      <div class="produto-col">
+        <p>O BORA não emite licenças, não cria normas e não substitui os órgãos públicos competentes. Ele organiza o que já existe para que você tome decisões com mais segurança.</p>
+        <p style="font-style:italic;color:var(--text3);font-size:0.88rem">Toda orientação apresentada busca estar fundamentada em legislação oficial, permitindo ao usuário consultar a fonte correspondente.</p>
+        <div class="col-label red">// o que o BORA não é</div>
+        <ul class="nao-list">
+          <li>Não substitui órgãos públicos competentes</li>
+          <li>Não substitui profissionais habilitados</li>
+          <li>Não emite licenças nem alvarás</li>
+          <li>Não cria normas ou regulamentos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screens">
+  <div class="section-inner">
+    <div class="section-label">// o app</div>
+    <h2>QUATRO TELAS QUE<br>MUDAM <em>DECISÕES.</em></h2>
+    <div class="screens-grid">
+      <div class="screen-item">
+        <div class="screen-frame"><img src="screen1.png" alt="Busca Inteligente"></div>
+        <div class="screen-label"><h4>Busca Inteligente</h4><p>Por nome, CNAE ou sinônimo</p></div>
+      </div>
+      <div class="screen-item">
+        <div class="screen-frame"><img src="screen2.png" alt="Classificação de Risco"></div>
+        <div class="screen-label"><h4>Classificação de Risco</h4><p>Federal + Municipal lado a lado</p></div>
+      </div>
+      <div class="screen-item">
+        <div class="screen-frame"><img src="screen3.png" alt="Legislação Aplicável"></div>
+        <div class="screen-label"><h4>Legislação Aplicável</h4><p>Federal e municipal com links oficiais</p></div>
+      </div>
+      <div class="screen-item">
+        <div class="screen-frame"><img src="screen4.png" alt="Rede de Parceiros"></div>
+        <div class="screen-label"><h4>Rede de Parceiros</h4><p>Especialistas prontos para te ajudar</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-label">// como funciona</div>
+    <h2>SIMPLES COMO <em>DEVE SER.</em></h2>
+    <p class="section-lead">Três passos para entender o risco da sua atividade econômica em qualquer município do Brasil.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Selecione seu município</h3>
+        <p>Escolha o município onde a atividade será exercida. O BORA está crescendo para cobrir todo o Brasil — e cresce conforme a demanda dos usuários.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Busque a atividade</h3>
+        <p>Pesquise pelo código CNAE ou pelo nome da atividade em linguagem natural. O app encontra automaticamente a classificação correta.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Veja tudo consolidado</h3>
+        <p>Receba a classificação de risco federal e municipal, a legislação vigente com links oficiais, licenças necessárias e parceiros do seu setor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="forwho">
+  <div class="section-inner">
+    <div class="section-label">// para quem é</div>
+    <h2>FEITO PARA QUEM PRECISA DE <em>CLAREZA.</em></h2>
+    <p class="section-lead">Profissionais e cidadãos que lidam com a complexidade da legislação econômica no Brasil.</p>
+    <div class="audience-grid">
+      <div class="audience-card"><div class="audience-icon">🏢</div><h3>Empresários</h3><p>Saiba o risco da sua atividade antes de abrir ou expandir. Sem surpresas regulatórias.</p></div>
+      <div class="audience-card"><div class="audience-icon">📊</div><h3>Contadores</h3><p>Oriente seus clientes com precisão sobre obrigações regulatórias por atividade e município.</p></div>
+      <div class="audience-card"><div class="audience-icon">⚖️</div><h3>Advogados</h3><p>Acesse legislação federal e municipal consolidada para orientar seus clientes empresariais.</p></div>
+      <div class="audience-card"><div class="audience-icon">🌱</div><h3>Empreendedores</h3><p>Transforme sua ideia em negócio com segurança jurídica desde o primeiro passo.</p></div>
+      <div class="audience-card"><div class="audience-icon">📐</div><h3>Arquitetos e Engenheiros</h3><p>Entenda requisitos legais para projetos em diferentes municípios antes de projetar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="partner">
+  <div class="section-inner">
+    <div class="section-label">// seja um parceiro</div>
+    <h2>CRESÇA E APAREÇA<br>COM O <em>BORA.</em></h2>
+    <p class="section-lead">Especialistas, escritórios e plataformas que querem alcançar empreendedores no momento certo — quando eles mais precisam de ajuda.</p>
+    <div class="partner-grid">
+      <div class="partner-card"><h3>Contabilidades</h3><p>Posicione seu escritório como referência para empreendedores que estão iniciando e precisam de orientação fiscal e societária.</p></div>
+      <div class="partner-card"><h3>Consultores Jurídicos</h3><p>Seja indicado no momento em que o empreendedor descobre que precisa de alvará, licença ou regularização.</p></div>
+      <div class="partner-card"><h3>Licenciamento Ambiental</h3><p>Alcance empresas que precisam de SMAMUS, FEPAM e demais órgãos ambientais — antes de qualquer outro canal.</p></div>
+      <div class="partner-card"><h3>Benefícios e Serviços</h3><p>Ofereça descontos e condições especiais para empreendedores cadastrados no BORA. Restaurantes, eventos e muito mais.</p></div>
+    </div>
+    <div style="margin-top:2.5rem;text-align:center">
+      <a href="parceiros.html#form" class="btn-primary">Quero ser parceiro BORA →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div class="section-label">// parcerias bora</div>
+    <h2>SUA EMPRESA NA FRENTE DE <em>QUEM PRECISA DE VOCÊ.</em></h2>
+    <p class="section-lead" style="text-align:center;margin:0 auto 2.5rem">Contabilidades, consultores jurídicos, especialistas em licenciamento e muito mais — conecte-se com empreendedores no momento certo.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+      <a href="parceiros.html#form" class="btn-primary">Quero ser parceiro BORA →</a>
+      <a href="parceiros.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;color:var(--text2);font-size:0.95rem">Como funciona ↓</a>
+    </div>
+    <p class="form-note">Sem contrato de adesão. Apresentamos as opções em até 2 dias úteis.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div>
+        <a href="index.html" style="text-decoration:none">
+          <div class="ep-wordmark">
+            <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+          </div>
+        </a>
+      </div>
+      <p>Resolvemos os abacaxis do empreendedor brasileiro com soluções práticas, acessíveis e confiáveis.</p>
+      <div class="footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS</div>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-col">
+        <h4>BORA App</h4>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="parceiros.html">Seja parceiro</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Legal</h4>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="suporte.html">Suporte</a>
+        <a href="excluir-conta.html">Excluir Conta</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Enjoy Pineapple · Todos os direitos reservados</div>
+    <div class="footer-copy">Feito com ♥ em Porto Alegre/RS</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const track = document.getElementById('sectorTrack');
+  const dotsWrap = document.getElementById('sectorDots');
+  if (!track) return;
+  const slides = track.querySelectorAll('.sector-slide');
+  const total = slides.length;
+  let current = Math.floor(Math.random() * total);
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'sector-dot' + (i === current ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    dotsWrap.querySelectorAll('.sector-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  slides[current].classList.add('active');
+  setInterval(() => goTo(current + 1), 3500);
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1)); });
+})();
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.audience-card,.step,.partner-card,.screen-item').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

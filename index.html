@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enjoy Pineapple — Resolvemos os abacaxis do empreendedor brasileiro</title>
-<meta name="description" content="A Enjoy Pineapple cria soluções que transformam problemas complexos em caminhos claros. Conheça o BORA, nosso app de classificação de risco de atividades econômicas.">
+<title>Enjoy Pineapple — Existir. Pertencer. Somar. Transformar.</title>
+<meta name="description" content="A Enjoy Pineapple aproxima pessoas das respostas certas. Criamos soluções que transformam problemas complexos em caminhos claros. Conheça o BORA e o Divide Aí.">
 <meta name="google-site-verification" content="oYhkZ0XiBBnBiPXLVRwV0k_yXVVTu12WJWX6SM8NjII" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -36,76 +36,26 @@ nav a:hover{color:var(--text)}
 .nav-cta:hover{background:var(--accent2)!important;transform:translateY(-1px)}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 6rem;position:relative;overflow:hidden}
 .hero-bg-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,214,0,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.025) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow{position:absolute;top:15%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,214,0,0.05) 0%,transparent 65%);z-index:0}
-.hero-glow2{position:absolute;bottom:-10%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(59,158,255,0.04) 0%,transparent 65%);z-index:0}
-.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-glow{position:absolute;top:20%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,214,0,0.05) 0%,transparent 65%);z-index:0}
+.hero-glow2{position:absolute;bottom:-10%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(0,229,160,0.03) 0%,transparent 65%);z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%}
 .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3.5rem);font-weight:400;line-height:0.95;letter-spacing:0.01em;margin-bottom:1.5rem}
+h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,6.5rem);font-weight:400;line-height:0.92;letter-spacing:0.01em;margin-bottom:1.5rem}
 h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:1.05rem;color:var(--text2);max-width:500px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
+.hero-sub{font-size:1.1rem;color:var(--text2);max-width:540px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
 .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-family:var(--font-body);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
+.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
 .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
 .btn-secondary{border:1px solid var(--border2);color:var(--text);padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:400;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;background:transparent;transition:border-color 0.2s,background 0.2s}
 .btn-secondary:hover{border-color:var(--accent);background:var(--accent-dim)}
-
-/* ── SECTOR CAROUSEL (hero background) ── */
-.hero-visual{display:none}
-.sector-carousel{position:absolute;inset:0;z-index:0;overflow:hidden}
-.sector-track{position:relative;height:100%}
-.sector-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;pointer-events:none}
-.sector-slide.active{opacity:1;pointer-events:auto}
-.sector-slide img{width:100%;height:100%;object-fit:cover;display:block}
-/* gradiente: opaco à esquerda (protege texto), desfoca à direita */
-.sector-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,12,0.97) 0%, rgba(7,9,12,0.92) 38%, rgba(7,9,12,0.6) 60%, rgba(7,9,12,0.15) 100%)}
-.sector-label{position:absolute;bottom:2rem;right:3rem;z-index:2;font-family:var(--font-head);font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:-0.01em;text-shadow:0 2px 12px rgba(0,0,0,0.6);opacity:0.9}
-.sector-dots{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
-.sector-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:background 0.3s,width 0.3s;border:none;padding:0}
-.sector-dot.active{width:24px;border-radius:4px;background:var(--accent)}
-
-/* ── PHONE MOCKUP (mantido para referência, não usado) ── */
-.phone-wrap{position:relative}
-.phone{width:240px;background:#0a0a0a;border-radius:36px;border:2px solid #2a2a2a;box-shadow:0 40px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.05),inset 0 0 0 1px rgba(255,255,255,0.03);overflow:hidden;position:relative}
-.phone-notch{width:80px;height:22px;background:#0a0a0a;border-radius:0 0 14px 14px;margin:0 auto;position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
-.phone-cam{width:10px;height:10px;background:#1a1a1a;border-radius:50%;border:1px solid #333}
-.phone-screen{background:#e8eaed;min-height:480px;padding:0;position:relative;overflow:hidden}
-
-/* Home screen mockup */
-.ps-topbar{background:#111;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.ps-brand{font-size:14px;font-weight:800;color:#FFD600;font-family:var(--font-head);letter-spacing:-0.5px}
-.ps-brand span{color:#fff}
-.ps-icons{display:flex;gap:10px}
-.ps-icon{width:20px;height:20px;background:#333;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.ps-body{padding:12px}
-.ps-label{font-size:8px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.ps-muni{background:#fff;border-radius:8px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;border:1px solid #e0e0e0}
-.ps-muni-name{font-size:10px;font-weight:500;color:#333;display:flex;align-items:center;gap:4px}
-.ps-muni-pin{color:#FFD600;font-size:10px}
-.ps-trocar{font-size:9px;font-weight:700;color:#FFD600}
-.ps-search{background:#fff;border-radius:8px;padding:9px 10px;display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;margin-bottom:8px}
-.ps-search-icon{color:#aaa;font-size:10px}
-.ps-search-text{font-size:9px;color:#bbb}
-.ps-result{background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #e0e0e0;margin-bottom:6px}
-.ps-cnae{font-size:8px;font-weight:700;color:#FFD600}
-.ps-activity{font-size:9px;color:#333;font-weight:500;margin:2px 0}
-.ps-badges{display:flex;gap:4px;margin-top:4px}
-.ps-badge{padding:2px 6px;border-radius:20px;font-size:7px;font-weight:700}
-.ps-badge-green{background:#e6fff5;color:#00a870;border:1px solid #b3f0d8}
-.ps-badge-yellow{background:#fff8e1;color:#e6a800;border:1px solid #ffe082}
-.ps-badge-red{background:#fff0f0;color:#e53935;border:1px solid #ffcdd2}
-.ps-navbar{background:#111;padding:8px;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #222}
-.ps-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px}
-.ps-nav-circle{width:32px;height:32px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
-.ps-nav-label{font-size:6px;color:#999;font-family:var(--font-body)}
-
-.phone-pill{position:absolute;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:0.55rem 0.85rem;font-size:0.68rem;display:flex;align-items:center;gap:0.45rem;box-shadow:0 8px 24px rgba(0,0,0,0.4);white-space:nowrap}
-.phone-pill.top-right{top:2rem;right:-6rem;color:var(--accent);font-family:var(--font-mono)}
-.phone-pill.bottom-left{bottom:2rem;left:-6rem;color:var(--text2);font-family:var(--font-body)}
-.pp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.hero-essence{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.essence-item{display:flex;flex-direction:column;gap:0.2rem}
+.essence-word{font-family:var(--font-display);font-size:1.3rem;color:var(--accent);letter-spacing:0.06em}
+.essence-desc{font-family:var(--font-mono);font-size:0.62rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
 
 /* ── SECTIONS ── */
 section{padding:6rem 3rem}
@@ -115,162 +65,89 @@ h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weigh
 h2 em{font-style:normal;color:var(--accent)}
 .section-lead{font-size:1rem;color:var(--text2);max-width:580px;line-height:1.75;font-weight:300}
 
+/* ── A TESE ── */
+.tese{background:var(--bg2)}
+.tese-body{max-width:760px;margin-top:2.5rem}
+.tese-body p{font-size:1.05rem;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;font-weight:300}
+.tese-body p strong{color:var(--text);font-weight:500}
+.tese-body p:last-child{margin-bottom:0}
+.tese-quote{margin-top:2.5rem;padding:1.5rem 2rem;border-left:3px solid var(--accent);background:var(--accent-dim)}
+.tese-quote p{font-family:var(--font-head);font-size:1.15rem;font-weight:500;color:var(--text);line-height:1.6;margin:0}
+
 /* ── MVV ── */
-.mvv{background:var(--bg2)}
+.mvv{background:var(--bg)}
 .mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
 .mvv-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 1.75rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.2s}
 .mvv-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
 .mvv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);opacity:0.6}
-.mvv-num{font-family:var(--font-display);font-size:3.5rem;color:rgba(255,214,0,0.08);position:absolute;top:1rem;right:1.5rem;line-height:1}
+.mvv-num{font-family:var(--font-display);font-size:3.5rem;color:rgba(255,214,0,0.07);position:absolute;top:1rem;right:1.5rem;line-height:1}
 .mvv-tag{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
-.mvv-card h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:0.75rem}
+.mvv-card h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:0.75rem}
 .mvv-card p{font-size:0.88rem;color:var(--text2);line-height:1.7}
 .valores-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
-.valor-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.78rem;color:var(--accent);font-family:var(--font-mono)}
+.valor-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.75rem;color:var(--accent);font-family:var(--font-mono)}
+.valor-desc{font-size:0.78rem;color:var(--text3);margin-top:0.2rem;display:none}
 
-/* ── PRODUCT: BORA ── */
-.product{background:var(--bg)}
-.product-inner{max-width:1200px;margin:0 auto}
-.product-header{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:5rem}
-.bora-logo-big{font-family:var(--font-display);font-size:clamp(5rem,10vw,9rem);line-height:1;color:var(--accent);letter-spacing:0.04em;text-shadow:0 0 80px rgba(255,214,0,0.15);margin-bottom:0.5rem}
-.bora-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem}
-.product-desc p{font-size:1rem;color:var(--text2);line-height:1.75;margin-bottom:1.25rem;font-weight:300}
-.store-badges{display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
-.store-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 1rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s;cursor:pointer}
-.store-badge:hover{border-color:var(--accent);transform:translateY(-2px)}
-.store-badge svg{flex-shrink:0;opacity:0.85}
-.store-badge-text{display:flex;flex-direction:column}
-.store-badge-text .small{font-size:0.62rem;color:var(--text3);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em}
-.store-badge-text .big{font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.1}
-.store-badge.coming{opacity:0.45;pointer-events:none}
+/* ── MANIFESTO ── */
+.manifesto{background:var(--bg2);position:relative;overflow:hidden}
+.manifesto-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(255,214,0,0.04) 0%,transparent 65%);pointer-events:none}
+.manifesto-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.manifesto-text{margin-top:2.5rem}
+.manifesto-text p{font-size:1rem;color:var(--text2);line-height:1.85;margin-bottom:1.1rem;font-weight:300}
+.manifesto-text p strong{color:var(--text);font-weight:500}
+.manifesto-closing{margin-top:2rem;padding:1.5rem 2rem;border-left:3px solid var(--accent);background:var(--accent-dim)}
+.manifesto-closing p{font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.5;margin:0}
+.manifesto-closing span{color:var(--accent)}
 
-/* ── APP SCREENS SHOWCASE ── */
-.screens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;align-items:end}
-.screen-item{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
-.screen-frame{width:240px;border-radius:32px;border:2.5px solid #333;box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);overflow:hidden;background:#0a0a0a}
-.screen-frame img{width:100%;height:auto;display:block}
-.screen-label{text-align:center}
-.screen-label h4{font-size:0.9rem;font-family:var(--font-head);font-weight:700;margin-bottom:0.25rem}
-.screen-label p{font-size:0.78rem;color:var(--text2)}
+/* ── CARTA DO FUNDADOR ── */
+.fundador{background:var(--bg)}
+.fundador-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;margin-top:3rem;align-items:start}
+.fundador-left{position:sticky;top:6rem}
+.fundador-assinatura{font-family:var(--font-display);font-size:2rem;color:var(--accent);letter-spacing:0.04em;margin-top:1.5rem}
+.fundador-cargo{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+.fundador-quote{margin-top:2rem;padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
+.fundador-quote p{font-size:0.88rem;color:var(--text2);line-height:1.7;font-style:italic;margin:0}
+.fundador-right p{font-size:0.95rem;color:var(--text2);line-height:1.85;margin-bottom:1.25rem;font-weight:300}
+.fundador-right p strong{color:var(--text);font-weight:500}
+.fundador-right p:last-child{margin-bottom:0}
+.fundador-milestone{display:flex;align-items:center;gap:0.75rem;margin:1.5rem 0;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.milestone-year{font-family:var(--font-display);font-size:1.4rem;color:var(--accent);flex-shrink:0;line-height:1}
+.milestone-text{font-size:0.82rem;color:var(--text2);line-height:1.5}
 
-/* Screen 1: Busca */
-.sc1-body{background:#e8eaed;padding:10px}
-.sc1-topbar{background:#111;padding:8px 10px;margin:-10px -10px 10px;display:flex;align-items:center;justify-content:space-between}
-.sc1-brand{font-size:13px;font-weight:800;color:#FFD600;font-family:var(--font-head)}
-.sc1-brand span{color:#fff}
-.sc1-muni{background:#fff;border-radius:7px;padding:7px 9px;margin-bottom:8px;border:1px solid #ddd;display:flex;align-items:center;justify-content:space-between}
-.sc1-muni-t{font-size:9px;color:#555;font-weight:500}
-.sc1-muni-r{font-size:8px;color:#FFD600;font-weight:700}
-.sc1-search{background:#fff;border-radius:7px;padding:8px 9px;border:1px solid #ddd;margin-bottom:8px;display:flex;align-items:center;gap:5px}
-.sc1-st{font-size:9px;color:#aaa}
-.sc1-res{background:#fff;border-radius:7px;padding:8px 9px;border:1px solid #ddd;margin-bottom:5px}
-.sc1-code{font-size:9px;font-weight:700;color:#FFD600}
-.sc1-name{font-size:9px;color:#333;font-weight:500;margin:2px 0}
-.sc1-b{display:inline-block;padding:2px 7px;border-radius:10px;font-size:8px;font-weight:700;background:#e6fff5;color:#00a870;border:1px solid #b3f0d8;margin-top:3px}
-.sc1-nav{background:#111;padding:7px;display:flex;justify-content:space-around;margin:8px -10px -10px}
-.sc1-nc{display:flex;flex-direction:column;align-items:center;gap:2px}
-.sc1-nci{width:28px;height:28px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
-.sc1-nl{font-size:7px;color:#888}
-
-/* Screen 2: Resultado */
-.sc2-body{background:#e8eaed;padding:10px}
-.sc2-topbar{background:#111;padding:8px 10px;margin:-10px -10px 10px;display:flex;align-items:center;justify-content:space-between}
-.sc2-card{background:#fff;border-radius:10px;padding:10px;margin-bottom:8px;border:1px solid #ddd}
-.sc2-code{font-size:10px;font-weight:700;color:#FFD600;margin-bottom:3px}
-.sc2-title{font-size:10px;font-weight:600;color:#333;margin-bottom:8px}
-.sc2-risks{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px}
-.sc2-risk{background:#f0f7f0;border-radius:6px;padding:5px 6px;text-align:center}
-.sc2-risk-l{font-size:8px;color:#888}
-.sc2-risk-v{font-size:9px;font-weight:700;color:#1a7a40}
-.sc2-banner{background:#e8f5e9;border-radius:7px;padding:8px;border:1px solid #c8e6c9;text-align:center}
-.sc2-banner-t{font-size:10px;font-weight:800;color:#1a7a40}
-.sc2-banner-s{font-size:8px;color:#388e3c;margin-top:2px}
-.sc2-nav{background:#111;padding:7px;display:flex;justify-content:space-around;margin:8px -10px -10px}
-
-/* Screen 3: Legislação */
-.sc3-body{background:#222;padding:10px;min-height:260px}
-.sc3-back{font-size:9px;color:#fff;margin-bottom:5px}
-.sc3-sub{font-size:8px;color:#888;margin-bottom:10px}
-.sc3-alert{background:#FFD600;border-radius:7px;padding:8px 9px;margin-bottom:8px}
-.sc3-alert-t{font-size:9px;font-weight:700;color:#000;margin-bottom:3px}
-.sc3-alert-p{font-size:8px;color:#222;line-height:1.4}
-.sc3-label{font-size:8px;font-weight:700;color:#aaa;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px}
-.sc3-leg{background:#fff;border-radius:7px;padding:8px 9px;margin-bottom:5px}
-.sc3-leg-tag{display:inline-block;background:#3b9eff;color:#fff;font-size:7px;font-weight:700;padding:2px 5px;border-radius:4px;margin-bottom:3px}
-.sc3-leg-tag.municipal{background:#388e3c}
-.sc3-leg-title{font-size:9px;font-weight:600;color:#333}
-.sc3-leg-link{font-size:8px;color:#3b9eff}
-.sc3-footer{background:#FFD600;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:5px;margin-top:5px}
-.sc3-foot-t{font-size:9px;font-weight:700;color:#000}
-.sc3-foot-s{font-size:7px;color:#333}
-
-/* Screen 4: Parceiros */
-.sc4-body{background:#222;padding:10px;min-height:260px}
-.sc4-header{background:#333;border-radius:8px;padding:9px;margin-bottom:9px}
-.sc4-ht{font-size:11px;font-weight:800;color:#FFD600;margin-bottom:3px}
-.sc4-hp{font-size:8px;color:#bbb;line-height:1.4}
-.sc4-section-label{font-size:8px;font-weight:700;color:#FFD600;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:5px}
-.sc4-item{display:flex;align-items:center;gap:7px;background:#333;border-radius:6px;padding:6px 8px;margin-bottom:4px}
-.sc4-item-icon{width:20px;height:20px;background:#444;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
-.sc4-item-t{font-size:9px;font-weight:600;color:#fff}
-.sc4-item-s{font-size:7px;color:#aaa}
-
-/* ── COMO FUNCIONA ── */
-.how{background:var(--bg2)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
-.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;transition:border-color 0.2s;position:relative}
-.step:hover{border-color:rgba(255,214,0,0.3)}
-.step-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
-.step-num::after{content:'';flex:1;height:1px;background:var(--border)}
-.step h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:0.6rem}
-.step p{font-size:0.83rem;color:var(--text2);line-height:1.65}
-.step-connector{display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:1.25rem;padding-top:3rem}
-
-/* ── PARA QUEM ── */
-.forwho{background:var(--bg)}
-.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:3rem}
-.audience-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
-.audience-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
-.audience-icon{width:44px;height:44px;background:var(--accent-dim);border:1px solid rgba(255,214,0,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.25rem}
-.audience-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
-.audience-card p{font-size:0.85rem;color:var(--text2);line-height:1.65}
-
-/* ── SEJA PARCEIRO ── */
-.partner{background:var(--bg2)}
-.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
-.partner-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
-.partner-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
-.partner-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)}
-.partner-card p{font-size:0.84rem;color:var(--text2);line-height:1.65}
-
-/* ── WAITLIST ── */
-.waitlist{background:var(--bg);position:relative;overflow:hidden}
-.waitlist-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,214,0,0.05) 0%,transparent 70%);pointer-events:none}
-.waitlist-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.waitlist-inner h2{margin-bottom:1rem}
-.waitlist-inner .section-lead{margin:0 auto 2.5rem;text-align:center}
-.form-row{display:flex;gap:0.75rem}
-.form-input{flex:1;background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:0.85rem 1.1rem;font-family:var(--font-body);font-size:0.9rem;color:var(--text);outline:none;transition:border-color 0.2s}
-.form-input::placeholder{color:var(--text3)}
-.form-input:focus{border-color:var(--accent)}
-.form-select{background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:0.85rem 1.1rem;font-family:var(--font-body);font-size:0.9rem;color:var(--text2);outline:none;cursor:pointer;appearance:none;min-width:180px}
-.form-row-2{display:flex;gap:0.75rem;margin-top:0.75rem}
-.form-row-2 .form-input{flex:1}
-.form-submit{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-family:var(--font-body);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap}
-.form-submit:hover{background:var(--accent2);transform:translateY(-1px)}
-.form-note{font-size:0.75rem;color:var(--text3);margin-top:1rem}
+/* ── PRODUTOS ── */
+.produtos{background:var(--bg2)}
+.produtos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.produto-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;display:flex;flex-direction:column;gap:1.5rem;transition:border-color 0.25s,transform 0.2s;position:relative;overflow:hidden;text-decoration:none;color:inherit}
+.produto-card:hover{border-color:rgba(255,214,0,0.35);transform:translateY(-4px)}
+.produto-card.coming{opacity:0.7}
+.produto-card.coming:hover{transform:translateY(-2px);border-color:rgba(0,229,160,0.3)}
+.produto-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.produto-card.coming::before{background:var(--green)}
+.prod-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem}
+.prod-badge.live{color:var(--green)}
+.prod-badge.dev{color:#00e5a0}
+.prod-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+.prod-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.prod-icon img{width:56px;height:56px;border-radius:14px;object-fit:contain}
+.prod-icon.placeholder{background:var(--surface2);border:1px solid var(--border2);font-size:1.75rem}
+.prod-name{font-family:var(--font-display);font-size:2.5rem;letter-spacing:0.04em;line-height:1;color:var(--accent)}
+.prod-name.green{color:var(--green)}
+.prod-tagline{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.2rem}
+.prod-desc{font-size:0.9rem;color:var(--text2);line-height:1.7;flex:1}
+.prod-cta{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--accent);margin-top:auto}
+.prod-cta.green{color:var(--green)}
+.prod-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem}
+.prod-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.15);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.72rem;color:var(--text3);font-family:var(--font-mono)}
+.prod-tag.green{background:rgba(0,229,160,0.06);border-color:rgba(0,229,160,0.15);color:rgba(0,229,160,0.6)}
 
 /* ── FOOTER ── */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3rem}
 .footer-top{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
 .footer-brand{display:flex;flex-direction:column;gap:0.75rem}
-.footer-logo-wrap{display:flex;align-items:center;gap:0.65rem}
-.footer-logo-wrap img{width:32px;height:32px;object-fit:contain;border-radius:50%}
-.footer-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.01em}
-.footer-logo span{color:var(--accent)}
 .footer-brand p{font-size:0.78rem;color:var(--text3);max-width:260px;line-height:1.6}
-.footer-cnpj{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);margin-top:0.25rem}
-.footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:0 3rem}
+.footer-cnpj{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3)}
+.footer-epigraph{font-size:0.78rem;color:var(--text3);font-style:italic;margin-top:0.5rem;max-width:260px;line-height:1.6}
+.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2.5rem}
 .footer-nav-col h4{font-size:0.72rem;font-family:var(--font-mono);color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem}
 .footer-nav-col a{display:block;font-size:0.82rem;color:var(--text2);text-decoration:none;margin-bottom:0.4rem;transition:color 0.2s}
 .footer-nav-col a:hover{color:var(--text)}
@@ -282,28 +159,21 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 @keyframes fadeIn{to{opacity:1;transform:none}}
 .delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}.delay-4{animation-delay:0.4s}
 
-/* ── HERO STATS ── */
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
-.stat-num{font-family:var(--font-display);font-size:2.2rem;color:var(--accent);line-height:1}
-.stat-label{font-size:0.72rem;color:var(--text3);margin-top:0.25rem;font-family:var(--font-mono);letter-spacing:0.05em;text-transform:uppercase}
-
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}nav ul{display:none}
-  .hero,.product{padding:7rem 1.5rem 4rem}
-  .hero-inner,.product-header{grid-template-columns:1fr;gap:3rem}
-  .hero-visual{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
   section{padding:4rem 1.5rem}
-  .steps,.mvv-grid{grid-template-columns:1fr}
-  .screens-grid{grid-template-columns:repeat(2,1fr)}
+  .mvv-grid,.fundador-grid,.produtos-grid{grid-template-columns:1fr}
+  .fundador-left{position:static}
   footer .footer-top{flex-direction:column}
+  .footer-nav{grid-template-columns:repeat(2,1fr)}
   .footer-bottom{flex-direction:column;text-align:center}
-  .form-row,.form-row-2{flex-direction:column}
+  .hero-essence{gap:1.5rem}
 }
 </style>
 </head>
 <body>
 <script>
-// Redireciona tokens de autenticação Supabase para o admin
 (function(){
   var h = window.location.hash;
   if(h && h.includes('access_token=')){
@@ -321,224 +191,189 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   </a>
   <ul>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#bora">BORA</a></li>
-    <li><a href="parceiros.html#form">Parceiros</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="parceiros.html">Parceiros</a></li>
     <li><a href="parceiros.html#form" class="nav-cta">Seja um Parceiro</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Carousel de fundo -->
-  <div class="sector-carousel">
-    <div class="sector-track" id="sectorTrack">
-      <div class="sector-slide"><img src="sectors/agro.jpg" alt="Agronegócio"><div class="sector-label">Para o agronegócio</div></div>
-      <div class="sector-slide"><img src="sectors/indu.jpg" alt="Indústria"><div class="sector-label">Para a indústria</div></div>
-      <div class="sector-slide"><img src="sectors/const.jpg" alt="Construção"><div class="sector-label">Para a construção</div></div>
-      <div class="sector-slide"><img src="sectors/comercio.jpg" alt="Comércio"><div class="sector-label">Para o comércio</div></div>
-      <div class="sector-slide"><img src="sectors/transporte.jpg" alt="Transporte"><div class="sector-label">Para o transporte</div></div>
-      <div class="sector-slide"><img src="sectors/servi.jpg" alt="Serviços"><div class="sector-label">Para os serviços</div></div>
-    </div>
-    <div class="sector-dots" id="sectorDots"></div>
-  </div>
   <div class="hero-bg-grid"></div>
-  <div class="hero-inner" style="grid-template-columns:1fr">
-    <div class="hero-content">
-      <div class="hero-badge fade-in">⬤ &nbsp;Soluções que geram valor real</div>
-      <h1 class="fade-in delay-1">O NOSSO<br>NEGÓCIO É O<br>SEU <em>AVANÇO.</em><br>NÓS CRIAMOS<br>SOLUÇÕES QUE<br>GERAM <em>VALOR</em><br>REAL.</h1>
-      <p class="hero-sub fade-in delay-2">A mudança começa quando a vontade de melhorar é maior do que o medo de fracassar.</p>
-      <div class="hero-actions fade-in delay-3">
-        <a href="#bora" class="btn-primary">Conheça o BORA <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#sobre" class="btn-secondary">Nossa história</a>
-      </div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge fade-in">⬤ &nbsp;Porto Alegre · RS · Brasil</div>
+    <h1 class="fade-in delay-1">EXISTIR.<br>PERTENCER.<br>SOMAR.<br><em>TRANSFORMAR.</em></h1>
+    <p class="hero-sub fade-in delay-2">Não pretendemos ser a resposta para tudo. Somos a empresa que aproxima pessoas das respostas certas, dos profissionais e das soluções de que realmente precisam.</p>
+    <div class="hero-actions fade-in delay-3">
+      <a href="bora.html" class="btn-primary">Conheça o BORA <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#fundador" class="btn-secondary">Nossa história</a>
     </div>
-
+    <div class="hero-essence fade-in delay-4">
+      <div class="essence-item"><span class="essence-word">EXISTIR</span><span class="essence-desc">Descobrir, dar realidade</span></div>
+      <div class="essence-item"><span class="essence-word">PERTENCER</span><span class="essence-desc">Estar junto, fazer parte</span></div>
+      <div class="essence-item"><span class="essence-word">SOMAR</span><span class="essence-desc">Unir, integrar, multiplicar</span></div>
+      <div class="essence-item"><span class="essence-word">TRANSFORMAR</span><span class="essence-desc">Compreender para transformar</span></div>
+    </div>
   </div>
 </section>
 
-<!-- SOBRE / MVV -->
-<section class="mvv" id="sobre">
+<!-- A TESE -->
+<section class="tese" id="sobre">
   <div class="section-inner">
-    <div class="section-label">// quem somos</div>
+    <div class="section-label">// nossa tese</div>
     <h2>UMA EMPRESA QUE<br>APRECIA O <em>ABACAXI.</em></h2>
-    <p class="section-lead">Limpar um abacaxi é difícil, trabalhoso e cheio de obstáculos. Por isso chamamos de "abacaxi" os problemas mais complexos da vida — e nossa razão de existir é ajudar a resolver cada um deles.</p>
+    <div class="tese-body">
+      <p>Nós acreditamos que os problemas sempre existirão. Também acreditamos que nenhuma empresa é capaz de resolver todos eles. Mas acreditamos que <strong>toda pessoa merece encontrar o caminho correto para enfrentá-los.</strong></p>
+      <p>Por isso, a Enjoy Pineapple não pretende ser a resposta para tudo. Pretende ser a empresa que aproxima pessoas das respostas, dos profissionais, das instituições e das soluções de que realmente precisam.</p>
+      <p>Nem toda solução estará dentro dos nossos produtos. E isso não nos incomoda. Porque nosso compromisso nunca foi prender pessoas ao nosso ecossistema. <strong>Nosso compromisso é ajudá-las a tomar melhores decisões.</strong></p>
+      <p>Acreditamos que confiança se constrói quando o interesse da pessoa vem antes do interesse da empresa. É assim que entendemos inovação. É assim que entendemos tecnologia. É assim que entendemos nosso papel.</p>
+      <div class="tese-quote">
+        <p>"Porque informação correta muda destinos."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MVV -->
+<section class="mvv">
+  <div class="section-inner">
+    <div class="section-label">// missão · visão · valores</div>
+    <h2>COMO <em>TRABALHAMOS.</em></h2>
     <div class="mvv-grid">
       <div class="mvv-card">
         <div class="mvv-num">01</div>
         <div class="mvv-tag">// missão</div>
         <h3>Por que existimos</h3>
-        <p>Ajudar pessoas e empresas a resolverem seus abacaxis — problemas difíceis, trabalhosos e cheios de obstáculos — com soluções práticas, acessíveis e confiáveis.</p>
+        <p>Facilitar a vida de quem empreende, organizando informações oficiais para que decisões importantes possam ser tomadas com mais segurança, rapidez e confiança.</p>
       </div>
       <div class="mvv-card">
         <div class="mvv-num">02</div>
         <div class="mvv-tag">// visão</div>
         <h3>Onde queremos chegar</h3>
-        <p>Ser referência em formação de parcerias e negócios até 2030, crescendo de forma orgânica e sustentável ao lado dos nossos usuários.</p>
+        <p>Ser a principal plataforma brasileira de orientação regulatória para atividades econômicas, presente em todos os municípios do país até 2030.</p>
       </div>
       <div class="mvv-card">
         <div class="mvv-num">03</div>
         <div class="mvv-tag">// valores</div>
         <h3>Como trabalhamos</h3>
         <div class="valores-list">
-          <span class="valor-tag">Ética</span>
-          <span class="valor-tag">Inovação</span>
-          <span class="valor-tag">Foco no Cliente</span>
+          <span class="valor-tag">Confiabilidade</span>
           <span class="valor-tag">Transparência</span>
-          <span class="valor-tag">Respeito à Diversidade</span>
+          <span class="valor-tag">Simplicidade</span>
+          <span class="valor-tag">Inovação</span>
+          <span class="valor-tag">Segurança Jurídica</span>
+          <span class="valor-tag">Respeito ao Empreendedor</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUTO: BORA -->
-<section class="product" id="bora">
-  <div class="product-inner">
-    <div class="product-header">
-      <div>
-        <div class="section-label">// nosso produto</div>
-        <img src="icon.png" alt="BORA App" style="width:220px;height:220px;object-fit:contain;border-radius:28px">
-        <div class="bora-tagline" style="margin-top:1rem">Classificação de Risco de Atividades Econômicas</div>
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-glow"></div>
+  <div class="manifesto-inner">
+    <div class="section-label">// manifesto</div>
+    <h2>EMPREENDER EXIGE <em>CORAGEM.</em></h2>
+    <div class="manifesto-text">
+      <p>Nós acreditamos que empreender exige coragem. Acreditamos que a legislação existe para proteger pessoas, negócios e a sociedade. Mas também acreditamos que <strong>informação pública deve ser compreensível.</strong></p>
+      <p>Durante anos vimos empresários perderem tempo procurando respostas que já existiam. Vimos servidores consultando diversas fontes. Vimos contadores navegando entre inúmeras normas. Vimos cidadãos bem-intencionados recebendo informações incompletas ou equivocadas.</p>
+      <p>Isso sempre nos incomodou. Porque acreditamos que <strong>informação correta não é um privilégio. É um direito.</strong></p>
+      <p>Foi por isso que criamos o BORA. Para transformar legislação em orientação. Para transformar dúvidas em decisões. Para transformar tempo perdido em produtividade.</p>
+      <div class="manifesto-closing">
+        <p>Porque empreender já é difícil.<br><span>Encontrar a informação certa não precisa ser.</span></p>
       </div>
-      <div class="product-desc">
-        <p>O BORA é o nosso app para empreendedores que precisam entender o risco da sua atividade econômica antes de abrir ou expandir um negócio.</p>
-        <p>Com dados federais e municipais consolidados, o BORA mostra a classificação de risco, a legislação aplicável, licenças necessárias e conecta você com parceiros especializados no seu setor.</p>
-        <div class="store-badges">
-          <a href="https://play.google.com/store" target="_blank" class="store-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
-            <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
-          </a>
-          <span class="store-badge coming">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4 TELAS DO APP -->
-    <div class="screens-grid">
-
-      <!-- Tela 1: Busca -->
-      <div class="screen-item">
-        <div class="screen-frame">
-          <img src="screen1.png" alt="Busca Inteligente">
-        </div>
-        <div class="screen-label">
-          <h4>Busca Inteligente</h4>
-          <p>Por nome, CNAE ou sinônimo</p>
-        </div>
-      </div>
-
-      <!-- Tela 2: Resultado -->
-      <div class="screen-item">
-        <div class="screen-frame">
-          <img src="screen2.png" alt="Classificação de Risco">
-        </div>
-        <div class="screen-label">
-          <h4>Classificação de Risco</h4>
-          <p>Federal + Municipal lado a lado</p>
-        </div>
-      </div>
-
-      <!-- Tela 3: Legislação -->
-      <div class="screen-item">
-        <div class="screen-frame">
-          <img src="screen3.png" alt="Legislação Aplicável">
-        </div>
-        <div class="screen-label">
-          <h4>Legislação Aplicável</h4>
-          <p>Federal e municipal com links oficiais</p>
-        </div>
-      </div>
-
-      <!-- Tela 4: Parceiros — PLACEHOLDER (substituir sc4-body antigo) -->
-      <div class="screen-item">
-        <div class="screen-frame">
-          <img src="screen4.png" alt="Rede de Parceiros">
-        </div>
-        <div class="screen-label">
-          <h4>Rede de Parceiros</h4>
-          <p>Especialistas prontos para te ajudar</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
-<section class="how">
+<!-- CARTA DO FUNDADOR -->
+<section class="fundador" id="fundador">
   <div class="section-inner">
-    <div class="section-label">// como funciona</div>
-    <h2>SIMPLES COMO <em>DEVE SER.</em></h2>
-    <p class="section-lead">Três passos para entender o risco da sua atividade econômica em qualquer município do Brasil.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Selecione seu município</h3>
-        <p>Escolha o município onde a atividade será exercida. O BORA está crescendo para cobrir todo o Brasil — e cresce conforme a demanda dos usuários.</p>
+    <div class="section-label">// carta do fundador</div>
+    <div class="fundador-grid">
+      <div class="fundador-left">
+        <h2>COMEÇOU NA<br>RUA, NÃO EM<br>UM <em>ESCRITÓRIO.</em></h2>
+        <div class="fundador-assinatura">Pablo</div>
+        <div class="fundador-cargo">// Fundador · Enjoy Pineapple</div>
+        <div class="fundador-quote">
+          <p>"O BORA nunca foi o meu maior projeto. Meu maior projeto sempre foi construir confiança."</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Busque a atividade</h3>
-        <p>Pesquise pelo código CNAE ou pelo nome da atividade em linguagem natural. O app encontra automaticamente a classificação correta.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Veja tudo consolidado</h3>
-        <p>Receba a classificação de risco federal e municipal, a legislação vigente com links oficiais, licenças necessárias e parceiros do seu setor.</p>
+      <div class="fundador-right">
+        <p>Meu nome é Pablo. Antes de criar o BORA, vivi muitas vidas profissionais. Fui estagiário no serviço público. Passei pela Secretaria da Saúde, pela Secretaria da Agricultura e pela Junta Comercial do Rio Grande do Sul.</p>
+        <p>Comecei a cursar Ciência da Computação porque sempre acreditei que a tecnologia poderia melhorar a vida das pessoas. Mas a realidade mudou meus planos. Sem condições de continuar a faculdade, escolhi um curso técnico em Redes de Computadores e comecei a trabalhar.</p>
+
+        <div class="fundador-milestone">
+          <div class="milestone-year">2006</div>
+          <div class="milestone-text">Início dos estudos para concursos públicos — anos de dedicação, noites e sacrifícios.</div>
+        </div>
+
+        <p>Fui suporte técnico em telecomunicações. Promotor de vendas. Trabalhei na expedição de uma indústria. Fui vistoriador veicular. Motoboy. Cada uma dessas experiências me ensinou uma realidade diferente.</p>
+
+        <div class="fundador-milestone">
+          <div class="milestone-year">2012</div>
+          <div class="milestone-text">Posse como Agente de Fiscalização da Prefeitura de Porto Alegre — foi ali que encontrei meu propósito.</div>
+        </div>
+
+        <p>Durante mais de uma década ouvi diariamente as mesmas perguntas de empresários, contadores e cidadãos: <strong>"Preciso de licença?" "Onde encontro essa informação?" "Qual legislação se aplica ao meu negócio?"</strong></p>
+        <p>As respostas existiam. Mas encontrá-las consumia tempo. Planilhas. Diversos sites. Leis. Normas. Atualizações constantes.</p>
+        <p>Foi dessa inquietação que nasceu o BORA. Não para substituir o conhecimento técnico. Nem para substituir os órgãos públicos. Mas para organizar a informação oficial e aproximá-la de quem realmente precisa dela.</p>
+        <p>Acredito em um serviço público que orienta antes de punir. Acredito que tecnologia deve simplificar a vida das pessoas. Acredito que ganhar tempo significa ganhar qualidade de vida — tempo para trabalhar, para crescer, para estar com a família.</p>
+        <p>Se o BORA conseguir ajudar milhares de pessoas a empreender com mais segurança e encontrar a informação certa mais rapidamente, então todo esse caminho terá valido a pena. Porque, no final, o que realmente importa não é a tecnologia. <strong>São as pessoas que ela ajuda.</strong></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PARA QUEM -->
-<section class="forwho" id="para-quem">
+<!-- NOSSOS PRODUTOS -->
+<section class="produtos" id="produtos">
   <div class="section-inner">
-    <div class="section-label">// para quem é</div>
-    <h2>FEITO PARA QUEM PRECISA DE <em>CLAREZA.</em></h2>
-    <p class="section-lead">Profissionais e cidadãos que lidam com a complexidade da legislação econômica no Brasil.</p>
-    <div class="audience-grid">
-      <div class="audience-card"><div class="audience-icon">🏢</div><h3>Empresários</h3><p>Saiba o risco da sua atividade antes de abrir ou expandir. Sem surpresas regulatórias.</p></div>
-      <div class="audience-card"><div class="audience-icon">📊</div><h3>Contadores</h3><p>Oriente seus clientes com precisão sobre obrigações regulatórias por atividade e município.</p></div>
-      <div class="audience-card"><div class="audience-icon">⚖️</div><h3>Advogados</h3><p>Acesse legislação federal e municipal consolidada para orientar seus clientes empresariais.</p></div>
-      <div class="audience-card"><div class="audience-icon">🌱</div><h3>Empreendedores</h3><p>Transforme sua ideia em negócio com segurança jurídica desde o primeiro passo.</p></div>
-      <div class="audience-card"><div class="audience-icon">📐</div><h3>Arquitetos e Engenheiros</h3><p>Entenda requisitos legais para projetos em diferentes municípios antes de projetar.</p></div>
-    </div>
-  </div>
-</section>
+    <div class="section-label">// nossos produtos</div>
+    <h2>SOLUÇÕES QUE GERAM <em>VALOR REAL.</em></h2>
+    <p class="section-lead">Cada produto nasce de um problema real, resolvido com tecnologia acessível e informação confiável.</p>
+    <div class="produtos-grid">
 
-<!-- SEJA UM PARCEIRO -->
-<section class="partner" id="parceiro">
-  <div class="section-inner">
-    <div class="section-label">// seja um parceiro</div>
-    <h2>CRESÇA E APAREÇA<br>COM O <em>BORA!!!</em></h2>
-    <p class="section-lead">Especialistas, escritórios e plataformas que querem alcançar empreendedores no momento certo — quando eles mais precisam de ajuda.</p>
-    <div class="partner-grid">
-      <div class="partner-card"><h3>Contabilidades</h3><p>Posicione seu escritório como referência para empreendedores que estão iniciando e precisam de orientação fiscal e societária.</p></div>
-      <div class="partner-card"><h3>Consultores Jurídicos</h3><p>Seja indicado no momento em que o empreendedor descobre que precisa de alvará, licença ou regularização.</p></div>
-      <div class="partner-card"><h3>Licenciamento Ambiental</h3><p>Alcance empresas que precisam de SMAMUS, FEPAM e demais órgãos ambientais — antes de qualquer outro canal.</p></div>
-      <div class="partner-card"><h3>Benefícios e Serviços</h3><p>Ofereça descontos e condições especiais para empreendedores cadastrados no BORA. Restaurantes, eventos e muito mais.</p></div>
-    </div>
-    <div style="margin-top:2.5rem;text-align:center">
-      <a href="parceiros.html#form" class="btn-primary">Quero ser parceiro BORA →</a>
-    </div>
-  </div>
-</section>
+      <a href="bora.html" class="produto-card">
+        <div>
+          <div class="prod-badge live">Disponível agora</div>
+        </div>
+        <div class="prod-icon"><img src="icon.png" alt="BORA"></div>
+        <div>
+          <div class="prod-name">BORA</div>
+          <div class="prod-tagline">Classificação de Risco · Atividades Econômicas</div>
+        </div>
+        <p class="prod-desc">Saiba o risco da sua atividade econômica, a legislação aplicável e as licenças necessárias — por CNAE e município — antes de abrir ou expandir seu negócio.</p>
+        <div class="prod-tags">
+          <span class="prod-tag">Android</span>
+          <span class="prod-tag">iOS em breve</span>
+          <span class="prod-tag">CNAE</span>
+          <span class="prod-tag">Legislação</span>
+        </div>
+        <div class="prod-cta">Ver produto <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
 
-<!-- WAITLIST -->
-<section class="waitlist" id="waitlist">
-  <div class="waitlist-glow"></div>
-  <div class="waitlist-inner">
-    <div class="section-label">// parcerias bora</div>
-    <h2>SUA EMPRESA NA FRENTE DE <em>QUEM PRECISA DE VOCÊ.</em></h2>
-    <p class="section-lead">Contabilidades, consultores jurídicos, especialistas em licenciamento e muito mais — conecte-se com empreendedores no momento certo, antes da concorrência.</p>
-    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-      <a href="parceiros.html#form" class="form-submit" style="text-decoration:none;display:inline-block">Quero ser parceiro BORA →</a>
-      <a href="parceiros.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;color:var(--text2);font-size:0.95rem">Como funciona ↓</a>
+      <a href="divide-ai.html" class="produto-card coming">
+        <div>
+          <div class="prod-badge dev">Em desenvolvimento</div>
+        </div>
+        <div class="prod-icon placeholder">÷</div>
+        <div>
+          <div class="prod-name green">DIVIDE AÍ</div>
+          <div class="prod-tagline">Divisão de despesas · Entre amigos</div>
+        </div>
+        <p class="prod-desc">Divida contas, viagens e despesas com amigos sem complicação. Sem cadastro de cartão, sem taxas, sem drama. Simples como deve ser.</p>
+        <div class="prod-tags">
+          <span class="prod-tag green">Android</span>
+          <span class="prod-tag green">iOS</span>
+          <span class="prod-tag green">Em breve</span>
+        </div>
+        <div class="prod-cta green">Avise-me no lançamento <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
     </div>
-    <p class="form-note">Sem contrato de adesão. Apresentamos as opções em até 2 dias úteis.</p>
   </div>
 </section>
 
@@ -546,25 +381,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo-wrap">
-        <div class="ep-wordmark">
-          <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
-        </div>
+      <div class="ep-wordmark">
+        <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
       </div>
-      <p>Resolvemos os abacaxis do empreendedor brasileiro com soluções práticas, acessíveis e confiáveis.</p>
+      <p>Aproximamos pessoas das respostas certas com soluções práticas, acessíveis e confiáveis.</p>
       <div class="footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS</div>
+      <div class="footer-epigraph">"Porque informação correta muda destinos."</div>
     </div>
     <div class="footer-nav">
       <div class="footer-nav-col">
         <h4>Empresa</h4>
         <a href="#sobre">Sobre nós</a>
-        <a href="#sobre">Missão e Valores</a>
-        <a href="#parceiro">Seja parceiro</a>
+        <a href="#sobre">Nossa tese</a>
+        <a href="#fundador">Carta do Fundador</a>
+        <a href="parceiros.html">Seja parceiro</a>
       </div>
       <div class="footer-nav-col">
-        <h4>BORA App</h4>
-        <a href="#bora">O produto</a>
-        <a href="#para-quem">Para quem é</a>
+        <h4>Produtos</h4>
+        <a href="bora.html">BORA</a>
+        <a href="divide-ai.html">Divide Aí</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Legal</h4>
         <a href="privacidade.html">Privacidade</a>
         <a href="termos.html">Termos de Uso</a>
         <a href="suporte.html">Suporte</a>
@@ -578,95 +416,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
-const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_ANON);
-
-async function handleSubmit(btn) {
-  const nome   = document.getElementById('f-nome').value.trim();
-  const email  = document.getElementById('f-email').value.trim();
-  const perfil = document.getElementById('f-perfil').value;
-  if (!nome || !email) { showFormMsg('Preencha seu nome e e-mail para continuar.', 'erro'); return; }
-  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showFormMsg('E-mail inválido.', 'erro'); return; }
-  btn.disabled = true; btn.textContent = 'Enviando…'; btn.style.opacity = '0.7';
-  try {
-    const { error } = await db.from('tb_waitlist').insert({ nome, email, perfil: perfil || null });
-    if (error) {
-      if (error.code === '23505') {
-        showFormMsg('Este e-mail já está na lista. Obrigado!', 'ok');
-        btn.textContent = 'Já cadastrado ✓'; btn.style.background = '#FFD600'; btn.style.color = '#000'; btn.style.opacity = '1';
-      } else { throw error; }
-    } else {
-      showFormMsg('Cadastro confirmado! Te avisamos no lançamento. 🎉', 'ok');
-      btn.textContent = 'Cadastrado! ✓'; btn.style.background = '#00e5a0'; btn.style.color = '#000'; btn.style.opacity = '1'; btn.style.cursor = 'default';
-      document.getElementById('f-nome').value = ''; document.getElementById('f-email').value = ''; document.getElementById('f-perfil').value = '';
-    }
-  } catch (err) {
-    console.error('Waitlist error:', err);
-    showFormMsg('Erro ao cadastrar. Tente novamente.', 'erro');
-    btn.disabled = false; btn.textContent = 'Quero acesso antecipado →'; btn.style.opacity = '1';
-  }
-}
-
-function showFormMsg(msg, tipo) {
-  let el = document.getElementById('form-msg');
-  if (!el) {
-    el = document.createElement('p'); el.id = 'form-msg';
-    el.style.cssText = 'margin-top:0.75rem;font-size:0.82rem;font-family:var(--font-mono);transition:opacity 0.3s;';
-    document.querySelector('.waitlist-inner').appendChild(el);
-  }
-  el.textContent = msg; el.style.color = tipo === 'ok' ? '#00e5a0' : '#ff5f5f'; el.style.opacity = '1';
-}
-
-// ── SECTOR CAROUSEL ─────────────────────────────────────────────
-(function() {
-  const track = document.getElementById('sectorTrack');
-  const dotsWrap = document.getElementById('sectorDots');
-  if (!track) return;
-  const slides = track.querySelectorAll('.sector-slide');
-  const total = slides.length;
-  let current = Math.floor(Math.random() * total);
-
-  // criar dots
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'sector-dot' + (i === current ? ' active' : '');
-    d.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(d);
-  });
-
-  function goTo(idx) {
-    slides[current].classList.remove('active');
-    current = (idx + total) % total;
-    slides[current].classList.add('active');
-    dotsWrap.querySelectorAll('.sector-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
-    });
-  }
-
-  slides[current].classList.add('active');
-  setInterval(() => goTo(current + 1), 3500);
-
-  // swipe touch
-  let startX = 0;
-  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-  });
-})();
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; observer.unobserve(e.target); }
+    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); }
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.mvv-card, .audience-card, .step, .partner-card, .screen-item').forEach(el => {
-  el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+}, {threshold:0.1});
+document.querySelectorAll('.mvv-card,.produto-card,.fundador-milestone').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
   observer.observe(el);
 });
 </script>
