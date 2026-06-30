@@ -22,10 +22,11 @@
 
     /* NAV */
     nav{position:sticky;top:0;z-index:100;background:rgba(7,9,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
-    .nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:50%}
-    .logo-text{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
-    .logo-text span{color:var(--accent)}
+    .nav-logo{display:flex;align-items:center;text-decoration:none}
+    .ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
+    .ep-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1}
+    .ep-sym{height:1.2em;width:auto;fill:currentColor;color:var(--text);vertical-align:-0.1em}
+    .ep-pine{font-family:var(--font-head);font-size:1.1rem;font-weight:400;letter-spacing:0.04em;color:var(--text2);margin-left:0.45em}
     .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
     .nav-back:hover{color:var(--accent)}
 
@@ -75,8 +76,9 @@
 
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
-      <span class="logo-text">Enjoy <span>Pineapple</span></span>
+      <div class="ep-wordmark">
+        <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+      </div>
     </a>
     <a href="index.html" class="nav-back">← Voltar ao início</a>
   </nav>
@@ -249,7 +251,8 @@
       © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
       <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
       <a href="termos.html">Termos</a> &nbsp;·&nbsp;
-      <a href="suporte.html">Suporte</a>
+      <a href="suporte.html">Suporte</a> &nbsp;·&nbsp;
+      <a href="excluir-conta.html">Excluir Conta</a>
     </p>
   </footer>
 

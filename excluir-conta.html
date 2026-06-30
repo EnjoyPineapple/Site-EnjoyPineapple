@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excluir Conta — BORA App</title>
+  <meta name="description" content="Saiba como excluir sua conta e dados do aplicativo BORA, desenvolvido pela Enjoy Pineapple.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
+      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+      --accent:#FFD600;--accent2:#e6bf00;
+      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
+      --red:#ff5f5f;--green:#00e5a0;
+      --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+      --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(7,9,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;text-decoration:none}
+    .ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
+    .ep-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1}
+    .ep-sym{height:1.2em;width:auto;fill:currentColor;color:var(--text);vertical-align:-0.1em}
+    .ep-pine{font-family:var(--font-head);font-size:1.1rem;font-weight:400;letter-spacing:0.04em;color:var(--text2);margin-left:0.45em}
+    .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+    .nav-back:hover{color:var(--accent)}
+
+    /* HEADER */
+    .page-header{border-bottom:1px solid var(--border);padding:4rem 3rem 3rem;max-width:860px;margin:0 auto}
+    .page-tag{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--red);text-transform:uppercase;margin-bottom:1rem}
+    .page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:0.02em;line-height:1;color:#fff;margin-bottom:1.5rem}
+    .page-meta{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2)}
+    .page-meta span{color:var(--accent)}
+
+    /* CONTENT */
+    .content{max-width:860px;margin:0 auto;padding:3rem 3rem 6rem}
+
+    .section{margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border)}
+    .section:last-child{border-bottom:none}
+
+    h2{font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:#fff;margin-bottom:1.25rem;line-height:1.1}
+    .section-number{color:var(--accent);margin-right:0.3em}
+
+    p{color:var(--text);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
+    ul,ol{padding-left:1.5rem;margin-bottom:1rem}
+    li{margin-bottom:0.5rem;font-size:0.95rem;color:var(--text);line-height:1.65}
+    strong{color:#fff;font-weight:600}
+
+    .warning-box{background:rgba(255,95,95,0.07);border:1px solid rgba(255,95,95,0.25);border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .warning-box p{margin-bottom:0;font-size:0.9rem}
+
+    .info-box{background:rgba(255,214,0,0.06);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .info-box p{margin-bottom:0;font-size:0.9rem}
+
+    /* TIMELINE */
+    .timeline{margin:1.5rem 0}
+    .timeline-item{display:flex;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+    .timeline-item:last-child{border-bottom:none}
+    .timeline-dot{flex-shrink:0;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:0.55rem}
+    .timeline-dot.red{background:var(--red)}
+    .timeline-dot.green{background:var(--green)}
+    .timeline-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.3rem}
+    .timeline-label.red{color:var(--red)}
+    .timeline-label.green{color:var(--green)}
+    .timeline-desc{font-size:0.88rem;color:var(--text2);line-height:1.6}
+
+    /* FORM */
+    .form-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:2rem;margin-top:2rem}
+    .form-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)}
+    .form-card p{font-size:0.88rem;color:var(--text2);margin-bottom:1.5rem}
+    .form-group{margin-bottom:1rem}
+    .form-label{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--text2);text-transform:uppercase;display:block;margin-bottom:0.4rem}
+    .form-input{width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:0.8rem 1rem;font-family:var(--font-body);font-size:0.9rem;color:var(--text);outline:none;transition:border-color 0.2s}
+    .form-input::placeholder{color:var(--text3)}
+    .form-input:focus{border-color:var(--accent)}
+    .form-textarea{resize:vertical;min-height:90px}
+    .form-btn{background:var(--red);color:#fff;border:none;border-radius:8px;padding:0.85rem 2rem;font-family:var(--font-body);font-size:0.9rem;font-weight:600;cursor:pointer;transition:opacity 0.2s,transform 0.15s;display:inline-block;width:100%;margin-top:0.5rem}
+    .form-btn:hover{opacity:0.88;transform:translateY(-1px)}
+    .form-btn:disabled{opacity:0.5;cursor:default;transform:none}
+    .form-msg{margin-top:0.75rem;font-size:0.82rem;font-family:var(--font-mono);display:none}
+    .form-msg.ok{color:var(--green)}
+    .form-msg.err{color:var(--red)}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
+    .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
+    .footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
+    .footer-text a:hover{color:var(--accent)}
+
+    @media(max-width:700px){
+      nav{padding:0 1.25rem}
+      .page-header,.content{padding-left:1.25rem;padding-right:1.25rem}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="ep-wordmark">
+        <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+      </div>
+    </a>
+    <a href="index.html" class="nav-back">← Voltar ao início</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">// conta</div>
+    <h1 class="page-title">Excluir Conta</h1>
+    <p class="page-meta">
+      Aplicativo <span>BORA</span> &nbsp;·&nbsp; Enjoy Pineapple &nbsp;·&nbsp; CNPJ <span>23.904.939/0001-86</span>
+    </p>
+  </div>
+
+  <div class="content">
+
+    <div class="warning-box">
+      <p>⚠️ <strong>A exclusão de conta é permanente e irreversível.</strong> Após a confirmação, seus dados serão apagados conforme o prazo descrito abaixo e não será possível recuperá-los.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-number">01.</span> Como excluir sua conta</h2>
+      <p>Você pode solicitar a exclusão da sua conta de duas formas:</p>
+
+      <div class="form-card">
+        <h3>Formulário de solicitação</h3>
+        <p>Preencha o formulário abaixo. Processaremos sua solicitação em até <strong>5 dias úteis</strong> e confirmaremos por e-mail.</p>
+        <div class="form-group">
+          <label class="form-label" for="del-email">E-mail cadastrado no BORA</label>
+          <input class="form-input" type="email" id="del-email" placeholder="seu@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="del-motivo">Motivo (opcional)</label>
+          <textarea class="form-input form-textarea" id="del-motivo" placeholder="Conte-nos o motivo, se quiser. Isso nos ajuda a melhorar o app."></textarea>
+        </div>
+        <button class="form-btn" onclick="enviarSolicitacao(this)">Solicitar exclusão da conta</button>
+        <p id="del-msg" class="form-msg"></p>
+      </div>
+
+      <p style="margin-top:2rem">Ou envie um e-mail diretamente para <strong><a href="mailto:privacidade@enjoypineapple.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20exclus%C3%A3o%20de%20conta%20%E2%80%94%20BORA" style="color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:0.9rem">privacidade@enjoypineapple.com.br</a></strong> com o assunto <em>"Solicitação de exclusão de conta — BORA"</em> informando o e-mail cadastrado na sua conta.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-number">02.</span> O que será excluído</h2>
+      <p>Ao excluir sua conta, removemos <strong>todos os seus dados pessoais</strong> dos nossos sistemas:</p>
+      <ul>
+        <li>Dados de cadastro: nome, e-mail, data de nascimento, telefone</li>
+        <li>Dados de perfil: município, profissão, ramos de atividade CNAE, foto de perfil</li>
+        <li>Histórico de buscas e consultas realizadas no app</li>
+        <li>Hash de CPF (verificação de unicidade)</li>
+        <li>Código de indicação e vínculos de indicação</li>
+        <li>Todas as preferências e configurações da conta</li>
+      </ul>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot red"></div>
+          <div>
+            <div class="timeline-label red">Imediato</div>
+            <div class="timeline-desc">Acesso à conta bloqueado. O hash de CPF é apagado imediatamente após a confirmação da solicitação.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-label">Até 5 dias úteis</div>
+            <div class="timeline-desc">Recebemos, verificamos e confirmamos sua solicitação por e-mail.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot green"></div>
+          <div>
+            <div class="timeline-label green">Até 30 dias</div>
+            <div class="timeline-desc">Dados de perfil e histórico de uso são eliminados permanentemente dos nossos servidores. Você receberá confirmação por e-mail quando concluído.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p>📋 Logs técnicos sem identificação pessoal (ex.: registros de erros do sistema) podem ser mantidos por até 1 ano para fins de segurança e diagnóstico. Dados exigidos por obrigação legal podem ser retidos pelo prazo determinado em lei.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="section-number">03.</span> Seus direitos (LGPD)</h2>
+      <p>Além da exclusão completa da conta, você pode exercer outros direitos previstos pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), como acesso aos seus dados, correção de informações incorretas e portabilidade. Para isso, entre em contato pelo mesmo e-mail acima.</p>
+      <p>Para mais informações sobre como tratamos seus dados, consulte nossa <a href="privacidade.html" style="color:var(--accent);text-decoration:none">Política de Privacidade</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="footer-text">
+      © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
+      <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
+      <a href="termos.html">Termos</a> &nbsp;·&nbsp;
+      <a href="suporte.html">Suporte</a>
+    </p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL  = 'https://pxyoazvomvterolknyoe.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eW9henZvbXZ0ZXJvbGtueW9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMjM3NjMsImV4cCI6MjA2MTc5OTc2M30.4oVPNFMRPMT3GeGMGpMoFoORCxJVbKqvWyWvVMnhHPE';
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+async function enviarSolicitacao(btn) {
+  const email = document.getElementById('del-email').value.trim();
+  const motivo = document.getElementById('del-motivo').value.trim();
+  const msg = document.getElementById('del-msg');
+
+  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    showMsg('Informe um e-mail válido.', 'err'); return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  try {
+    const { error } = await db.from('tb_excluir_conta').insert({ email, motivo: motivo || null });
+    if (error) throw error;
+    showMsg('Solicitação recebida! Confirmaremos por e-mail em até 5 dias úteis.', 'ok');
+    btn.textContent = 'Solicitação enviada ✓';
+    btn.style.background = 'var(--green)';
+    btn.style.color = '#000';
+  } catch (e) {
+    showMsg('Erro ao enviar. Por favor, envie um e-mail para privacidade@enjoypineapple.com.br', 'err');
+    btn.disabled = false;
+    btn.textContent = 'Solicitar exclusão da conta';
+  }
+}
+
+function showMsg(text, tipo) {
+  const el = document.getElementById('del-msg');
+  el.textContent = text;
+  el.className = 'form-msg ' + tipo;
+  el.style.display = 'block';
+}
+</script>
+</body>
+</html>
