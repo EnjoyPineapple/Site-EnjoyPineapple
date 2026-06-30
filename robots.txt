@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enjoypineapple.com.br/sitemap.xml
