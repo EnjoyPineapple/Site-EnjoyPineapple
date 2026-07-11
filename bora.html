@@ -48,14 +48,15 @@ nav a:hover{color:var(--text)}
 .sector-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:background 0.3s,width 0.3s;border:none;padding:0}
 .sector-dot.active{width:24px;border-radius:4px;background:var(--accent)}
 .hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.bora-hero-icon{width:72px;height:72px;border-radius:18px;margin-bottom:1.5rem;display:block}
-h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:1rem}
+.hero-top-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.bora-hero-icon{width:72px;height:72px;border-radius:18px;display:block;flex-shrink:0}
+h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:0.5rem}
 h1 em{font-style:normal;color:var(--accent)}
-.hero-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.5rem}
-.hero-sub{font-size:1.05rem;color:var(--text2);max-width:520px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
+.hero-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:520px;line-height:1.75;margin-bottom:2rem;font-weight:300}
 .store-badges{display:flex;gap:0.75rem;flex-wrap:wrap}
 .store-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.6rem 1rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s}
 .store-badge:hover{border-color:var(--accent);transform:translateY(-2px)}
@@ -196,9 +197,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
   </div>
   <div class="hero-bg-grid"></div>
   <div class="hero-inner">
-    <img src="icon.png" alt="BORA App" class="bora-hero-icon fade-in">
-    <div class="hero-badge fade-in delay-1">⬤ &nbsp;Produto Enjoy Pineapple</div>
-    <h1 class="fade-in delay-2">BORA</h1>
+    <div class="hero-top-row fade-in">
+      <img src="icon.jpg" alt="BORA App" class="bora-hero-icon">
+      <div class="hero-badge">⬤ &nbsp;Produto Enjoy Pineapple</div>
+    </div>
+    <h1 class="fade-in delay-1">BORA</h1>
     <p class="hero-tagline fade-in delay-2">Classificação de Risco de Atividades Econômicas</p>
     <p class="hero-sub fade-in delay-3">Saiba o risco da sua atividade, a legislação aplicável, as licenças necessárias e conecte-se com especialistas — tudo em um só app.</p>
     <div class="store-badges fade-in delay-3">
