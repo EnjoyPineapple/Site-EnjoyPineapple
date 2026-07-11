@@ -26,9 +26,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-he
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
-.ep-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1}
-.ep-sym{height:1.2em;width:auto;fill:currentColor;color:var(--text);vertical-align:-0.1em}
-.ep-pine{font-family:var(--font-head);font-size:1.1rem;font-weight:400;letter-spacing:0.04em;color:var(--text2);margin-left:0.45em}
+.ep-word{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:0.12em;display:inline-flex;align-items:center}
+.ep-sym-img{height:1.5em;width:auto;mix-blend-mode:screen;display:inline-block;vertical-align:middle;margin:0 0.05em}
 nav ul{list-style:none;display:flex;gap:2rem}
 nav a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;transition:color 0.2s}
 nav a:hover{color:var(--text)}
@@ -186,7 +185,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 <nav>
   <a href="#" class="nav-logo">
     <div class="ep-wordmark">
-      <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+      <span class="ep-word">ENJ<img src="ep-symbol.png" class="ep-sym-img" alt="">Y</span>
+      <span class="ep-word">&nbsp;PINEAPPLE</span>
     </div>
   </a>
   <ul>
@@ -381,8 +381,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="ep-wordmark">
-        <span class="ep-text">ENJ</span><svg class="ep-sym" viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M0,22 L8,10 L16,2 L24,10 L28,14 L32,0 L36,14 L40,10 L48,2 L56,10 L64,22 Z"/><path d="M0,22 L28,22 L28,34 L10,34 L10,46 L28,46 L28,58 L10,58 L10,70 L28,70 L28,82 L0,82 Z"/><path d="M64,22 L36,22 L36,34 L54,34 L54,46 L36,46 L36,58 L54,58 L54,70 L36,70 L36,82 L64,82 Z"/></svg><span class="ep-text">Y</span><span class="ep-pine"> PINEAPPLE</span>
+      <div class="ep-wordmark" style="margin-bottom:0.75rem">
+        <span class="ep-word">ENJ<img src="ep-symbol.png" class="ep-sym-img" alt="">Y</span>
+        <span class="ep-word">&nbsp;PINEAPPLE</span>
       </div>
       <p>Aproximamos pessoas das respostas certas com soluções práticas, acessíveis e confiáveis.</p>
       <div class="footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS</div>
