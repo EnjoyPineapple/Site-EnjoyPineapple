@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja Parceiro BORA — Enjoy Pineapple</title>
+<meta name="description" content="Alcance empreendedores no momento exato em que eles precisam de você. Seja parceiro do BORA e posicione sua empresa como referência no ecossistema de abertura de negócios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f5;--bg3:#efefec;--surface:#fafafa;--surface2:#ffffff;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.13);
+  --accent:#C9A227;--accent2:#a5871e;--accent-dim:rgba(201,162,39,0.08);--accent-glow:rgba(201,162,39,0.18);
+  --text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  --green:#0f9d58;--red:#dc2626;
+  --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+  --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.4s;transform-origin:center}
+.logo-anim .logo-sub{animation:logoSubIn .5s ease forwards;animation-delay:.7s}
+@keyframes logoLetterIn{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes logoOIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}70%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes logoSubIn{0%{opacity:0;transform:translateX(6px)}100%{opacity:1;transform:translateX(0)}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text2);transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
+
+/* ── HERO ── */
+.hero{min-height:75vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(201,162,39,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.05) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,162,39,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center}
+.hero-media{display:flex;justify-content:center}
+.hero-media img{width:100%;max-width:320px;border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.35);display:block}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-media{order:-1}
+  .hero-media img{max-width:260px}
+}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.35);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:#8a6d1a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-tagline{font-family:var(--font-mono);font-size:0.8rem;color:var(--text3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:620px;line-height:1.75;font-weight:300;margin-bottom:2rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-ghost{color:var(--text2);text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 0;transition:color .15s}
+.btn-ghost:hover{color:var(--text)}
+
+/* ── SECTIONS ── */
+section{padding:6rem 3rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+h2{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1.25rem}
+h2 em{font-style:normal;color:var(--accent)}
+.section-lead{font-size:1rem;color:var(--text2);max-width:620px;line-height:1.75;font-weight:300}
+
+/* ── COMO FUNCIONA ── */
+.how{background:var(--surface)}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.how-step{position:relative}
+.step-num{font-family:var(--font-display);font-size:2.6rem;color:var(--accent-glow);line-height:1;margin-bottom:.75rem}
+.how-step h3{font-family:var(--font-head);font-size:1.05rem;font-weight:800;margin-bottom:.6rem}
+.how-step p{font-size:.88rem;color:var(--text2);line-height:1.65}
+
+/* ── TIPOS DE PARCERIA ── */
+.types{background:var(--bg)}
+.type-group{margin-top:3.5rem}
+.type-group:first-of-type{margin-top:3.5rem}
+.type-group + .type-group{margin-top:4rem}
+.type-group-label{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.type-group-lead{font-size:.92rem;color:var(--text2);max-width:560px;line-height:1.65;margin-bottom:2rem}
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.type-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;transition:border-color .2s,transform .2s}
+.type-card:hover{border-color:rgba(201,162,39,.4);transform:translateY(-3px)}
+.type-icon{width:44px;height:44px;background:var(--accent-dim);border:1px solid rgba(201,162,39,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.type-icon svg{width:20px;height:20px;fill:none;stroke:var(--accent2);stroke-width:1.8}
+.type-card h3{font-family:var(--font-head);font-size:1.05rem;font-weight:800;margin-bottom:.6rem}
+.type-card p{font-size:.85rem;color:var(--text2);line-height:1.65;margin-bottom:1rem}
+.type-tag{display:inline-block;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);background:var(--accent-dim);padding:.3rem .7rem;border-radius:100px}
+
+/* ── DIFERENCIAIS ── */
+.diff{background:#000;color:#fff}
+.diff .section-label{color:var(--accent)}
+.diff h2{color:#fff}
+.diff h2 em{color:var(--accent)}
+.diff .section-lead{color:rgba(255,255,255,.7)}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem;margin-top:3.5rem}
+.diff-item{display:flex;gap:1rem;align-items:flex-start}
+.diff-check{width:26px;height:26px;border-radius:50%;background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.diff-check svg{width:14px;height:14px;fill:none;stroke:var(--accent);stroke-width:2.5}
+.diff-item h4{font-family:var(--font-head);font-size:.98rem;font-weight:700;margin-bottom:.4rem;color:#fff}
+.diff-item p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* ── FORMULÁRIO ── */
+.form-section{background:var(--bg)}
+.form-wrap{margin-top:3rem;max-width:760px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
+.form-group input,.form-group select,.form-group textarea{
+  background:var(--surface);border:1px solid var(--border2);border-radius:8px;
+  padding:.75rem .9rem;font-family:var(--font-body);font-size:.92rem;color:var(--text);
+  outline:none;transition:border-color .15s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.cf-turnstile{margin-top:1.5rem}
+.form-submit{margin-top:1.75rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.form-note{font-size:.75rem;color:var(--text3);line-height:1.5}
+#form-msg{display:none;margin-top:1.25rem;padding:.85rem 1.1rem;border-radius:8px;font-size:.88rem}
+#form-msg.ok{background:rgba(15,157,88,.08);border:1px solid rgba(15,157,88,.3);color:var(--green)}
+#form-msg.err{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:#000;padding:15px 3rem}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.df-footer-brand{display:flex;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
+
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 0.7s ease forwards}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .logo-anim .logo-sub{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  section{padding:4rem 1.5rem}
+  .how-steps{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo logo-anim">
+    <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+    <span class="logo-sub">PINEAPPLE</span>
+  </a>
+  <a href="parceiros.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">⬤ &nbsp;Parcerias BORA</div>
+        <h1 class="fade-in delay-1">ALGUÉM PRECISA<br>DE <em>VOCÊ.</em></h1>
+        <p class="hero-tagline fade-in delay-2">Nossa missão é construir essa ponte</p>
+        <p class="hero-sub fade-in delay-3">Sua empresa na frente de empreendedores no exato momento em que eles descobrem que precisam de você — antes da concorrência, antes da dúvida, antes do erro.</p>
+        <div class="hero-actions fade-in delay-3">
+          <a href="#form" class="btn-primary">Quero ser parceiro →</a>
+          <a href="#como-funciona" class="btn-ghost">Como funciona ↓</a>
+        </div>
+      </div>
+      <div class="hero-media fade-in delay-2">
+        <img src="parceiros-bora-hero.jpg" alt="Eu sabia que você existia">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <div class="section-inner">
+    <div class="section-label">// como funciona</div>
+    <h2>SIMPLES.<br><em>PRECISO.</em> EFICAZ.</h2>
+    <p class="section-lead">O BORA coloca sua marca no caminho natural do empreendedor — sem interrupção, com contexto e no momento certo.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <h3>O usuário pesquisa sua atividade</h3>
+        <p>O empreendedor busca o CNAE da sua atividade no BORA. Em segundos, descobre o risco, as licenças exigidas e a legislação que se aplica ao seu município.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <h3>Seu negócio aparece como solução</h3>
+        <p>Com base na atividade pesquisada e no perfil do usuário, o BORA exibe os parceiros mais relevantes — seu escritório, sua plataforma, seu serviço — como resposta natural ao que o usuário acabou de descobrir.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <h3>Contato com intenção real</h3>
+        <p>O usuário chega até você já informado, com necessidade clara e no momento de decisão. Não é impressão genérica — é lead qualificado com contexto regulatório.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS DE PARCERIA -->
+<section class="types" id="tipos">
+  <div class="section-inner">
+    <div class="section-label">// tipos de parceria</div>
+    <h2>PARA QUEM<br>É O <em>BORA?</em></h2>
+    <p class="section-lead">Qualquer empresa que atenda empreendedores pode ser parceira. Estes são os perfis que mais se beneficiam:</p>
+    <div class="type-group">
+      <div class="type-group-label">// especialistas no seu segmento</div>
+      <p class="type-group-lead">Profissionais selecionados que entendem a burocracia do seu setor e podem acelerar a regularização do empreendedor.</p>
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="10" y2="12"/><line x1="13" y1="12" x2="15" y2="12"/><line x1="8" y1="16" x2="10" y2="16"/><line x1="13" y1="16" x2="15" y2="16"/></svg></div>
+          <h3>Contabilidade</h3>
+          <p>Abertura de empresa, MEI, Simples Nacional e regularização fiscal.</p>
+          <span class="type-tag">Abertura de empresa</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h3>Consultoria Jurídica</h3>
+          <p>Alvarás, licenças, contratos e conformidade legal para o negócio.</p>
+          <span class="type-tag">Regularização</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-3-7-7-11z"/></svg></div>
+          <h3>Licenciamento Ambiental</h3>
+          <p>Órgãos ambientais — do protocolo à aprovação.</p>
+          <span class="type-tag">Licença ambiental</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="11" x2="12" y2="15"/><line x1="10" y1="13" x2="14" y2="13"/></svg></div>
+          <h3>Vigilância Sanitária</h3>
+          <p>Apoio no licenciamento sanitário e adequação às normas da VISA.</p>
+          <span class="type-tag">Licença sanitária</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h3>Prefeituras e Órgãos Públicos</h3>
+          <p>Integre a legislação municipal ao BORA e ofereça ao empreendedor local uma experiência completa de orientação regulatória direto pelo app.</p>
+          <span class="type-tag">Integração municipal</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <h3>Outros Serviços</h3>
+          <p>Bancos, fintechs, seguradoras, plataformas de ERP, coworkings e qualquer empresa que atenda o empreendedor na fase de legalização.</p>
+          <span class="type-tag">Ecossistema</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-group">
+      <div class="type-group-label">// benefícios & estilo de vida</div>
+      <p class="type-group-lead">Por empreender, o usuário merece mais. O BORA negocia descontos e condições especiais em restaurantes, shows e eventos para os cadastrados.</p>
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><path d="M6 2v7a2 2 0 0 0 2 2v11"/><path d="M10 2v7"/><path d="M14 2v20"/><path d="M18 2c-1.5 0-2 1.5-2 3v4c0 1 .5 2 2 2"/></svg></div>
+          <h3>Restaurantes & Gastronomia</h3>
+          <p>Descontos exclusivos para empreendedores cadastrados no BORA.</p>
+          <span class="type-tag">Descontos</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></div>
+          <h3>Shows & Eventos</h3>
+          <p>Acesso antecipado e condições especiais em eventos parceiros.</p>
+          <span class="type-tag">Acesso antecipado</span>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="2 2"/></svg></div>
+          <h3>Entretenimento</h3>
+          <p>Cinema, teatro, esportes e muito mais com vantagens para quem empreende.</p>
+          <span class="type-tag">Vantagens</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diff">
+  <div class="section-inner">
+    <div class="section-label">// por que o bora</div>
+    <h2>MÍDIA COM<br><em>CONTEXTO</em> REAL.</h2>
+    <p class="section-lead">Não é banner. Não é anúncio genérico. É a sua solução no momento em que o problema aparece.</p>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="diff-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><h4>Audiência com intenção declarada</h4><p>O usuário buscou ativamente uma atividade econômica. Ele já sabe o que quer fazer — falta só saber com quem.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><h4>Segmentação por CNAE e município</h4><p>Sua empresa aparece apenas para usuários que buscam atividades relevantes ao seu serviço e na cidade que você atende.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><h4>Zero concorrência no momento</h4><p>Enquanto o usuário ainda está no BORA entendendo as exigências, não há Google, não há rede social — só o seu serviço como resposta.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><h4>Resultados mensuráveis</h4><p>Acompanhe visualizações, cliques e contatos gerados pelo seu card. Dados claros para você entender o retorno.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="form-section" id="form">
+  <div class="section-inner">
+    <div class="section-label">// seja parceiro</div>
+    <h2>VAMOS<br><em>CONVERSAR?</em></h2>
+    <p class="section-lead">Preencha o formulário e entraremos em contato em até 2 dias úteis para apresentar as opções de parceria e disponibilidade para o seu município. Os detalhes completos — incluindo condições de exclusividade por região — são apresentados na conversa, depois que entendemos melhor o seu negócio.</p>
+    <div class="form-wrap">
+      <form id="partnerForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="contato@empresa.com.br" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone">WhatsApp / Telefone</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(51) 99999-9999" />
+          </div>
+          <div class="form-group">
+            <label for="tipo">Tipo de parceria</label>
+            <select id="tipo" name="tipo" required>
+              <option value="" disabled selected>Selecione</option>
+              <option value="contabilidade">Contabilidade</option>
+              <option value="juridico">Consultoria Jurídica</option>
+              <option value="ambiental">Licenciamento Ambiental</option>
+              <option value="sanitario">Vigilância Sanitária</option>
+              <option value="prefeitura">Prefeitura / Órgão Público</option>
+              <option value="outro">Outro serviço</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="municipio">Município de atuação</label>
+            <input type="text" id="municipio" name="municipio" placeholder="Ex: Porto Alegre / RS" required />
+          </div>
+          <div class="form-group full">
+            <label for="mensagem">Mensagem (opcional)</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu negócio e o que espera da parceria..."></textarea>
+          </div>
+        </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlXgE2I3O6U3H_v" data-theme="light"></div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" id="submitBtn">Enviar proposta →</button>
+          <p class="form-note">Seus dados são usados apenas para<br>contato de parceria. Sem spam.</p>
+        </div>
+        <div id="form-msg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="df-footer">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="index.html#tese">Sobre nós</a>
+        <a href="parceiros.html">Seja parceiro</a>
+        <a href="privacidade.html#bora">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="suporte.html#bora">Suporte</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.how-step,.type-card,.diff-item').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+  observer.observe(el);
+});
+
+let _lastSent = 0;
+
+function showMsg(msg, ok, text) {
+  msg.style.display = 'block';
+  msg.className = ok ? 'ok' : 'err';
+  msg.textContent = text;
+}
+
+function validateForm(p, msg) {
+  if (!p.nome || p.nome.length < 2 || p.nome.length > 100)
+    return showMsg(msg, false, 'Nome inválido (2–100 caracteres).'), false;
+  if (!p.empresa || p.empresa.length < 2 || p.empresa.length > 150)
+    return showMsg(msg, false, 'Empresa inválida (2–150 caracteres).'), false;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email))
+    return showMsg(msg, false, 'E-mail inválido.'), false;
+  if (p.telefone && !/^\+?[\d\s\-().]{7,20}$/.test(p.telefone))
+    return showMsg(msg, false, 'Telefone inválido. Use apenas números, espaços ou + ( ) -.'), false;
+  if (!p.tipo)
+    return showMsg(msg, false, 'Selecione o tipo de parceria.'), false;
+  if (!p.municipio || p.municipio.length < 2 || p.municipio.length > 100)
+    return showMsg(msg, false, 'Município inválido.'), false;
+  if (p.mensagem && p.mensagem.length > 1000)
+    return showMsg(msg, false, 'Mensagem muito longa (máx. 1000 caracteres).'), false;
+  return true;
+}
+
+document.getElementById('partnerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('form-msg');
+  msg.style.display = 'none';
+
+  if (Date.now() - _lastSent < 60000)
+    return showMsg(msg, false, 'Aguarde 1 minuto antes de enviar novamente.');
+
+  const payload = {
+    nome:      document.getElementById('nome').value.trim(),
+    empresa:   document.getElementById('empresa').value.trim(),
+    email:     document.getElementById('email').value.trim().toLowerCase(),
+    telefone:  document.getElementById('telefone').value.trim() || null,
+    tipo:      document.getElementById('tipo').value,
+    municipio: document.getElementById('municipio').value.trim(),
+    mensagem:  document.getElementById('mensagem').value.trim() || null,
+  };
+
+  if (!validateForm(payload, msg)) return;
+
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  const tsToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+  if (!tsToken) {
+    showMsg(msg, false, 'Confirme que você não é um robô.');
+    btn.textContent = 'Enviar proposta →';
+    btn.disabled = false;
+    return;
+  }
+
+  try {
+    const resp = await fetch('https://parceiros-lead.pablo-2102.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, tsToken }),
+    });
+    const result = await resp.json();
+    if (!resp.ok || result.error) {
+      showMsg(msg, false, result.error || 'Erro ao enviar. Tente novamente em instantes.');
+      btn.textContent = 'Enviar proposta →';
+      btn.disabled = false;
+    } else {
+      showMsg(msg, true, 'Recebemos sua proposta! Entraremos em contato em até 2 dias úteis.');
+      _lastSent = Date.now();
+      document.getElementById('partnerForm').reset();
+      btn.textContent = 'Enviar proposta →';
+      btn.disabled = false;
+      if (window.turnstile) turnstile.reset();
+    }
+  } catch (err) {
+    showMsg(msg, false, 'Erro de conexão. Tente novamente em instantes.');
+    btn.textContent = 'Enviar proposta →';
+    btn.disabled = false;
+  }
+});
+
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
+});
+</script>
+
+</body>
+</html>

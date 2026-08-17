@@ -1,537 +1,378 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seja Parceiro BORA — Enjoy Pineapple</title>
-  <meta name="description" content="Alcance empreendedores no momento exato em que eles precisam de você. Seja parceiro do BORA e posicione sua empresa como referência no ecossistema de abertura de negócios.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#07090c;--bg2:#0c1017;--bg3:#101620;--surface:#141d28;--surface2:#1a2535;
-      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-      --accent:#FFD600;--accent2:#e6bf00;--accent-dim:rgba(255,214,0,0.08);
-      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
-      --green:#00e5a0;
-      --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
-      --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcerias — Enjoy Pineapple</title>
+<meta name="description" content="Conheça o modelo de parcerias da Enjoy Pineapple — alcance seus clientes no momento exato em que eles precisam de você, através do BORA e dos próximos produtos do ecossistema.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f5;--bg3:#efefec;--surface:#fafafa;--surface2:#ffffff;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.13);
+  --accent:#C9A227;--accent2:#a5871e;--accent-dim:rgba(201,162,39,0.08);--accent-glow:rgba(201,162,39,0.18);
+  --text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
+  --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
-    .nav-logo img{width:36px;height:36px;object-fit:contain;border-radius:50%}
-    .logo-text{font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
-    .logo-text span{color:var(--accent)}
-    .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
-    .nav-back:hover{color:var(--accent)}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.4s;transform-origin:center}
+.logo-anim .logo-sub{animation:logoSubIn .5s ease forwards;animation-delay:.7s}
+@keyframes logoLetterIn{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes logoOIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}70%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes logoSubIn{0%{opacity:0;transform:translateX(6px)}100%{opacity:1;transform:translateX(0)}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text2);transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
 
-    /* HERO */
-    .hero{min-height:60vh;display:flex;align-items:center;padding:10rem 3rem 5rem;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg) 0%,var(--bg2) 100%)}
-    .hero::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,214,0,0.07) 0%,transparent 65%);pointer-events:none}
-    .hero::after{content:'';position:absolute;bottom:-10%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,229,160,0.04) 0%,transparent 65%);pointer-events:none}
-    .hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
-    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase}
-    .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-    .hero h1{font-family:var(--font-display);font-size:clamp(3rem,7vw,6.5rem);font-weight:400;line-height:0.92;letter-spacing:0.01em;margin-bottom:1.5rem}
-    .hero h1 em{font-style:normal;color:var(--accent)}
-    .hero-sub{font-size:1.15rem;color:var(--text2);max-width:560px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
-    .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-    .btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-family:var(--font-body);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
-    .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
-    .btn-ghost{color:var(--text2);text-decoration:none;font-size:0.9rem;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.2s}
-    .btn-ghost:hover{color:var(--accent)}
+/* ── HERO ── */
+.hero{min-height:70vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(201,162,39,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,0.05) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,162,39,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center}
+.hero-media{display:flex;justify-content:center}
+.hero-media img{width:100%;max-width:340px;border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.35);display:block}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-media{order:-1}
+  .hero-media img{max-width:260px}
+}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.35);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:#8a6d1a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:1.25rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:var(--text2);max-width:620px;line-height:1.75;font-weight:300}
 
-    /* STATS */
-    .stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 3rem}
-    .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
-    .stat-item{text-align:center}
-    .stat-num{font-family:var(--font-display);font-size:3rem;color:var(--accent);letter-spacing:0.02em;line-height:1}
-    .stat-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.12em;margin-top:0.4rem}
+/* ── SECTIONS ── */
+section{padding:6rem 3rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-inner.narrow{max-width:800px}
+.section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+h2{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1.25rem}
+h2 em{font-style:normal;color:var(--accent)}
+.section-lead{font-size:1rem;color:var(--text2);max-width:620px;line-height:1.75;font-weight:300}
 
-    /* SECTION BASE */
-    .section-inner{max-width:1100px;margin:0 auto;padding:5rem 3rem}
-    .section-label{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-    h2{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1rem}
-    h2 em{font-style:normal;color:var(--accent)}
-    .section-lead{font-size:1.05rem;color:var(--text2);max-width:600px;line-height:1.75;margin-bottom:3rem}
+/* ── COMO FUNCIONA ── */
+.how{background:var(--surface)}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.how-step{position:relative;padding-top:1rem}
+.how-step-num{font-family:var(--font-display);font-size:3rem;color:var(--accent-glow);line-height:1;margin-bottom:.75rem}
+.how-step h3{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:.6rem}
+.how-step p{font-size:.9rem;color:var(--text2);line-height:1.65}
 
-    /* COMO FUNCIONA */
-    .how{background:var(--bg)}
-    .how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin-top:3rem;position:relative}
-    .how-step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;position:relative;overflow:hidden}
-    .how-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent),transparent)}
-    .step-num{font-family:var(--font-display);font-size:4rem;color:rgba(255,214,0,0.12);line-height:1;margin-bottom:1rem;letter-spacing:0.02em}
-    .how-step h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text)}
-    .how-step p{font-size:0.88rem;color:var(--text2);line-height:1.7}
+/* ── VANTAGENS ── */
+.benefits{background:#000;color:#fff}
+.benefits .section-label{color:var(--accent)}
+.benefits h2{color:#fff}
+.benefits h2 em{color:var(--accent)}
+.benefits .section-lead{color:rgba(255,255,255,.7)}
+.benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3.5rem}
+.benefit-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.75rem 1.75rem;transition:border-color .2s,transform .2s}
+.benefit-card:hover{border-color:rgba(201,162,39,.4);transform:translateY(-3px)}
+.benefit-icon{width:42px;height:42px;background:var(--accent-dim);border:1px solid rgba(201,162,39,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.1rem}
+.benefit-card h3{font-family:var(--font-head);font-size:1rem;font-weight:800;margin-bottom:.5rem;color:#fff}
+.benefit-card p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.65}
 
-    /* TIPOS DE PARCERIA */
-    .types{background:var(--bg2)}
-    .types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
-    .type-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.25s,transform 0.2s;cursor:default}
-    .type-card:hover{border-color:rgba(255,214,0,0.35);transform:translateY(-3px)}
-    .type-icon{width:44px;height:44px;background:var(--accent-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
-    .type-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .type-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#fff}
-    .type-card p{font-size:0.875rem;color:var(--text2);line-height:1.7;margin-bottom:1rem}
-    .type-tag{display:inline-block;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(255,214,0,0.2);padding:0.25rem 0.6rem;border-radius:4px}
+/* ── ECOSSISTEMA ── */
+.growth{background:var(--bg)}
+.growth-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 0.8fr;gap:3.5rem;align-items:center}
+.growth-media{display:flex;justify-content:center}
+.growth-media img{width:100%;max-width:300px;border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.3);display:block}
+.growth-honest{margin-top:2rem;padding:1.5rem 2rem;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;text-align:left}
+@media(max-width:900px){
+  .growth-grid{grid-template-columns:1fr;gap:2.5rem}
+  .growth-media{order:-1}
+  .growth-media img{max-width:220px}
+}
+.growth-honest p{font-size:.9rem;color:var(--text2);line-height:1.7;margin:0}
 
-    /* DIFERENCIAIS */
-    .diff{background:var(--bg)}
-    .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
-    .diff-list{display:flex;flex-direction:column;gap:1.25rem}
-    .diff-item{display:flex;gap:1rem;align-items:flex-start}
-    .diff-check{width:24px;height:24px;background:var(--accent-dim);border:1px solid rgba(255,214,0,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-    .diff-check svg{width:13px;height:13px;stroke:var(--accent);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-    .diff-item h4{font-family:var(--font-head);font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;color:#fff}
-    .diff-item p{font-size:0.85rem;color:var(--text2);line-height:1.6}
-    .diff-visual{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
-    .mock-row{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .mock-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em}
-    .mock-val{font-family:var(--font-head);font-size:0.9rem;font-weight:700;color:var(--text)}
-    .mock-badge{font-family:var(--font-mono);font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:4px;text-transform:uppercase;letter-spacing:0.08em}
-    .mock-badge.low{background:rgba(0,229,160,0.12);color:var(--green);border:1px solid rgba(0,229,160,0.25)}
-    .mock-badge.med{background:rgba(255,214,0,0.1);color:var(--accent);border:1px solid rgba(255,214,0,0.25)}
-    .mock-partner{background:var(--surface2);border:1px solid rgba(255,214,0,0.2);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .mock-partner-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem}
-    .mock-partner-name{font-family:var(--font-head);font-size:0.95rem;font-weight:700;color:#fff}
-    .mock-cta{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);border:1px solid rgba(255,214,0,0.3);padding:0.3rem 0.75rem;border-radius:4px;white-space:nowrap}
+/* ── PRODUTOS ── */
+.products{background:var(--surface)}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.product-card{
+  background:#fff;border:1px solid var(--border);border-radius:16px;
+  padding:2rem 2rem;transition:border-color .2s,transform .2s;
+}
+.product-card.active{border-color:rgba(201,162,39,.35)}
+.product-card:hover{transform:translateY(-3px)}
+.product-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.35rem .8rem;border-radius:100px;margin-bottom:1.25rem;
+}
+.product-badge.available{background:rgba(201,162,39,.12);color:#8a6d1a}
+.product-badge.construction{background:#f1f1ef;color:var(--text3)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.product-card h3{font-family:var(--font-head);font-weight:800;font-size:1.6rem;margin-bottom:.6rem}
+.product-card p{font-size:.9rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem}
+.mega-link-arrow{display:inline-flex;align-items:center;gap:.4rem;font-size:15.5px;font-weight:500;text-decoration:none;color:#000;transition:color .15s}
+.mega-link-arrow:hover{color:var(--accent)}
+.mega-link-arrow svg{width:14px;height:14px;transition:transform .15s}
+.mega-link-arrow:hover svg{transform:translateX(3px)}
+.product-card.construction-card{opacity:.6}
 
-    /* FORM */
-    .form-section{background:var(--bg2)}
-    .form-wrap{max-width:700px;margin:3rem auto 0}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-    .form-group{display:flex;flex-direction:column;gap:0.5rem}
-    .form-group.full{grid-column:1/-1}
-    label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2)}
-    input,select,textarea{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:0.8rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;transition:border-color 0.2s;outline:none;width:100%}
-    input:focus,select:focus,textarea:focus{border-color:rgba(255,214,0,0.4)}
-    select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a9bac' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
-    select option{background:var(--surface)}
-    textarea{resize:vertical;min-height:120px;line-height:1.6}
-    input::placeholder,textarea::placeholder{color:var(--text3)}
-    .form-submit{margin-top:1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-    .form-note{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);line-height:1.5}
-    #form-msg{font-family:var(--font-mono);font-size:0.8rem;margin-top:1rem;display:none}
+/* ── CTA ── */
+.cta{background:var(--bg);position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,162,39,0.08) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-inner h2{margin-bottom:1rem}
+.cta-inner .section-lead{margin:0 auto 2.5rem;text-align:center}
+.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.form-note{font-size:0.75rem;color:var(--text3);margin-top:1.5rem}
 
-    /* PLANO CONTADOR */
-    .contador{background:var(--bg2)}
-    .contador-grid{display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:start;margin-top:3rem}
-    .contador-features{display:flex;flex-direction:column;gap:1.1rem}
-    .cf-item{display:flex;gap:1rem;align-items:flex-start}
-    .cf-check{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-    .cf-check svg{width:13px;height:13px;stroke:#000;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-    .cf-item h4{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.2rem;color:#fff}
-    .cf-item p{font-size:0.85rem;color:var(--text2);line-height:1.6}
-    .contador-cta{background:var(--surface);border:1px solid rgba(255,214,0,0.25);border-radius:16px;padding:2.5rem;position:sticky;top:100px}
-    .trial-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);padding:0.35rem 1rem;border-radius:100px;font-family:var(--font-mono);font-size:0.7rem;font-weight:500;color:#000;letter-spacing:0.12em;margin-bottom:1.25rem}
-    .trial-badge::before{content:'';width:6px;height:6px;background:#000;border-radius:50%;opacity:0.5}
-    .contador-cta h3{font-family:var(--font-display);font-size:2rem;color:#fff;line-height:1.05;margin-bottom:1rem}
-    .contador-cta h3 em{font-style:normal;color:var(--accent)}
-    .contador-cta p{font-size:0.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.75rem}
-    .btn-contador{display:block;background:var(--accent);color:#000;padding:1rem 1.5rem;border-radius:8px;font-family:var(--font-body);font-size:0.95rem;font-weight:700;text-decoration:none;text-align:center;transition:background 0.2s,transform 0.15s;margin-bottom:1rem}
-    .btn-contador:hover{background:var(--accent2);transform:translateY(-2px)}
-    .cta-email{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);text-align:center;display:block}
-    @media(max-width:900px){.contador-grid{grid-template-columns:1fr}.contador-cta{position:static}}
+/* ── FOOTER ── */
+footer{background:#000;padding:15px 3rem}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.df-footer-brand{display:flex;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
 
-    /* FOOTER */
-    footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
-    .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
-    .footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
-    .footer-text a:hover{color:var(--accent)}
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 0.7s ease forwards}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
 
-    @media(max-width:768px){
-      .diff-grid{grid-template-columns:1fr}
-      .diff-visual{display:none}
-      .form-grid{grid-template-columns:1fr}
-      nav{padding:1rem 1.5rem}
-      .section-inner{padding:4rem 1.5rem}
-      .hero{padding:9rem 1.5rem 4rem}
-      .stats{padding:2rem 1.5rem}
-    }
-  </style>
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .logo-anim .logo-sub{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  section{padding:4rem 1.5rem}
+  .how-steps{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:1fr}
+}
+
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
-    <span class="logo-text">Enjoy <span>Pineapple</span></span>
+  <a href="#" class="nav-logo logo-anim">
+    <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+    <span class="logo-sub">PINEAPPLE</span>
   </a>
-  <a href="index.html" class="nav-back">← Voltar ao início</a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-badge">Parcerias BORA</div>
-    <h1>CRESÇA E APAREÇA<br>COM O <em>BORA.</em></h1>
-    <p class="hero-sub">Sua empresa na frente de empreendedores no exato momento em que eles descobrem que precisam de você — antes da concorrência, antes da dúvida, antes do erro.</p>
-    <div class="hero-actions">
-      <a href="#form" class="btn-primary">Quero ser parceiro →</a>
-      <a href="#como-funciona" class="btn-ghost">Como funciona ↓</a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">⬤ &nbsp;Parcerias Enjoy Pineapple</div>
+        <h1 class="fade-in delay-1">ALCANCE NO<br>MOMENTO <em>CERTO.</em></h1>
+        <p class="hero-sub fade-in delay-2">Nossos produtos resolvem problemas reais no exato momento em que alguém mais precisa de ajuda. Ser parceiro da Enjoy Pineapple é aparecer bem ali — como a resposta natural pra quem já está procurando.</p>
+      </div>
+      <div class="hero-media fade-in delay-2">
+        <img src="parceiros-hero.jpg" alt="Parceria Enjoy Pineapple">
+      </div>
     </div>
   </div>
 </section>
-
 
 <!-- COMO FUNCIONA -->
-<section class="how" id="como-funciona">
+<section class="how">
   <div class="section-inner">
     <div class="section-label">// como funciona</div>
-    <h2>SIMPLES.<br><em>PRECISO.</em> EFICAZ.</h2>
-    <p class="section-lead">O BORA coloca sua marca no caminho natural do empreendedor — sem interrupção, com contexto e no momento certo.</p>
+    <h2>UM MOMENTO DE<br>DECISÃO <em>REAL.</em></h2>
+    <p class="section-lead">Cada produto Enjoy Pineapple existe pra resolver um "abacaxi" específico. E é exatamente nesse momento — quando a pessoa descobre o problema — que o seu negócio pode entrar.</p>
     <div class="how-steps">
       <div class="how-step">
-        <div class="step-num">01</div>
-        <h3>O usuário pesquisa sua atividade</h3>
-        <p>O empreendedor busca o CNAE da sua atividade no BORA. Em segundos, descobre o risco, as licenças exigidas e a legislação que se aplica ao seu município.</p>
+        <div class="how-step-num">01</div>
+        <h3>Alguém descobre uma necessidade</h3>
+        <p>No BORA, é quando o empreendedor descobre que precisa de uma licença ou orientação fiscal. Em cada novo produto, esse "momento" muda — mas sempre existe.</p>
       </div>
       <div class="how-step">
-        <div class="step-num">02</div>
-        <h3>Seu negócio aparece como solução</h3>
-        <p>Com base na atividade pesquisada e no perfil do usuário, o BORA exibe os parceiros mais relevantes — seu escritório, sua plataforma, seu serviço — como resposta natural ao que o usuário acabou de descobrir.</p>
+        <div class="how-step-num">02</div>
+        <h3>O app aponta o caminho</h3>
+        <p>Organizamos a informação certa pra essa pessoa — e mostramos que existe alguém especializado que pode ajudar de verdade.</p>
       </div>
       <div class="how-step">
-        <div class="step-num">03</div>
-        <h3>Contato com intenção real</h3>
-        <p>O usuário chega até você já informado, com necessidade clara e no momento de decisão. Não é impressão genérica — é lead qualificado com contexto regulatório.</p>
+        <div class="how-step-num">03</div>
+        <h3>Seu negócio é a resposta</h3>
+        <p>Você aparece como parceiro justamente ali, pro público certo, no momento em que a decisão está sendo tomada — não em um anúncio genérico e aleatório.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TIPOS DE PARCERIA -->
-<section class="types" id="tipos">
+<!-- VANTAGENS -->
+<section class="benefits">
   <div class="section-inner">
-    <div class="section-label">// tipos de parceria</div>
-    <h2>PARA QUEM<br>É O <em>BORA?</em></h2>
-    <p class="section-lead">Qualquer empresa que atenda empreendedores pode ser parceira. Estes são os perfis que mais se beneficiam:</p>
-    <div class="types-grid">
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
-        </div>
-        <h3>Contabilidades</h3>
-        <p>Posicione seu escritório como referência no momento em que o empreendedor descobre o risco da atividade e precisa de orientação fiscal, societária e de abertura de empresa.</p>
-        <span class="type-tag">Abertura de empresa</span>
+    <div class="section-label">// vantagens de entrar agora</div>
+    <h2>ENTRAR CEDO<br>TEM SEUS <em>GANHOS.</em></h2>
+    <p class="section-lead">Como ecossistema em construção, quem entra agora ganha condições que não vão se repetir depois.</p>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🏆</div>
+        <h3>Parceiro fundador</h3>
+        <p>Quem entra nessa fase inicial é reconhecido como parceiro fundador — com condições especiais garantidas enquanto o ecossistema cresce.</p>
       </div>
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3>Consultores Jurídicos</h3>
-        <p>Seja indicado quando o empreendedor descobre que sua atividade exige alvará, licença específica ou regularização junto a órgãos municipais e estaduais.</p>
-        <span class="type-tag">Regularização</span>
+      <div class="benefit-card">
+        <div class="benefit-icon">✅</div>
+        <h3>Selo verificado</h3>
+        <p>Parceiros aprovados recebem o selo de verificado Enjoy Pineapple, reforçando confiança na hora de aparecer pro usuário.</p>
       </div>
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 22V12a10 10 0 0 1 20 0v10"/><path d="M7 22v-4a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h3>Licenciamento Ambiental</h3>
-        <p>Alcance empresas que precisam de SMAMUS, FEPAM e demais órgãos ambientais — antes de qualquer outro canal, no momento em que a exigência aparece na tela.</p>
-        <span class="type-tag">Licença ambiental</span>
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <h3>Dados de mercado</h3>
+        <p>Acesso a dados agregados sobre buscas e demanda na sua área de atuação e região — inteligência que vai além da simples visibilidade.</p>
       </div>
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-        </div>
-        <h3>Vigilância Sanitária</h3>
-        <p>Consultores e empresas especializados em adequação sanitária para alimentos, saúde e cosméticos chegam na hora certa — quando o BORA indica que a atividade exige licença da VISA.</p>
-        <span class="type-tag">Licença sanitária</span>
+      <div class="benefit-card">
+        <div class="benefit-icon">📍</div>
+        <h3>Exclusividade regional</h3>
+        <p>Posições limitadas por município — seu negócio não divide espaço com concorrência direta na mesma região.</p>
       </div>
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3>Prefeituras e Órgãos Públicos</h3>
-        <p>Integre a legislação municipal do seu município ao BORA e ofereça ao empreendedor local uma experiência completa de orientação regulatória diretamente pelo app.</p>
-        <span class="type-tag">Integração municipal</span>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔁</div>
+        <h3>Cresça junto</h3>
+        <p>Parceiros que também trazem novos usuários pro ecossistema fortalecem a própria posição dentro dele.</p>
       </div>
-
-      <div class="type-card">
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <h3>Outros Serviços</h3>
-        <p>Bancos, fintechs, seguradoras, plataformas de ERP, coworkings e qualquer empresa que atenda o empreendedor na fase de legalização e início de operações.</p>
-        <span class="type-tag">Ecossistema</span>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧩</div>
+        <h3>Presença entre produtos</h3>
+        <p>Conforme lançamos novos apps, parceiros fundadores têm prioridade pra expandir a presença em mais de um produto do ecossistema.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- DIFERENCIAIS -->
-<section class="diff">
+<!-- ECOSSISTEMA EM CRESCIMENTO -->
+<section class="growth">
+  <div class="growth-grid">
+    <div class="growth-content">
+      <div class="section-label">// onde estamos</div>
+      <h2>UM ECOSSISTEMA<br>EM <em>CONSTRUÇÃO.</em></h2>
+      <p class="section-lead">Somos uma empresa em crescimento — e contamos essa jornada com transparência.</p>
+      <div class="growth-honest">
+        <p>O BORA já está no ar e crescendo cidade por cidade, com gente de verdade usando o app todos os dias. Ainda não temos milhões de usuários pra mostrar — mas temos um produto validado, funcionando, e um plano claro de expansão. Parceiros que entram agora fazem parte dessa construção desde o início, não chegam depois que tudo já está pronto.</p>
+      </div>
+    </div>
+    <div class="growth-media">
+      <img src="parceiros-ecossistema-bg.png" alt="Existir. Pertencer. Somar. Transformar.">
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="products">
   <div class="section-inner">
-    <div class="section-label">// por que o bora</div>
-    <h2>MÍDIA COM<br><em>CONTEXTO</em> REAL.</h2>
-    <p class="section-lead">Não é banner. Não é anúncio genérico. É a sua solução no momento em que o problema aparece.</p>
-    <div class="diff-grid">
-      <div class="diff-list">
-
-        <div class="diff-item">
-          <div class="diff-check">
-            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
-          <div>
-            <h4>Audiência com intenção declarada</h4>
-            <p>O usuário buscou ativamente uma atividade econômica. Ele já sabe o que quer fazer — falta só saber com quem.</p>
-          </div>
+    <div class="section-label">// produtos com parceria</div>
+    <h2>ESCOLHA ONDE<br>QUER <em>APARECER.</em></h2>
+    <p class="section-lead">Cada produto Enjoy Pineapple tem seu próprio programa de parceria, com seu público e seu momento de decisão específico.</p>
+    <div class="product-grid">
+      <div class="product-card active">
+        <div class="product-badge available">
+          <span class="badge-dot"></span>
+          Parceria ativa
         </div>
-
-        <div class="diff-item">
-          <div class="diff-check">
-            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
-          <div>
-            <h4>Segmentação por CNAE e município</h4>
-            <p>Sua empresa aparece apenas para usuários que buscam atividades relevantes ao seu serviço e na cidade que você atende.</p>
-          </div>
-        </div>
-
-        <div class="diff-item">
-          <div class="diff-check">
-            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
-          <div>
-            <h4>Zero concorrência no momento</h4>
-            <p>Enquanto o usuário ainda está no BORA entendendo as exigências, não há Google, não há rede social — só o seu serviço como resposta.</p>
-          </div>
-        </div>
-
-        <div class="diff-item">
-          <div class="diff-check">
-            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
-          <div>
-            <h4>Resultados mensuráveis</h4>
-            <p>Acompanhe visualizações, cliques e contatos gerados pelo seu card. Dados claros para você entender o retorno.</p>
-          </div>
-        </div>
-
+        <h3>BORA</h3>
+        <p>Classificação de risco de atividades econômicas. Contabilidades, consultores jurídicos, licenciamento ambiental, vigilância sanitária e mais — apareça exatamente quando o empreendedor descobre o que precisa.</p>
+        <a href="parceiros-bora.html" class="mega-link-arrow">Ver programa de parceria BORA
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PLANO CONTADOR -->
-<section class="contador" id="contadores">
-  <div class="section-inner">
-    <div class="section-label">// plano contador</div>
-    <h2>BORA<br><em>CONTADOR.</em></h2>
-    <p class="section-lead">A ferramenta que transforma a orientação de clientes em diferencial competitivo da sua contabilidade.</p>
-
-    <div class="contador-grid">
-      <div class="contador-features">
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Lista de clientes centralizada</h4><p>Organize todos os seus clientes com CNAE e município em um só lugar, sem planilhas.</p></div>
+      <div class="product-card construction-card">
+        <div class="product-badge construction">
+          <span class="badge-dot"></span>
+          Em construção
         </div>
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Classificação de risco federal por CNAE</h4><p>Saiba de imediato se cada atividade é baixo, médio ou alto risco — antes mesmo de iniciar o processo.</p></div>
-        </div>
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Requisitos de alvará por município</h4><p>Identifique se a atividade do cliente exige alvará de funcionamento no município de atuação.</p></div>
-        </div>
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Licenças sanitárias e ambientais</h4><p>Verifique se há exigências de vigilância sanitária ou licença ambiental antes de abrir o CNPJ.</p></div>
-        </div>
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Legislação vigente por atividade</h4><p>Acesse as normas federais aplicáveis ao CNAE do cliente com um clique.</p></div>
-        </div>
-        <div class="cf-item">
-          <div class="cf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h4>Cobertura nacional — todo o Brasil</h4><p>Dados de municípios de todos os estados, atualizados e em constante expansão.</p></div>
-        </div>
-      </div>
-
-      <div class="contador-cta">
-        <div class="trial-badge">30 DIAS GRÁTIS</div>
-        <h3>TESTE SEM<br><em>COMPROMISSO.</em></h3>
-        <p>Ative o modo Contador no seu perfil e explore todas as funcionalidades durante 30 dias. Após o período, escolha o plano ideal para a sua contabilidade.</p>
-        <a href="mailto:parceiros@enjoypineapple.com.br?subject=Plano Contador BORA" class="btn-contador">Consultar planos →</a>
-        <span class="cta-email">parceiros@enjoypineapple.com.br</span>
+        <h3>BENTO <span style="font-size:.9rem;color:var(--text3);font-weight:400">(Bench To)</span></h3>
+        <p>Novo produto do ecossistema Enjoy Pineapple, ainda em desenvolvimento. O programa de parceria abre assim que o produto for lançado.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FORMULÁRIO -->
-<section class="form-section" id="form">
-  <div class="section-inner">
-    <div class="section-label">// seja parceiro</div>
-    <h2>VAMOS<br><em>CONVERSAR?</em></h2>
-    <p class="section-lead">Preencha o formulário e entraremos em contato em até 2 dias úteis para apresentar as opções de parceria e disponibilidade para o seu município.</p>
-
-    <div class="form-wrap">
-      <form id="partnerForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-          </div>
-          <div class="form-group">
-            <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required />
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="contato@empresa.com.br" required />
-          </div>
-          <div class="form-group">
-            <label for="telefone">WhatsApp / Telefone</label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(51) 99999-9999" />
-          </div>
-          <div class="form-group">
-            <label for="tipo">Tipo de parceria</label>
-            <select id="tipo" name="tipo" required>
-              <option value="" disabled selected>Selecione</option>
-              <option value="contabilidade">Contabilidade</option>
-              <option value="juridico">Consultoria Jurídica</option>
-              <option value="ambiental">Licenciamento Ambiental</option>
-              <option value="sanitario">Vigilância Sanitária</option>
-              <option value="prefeitura">Prefeitura / Órgão Público</option>
-              <option value="outro">Outro serviço</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="municipio">Município de atuação</label>
-            <input type="text" id="municipio" name="municipio" placeholder="Ex: Porto Alegre / RS" required />
-          </div>
-          <div class="form-group full">
-            <label for="mensagem">Mensagem (opcional)</label>
-            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu negócio e o que espera da parceria..."></textarea>
-          </div>
-        </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADlXgE2I3O6U3H_v" data-theme="dark"></div>
-        <div class="form-submit">
-          <button type="submit" class="btn-primary" id="submitBtn">Enviar proposta →</button>
-          <p class="form-note">Seus dados são usados apenas para<br>contato de parceria. Sem spam.</p>
-        </div>
-        <div id="form-msg"></div>
-      </form>
-    </div>
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div class="section-label">// fale com a gente</div>
+    <h2>QUER SER UM<br>PARCEIRO <em>FUNDADOR?</em></h2>
+    <p class="section-lead">Escreva pra gente contando um pouco sobre seu negócio — respondemos com as opções certas pro seu caso.</p>
+    <a href="mailto:parcerias@enjoypineapple.com.br" class="btn-primary">Falar com a Enjoy Pineapple →</a>
+    <p class="form-note">Sem contrato de adesão. Apresentamos as opções em até 2 dias úteis.</p>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p class="footer-text">
-    © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
-    <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
-    <a href="termos.html">Termos</a> &nbsp;·&nbsp;
-    <a href="suporte.html">Suporte</a>
-  </p>
+  <div class="df-footer">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="index.html#tese">Sobre nós</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="suporte.html">Suporte</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL  = 'https://utlvupzpcxbvunfncheu.supabase.co';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bHZ1cHpwY3hidnVuZm5jaGV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NDAyMDUsImV4cCI6MjA5NjUxNjIwNX0.H3w3GRj8iASvYemv_PtSoHKu0GMZpvAIsnM8IJIpKDA';
-  const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.benefit-card,.how-step,.product-card').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+  observer.observe(el);
+});
 
-  // Rate limit: bloqueia reenvio por 60s após sucesso
-  let _lastSent = 0;
-
-  function showError(msg, text) {
-    msg.style.display = 'block';
-    msg.style.color = '#ff5f5f';
-    msg.textContent = text;
-  }
-
-  function validateForm(p, msg) {
-    if (!p.nome || p.nome.length < 2 || p.nome.length > 100)
-      return showError(msg, 'Nome inválido (2–100 caracteres).'), false;
-    if (!p.empresa || p.empresa.length < 2 || p.empresa.length > 150)
-      return showError(msg, 'Empresa inválida (2–150 caracteres).'), false;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email))
-      return showError(msg, 'E-mail inválido.'), false;
-    if (p.telefone && !/^\+?[\d\s\-().]{7,20}$/.test(p.telefone))
-      return showError(msg, 'Telefone inválido. Use apenas números, espaços ou + ( ) -.'), false;
-    if (!p.tipo)
-      return showError(msg, 'Selecione o tipo de parceria.'), false;
-    if (!p.municipio || p.municipio.length < 2 || p.municipio.length > 100)
-      return showError(msg, 'Município inválido.'), false;
-    if (p.mensagem && p.mensagem.length > 1000)
-      return showError(msg, 'Mensagem muito longa (máx. 1000 caracteres).'), false;
-    return true;
-  }
-
-  document.getElementById('partnerForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const msg = document.getElementById('form-msg');
-    msg.style.display = 'none';
-
-    // Rate limit client-side
-    if (Date.now() - _lastSent < 60000)
-      return showError(msg, 'Aguarde 1 minuto antes de enviar novamente.');
-
-    const payload = {
-      nome:      document.getElementById('nome').value.trim(),
-      empresa:   document.getElementById('empresa').value.trim(),
-      email:     document.getElementById('email').value.trim().toLowerCase(),
-      telefone:  document.getElementById('telefone').value.trim() || null,
-      tipo:      document.getElementById('tipo').value,
-      municipio: document.getElementById('municipio').value.trim(),
-      mensagem:  document.getElementById('mensagem').value.trim() || null,
-    };
-
-    if (!validateForm(payload, msg)) return;
-
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    // Pega token do Turnstile
-    const tsToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
-    if (!tsToken) {
-      showError(msg, 'Confirme que você não é um robô.');
-      btn.textContent = 'Enviar proposta →';
-      btn.disabled = false;
-      return;
-    }
-
-    // Envia para Edge Function que valida Turnstile e grava no Supabase
-    const resp = await fetch('https://parceiros-lead.pablo-2102.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...payload, tsToken }),
-    });
-
-    const result = await resp.json();
-    msg.style.display = 'block';
-    if (!resp.ok || result.error) {
-      msg.style.color = '#ff5f5f';
-      msg.textContent = result.error || 'Erro ao enviar. Tente novamente ou escreva para parcerias@enjoypineapple.com.br';
-      btn.textContent = 'Enviar proposta →';
-      btn.disabled = false;
-      if (window.turnstile) window.turnstile.reset();
-    } else {
-      _lastSent = Date.now();
-      msg.style.color = 'var(--green)';
-      msg.textContent = 'Proposta recebida! Entraremos em contato em até 2 dias úteis.';
-      btn.textContent = 'Enviado ✓';
-      document.getElementById('partnerForm').reset();
-    }
-  });
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
+});
 </script>
+
 </body>
 </html>

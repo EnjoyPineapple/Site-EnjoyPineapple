@@ -59,9 +59,12 @@ Dark mode total. Nunca usar fundo branco.
 ## ESTRUTURA DE ARQUIVOS
 
 ```
-index.html          → página principal (landing page)
+index.html          → página INSTITUCIONAL da Enjoy Pineapple (empresa, tese, MVV, manifesto, carta do fundador, cards dos produtos)
+bora.html           → página de PRODUTO do app BORA (hero carousel, screenshots, como funciona, para quem, parceiros)
+divide-ai.html      → página "em breve" do Divide Aí com waitlist (verde, sem conteúdo de produto ainda)
 parceiros.html      → página de parceiros com formulário
 privacidade.html    → política de privacidade
+excluir-conta.html  → página de exclusão de conta (exigida pela App Store)
 termos.html         → termos de uso
 suporte.html        → página de suporte
 contrato.html       → modelo de contrato de parceria
@@ -86,17 +89,27 @@ assets/
 
 ---
 
-## SEÇÕES DO INDEX.HTML (em ordem)
+## SEÇÕES DO INDEX.HTML (página institucional — em ordem)
 
-1. **NAV** — logo + links (Sobre, BORA, Parceiros, CTA "Seja um Parceiro")
-2. **HERO** — carousel de fundo com fotos dos 6 setores + headline + botões
-3. **MVV** (#sobre) — Missão, Visão, Valores em 3 cards
-4. **PRODUTO: BORA** (#bora) — logo do app, descrição, badges Play Store / App Store (iOS em breve), 4 screenshots do app
+1. **NAV** — logo + links (Sobre, Produtos, Parceiros, CTA "Seja um Parceiro")
+2. **HERO** — "EXISTIR. PERTENCER. SOMAR. TRANSFORMAR." + subtítulo + CTAs + essence words
+3. **A TESE** (#sobre) — filosofia da empresa, por que existimos
+4. **MVV** — 3 cards: Missão, Visão, Valores (com tags de valores)
+5. **MANIFESTO** — texto do manifesto do Brand Book
+6. **CARTA DO FUNDADOR** (#fundador) — grid 2 colunas: Pablo (nome, cargo, quote) + texto da carta com milestones 2006/2012
+7. **NOSSOS PRODUTOS** (#produtos) — 2 cards: BORA (amarelo → bora.html) + Divide Aí (verde → divide-ai.html, "em desenvolvimento")
+8. **FOOTER** — 3 colunas (Empresa / Produtos / Legal) + CNPJ + epígrafe
+
+## SEÇÕES DO BORA.HTML (página de produto — em ordem)
+
+1. **NAV** — logo linkando para index.html + "Enjoy Pineapple" + Parceiros + CTA
+2. **HERO** — carousel de fundo com fotos dos 6 setores + ícone BORA + tagline + badges Play/App Store
+3. **O QUE É / NÃO É** — sim-list (verde ✓) e nao-list (vermelho ✕)
+4. **SCREENSHOTS** — grid com screen1-4.png
 5. **COMO FUNCIONA** — 3 passos: município → busca → resultado
-6. **PARA QUEM** (#para-quem) — 5 cards: Empresários, Contadores, Advogados, Empreendedores, Arquitetos/Engenheiros
-7. **SEJA UM PARCEIRO** (#parceiro) — 4 tipos: Contabilidades, Jurídico, Ambiental, Benefícios
-8. **WAITLIST** (#waitlist) — CTA para parceiros com link para parceiros.html
-9. **FOOTER** — logo, CNPJ, links de navegação, copyright
+6. **PARA QUEM** — 5 cards de público-alvo
+7. **SEJA UM PARCEIRO** — 4 tipos de parceiros + CTA → parceiros.html#form
+8. **FOOTER** — links legais
 
 ---
 

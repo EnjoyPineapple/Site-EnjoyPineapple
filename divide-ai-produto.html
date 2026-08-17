@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BORA — Classificação de Risco de Atividades Econômicas</title>
-<meta name="description" content="O BORA organiza informações legais de atividades econômicas por CNAE e município. Risco federal, legislação vigente, licenças e parceiros — tudo em um só lugar.">
+<title>Divide Aí — Divida contas com os amigos sem estresse</title>
+<meta name="description" content="O Divide Aí organiza os pagamentos de qualquer evento entre amigos — churrasco, viagem, balada — e calcula na hora quem deve pra quem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -58,7 +58,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .hero-top-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
-.bora-hero-icon{width:72px;height:72px;border-radius:18px;display:block;flex-shrink:0}
+.da-hero-icon{width:72px;height:72px;border-radius:18px;display:block;flex-shrink:0;object-fit:cover;box-shadow:0 8px 24px -8px rgba(0,0,0,.35)}
 h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:0.95;letter-spacing:0.02em;margin-bottom:0.5rem}
 h1 em{font-style:normal;color:var(--accent)}
 .hero-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem}
@@ -102,15 +102,18 @@ h2 em{font-style:normal;color:var(--accent)}
 .col-label.green{color:var(--green)}
 .col-label.red{color:var(--red)}
 
-/* ── SCREENS ── */
-.screens{background:var(--bg)}
-.screens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;align-items:end;margin-top:3.5rem}
-.screen-item{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
-.screen-frame{width:100%;max-width:220px;border-radius:28px;border:2px solid #333;box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);overflow:hidden;background:#0a0a0a}
-.screen-frame img{width:100%;height:auto;display:block}
-.screen-label{text-align:center}
-.screen-label h4{font-size:0.9rem;font-family:var(--font-head);font-weight:700;margin-bottom:0.25rem}
-.screen-label p{font-size:0.78rem;color:var(--text2)}
+/* ── ESCOLHA SEU EVENTO ── */
+.events{background:var(--bg)}
+.event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:3rem}
+.event-card{
+  border-radius:16px;padding:1.75rem 1.5rem;position:relative;overflow:hidden;
+  transition:transform 0.2s;color:#fff;
+}
+.event-card:hover{transform:translateY(-4px)}
+.event-emoji{font-size:2.2rem;display:block;margin-bottom:1rem}
+.event-card h3{font-family:var(--font-head);font-size:1.15rem;font-weight:800;margin-bottom:0.4rem}
+.event-card p{font-size:0.85rem;color:rgba(255,255,255,.85);line-height:1.5}
+.event-card .event-dot{position:absolute;top:1.5rem;right:1.5rem;width:10px;height:10px;border-radius:50%}
 
 /* ── COMO FUNCIONA ── */
 .how{background:var(--accent)}
@@ -134,23 +137,19 @@ h2 em{font-style:normal;color:var(--accent)}
 .audience-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
 .audience-card p{font-size:0.85rem;color:var(--text2);line-height:1.65}
 
-/* ── PARCEIROS ── */
-.partner{background:#000;color:#fff}
-.partner h2{color:#fff}
-.partner .section-lead{color:rgba(255,255,255,.7)}
-.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
-.partner-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.25s,transform 0.2s}
-.partner-card:hover{border-color:rgba(201,162,39,0.4);transform:translateY(-3px)}
-.partner-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)}
-.partner-card p{font-size:0.84rem;color:var(--text2);line-height:1.65}
-
 /* ── CTA ── */
-.cta{background:var(--bg);position:relative;overflow:hidden}
-.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,162,39,0.08) 0%,transparent 70%);pointer-events:none}
+.cta{background:#000;color:#fff;position:relative;overflow:hidden}
+.cta h2{color:#fff}
+.cta .section-lead{color:rgba(255,255,255,.7)}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,162,39,0.14) 0%,transparent 70%);pointer-events:none}
 .cta-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1}
 .cta-inner h2{margin-bottom:1rem}
 .cta-inner .section-lead{margin:0 auto 2.5rem;text-align:center}
-.form-note{font-size:0.75rem;color:var(--text3);margin-top:1rem}
+.cta .store-badges{justify-content:center}
+.cta .store-badge{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+.cta .store-badge-text .small{color:rgba(255,255,255,.5)}
+.cta .store-badge-text .big{color:#fff}
+.form-note{font-size:0.75rem;color:var(--text3);margin-top:1.5rem}
 
 /* ── FOOTER ── */
 footer{background:#000;padding:15px 3rem}
@@ -179,7 +178,6 @@ footer{background:#000;padding:15px 3rem}
   .hero{padding:7rem 1.5rem 4rem}
   section{padding:4rem 1.5rem}
   .steps,.produto-grid{grid-template-columns:1fr}
-  .screens-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 </style>
@@ -191,7 +189,7 @@ footer{background:#000;padding:15px 3rem}
     <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
     <span class="logo-sub">PINEAPPLE</span>
   </a>
-  <a href="para-empresas.html" class="nav-back">
+  <a href="para-voce.html" class="nav-back">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
     Voltar
   </a>
@@ -205,14 +203,14 @@ footer{background:#000;padding:15px 3rem}
     <div class="hero-grid">
       <div class="hero-content">
         <div class="hero-top-row fade-in">
-          <img src="icon.jpg" alt="BORA App" class="bora-hero-icon">
+          <img src="divide-ai-icon.png" alt="Divide Aí" class="da-hero-icon">
           <div class="hero-badge">⬤ &nbsp;Produto Enjoy Pineapple</div>
         </div>
-        <h1 class="fade-in delay-1">BORA</h1>
-        <p class="hero-tagline fade-in delay-2">Classificação de Risco de Atividades Econômicas</p>
-        <p class="hero-sub fade-in delay-3">Saiba o risco da sua atividade, a legislação aplicável, as licenças necessárias e conecte-se com especialistas — tudo em um só app.</p>
+        <h1 class="fade-in delay-1">DIVIDE <em>AÍ</em></h1>
+        <p class="hero-tagline fade-in delay-2">Rápido. Justo. Simples.</p>
+        <p class="hero-sub fade-in delay-3">Divida contas com os amigos sem planilha, sem grupo de zap cheio de print. Organize o evento, registrem os pagamentos, e o app calcula quem deve pra quem.</p>
         <div class="store-badges fade-in delay-3">
-          <a href="https://play.google.com/store/apps/details?id=com.enjoypineapple.bora" target="_blank" class="store-badge">
+          <a href="https://play.google.com/store" target="_blank" class="store-badge">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
             <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
           </a>
@@ -223,7 +221,7 @@ footer{background:#000;padding:15px 3rem}
         </div>
       </div>
       <div class="hero-media fade-in delay-2">
-        <img src="bora-hero.jpg" alt="Entrando no app BORA">
+        <img src="divide-ai-hero.jpg" alt="Criando um evento no Divide Aí">
       </div>
     </div>
   </div>
@@ -233,56 +231,83 @@ footer{background:#000;padding:15px 3rem}
 <section class="produto">
   <div class="section-inner">
     <div class="section-label">// o produto</div>
-    <h2>A INFORMAÇÃO CERTA,<br>NO MOMENTO <em>CERTO.</em></h2>
+    <h2>A CONTA FECHA.<br>A DIVERSÃO <em>CONTINUA.</em></h2>
     <div class="produto-grid">
       <div class="produto-col">
-        <p>O BORA cruza dados públicos federais do CGSIM com a legislação municipal para exibir a classificação de risco de atividades econômicas por código CNAE — indicando licenças ambientais, sanitárias e demais exigências aplicáveis no município escolhido.</p>
-        <p>Cada orientação pode ser conferida diretamente na fonte: a legislação oficial correspondente fica disponível com link para o documento original.</p>
-        <div class="col-label green">// o que o BORA faz</div>
+        <p>O Divide Aí organiza os pagamentos de qualquer evento entre amigos — churrasco, viagem, balada, aniversário. Cada participante registra o que pagou, e o app calcula automaticamente quem deve pra quem.</p>
+        <p>Tudo roda direto no seu celular, sem servidor e sem conta obrigatória — os dados do evento ficam só com você.</p>
+        <div class="col-label green">// o que o Divide Aí faz</div>
         <ul class="sim-list">
-          <li>Classifica o risco federal e municipal da atividade</li>
-          <li>Exibe a legislação vigente com links oficiais</li>
-          <li>Indica licenças e documentos necessários</li>
-          <li>Conecta você com parceiros especializados no seu setor</li>
-          <li>Organiza informações públicas de forma acessível</li>
+          <li>Organiza os pagamentos de qualquer evento entre amigos</li>
+          <li>Calcula automaticamente quem deve pra quem</li>
+          <li>Marca quem faltou e permite cobrir a cota de alguém</li>
+          <li>Guarda foto da nota fiscal como comprovante</li>
+          <li>Compartilha o resultado formatado pro WhatsApp</li>
         </ul>
       </div>
       <div class="produto-col">
-        <p>O BORA não emite licenças, não cria normas e não substitui os órgãos públicos competentes. Ele organiza o que já existe para que você tome decisões com mais segurança.</p>
-        <p style="font-style:italic;color:var(--text3);font-size:0.88rem">Toda orientação apresentada busca estar fundamentada em legislação oficial, permitindo ao usuário consultar a fonte correspondente.</p>
-        <div class="col-label red">// o que o BORA não é</div>
+        <p>O Divide Aí não movimenta dinheiro de verdade — ele só organiza a conta. Quem paga quem continua sendo combinado entre os amigos, por Pix ou como preferirem.</p>
+        <p style="font-style:italic;color:var(--text3);font-size:0.88rem">Hoje o app funciona 100% local, sem sincronização em nuvem — se você desinstalar, os dados do evento vão junto.</p>
+        <div class="col-label red">// o que o Divide Aí não é</div>
         <ul class="nao-list">
-          <li>Não substitui órgãos públicos competentes</li>
-          <li>Não substitui profissionais habilitados</li>
-          <li>Não emite licenças nem alvarás</li>
-          <li>Não cria normas ou regulamentos</li>
+          <li>Não é uma carteira digital</li>
+          <li>Não substitui o Pix ou o app do seu banco</li>
+          <li>Não guarda seus dados em nuvem hoje</li>
+          <li>Não exige cadastro pra começar a usar</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SCREENSHOTS -->
-<section class="screens">
+<!-- ESCOLHA SEU EVENTO -->
+<section class="events">
   <div class="section-inner">
-    <div class="section-label">// o app</div>
-    <h2>QUATRO TELAS QUE<br>MUDAM <em>DECISÕES.</em></h2>
-    <div class="screens-grid">
-      <div class="screen-item">
-        <div class="screen-frame"><img src="screen1.png" alt="Busca Inteligente"></div>
-        <div class="screen-label"><h4>Busca Inteligente</h4><p>Por nome, CNAE ou sinônimo</p></div>
+    <div class="section-label">// escolha seu evento</div>
+    <h2>CADA EVENTO<br>COM A SUA <em>CARA.</em></h2>
+    <p class="section-lead">Sete temas coloridos pra combinar com o seu rolê — escolha um na hora de criar o evento.</p>
+    <div class="event-grid">
+      <div class="event-card" style="background:#FF6B6B">
+        <span class="event-dot" style="background:#06D6A0"></span>
+        <span class="event-emoji">🎯</span>
+        <h3>Trabalho</h3>
+        <p>Happy hour depois do expediente</p>
       </div>
-      <div class="screen-item">
-        <div class="screen-frame"><img src="screen2.png" alt="Classificação de Risco"></div>
-        <div class="screen-label"><h4>Classificação de Risco</h4><p>Federal + Municipal lado a lado</p></div>
+      <div class="event-card" style="background:#7C2D12">
+        <span class="event-dot" style="background:#D97706"></span>
+        <span class="event-emoji">🔥</span>
+        <h3>Churrasco</h3>
+        <p>Carne, cerveja e a conta certa</p>
       </div>
-      <div class="screen-item">
-        <div class="screen-frame"><img src="screen3.png" alt="Legislação Aplicável"></div>
-        <div class="screen-label"><h4>Legislação Aplicável</h4><p>Federal e municipal com links oficiais</p></div>
+      <div class="event-card" style="background:#1A0030">
+        <span class="event-dot" style="background:#A855F7"></span>
+        <span class="event-emoji">🌙</span>
+        <h3>Balada</h3>
+        <p>Ninguém fica devendo depois</p>
       </div>
-      <div class="screen-item">
-        <div class="screen-frame"><img src="screen4.png" alt="Rede de Parceiros"></div>
-        <div class="screen-label"><h4>Rede de Parceiros</h4><p>Especialistas prontos para te ajudar</p></div>
+      <div class="event-card" style="background:#0369A1">
+        <span class="event-dot" style="background:#FBBF24"></span>
+        <span class="event-emoji">🏖️</span>
+        <h3>Praia</h3>
+        <p>Airbnb, mercado, tudo dividido</p>
+      </div>
+      <div class="event-card" style="background:#BE185D">
+        <span class="event-dot" style="background:#F59E0B"></span>
+        <span class="event-emoji">🎂</span>
+        <h3>Aniversário</h3>
+        <p>Festa organizada sem estresse</p>
+      </div>
+      <div class="event-card" style="background:#065F46">
+        <span class="event-dot" style="background:#34D399"></span>
+        <span class="event-emoji">🧺</span>
+        <h3>Piquenique</h3>
+        <p>Cada um leva, todos acertam</p>
+      </div>
+      <div class="event-card" style="background:#1D4ED8">
+        <span class="event-dot" style="background:#16A34A"></span>
+        <span class="event-emoji">⚽</span>
+        <h3>Esporte</h3>
+        <p>Racha semanal sem enrolação</p>
       </div>
     </div>
   </div>
@@ -293,22 +318,22 @@ footer{background:#000;padding:15px 3rem}
   <div class="section-inner">
     <div class="section-label">// como funciona</div>
     <h2>SIMPLES COMO <em>DEVE SER.</em></h2>
-    <p class="section-lead">Três passos para entender o risco da sua atividade econômica em qualquer município do Brasil.</p>
+    <p class="section-lead">Três passos e a conta do rolê já está organizada.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3>Selecione seu município</h3>
-        <p>Escolha o município onde a atividade será exercida. O BORA está crescendo para cobrir todo o Brasil — e cresce conforme a demanda dos usuários.</p>
+        <h3>Crie o evento</h3>
+        <p>Dê um nome, escolha uma paleta de cor pro tema e convide os participantes.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3>Busque a atividade</h3>
-        <p>Pesquise pelo código CNAE ou pelo nome da atividade em linguagem natural. O app encontra automaticamente a classificação correta.</p>
+        <h3>Registre os pagamentos</h3>
+        <p>Cada um lança o que pagou, tira foto da nota e pode marcar quem faltou.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3>Veja tudo consolidado</h3>
-        <p>Receba a classificação de risco federal e municipal, a legislação vigente com links oficiais, licenças necessárias e parceiros do seu setor.</p>
+        <h3>Veja quem deve pra quem</h3>
+        <p>O app calcula automaticamente e você compartilha o resultado no grupo.</p>
       </div>
     </div>
   </div>
@@ -318,32 +343,14 @@ footer{background:#000;padding:15px 3rem}
 <section class="forwho" id="para-quem">
   <div class="section-inner">
     <div class="section-label">// para quem é</div>
-    <h2>FEITO PARA QUEM PRECISA DE <em>CLAREZA.</em></h2>
-    <p class="section-lead">Profissionais e cidadãos que lidam com a complexidade da legislação econômica no Brasil.</p>
+    <h2>FEITO PRA QUEM DIVIDE <em>TUDO.</em></h2>
+    <p class="section-lead">Qualquer grupo de amigos que já perdeu tempo fazendo conta de cabeça.</p>
     <div class="audience-grid">
-      <div class="audience-card"><div class="audience-icon">🏢</div><h3>Empresários</h3><p>Saiba o risco da sua atividade antes de abrir ou expandir. Sem surpresas regulatórias.</p></div>
-      <div class="audience-card"><div class="audience-icon">📊</div><h3>Contadores</h3><p>Oriente seus clientes com precisão sobre obrigações regulatórias por atividade e município.</p></div>
-      <div class="audience-card"><div class="audience-icon">⚖️</div><h3>Advogados</h3><p>Acesse legislação federal e municipal consolidada para orientar seus clientes empresariais.</p></div>
-      <div class="audience-card"><div class="audience-icon">🌱</div><h3>Empreendedores</h3><p>Transforme sua ideia em negócio com segurança jurídica desde o primeiro passo.</p></div>
-      <div class="audience-card"><div class="audience-icon">📐</div><h3>Arquitetos e Engenheiros</h3><p>Entenda requisitos legais para projetos em diferentes municípios antes de projetar.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PARCEIROS -->
-<section class="partner">
-  <div class="section-inner">
-    <div class="section-label">// seja um parceiro</div>
-    <h2>CRESÇA E APAREÇA<br>COM O <em>BORA.</em></h2>
-    <p class="section-lead">Especialistas, escritórios e plataformas que querem alcançar empreendedores no momento certo — quando eles mais precisam de ajuda.</p>
-    <div class="partner-grid">
-      <div class="partner-card"><h3>Contabilidades</h3><p>Posicione seu escritório como referência para empreendedores que estão iniciando e precisam de orientação fiscal e societária.</p></div>
-      <div class="partner-card"><h3>Consultores Jurídicos</h3><p>Seja indicado no momento em que o empreendedor descobre que precisa de alvará, licença ou regularização.</p></div>
-      <div class="partner-card"><h3>Licenciamento Ambiental</h3><p>Alcance empresas que precisam de SMAMUS, FEPAM e demais órgãos ambientais — antes de qualquer outro canal.</p></div>
-      <div class="partner-card"><h3>Benefícios e Serviços</h3><p>Ofereça descontos e condições especiais para empreendedores cadastrados no BORA. Restaurantes, eventos e muito mais.</p></div>
-    </div>
-    <div style="margin-top:2.5rem;text-align:center">
-      <a href="parceiros-bora.html" class="btn-primary">Quero ser parceiro BORA →</a>
+      <div class="audience-card"><div class="audience-icon">🏖️</div><h3>Grupo de viagem</h3><p>Hospedagem, mercado e passeios sem perder as contas no meio da viagem.</p></div>
+      <div class="audience-card"><div class="audience-icon">🔥</div><h3>Turma do churrasco</h3><p>Carne, bebida, carvão — organize tudo sem planilha manual.</p></div>
+      <div class="audience-card"><div class="audience-icon">🏠</div><h3>Colegas de apê</h3><p>Contas fixas do mês, divididas certinho sem fricção.</p></div>
+      <div class="audience-card"><div class="audience-icon">🎉</div><h3>Organizador de festa</h3><p>Centraliza os custos do evento e divide entre todo mundo.</p></div>
+      <div class="audience-card"><div class="audience-icon">⚽</div><h3>Grupo do racha</h3><p>Aluguel de quadra, colete, água — organizado toda semana.</p></div>
     </div>
   </div>
 </section>
@@ -352,14 +359,20 @@ footer{background:#000;padding:15px 3rem}
 <section class="cta">
   <div class="cta-glow"></div>
   <div class="cta-inner">
-    <div class="section-label">// parcerias bora</div>
-    <h2>SUA EMPRESA NA FRENTE DE <em>QUEM PRECISA DE VOCÊ.</em></h2>
-    <p class="section-lead" style="text-align:center;margin:0 auto 2.5rem">Contabilidades, consultores jurídicos, especialistas em licenciamento e muito mais — conecte-se com empreendedores no momento certo.</p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-      <a href="parceiros-bora.html" class="btn-primary">Quero ser parceiro BORA →</a>
-      <a href="parceiros-bora.html#como-funciona" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;color:var(--text2);font-size:0.95rem">Como funciona ↓</a>
+    <div class="section-label">// baixe agora</div>
+    <h2>PARE DE FAZER <em>CONTA DE CABEÇA.</em></h2>
+    <p class="section-lead">Grátis, sem anúncio, sem letra miúda. Baixe e crie seu primeiro evento em menos de um minuto.</p>
+    <div class="store-badges">
+      <a href="https://play.google.com/store" target="_blank" class="store-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1.05-1.76V2a2 2 0 0 1 1.05-1.76l.1-.06 11.73 11.73-.1.1L3.18 23.76zm13.42-7.85L4.1 22.64l9.3-9.3 3.2 2.57zm2.08-5.66a2 2 0 0 1 0 3.5L16.2 15l-3.4-3.4 3.4-3.4 2.48 1.25zM4.1 1.36l12.5 6.73-3.2 2.57-9.3-9.3z"/></svg>
+        <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+      </a>
+      <span class="store-badge coming">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      </span>
     </div>
-    <p class="form-note">Sem contrato de adesão. Apresentamos as opções em até 2 dias úteis.</p>
+    <p class="form-note">Em fase de testes — link de acesso liberado sob convite.</p>
   </div>
 </section>
 
@@ -387,9 +400,9 @@ footer{background:#000;padding:15px 3rem}
       <div class="df-footer-links">
         <a href="index.html#tese">Sobre nós</a>
         <a href="parceiros.html">Seja parceiro</a>
-        <a href="privacidade.html#bora">Privacidade</a>
+        <a href="privacidade.html#divide-ai">Privacidade</a>
         <a href="termos.html">Termos de Uso</a>
-        <a href="suporte.html#bora">Suporte</a>
+        <a href="suporte.html#divide-ai">Suporte</a>
         <a href="contato.html">Contato</a>
         <a href="shopping.html">Shopping</a>
       </div>
@@ -401,7 +414,7 @@ footer{background:#000;padding:15px 3rem}
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); } });
 }, {threshold:0.1});
-document.querySelectorAll('.audience-card,.step,.partner-card,.screen-item').forEach(el => {
+document.querySelectorAll('.audience-card,.step,.event-card').forEach(el => {
   el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
   observer.observe(el);
 });

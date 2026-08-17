@@ -7,168 +7,407 @@
 <meta name="description" content="A Enjoy Pineapple aproxima pessoas das respostas certas. Criamos soluções que transformam problemas complexos em caminhos claros. Conheça o BORA e o Divide Aí.">
 <meta name="google-site-verification" content="oYhkZ0XiBBnBiPXLVRwV0k_yXVVTu12WJWX6SM8NjII" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#07090c;--bg2:#0c1017;--bg3:#101620;--surface:#141d28;--surface2:#1a2535;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-  --accent:#FFD600;--accent2:#e6bf00;--accent-dim:rgba(255,214,0,0.08);--accent-glow:rgba(255,214,0,0.18);
-  --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
-  --green:#00e5a0;--red:#ff5f5f;--blue:#3b9eff;
-  --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
-  --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
-}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;line-height:1.5}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(7,9,12,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
-.ep-wordmark{display:inline-flex;align-items:center;gap:0;line-height:1}
-.ep-word{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:0.12em;display:inline-flex;align-items:center}
-.ep-sym-img{height:1.5em;width:auto;mix-blend-mode:screen;display:inline-block;vertical-align:middle;margin:0 0.05em}
-nav ul{list-style:none;display:flex;gap:2rem}
-nav a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;transition:color 0.2s}
-nav a:hover{color:var(--text)}
-.nav-cta{background:var(--accent);color:#000!important;padding:0.5rem 1.2rem;border-radius:6px;font-weight:600!important;transition:background 0.2s,transform 0.15s!important}
-.nav-cta:hover{background:var(--accent2)!important;transform:translateY(-1px)}
-
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 6rem;position:relative;overflow:hidden}
-.hero-bg-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,214,0,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.025) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow{position:absolute;top:20%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,214,0,0.05) 0%,transparent 65%);z-index:0}
-.hero-glow2{position:absolute;bottom:-10%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(0,229,160,0.03) 0%,transparent 65%);z-index:0}
-.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase}
-.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,6.5rem);font-weight:400;line-height:0.92;letter-spacing:0.01em;margin-bottom:1.5rem}
-h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:1.1rem;color:var(--text2);max-width:540px;line-height:1.75;margin-bottom:2.5rem;font-weight:300}
-.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:#000;padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s,transform 0.15s}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
-.btn-secondary{border:1px solid var(--border2);color:var(--text);padding:0.85rem 2rem;border-radius:8px;font-size:0.9rem;font-weight:400;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;background:transparent;transition:border-color 0.2s,background 0.2s}
-.btn-secondary:hover{border-color:var(--accent);background:var(--accent-dim)}
-.hero-essence{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
-.essence-item{display:flex;flex-direction:column;gap:0.2rem}
-.essence-word{font-family:var(--font-display);font-size:1.3rem;color:var(--accent);letter-spacing:0.06em}
-.essence-desc{font-family:var(--font-mono);font-size:0.62rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
-
-/* ── SECTIONS ── */
-section{padding:6rem 3rem}
-.section-inner{max-width:1200px;margin:0 auto}
-.section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
-h2{font-family:var(--font-display);font-size:clamp(2.5rem,4.5vw,4rem);font-weight:400;letter-spacing:0.01em;line-height:1;margin-bottom:1rem}
-h2 em{font-style:normal;color:var(--accent)}
-.section-lead{font-size:1rem;color:var(--text2);max-width:580px;line-height:1.75;font-weight:300}
-
-/* ── A TESE ── */
-.tese{background:var(--bg2)}
-.tese-body{max-width:760px;margin-top:2.5rem}
-.tese-body p{font-size:1.05rem;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;font-weight:300}
-.tese-body p strong{color:var(--text);font-weight:500}
-.tese-body p:last-child{margin-bottom:0}
-.tese-quote{margin-top:2.5rem;padding:1.5rem 2rem;border-left:3px solid var(--accent);background:var(--accent-dim)}
-.tese-quote p{font-family:var(--font-head);font-size:1.15rem;font-weight:500;color:var(--text);line-height:1.6;margin:0}
-
-/* ── MVV ── */
-.mvv{background:var(--bg)}
-.mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
-.mvv-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 1.75rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.2s}
-.mvv-card:hover{border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
-.mvv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);opacity:0.6}
-.mvv-num{font-family:var(--font-display);font-size:3.5rem;color:rgba(255,214,0,0.07);position:absolute;top:1rem;right:1.5rem;line-height:1}
-.mvv-tag{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
-.mvv-card h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:0.75rem}
-.mvv-card p{font-size:0.88rem;color:var(--text2);line-height:1.7}
-.valores-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
-.valor-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.75rem;color:var(--accent);font-family:var(--font-mono)}
-.valor-desc{font-size:0.78rem;color:var(--text3);margin-top:0.2rem;display:none}
-
-/* ── MANIFESTO ── */
-.manifesto{background:var(--bg2);position:relative;overflow:hidden}
-.manifesto-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(255,214,0,0.04) 0%,transparent 65%);pointer-events:none}
-.manifesto-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
-.manifesto-text{margin-top:2.5rem}
-.manifesto-text p{font-size:1rem;color:var(--text2);line-height:1.85;margin-bottom:1.1rem;font-weight:300}
-.manifesto-text p strong{color:var(--text);font-weight:500}
-.manifesto-closing{margin-top:2rem;padding:1.5rem 2rem;border-left:3px solid var(--accent);background:var(--accent-dim)}
-.manifesto-closing p{font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.5;margin:0}
-.manifesto-closing span{color:var(--accent)}
-
-/* ── CARTA DO FUNDADOR ── */
-.fundador{background:var(--bg)}
-.fundador-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;margin-top:3rem;align-items:start}
-.fundador-left{position:sticky;top:6rem}
-.fundador-assinatura{font-family:var(--font-display);font-size:2rem;color:var(--accent);letter-spacing:0.04em;margin-top:1.5rem}
-.fundador-cargo{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
-.fundador-quote{margin-top:2rem;padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
-.fundador-quote p{font-size:0.88rem;color:var(--text2);line-height:1.7;font-style:italic;margin:0}
-.fundador-right p{font-size:0.95rem;color:var(--text2);line-height:1.85;margin-bottom:1.25rem;font-weight:300}
-.fundador-right p strong{color:var(--text);font-weight:500}
-.fundador-right p:last-child{margin-bottom:0}
-.fundador-milestone{display:flex;align-items:center;gap:0.75rem;margin:1.5rem 0;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
-.milestone-year{font-family:var(--font-display);font-size:1.4rem;color:var(--accent);flex-shrink:0;line-height:1}
-.milestone-text{font-size:0.82rem;color:var(--text2);line-height:1.5}
-
-/* ── PRODUTOS ── */
-.produtos{background:var(--bg2)}
-.produtos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
-.produto-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;display:flex;flex-direction:column;gap:1.5rem;transition:border-color 0.25s,transform 0.2s;position:relative;overflow:hidden;text-decoration:none;color:inherit}
-.produto-card:hover{border-color:rgba(255,214,0,0.35);transform:translateY(-4px)}
-.produto-card.coming{opacity:0.7}
-.produto-card.coming:hover{transform:translateY(-2px);border-color:rgba(0,229,160,0.3)}
-.produto-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
-.produto-card.coming::before{background:var(--green)}
-.prod-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem}
-.prod-badge.live{color:var(--green)}
-.prod-badge.dev{color:#00e5a0}
-.prod-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
-.prod-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
-.prod-icon img{width:56px;height:56px;border-radius:14px;object-fit:contain}
-.prod-icon.placeholder{background:var(--surface2);border:1px solid var(--border2);font-size:1.75rem}
-.prod-name{font-family:var(--font-display);font-size:2.5rem;letter-spacing:0.04em;line-height:1;color:var(--accent)}
-.prod-name.green{color:var(--green)}
-.prod-tagline{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.2rem}
-.prod-desc{font-size:0.9rem;color:var(--text2);line-height:1.7;flex:1}
-.prod-cta{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--accent);margin-top:auto}
-.prod-cta.green{color:var(--green)}
-.prod-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem}
-.prod-tag{background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.15);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.72rem;color:var(--text3);font-family:var(--font-mono)}
-.prod-tag.green{background:rgba(0,229,160,0.06);border-color:rgba(0,229,160,0.15);color:rgba(0,229,160,0.6)}
-
-/* ── FOOTER ── */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3rem}
-.footer-top{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
-.footer-brand{display:flex;flex-direction:column;gap:0.75rem}
-.footer-brand p{font-size:0.78rem;color:var(--text3);max-width:260px;line-height:1.6}
-.footer-cnpj{font-family:var(--font-mono);font-size:0.68rem;color:var(--text3)}
-.footer-epigraph{font-size:0.78rem;color:var(--text3);font-style:italic;margin-top:0.5rem;max-width:260px;line-height:1.6}
-.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2.5rem}
-.footer-nav-col h4{font-size:0.72rem;font-family:var(--font-mono);color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem}
-.footer-nav-col a{display:block;font-size:0.82rem;color:var(--text2);text-decoration:none;margin-bottom:0.4rem;transition:color 0.2s}
-.footer-nav-col a:hover{color:var(--text)}
-.footer-bottom{max-width:1200px;margin:1.5rem auto 0;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.footer-copy{font-size:0.75rem;color:var(--text3)}
-
-/* ── ANIMATIONS ── */
-.fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 0.7s ease forwards}
-@keyframes fadeIn{to{opacity:1;transform:none}}
-.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}.delay-4{animation-delay:0.4s}
-
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}nav ul{display:none}
-  .hero{padding:7rem 1.5rem 4rem}
-  section{padding:4rem 1.5rem}
-  .mvv-grid,.fundador-grid,.produtos-grid{grid-template-columns:1fr}
-  .fundador-left{position:static}
-  footer .footer-top{flex-direction:column}
-  .footer-nav{grid-template-columns:repeat(2,1fr)}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .hero-essence{gap:1.5rem}
+.frame{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:3rem;
+  position:relative;
 }
+.frame-index{
+  position:absolute;
+  top:1.5rem;
+  left:1.5rem;
+  font-size:0.75rem;
+  opacity:0.5;
+}
+.frame-tag{
+  font-size:0.7rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  opacity:0.55;
+  margin-bottom:0.75rem;
+}
+.frame-title{
+  font-size:1.6rem;
+  font-weight:bold;
+  max-width:700px;
+  margin-bottom:0.75rem;
+}
+.frame-desc{
+  font-size:0.85rem;
+  max-width:600px;
+  opacity:0.7;
+}
+.frame-ref{
+  margin-top:1.5rem;
+  font-size:0.7rem;
+  opacity:0.45;
+  border:1px dashed currentColor;
+  padding:0.4rem 0.8rem;
+  border-radius:4px;
+}
+
+/* ── MOCK DO NAV (00) — usa as cores/fontes reais da marca ── */
+.navmock-stage{
+  --bg:#ffffff;--surface:#ffffff;--border:rgba(0,0,0,.08);
+  --accent:#C9A227;--text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  width:100%;max-width:1300px;background:var(--bg);border-radius:12px;
+  font-family:'Inter',sans-serif;color:var(--text);text-align:left;
+  position:relative;z-index:10;
+}
+.navmock{border-radius:12px}
+.navmock{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2rem;position:relative;z-index:2;
+}
+.navmock-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.navmock-logo em{color:var(--accent);font-style:normal}
+
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{
+  animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;
+  animation-delay:.4s;transform-origin:center;
+}
+.logo-anim .logo-sub{
+  animation:logoSubIn .5s ease forwards;animation-delay:.7s;
+}
+@keyframes logoLetterIn{
+  0%{opacity:0;transform:translateY(-14px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+@keyframes logoOIn{
+  0%{opacity:0;transform:scale(.3) rotate(-25deg)}
+  70%{opacity:1;transform:scale(1.15) rotate(4deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+@keyframes logoSubIn{
+  0%{opacity:0;transform:translateX(6px)}
+  100%{opacity:1;transform:translateX(0)}
+}
+.navmock-items{display:flex;align-items:stretch;align-self:stretch;gap:2.2rem;list-style:none}
+.navmock-item{display:flex;align-items:center;padding-bottom:1.1rem;margin-bottom:-1.1rem}
+.navmock-item>span,.navmock-item>a{
+  font-size:.9rem;font-weight:500;color:var(--text2);cursor:default;
+  display:flex;align-items:center;gap:.35rem;
+  padding:.5rem 0;transition:color .15s;
+  text-decoration:none;
+}
+.navmock-item>a{cursor:pointer}
+.navmock-item.open>span,.navmock-item.open>a{color:var(--accent);text-decoration:underline;text-underline-offset:.3em}
+.navmock-item>span svg,.navmock-item>a svg{width:11px;height:11px;opacity:.6;transition:transform .15s}
+.navmock-item.open>span svg,.navmock-item.open>a svg{transform:rotate(180deg)}
+.navmock-cta{background:#ffffff;color:#000;border:1.5px solid #000;padding:.55rem 1.2rem;border-radius:6px;font-size:.85rem;font-weight:600}
+
+.mega{
+  position:absolute;left:0;right:0;top:100%;
+  background:var(--surface);border-top:1px solid var(--border);
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s,transform .18s,visibility .18s;
+  z-index:1;border-radius:0 0 12px 12px;overflow:hidden;
+}
+.navmock-item.open .mega{opacity:1;visibility:visible;transform:translateY(0)}
+.mega-title{
+  font-family:'Syne',sans-serif;font-style:italic;font-weight:800;
+  font-size:1.9rem;color:var(--text);padding:1.75rem 2rem .5rem;
+}
+.mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.mega-col{padding:1.75rem 2rem;position:relative}
+.mega-col:not(:last-child)::after{
+  content:'';position:absolute;top:1.75rem;bottom:1.75rem;right:0;
+  width:.5px;background:var(--border);
+}
+.mega-label{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+.mega-link{display:block;font-size:16.5px;color:var(--text);text-decoration:none;padding:.4rem 0;border-bottom:1px solid transparent}
+.mega-link:hover{color:var(--accent)}
+.mega-grid.mega-4{grid-template-columns:repeat(4,1fr)}
+.mega-light{background:#ffffff;border-top-color:rgba(0,0,0,.08)}
+.mega-light .mega-col:not(:last-child)::after{background:rgba(0,0,0,.08)}
+.mega-light .mega-label{color:#C9A227}
+.mega-light .mega-link{color:#000000}
+.mega-light .mega-link:hover{color:#C9A227}
+.mega-light .mega-link-arrow{color:#000000}
+.mega-light .mega-link-arrow:hover{color:#C9A227}
+.mega-light .mega-desc{color:#5a5c56}
+.mega-light .navmock-empty{color:#8a8c85}
+
+.frame-hero-preview{
+  background:#ffffff;
+  position:relative;overflow:hidden;
+  gap:2.5rem;
+}
+.hero-video-wrap{
+  position:relative;width:100%;max-width:1500px;
+  border-radius:16px;overflow:hidden;
+  z-index:0;pointer-events:none;
+}
+.hero-preview-video{
+  width:100%;display:block;
+  aspect-ratio:16/9;object-fit:cover;
+}
+.hero-video-wrap .hero01-overlay{border-radius:16px}
+.hero-video-wrap .hero01-title{
+  position:absolute;inset:0;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:0;padding:2rem;
+}
+.frame-hero-preview .navmock-stage{position:relative;z-index:10;transform:translateZ(0);isolation:isolate}
+.frame-hero-preview .navmock-caption,
+.frame-hero-preview .frame-index,
+.frame-hero-preview .frame-tag{position:relative;z-index:1}
+.mega-grid.mega-2{grid-template-columns:repeat(2,1fr)}
+.mega-link-arrow{display:inline-flex;align-items:center;gap:.4rem;font-size:16.5px;color:var(--text);text-decoration:none;font-weight:500}
+.mega-link-arrow:hover{color:var(--accent)}
+.mega-link-arrow svg{width:14px;height:14px;transition:transform .15s}
+.mega-link-arrow:hover svg{transform:translateX(3px)}
+.mega-desc{font-size:.8rem;color:var(--text2);line-height:1.6;margin-top:1rem}
+.navmock-empty{padding:1.5rem 2rem;font-size:.8rem;color:var(--text3);font-style:italic}
+.navmock-caption{
+  text-align:center;font-family:'DM Mono',monospace;font-size:.68rem;
+  color:#8a9bac;margin-top:1.25rem;letter-spacing:.04em;
+}
+
+.frame-hero01{position:relative;overflow:hidden;background:#000}
+.hero01-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero01-overlay{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.15) 35%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.hero01-title{pointer-events:none}
+.frame-hero01 .frame-index,.frame-hero01 .frame-tag{position:relative;z-index:1;color:#fff;opacity:.7}
+.hero01-title{
+  position:relative;z-index:1;
+  font-family:'Syne',sans-serif;font-style:italic;font-weight:800;
+  font-size:3.2rem;line-height:1.15;color:#fff;
+  margin-top:1.5rem;text-align:center;
+}
+.hero01-title-light{color:#000}
+.tese-cols{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:start;max-width:1300px;width:100%;
+}
+.tese-wrap{max-width:520px;text-align:left;position:sticky;top:15vh}
+.mvv-wrap{width:100%;max-width:1300px;text-align:left}
+.mvv-row{display:flex;gap:1.5rem;align-items:stretch}
+.mvv-card{
+  flex:1 1 0;min-width:0;
+  background:#fff;border:1px solid rgba(0,0,0,.08);
+  border-top:3px solid var(--accent,#C9A227);
+  border-radius:16px;padding:2rem 1.75rem;
+  position:relative;overflow:hidden;
+  transition:flex-grow .35s ease;
+  text-align:left;
+}
+.mvv-img{
+  width:100%;height:160px;object-fit:cover;
+  border-radius:10px;display:block;margin-bottom:1.25rem;
+}
+.mvv-num{
+  position:absolute;top:1rem;right:1.5rem;
+  font-family:'Bebas Neue',sans-serif;font-size:3.5rem;
+  color:rgba(201,162,39,.14);line-height:1;
+}
+.mvv-card h3{font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.75rem;color:#000}
+.mvv-card p{font-family:'Inter',sans-serif;font-size:.92rem;line-height:1.7;color:#555;margin:0}
+.declaration-text{
+  font-family:'Syne',sans-serif;font-style:italic;font-weight:700;font-size:2.3rem;
+  line-height:1.3;color:#000;max-width:1100px;text-align:left;
+}
+.declaration-arrow{
+  margin-top:3rem;width:56px;height:56px;border-radius:50%;
+  border:1.5px solid rgba(0,0,0,.3);
+  display:flex;align-items:center;justify-content:center;
+}
+.declaration-arrow svg{width:20px;height:20px;color:#000}
+.pillars-frame{position:relative;overflow:hidden}
+.pillars-bg-img{
+  position:absolute;right:-5%;top:50%;transform:translateY(-50%);
+  height:130%;width:auto;opacity:.35;pointer-events:none;z-index:0;
+  -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,rgba(0,0,0,0) 85%);
+  mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,rgba(0,0,0,0) 85%);
+}
+.pillars-wrap{max-width:900px;margin:0;align-self:flex-start;text-align:left;position:relative;z-index:1}
+.pillars-title{
+  font-family:'Bebas Neue',sans-serif;font-size:4.2rem;line-height:1.08;
+  color:#fff;margin:1.5rem 0 2.5rem;letter-spacing:.01em;
+}
+.pillars-title em{color:var(--accent, #C9A227);font-style:normal}
+.pillars-list{border-top:1px solid rgba(255,255,255,.15)}
+.pillars-item{display:flex;gap:2.5rem;padding:1.9rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.pillars-list .pillars-item.reveal-text{margin-top:0}
+.pe-wrap{width:100%;max-width:1300px;margin:0 auto;text-align:left}
+.pe-row{display:flex;align-items:center;gap:3rem;margin-top:1.5rem}
+.pe-videos{flex:0 0 46%;display:flex;gap:1rem;height:420px}
+.pe-video-box{border-radius:16px;overflow:hidden;flex:1;box-shadow:0 30px 80px -25px rgba(0,0,0,.35);background:#000;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.pe-video-box video{width:100%;height:100%;object-fit:cover;display:block}
+.pe-video-far{opacity:0;transform:translateX(220px)}
+.pe-video-near{opacity:0;transform:translateX(140px);transition-delay:.15s}
+.pe-text{flex:1}
+.pe-title{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#000;margin-bottom:1rem;line-height:1.25}
+.pe-body{font-family:'Inter',sans-serif;font-size:1.05rem;line-height:1.7;color:#444;max-width:440px;margin:0}
+.pe-cta-row{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,.1)}
+.content-wrap{width:100%;max-width:1300px;margin:0 auto;text-align:left}
+.content-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3.5rem}
+.content-col{display:flex;flex-direction:column;min-width:0}
+.content-carousel{margin-top:1.5rem}
+.content-track{display:flex;gap:1.25rem;overflow:hidden}
+.content-card{
+  flex:0 0 100%;min-width:0;box-sizing:border-box;
+  border:1px dashed rgba(0,0,0,.18);border-radius:16px;
+  padding:2.5rem 2rem;display:flex;flex-direction:column;
+  align-items:flex-start;gap:1rem;background:#fafafa;
+  transition:opacity .3s ease;
+}
+.content-card-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(201,162,39,.12);color:#C9A227;
+  display:flex;align-items:center;justify-content:center;
+}
+.content-card-icon svg{width:22px;height:22px}
+.content-card-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:#000}
+.content-card p{font-family:'Inter',sans-serif;font-size:.95rem;line-height:1.6;color:#666;margin:0}
+.content-card .mega-link-arrow{margin-top:.5rem;color:#000}
+.content-nav{display:flex;align-items:center;gap:.9rem;margin-top:1.25rem}
+.content-dots{display:flex;align-items:center;gap:.45rem}
+.content-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);border:none;padding:0;cursor:pointer;transition:background .2s,transform .2s}
+.content-dot:hover{background:rgba(255,255,255,.6)}
+.content-dot.active{background:#000;transform:scale(1.3)}
+.content-card-date{font-family:'DM Mono',monospace;font-size:.7rem;color:#999;letter-spacing:.04em}
+.content-arrow{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.15);
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:#000;transition:border-color .2s,color .2s;padding:0;
+}
+.content-arrow:not(:disabled):hover{border-color:#C9A227;color:#C9A227}
+.content-arrow:disabled{opacity:.3;cursor:default}
+.content-arrow svg{width:16px;height:16px}
+
+.blog-marquee{margin-top:1.5rem}
+.blog-marquee-track{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.blog-marquee-strip{display:flex;gap:1rem;width:max-content;animation:blogMarqueeScroll 32s linear infinite}
+.blog-marquee-strip:hover{animation-play-state:paused}
+.blog-marquee-card{
+  display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;
+  width:190px;flex-shrink:0;box-sizing:border-box;
+  background:#fff;border-radius:14px;padding:1.25rem 1.15rem;
+  text-decoration:none;color:#000;transition:transform .2s;
+}
+.blog-marquee-card:hover{transform:translateY(-3px)}
+.blog-marquee-icon{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(201,162,39,.12);color:#C9A227;
+  display:flex;align-items:center;justify-content:center;
+}
+.blog-marquee-icon svg{width:18px;height:18px}
+.blog-marquee-date{font-family:'DM Mono',monospace;font-size:.65rem;color:#999;letter-spacing:.04em}
+.blog-marquee-title{font-family:'Syne',sans-serif;font-weight:800;font-size:.92rem;line-height:1.35}
+@keyframes blogMarqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.blog-tags{display:flex;gap:.6rem;margin-top:1.25rem;flex-wrap:wrap}
+.blog-tag{
+  font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  color:#000;background:rgba(255,255,255,.85);padding:.4rem 1rem;border-radius:100px;
+}
+
+.media-marquee-note{font-family:'Inter',sans-serif;font-size:.88rem;color:rgba(0,0,0,.6);line-height:1.6;margin:.75rem 0 1.5rem;max-width:420px}
+.media-marquee-track{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.media-marquee-strip{display:flex;gap:1rem;width:max-content;animation:mediaMarqueeScroll 26s linear infinite}
+.media-marquee-strip:hover{animation-play-state:paused}
+.media-marquee-card{width:190px;height:230px;flex-shrink:0;border-radius:14px;overflow:hidden;background:#000}
+.media-marquee-card img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes mediaMarqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-simple .df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding-bottom:0;border-bottom:none}
+.df-footer-brand{display:flex;flex-direction:row;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;display:block;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
+.pillars-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--accent, #C9A227);flex:0 0 60px}
+.pillars-body h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.03em}
+.pillars-body p{font-family:'Inter',sans-serif;font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.68);max-width:640px;margin:0}
+.mvv-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.mvv-tags span{
+  background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);
+  border-radius:6px;padding:.3rem .7rem;font-size:.78rem;
+  color:#8a6d1a;font-family:'DM Mono',monospace;white-space:nowrap;
+}
+.tese-label{
+  font-family:'DM Mono',monospace;font-size:.72rem;
+  color:var(--accent, #C9A227);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:.75rem;
+}
+.tese-title{padding:0;margin-bottom:2rem;font-size:2.6rem}
+.tese-image-col{display:flex;align-items:flex-start;justify-content:center;padding-top:2rem}
+.tese-image{
+  width:100%;max-width:380px;border-radius:16px;
+  display:block;object-fit:cover;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.35);
+}
+.tese-body{margin-top:0}
+.tese-quote{
+  margin:3rem 0 0;padding:1.5rem 0;
+  text-align:left;
+  border-top:2px solid var(--accent, #C9A227);
+  border-bottom:2px solid var(--accent, #C9A227);
+}
+.tese-quote p{
+  font-family:'Syne',sans-serif;font-weight:700;font-style:italic;
+  font-size:1.5rem;color:#000;line-height:1.4;margin:0;
+}
+.tese-body p{font-family:'Inter',sans-serif;font-size:1.3rem;line-height:1.6;color:#000;margin-bottom:1.3rem;font-weight:500}
+.scale-on-scroll{transition:transform .1s linear;transform-origin:center center;will-change:transform}
+.reveal-text{
+  font-size:1.8rem;font-weight:600;margin-top:3rem;
+  opacity:0;transform:translateY(50px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+
+/* tons alternando pra dar o ritmo de "capítulos" igual o tencent.com */
+.t-white{background:#f5f5f5;color:#111}
+.t-black{background:#000000;color:#fff}
+.t-blue{background:#0d1b4c;color:#fff}
+.t-yellow{background:#FFD600;color:#111}
+.t-gold{background:#C9A227;color:#fff}
+.mvv-wrap>.tese-label{color:#fff}
+.content-wrap .tese-label{color:#fff}
+.back-to-top{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:3rem;
+  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;color:inherit;
+  opacity:.5;transition:opacity .2s,color .2s;
+}
+.back-to-top:hover{opacity:1;color:#C9A227}
+.back-to-top svg{width:14px;height:14px}
+
+.progress{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:3px;
+  background:#C9A227;
+  transform-origin:left;
+  transform:scaleX(0);
+  z-index:10;
+}
+
 </style>
 </head>
 <body>
@@ -181,252 +420,537 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 3
 })();
 </script>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="ep-wordmark">
-      <span class="ep-word">ENJ<img src="ep-symbol.png" class="ep-sym-img" alt="">Y</span>
-      <span class="ep-word">&nbsp;PINEAPPLE</span>
-    </div>
-  </a>
-  <ul>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#produtos">Produtos</a></li>
-    <li><a href="parceiros.html">Parceiros</a></li>
-    <li><a href="parceiros.html#form" class="nav-cta">Seja um Parceiro</a></li>
-  </ul>
-</nav>
+<div class="progress" id="progress"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-inner">
-    <div class="hero-badge fade-in">⬤ &nbsp;Porto Alegre · RS · Brasil</div>
-    <h1 class="fade-in delay-1">EXISTIR.<br>PERTENCER.<br>SOMAR.<br><em>TRANSFORMAR.</em></h1>
-    <p class="hero-sub fade-in delay-2">Não pretendemos ser a resposta para tudo. Somos a empresa que aproxima pessoas das respostas certas, dos profissionais e das soluções de que realmente precisam.</p>
-    <div class="hero-actions fade-in delay-3">
-      <a href="bora.html" class="btn-primary">Conheça o BORA <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="#fundador" class="btn-secondary">Nossa história</a>
-    </div>
-    <div class="hero-essence fade-in delay-4">
-      <div class="essence-item"><span class="essence-word">EXISTIR</span><span class="essence-desc">Descobrir, dar realidade</span></div>
-      <div class="essence-item"><span class="essence-word">PERTENCER</span><span class="essence-desc">Estar junto, fazer parte</span></div>
-      <div class="essence-item"><span class="essence-word">SOMAR</span><span class="essence-desc">Unir, integrar, multiplicar</span></div>
-      <div class="essence-item"><span class="essence-word">TRANSFORMAR</span><span class="essence-desc">Compreender para transformar</span></div>
+<div class="frame frame-hero-preview" id="top">
+  <div class="navmock-stage">
+    <div class="navmock">
+      <div class="navmock-logo logo-anim">
+        <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+        <span class="logo-sub">PINEAPPLE</span>
+      </div>
+      <ul class="navmock-items">
+        <li class="navmock-item">
+          <span>Sobre nós <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="mega mega-light">
+            <div class="mega-title">Sobre nós</div>
+            <div class="mega-grid">
+              <div class="mega-col">
+                <div class="mega-label">Filosofia</div>
+                <a class="mega-link" href="#tese">Nossa tese</a>
+                <a class="mega-link" href="#modo">Nosso modo</a>
+              </div>
+              <div class="mega-col">
+                <div class="mega-label">Empresa</div>
+                <a class="mega-link" href="#mvv">Missão, Visão e Valores</a>
+                <a class="mega-link" href="parceiros.html">Parceiros</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="navmock-item">
+          <a href="#novidades">Novidades <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></a>
+          <div class="mega mega-light">
+            <div class="mega-title">Novidades</div>
+            <div class="mega-grid">
+              <div class="mega-col">
+                <a class="mega-link-arrow" href="#na-midia">Na mídia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <div class="mega-desc">Onde a Enjoy Pineapple foi mencionada na imprensa.</div>
+              </div>
+              <div class="mega-col">
+                <a class="mega-link-arrow" href="#blog">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="mega-col">
+                <a class="mega-link-arrow" href="shopping.html">Shopping <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="navmock-item">
+          <span>Produtos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="mega mega-light">
+            <div class="mega-title">Produtos</div>
+            <div class="mega-grid mega-2">
+              <div class="mega-col">
+                <div class="mega-label">Para empresa</div>
+                <a class="mega-link" href="bora.html">BORA</a>
+                <a class="mega-link" href="#para-empresas">BENTO (Bench To)</a>
+                <a class="mega-link" href="#para-empresas">Metering</a>
+              </div>
+              <div class="mega-col">
+                <div class="mega-label">Para você</div>
+                <a class="mega-link" href="divide-ai-produto.html">Divide Aí</a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a href="contato.html" class="navmock-cta">Contato</a>
     </div>
   </div>
-</section>
+  <div class="hero-video-wrap">
+    <video class="hero-preview-video" src="video-hero-pineapple.mp4" autoplay muted loop playsinline></video>
+    <div class="hero01-overlay"></div>
+    <div class="hero01-title">UMA EMPRESA QUE<br>APRECIA O ABACAXI.</div>
+  </div>
+</div>
 
-<!-- A TESE -->
-<section class="tese" id="sobre">
-  <div class="section-inner">
-    <div class="section-label">// nossa tese</div>
-    <h2>UMA EMPRESA QUE<br>APRECIA O <em>ABACAXI.</em></h2>
-    <div class="tese-body">
-      <p>Nós acreditamos que os problemas sempre existirão. Também acreditamos que nenhuma empresa é capaz de resolver todos eles. Mas acreditamos que <strong>toda pessoa merece encontrar o caminho correto para enfrentá-los.</strong></p>
-      <p>Por isso, a Enjoy Pineapple não pretende ser a resposta para tudo. Pretende ser a empresa que aproxima pessoas das respostas, dos profissionais, das instituições e das soluções de que realmente precisam.</p>
-      <p>Nem toda solução estará dentro dos nossos produtos. E isso não nos incomoda. Porque nosso compromisso nunca foi prender pessoas ao nosso ecossistema. <strong>Nosso compromisso é ajudá-las a tomar melhores decisões.</strong></p>
-      <p>Acreditamos que confiança se constrói quando o interesse da pessoa vem antes do interesse da empresa. É assim que entendemos inovação. É assim que entendemos tecnologia. É assim que entendemos nosso papel.</p>
+<div class="frame t-white" id="tese" style="min-height:170vh;">
+  <div class="tese-cols">
+    <div class="tese-wrap">
+      <div class="tese-label">// FILOSOFIA</div>
+      <div class="mega-title tese-title">Nossa tese</div>
+      <div class="tese-body">
+        <p>Sabemos que problemas sempre existirão e que nenhuma empresa resolve tudo.</p>
+        <p>Mas toda pessoa merece encontrar seu caminho para enfrentá-los.</p>
+        <p>A Enjoy Pineapple não tem todas as respostas — mas conecta você a elas.</p>
+        <p>Nem toda solução está em nossos produtos, e isso não nos preocupa.</p>
+        <p>Nosso compromisso não é prender, é ajudar você a decidir melhor.</p>
+        <p>Confiança, para nós, é colocar seu interesse à frente do nosso.</p>
+      </div>
       <div class="tese-quote">
         <p>"Porque informação correta muda destinos."</p>
       </div>
+      <a href="#top" class="back-to-top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        Voltar ao topo
+      </a>
+    </div>
+    <div class="tese-image-col">
+      <img src="tese-image.jpg" alt="" class="tese-image scale-on-scroll">
     </div>
   </div>
-</section>
+</div>
 
-<!-- MVV -->
-<section class="mvv">
-  <div class="section-inner">
-    <div class="section-label">// missão · visão · valores</div>
-    <h2>COMO <em>TRABALHAMOS.</em></h2>
-    <div class="mvv-grid">
+<div class="frame t-gold" id="mvv" style="min-height:auto;padding:5rem 3rem;">
+  <div class="mvv-wrap">
+    <div class="tese-label">// EMPRESA</div>
+    <div class="mvv-row">
       <div class="mvv-card">
+        <img src="mvv-missao.jpg" alt="" class="mvv-img">
         <div class="mvv-num">01</div>
-        <div class="mvv-tag">// missão</div>
+        <div class="tese-label">// MISSÃO</div>
         <h3>Por que existimos</h3>
-        <p>Facilitar a vida de quem empreende, organizando informações oficiais para que decisões importantes possam ser tomadas com mais segurança, rapidez e confiança.</p>
+        <p>Aproximar pessoas das respostas certas, dos profissionais e das soluções de que realmente precisam.</p>
       </div>
       <div class="mvv-card">
+        <img src="mvv-visao.jpg" alt="" class="mvv-img">
         <div class="mvv-num">02</div>
-        <div class="mvv-tag">// visão</div>
+        <div class="tese-label">// VISÃO</div>
         <h3>Onde queremos chegar</h3>
-        <p>Ser a principal plataforma brasileira de orientação regulatória para atividades econômicas, presente em todos os municípios do país até 2030.</p>
+        <p>Construir um ecossistema de soluções que ajudam pessoas a existir, pertencer e somar diante dos desafios do dia a dia — começando pelo BORA, e não parando nele.</p>
       </div>
       <div class="mvv-card">
+        <img src="mvv-valores.jpg" alt="" class="mvv-img">
         <div class="mvv-num">03</div>
-        <div class="mvv-tag">// valores</div>
+        <div class="tese-label">// VALORES</div>
         <h3>Como trabalhamos</h3>
-        <div class="valores-list">
-          <span class="valor-tag">Confiabilidade</span>
-          <span class="valor-tag">Transparência</span>
-          <span class="valor-tag">Simplicidade</span>
-          <span class="valor-tag">Inovação</span>
-          <span class="valor-tag">Segurança Jurídica</span>
-          <span class="valor-tag">Respeito ao Empreendedor</span>
+        <div class="mvv-tags">
+          <span>Confiabilidade</span>
+          <span>Transparência</span>
+          <span>Simplicidade</span>
+          <span>Inovação</span>
+          <span>Interesse do usuário em primeiro lugar</span>
         </div>
       </div>
     </div>
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      Voltar ao topo
+    </a>
   </div>
-</section>
+</div>
 
-<!-- MANIFESTO -->
-<section class="manifesto">
-  <div class="manifesto-glow"></div>
-  <div class="manifesto-inner">
-    <div class="section-label">// manifesto</div>
-    <h2>EMPREENDER EXIGE <em>CORAGEM.</em></h2>
-    <div class="manifesto-text">
-      <p>Nós acreditamos que empreender exige coragem. Acreditamos que a legislação existe para proteger pessoas, negócios e a sociedade. Mas também acreditamos que <strong>informação pública deve ser compreensível.</strong></p>
-      <p>Durante anos vimos empresários perderem tempo procurando respostas que já existiam. Vimos servidores consultando diversas fontes. Vimos contadores navegando entre inúmeras normas. Vimos cidadãos bem-intencionados recebendo informações incompletas ou equivocadas.</p>
-      <p>Isso sempre nos incomodou. Porque acreditamos que <strong>informação correta não é um privilégio. É um direito.</strong></p>
-      <p>Foi por isso que criamos o BORA. Para transformar legislação em orientação. Para transformar dúvidas em decisões. Para transformar tempo perdido em produtividade.</p>
-      <div class="manifesto-closing">
-        <p>Porque empreender já é difícil.<br><span>Encontrar a informação certa não precisa ser.</span></p>
+<div class="frame t-white" style="min-height:auto;padding:4rem 3rem 6rem;">
+  <div class="declaration-text">A Enjoy Pineapple está melhorando a qualidade de vida em todo o Brasil por meio de tecnologias, produtos e serviços inovadores.</div>
+  <div class="declaration-arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+  <a href="#top" class="back-to-top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    Voltar ao topo
+  </a>
+</div>
+
+<div class="frame t-black pillars-frame" id="modo" style="min-height:auto;padding:5rem 3rem;">
+  <img src="pillars-symbol.png" alt="" class="pillars-bg-img">
+  <div class="pillars-wrap">
+    <div class="tese-label">// FILOSOFIA</div>
+    <h2 class="pillars-title">EXISTIR. PERTENCER.<br>SOMAR. <em>TRANSFORMAR.</em></h2>
+    <div class="pillars-list">
+      <div class="pillars-item reveal-text">
+        <div class="pillars-num">01</div>
+        <div class="pillars-body">
+          <h3>Existir</h3>
+          <p>Antes de construir qualquer produto, escolhemos existir com propósito. A Enjoy Pineapple nasce da convicção de que empresas não são apenas estruturas que vendem — são presenças que decidem o que vale a pena defender. Existir, para nós, é a primeira responsabilidade.</p>
+        </div>
+      </div>
+      <div class="pillars-item reveal-text">
+        <div class="pillars-num">02</div>
+        <div class="pillars-body">
+          <h3>Pertencer</h3>
+          <p>Acreditamos que tecnologia só faz sentido quando pertence a quem a usa. Cada solução que criamos nasce de dentro do território que serve — do bairro, do município, da realidade de quem empreende todos os dias. Pertencer é recusar o distante e escolher o próximo.</p>
+        </div>
+      </div>
+      <div class="pillars-item reveal-text">
+        <div class="pillars-num">03</div>
+        <div class="pillars-body">
+          <h3>Somar</h3>
+          <p>Não competimos com o que já existe: somamos a ele. Cada produto, cada parceria, cada linha de código é pensada para adicionar valor real a uma cadeia que já está em movimento — pessoas, negócios, cidades. Somar é o oposto de substituir.</p>
+        </div>
+      </div>
+      <div class="pillars-item reveal-text">
+        <div class="pillars-num">04</div>
+        <div class="pillars-body">
+          <h3>Transformar</h3>
+          <p>A soma de pequenas presenças certas, no lugar certo, no tempo certo, é o que muda destinos. Não buscamos transformação como discurso, mas como consequência inevitável de fazer bem o que nos propomos a fazer.</p>
+        </div>
       </div>
     </div>
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      Voltar ao topo
+    </a>
   </div>
-</section>
+</div>
 
-<!-- CARTA DO FUNDADOR -->
-<section class="fundador" id="fundador">
-  <div class="section-inner">
-    <div class="section-label">// carta do fundador</div>
-    <div class="fundador-grid">
-      <div class="fundador-left">
-        <h2>COMEÇOU NA<br>RUA, NÃO EM<br>UM <em>ESCRITÓRIO.</em></h2>
-        <div class="fundador-assinatura">Pablo</div>
-        <div class="fundador-cargo">// Fundador · Enjoy Pineapple</div>
-        <div class="fundador-quote">
-          <p>"O BORA nunca foi o meu maior projeto. Meu maior projeto sempre foi construir confiança."</p>
+<div class="frame t-white" id="para-empresas" style="min-height:auto;padding:6rem 3rem;">
+  <div class="pe-wrap">
+    <div class="tese-label">// PARA EMPRESAS</div>
+    <div class="pe-row">
+      <div class="pe-videos">
+        <div class="pe-video-box pe-video-far">
+          <video src="pe-papelada-web.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="pe-video-box pe-video-near">
+          <video src="pe-lupa-web.mp4" autoplay muted loop playsinline></video>
         </div>
       </div>
-      <div class="fundador-right">
-        <p>Meu nome é Pablo. Antes de criar o BORA, vivi muitas vidas profissionais. Fui estagiário no serviço público. Passei pela Secretaria da Saúde, pela Secretaria da Agricultura e pela Junta Comercial do Rio Grande do Sul.</p>
-        <p>Comecei a cursar Ciência da Computação porque sempre acreditei que a tecnologia poderia melhorar a vida das pessoas. Mas a realidade mudou meus planos. Sem condições de continuar a faculdade, escolhi um curso técnico em Redes de Computadores e comecei a trabalhar.</p>
-
-        <div class="fundador-milestone">
-          <div class="milestone-year">2006</div>
-          <div class="milestone-text">Início dos estudos para concursos públicos — anos de dedicação, noites e sacrifícios.</div>
-        </div>
-
-        <p>Fui suporte técnico em telecomunicações. Promotor de vendas. Trabalhei na expedição de uma indústria. Fui vistoriador veicular. Motoboy. Cada uma dessas experiências me ensinou uma realidade diferente.</p>
-
-        <div class="fundador-milestone">
-          <div class="milestone-year">2012</div>
-          <div class="milestone-text">Posse como Agente de Fiscalização da Prefeitura de Porto Alegre — foi ali que encontrei meu propósito.</div>
-        </div>
-
-        <p>Durante mais de uma década ouvi diariamente as mesmas perguntas de empresários, contadores e cidadãos: <strong>"Preciso de licença?" "Onde encontro essa informação?" "Qual legislação se aplica ao meu negócio?"</strong></p>
-        <p>As respostas existiam. Mas encontrá-las consumia tempo. Planilhas. Diversos sites. Leis. Normas. Atualizações constantes.</p>
-        <p>Foi dessa inquietação que nasceu o BORA. Não para substituir o conhecimento técnico. Nem para substituir os órgãos públicos. Mas para organizar a informação oficial e aproximá-la de quem realmente precisa dela.</p>
-        <p>Acredito em um serviço público que orienta antes de punir. Acredito que tecnologia deve simplificar a vida das pessoas. Acredito que ganhar tempo significa ganhar qualidade de vida — tempo para trabalhar, para crescer, para estar com a família.</p>
-        <p>Se o BORA conseguir ajudar milhares de pessoas a empreender com mais segurança e encontrar a informação certa mais rapidamente, então todo esse caminho terá valido a pena. Porque, no final, o que realmente importa não é a tecnologia. <strong>São as pessoas que ela ajuda.</strong></p>
+      <div class="pe-text">
+        <h3 class="pe-title">Ferramentas que resolvem problemas reais do seu negócio.</h3>
+        <p class="pe-body">Da papelada ao dia a dia, a Enjoy Pineapple cria produtos pensados pra tirar peso das costas de quem empreende.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- NOSSOS PRODUTOS -->
-<section class="produtos" id="produtos">
-  <div class="section-inner">
-    <div class="section-label">// nossos produtos</div>
-    <h2>SOLUÇÕES QUE GERAM <em>VALOR REAL.</em></h2>
-    <p class="section-lead">Cada produto nasce de um problema real, resolvido com tecnologia acessível e informação confiável.</p>
-    <div class="produtos-grid">
-
-      <a href="bora.html" class="produto-card">
-        <div>
-          <div class="prod-badge live">Disponível agora</div>
-        </div>
-        <div class="prod-icon"><img src="icon.jpg" alt="BORA"></div>
-        <div>
-          <div class="prod-name">BORA</div>
-          <div class="prod-tagline">Classificação de Risco · Atividades Econômicas</div>
-        </div>
-        <p class="prod-desc">Saiba o risco da sua atividade econômica, a legislação aplicável e as licenças necessárias — por CNAE e município — antes de abrir ou expandir seu negócio.</p>
-        <div class="prod-tags">
-          <span class="prod-tag">Android</span>
-          <span class="prod-tag">iOS em breve</span>
-          <span class="prod-tag">CNAE</span>
-          <span class="prod-tag">Legislação</span>
-        </div>
-        <div class="prod-cta">Ver produto <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pe-cta-row">
+      <a href="para-empresas.html" class="mega-link-arrow">Ver produtos para empresas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-
-      <a href="divide-ai.html" class="produto-card coming">
-        <div>
-          <div class="prod-badge dev">Em desenvolvimento</div>
-        </div>
-        <div class="prod-icon placeholder">÷</div>
-        <div>
-          <div class="prod-name green">DIVIDE AÍ</div>
-          <div class="prod-tagline">Divisão de despesas · Entre amigos</div>
-        </div>
-        <p class="prod-desc">Divida contas, viagens e despesas com amigos sem complicação. Sem cadastro de cartão, sem taxas, sem drama. Simples como deve ser.</p>
-        <div class="prod-tags">
-          <span class="prod-tag green">Android</span>
-          <span class="prod-tag green">iOS</span>
-          <span class="prod-tag green">Em breve</span>
-        </div>
-        <div class="prod-cta green">Avise-me no lançamento <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-
     </div>
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      Voltar ao topo
+    </a>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="ep-wordmark" style="margin-bottom:0.75rem">
-        <span class="ep-word">ENJ<img src="ep-symbol.png" class="ep-sym-img" alt="">Y</span>
-        <span class="ep-word">&nbsp;PINEAPPLE</span>
+<div class="frame t-white" id="para-voce" style="min-height:auto;padding:6rem 3rem;">
+  <div class="pe-wrap">
+    <div class="tese-label">// PARA VOCÊ</div>
+    <div class="pe-row">
+      <div class="pe-text">
+        <h3 class="pe-title">Feito pra você curtir mais e se preocupar menos.</h3>
+        <p class="pe-body">Da resenha com os amigos à próxima viagem: nossos produtos cuidam dos detalhes chatos pra você focar no que importa — viver.</p>
       </div>
-      <p>Aproximamos pessoas das respostas certas com soluções práticas, acessíveis e confiáveis.</p>
-      <div class="footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS</div>
-      <div class="footer-epigraph">"Porque informação correta muda destinos."</div>
+      <div class="pe-videos">
+        <div class="pe-video-box pe-video-far">
+          <video src="pv-sofa-web.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="pe-video-box pe-video-near">
+          <video src="pv-selfie-web.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
     </div>
-    <div class="footer-nav">
-      <div class="footer-nav-col">
-        <h4>Empresa</h4>
-        <a href="#sobre">Sobre nós</a>
-        <a href="#sobre">Nossa tese</a>
-        <a href="#fundador">Carta do Fundador</a>
+    <div class="pe-cta-row">
+      <a href="para-voce.html" class="mega-link-arrow">Ver produtos para você
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      Voltar ao topo
+    </a>
+  </div>
+</div>
+
+<div class="frame t-gold" id="novidades" style="min-height:auto;padding:6rem 3rem;">
+  <div class="content-wrap">
+    <div class="content-cols">
+      <div class="content-col" id="blog">
+        <div class="tese-label">// BLOG</div>
+        <div class="blog-marquee">
+          <div class="blog-marquee-track">
+            <div class="blog-marquee-strip">
+              <a href="carta-do-fundador.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:08</div>
+                <div class="blog-marquee-title">Carta do Fundador</div>
+              </a>
+              <a href="o-que-e-cnae.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17V9M13 17V5M17 17v-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:17</div>
+                <div class="blog-marquee-title">O que é CNAE e por que ele importa</div>
+              </a>
+              <a href="eventos-privados-porto-alegre.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M14 9h1M14 13h1"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:34</div>
+                <div class="blog-marquee-title">Eventos privados em Porto Alegre: por onde começar</div>
+              </a>
+              <a href="trabalho-hibrido.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18M9 21V9"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:40</div>
+                <div class="blog-marquee-title">Escritório ou casa? A pergunta errada sobre trabalho híbrido</div>
+              </a>
+              <a href="carta-do-fundador.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:08</div>
+                <div class="blog-marquee-title">Carta do Fundador</div>
+              </a>
+              <a href="o-que-e-cnae.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17V9M13 17V5M17 17v-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:17</div>
+                <div class="blog-marquee-title">O que é CNAE e por que ele importa</div>
+              </a>
+              <a href="eventos-privados-porto-alegre.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M14 9h1M14 13h1"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:34</div>
+                <div class="blog-marquee-title">Eventos privados em Porto Alegre: por onde começar</div>
+              </a>
+              <a href="trabalho-hibrido.html" class="blog-marquee-card">
+                <div class="blog-marquee-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18M9 21V9"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <div class="blog-marquee-date">09/08/2026 · 11:40</div>
+                <div class="blog-marquee-title">Escritório ou casa? A pergunta errada sobre trabalho híbrido</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="blog-tags">
+          <span class="blog-tag">Guia rápido</span>
+          <span class="blog-tag">Reflexão</span>
+        </div>
+      </div>
+      <div class="content-col" id="na-midia">
+        <div class="tese-label">// NA MÍDIA</div>
+        <p class="media-marquee-note">Em breve: acompanhe aqui as primeiras menções da Enjoy Pineapple na imprensa.</p>
+        <div class="media-marquee-track">
+          <div class="media-marquee-strip">
+            <div class="media-marquee-card"><img src="midia-1.jpg" alt="Imprensa"></div>
+            <div class="media-marquee-card"><img src="midia-2.jpg" alt="Imprensa"></div>
+            <div class="media-marquee-card"><img src="midia-3.jpg" alt="Imprensa"></div>
+            <div class="media-marquee-card"><img src="midia-1.jpg" alt="Imprensa"></div>
+            <div class="media-marquee-card"><img src="midia-2.jpg" alt="Imprensa"></div>
+            <div class="media-marquee-card"><img src="midia-3.jpg" alt="Imprensa"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#top" class="back-to-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      Voltar ao topo
+    </a>
+  </div>
+</div>
+
+<div class="frame t-black" id="contato" style="min-height:auto;padding:15px 3rem;">
+  <footer class="df-footer df-footer-simple">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="#tese">Sobre nós</a>
         <a href="parceiros.html">Seja parceiro</a>
-      </div>
-      <div class="footer-nav-col">
-        <h4>Produtos</h4>
-        <a href="bora.html">BORA</a>
-        <a href="divide-ai.html">Divide Aí</a>
-      </div>
-      <div class="footer-nav-col">
-        <h4>Legal</h4>
         <a href="privacidade.html">Privacidade</a>
         <a href="termos.html">Termos de Uso</a>
         <a href="suporte.html">Suporte</a>
-        <a href="excluir-conta.html">Excluir Conta</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Enjoy Pineapple · Todos os direitos reservados</div>
-    <div class="footer-copy">Feito com ♥ em Porto Alegre/RS</div>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; observer.unobserve(e.target); }
+document.querySelectorAll('.mvv-card').forEach(function(card){
+  card.addEventListener('mouseenter', function(){
+    card.style.flex = '4 1 0px';
   });
-}, {threshold:0.1});
-document.querySelectorAll('.mvv-card,.produto-card,.fundador-milestone').forEach(el => {
-  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease,transform 0.5s ease';
-  observer.observe(el);
+  card.addEventListener('mouseleave', function(){
+    card.style.flex = '1 1 0px';
+  });
+});
+
+window.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var pct = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  document.getElementById('progress').style.transform = 'scaleX(' + pct + ')';
+});
+
+function jumpToHash(){
+  if (!location.hash) return;
+  var target = document.getElementById(location.hash.slice(1));
+  if (target) target.scrollIntoView();
+}
+window.addEventListener('load', function(){
+  jumpToHash();
+  setTimeout(jumpToHash, 400);
+});
+
+function onScrollReveal(){
+  var vh = window.innerHeight;
+  document.querySelectorAll('.scale-on-scroll').forEach(function(img){
+    var rect = img.getBoundingClientRect();
+    var center = rect.top + rect.height / 2;
+    var progress = 1 - Math.min(Math.max((center - vh * 0.35) / (vh * 0.65), 0), 1);
+    var scale = 0.55 + progress * 0.85;
+    img.style.transform = 'scale(' + scale.toFixed(3) + ')';
+  });
+  document.querySelectorAll('.reveal-text').forEach(function(el){
+    var rect = el.getBoundingClientRect();
+    if (rect.top < vh * 0.85) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    } else {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(50px)';
+    }
+  });
+  document.querySelectorAll('.pe-video-box').forEach(function(el){
+    var rect = el.getBoundingClientRect();
+    var startX = el.classList.contains('pe-video-far') ? '220px' : '140px';
+    if (rect.top < vh * 0.85) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0)';
+    } else {
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(' + startX + ')';
+    }
+  });
+}
+window.addEventListener('scroll', onScrollReveal);
+onScrollReveal();
+
+var pageVideos = document.querySelectorAll('video');
+document.querySelectorAll('.navmock-item').forEach(function(item){
+  var closeTimer = null;
+  var mega = item.querySelector('.mega');
+  var span = item.querySelector(':scope > span, :scope > a');
+  function openMega(){
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    item.classList.add('open');
+    if (span) { span.style.color = 'var(--accent)'; span.style.textDecoration = 'underline'; span.style.textUnderlineOffset = '.3em'; }
+    var svg = span ? span.querySelector('svg') : null;
+    if (svg) svg.style.transform = 'rotate(180deg)';
+    if (mega) {
+      mega.style.opacity = '1';
+      mega.style.visibility = 'visible';
+      mega.style.transform = 'translateY(0)';
+    }
+    pageVideos.forEach(function(v){ v.style.visibility = 'hidden'; });
+  }
+  function closeMega(){
+    item.classList.remove('open');
+    if (span) { span.style.color = ''; span.style.textDecoration = ''; }
+    var svg = span ? span.querySelector('svg') : null;
+    if (svg) svg.style.transform = '';
+    if (mega) {
+      mega.style.opacity = '0';
+      mega.style.visibility = 'hidden';
+      mega.style.transform = 'translateY(-6px)';
+    }
+    pageVideos.forEach(function(v){ v.style.visibility = 'visible'; });
+  }
+  item.addEventListener('mouseenter', openMega);
+  item.addEventListener('mouseleave', function(){
+    closeTimer = setTimeout(closeMega, 400);
+  });
+  if (mega) {
+    mega.addEventListener('mouseenter', openMega);
+    mega.addEventListener('mouseleave', function(){
+      closeTimer = setTimeout(closeMega, 400);
+    });
+  }
+});
+
+document.querySelectorAll('.content-carousel').forEach(function(carousel){
+  var track = carousel.querySelector('.content-track');
+  var cards = track.querySelectorAll('.content-card');
+  var prev = carousel.querySelector('.content-prev');
+  var next = carousel.querySelector('.content-next');
+  var dotsWrap = carousel.querySelector('.content-dots');
+  var dots = [];
+  var index = 0;
+  var animating = false;
+  cards.forEach(function(card, i){
+    var dot = document.createElement('button');
+    dot.className = 'content-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir para item ' + (i + 1));
+    dot.addEventListener('click', function(){ goTo(i); });
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  });
+  function goTo(newIndex){
+    if (animating || newIndex === index || newIndex < 0 || newIndex >= cards.length) return;
+    animating = true;
+    var current = cards[index];
+    var incoming = cards[newIndex];
+    current.style.opacity = '0';
+    setTimeout(function(){
+      current.style.display = 'none';
+      incoming.style.display = '';
+      incoming.style.opacity = '0';
+      incoming.getBoundingClientRect();
+      incoming.style.opacity = '1';
+      index = newIndex;
+      prev.disabled = index === 0;
+      next.disabled = index >= cards.length - 1;
+      dots.forEach(function(dot, i){ dot.classList.toggle('active', i === index); });
+      animating = false;
+    }, 300);
+  }
+  prev.addEventListener('click', function(){ goTo(index - 1); });
+  next.addEventListener('click', function(){ goTo(index + 1); });
+  cards.forEach(function(card, i){
+    card.style.display = i === 0 ? '' : 'none';
+    card.style.opacity = i === 0 ? '1' : '0';
+  });
+  prev.disabled = true;
+  next.disabled = cards.length <= 1;
+});
+
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
 });
 </script>
+
 </body>
 </html>

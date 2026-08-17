@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Enjoy Pineapple — Logo Reveal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101114;
+    --muted:#6b6d72;
+    --faint:#a3a5aa;
+    --paper:#fbfbfa;
+    --paper2:#f2f1ee;
+  }
+  html,body{margin:0;padding:0;background:#e9e9e6;height:100%;}
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Poppins',sans-serif;}
+
+  .frame{
+    width:1600px;
+    max-width:96vw;
+    aspect-ratio:16/9;
+  }
+  .stage{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 38%, var(--paper) 0%, var(--paper2) 100%);
+    overflow:hidden;
+    cursor:pointer;
+    border-radius:4px;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.25);
+  }
+
+  .lockup{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .icon-stage{
+    position:relative;
+    width:100%;
+    height:0;
+  }
+
+  .shadow-puddle{
+    position:absolute;
+    left:50%;
+    top:40%;
+    width:220px;
+    height:36px;
+    background:radial-gradient(ellipse, rgba(16,17,20,0.16) 0%, rgba(16,17,20,0) 72%);
+    transform:translate(-50%,-50%);
+    opacity:0;
+  }
+  .stage.play .shadow-puddle{
+    animation:puddleFade 4.6s ease-in-out .4s both;
+  }
+  @keyframes puddleFade{
+    0%{opacity:0;}
+    22%{opacity:1;}
+    78%{opacity:1;}
+    100%{opacity:0;}
+  }
+
+  .wordmark{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:14px;
+  }
+  .letter{
+    font-weight:300;
+    font-size:96px;
+    line-height:1;
+    color:var(--ink);
+    letter-spacing:0.02em;
+    opacity:0;
+    transform:translateY(20px);
+  }
+  .stage.play .letter{ animation:letterIn .55s cubic-bezier(.22,1,.36,1) both; }
+  .stage.play .letter.e{ animation-delay:5.3s; }
+  .stage.play .letter.n{ animation-delay:5.45s; }
+  .stage.play .letter.j{ animation-delay:5.6s; }
+  .stage.play .letter.y{ animation-delay:5.9s; }
+  @keyframes letterIn{
+    0%{opacity:0;transform:translateY(20px);}
+    100%{opacity:1;transform:translateY(0);}
+  }
+
+  .symbol-slot{
+    position:relative;
+    width:112px;
+    height:180px;
+    margin:0 -2px -6px -2px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+
+  #icon{
+    width:112px;
+    height:180px;
+    overflow:visible;
+    transform:translate(var(--big-x,0px), var(--big-y,0px)) scale(var(--big-scale,1));
+    transform-origin:50% 68%;
+  }
+  .stage.play #icon{
+    animation:reposition 1.3s cubic-bezier(.65,0,.35,1) 4.9s both;
+  }
+  @keyframes reposition{
+    from{ transform:translate(var(--big-x,0px), var(--big-y,0px)) scale(var(--big-scale,1)); }
+    to{ transform:translate(0,0) scale(1); }
+  }
+
+  #iconGroup{ animation:none; }
+  .stage.play #iconGroup{ animation:settlePulse .6s ease-in-out 4.3s both; }
+  @keyframes settlePulse{
+    0%,100%{ filter:brightness(1) drop-shadow(0 0 0 rgba(16,17,20,0)); }
+    50%{ filter:brightness(1.22) drop-shadow(0 0 18px rgba(16,17,20,0.18)); }
+  }
+
+  .glyph{
+    font-family:Georgia,'Cambria Math','STIX Two Math',serif;
+    fill:var(--ink);
+    text-anchor:middle;
+  }
+  .glyph-in{ opacity:0; transform:translateY(-340px); }
+  .stage.play .glyph-in{ animation:glyphDrop 4.0s cubic-bezier(.22,.7,.3,1) .4s both; }
+  @keyframes glyphDrop{
+    0%{opacity:0; transform:translateY(-340px);}
+    32%{opacity:1; transform:translateY(0);}
+    88%{opacity:1; transform:translateY(0);}
+    100%{opacity:0; transform:translateY(0);}
+  }
+
+  .glyph-ex{ opacity:0; transform:translateX(420px); }
+  .stage.play .glyph-ex{ animation:glyphSlide 2.9s cubic-bezier(.22,.7,.3,1) 1.5s both; }
+  @keyframes glyphSlide{
+    0%{opacity:0; transform:translateX(420px);}
+    41%{opacity:1; transform:translateX(0);}
+    83%{opacity:1; transform:translateX(0);}
+    100%{opacity:0; transform:translateX(0);}
+  }
+
+  .glyph-sum{ opacity:0; transform:translate(-70px,-95px) rotate(-34deg) scale(0.6); transform-origin:50% 100%; }
+  .stage.play .glyph-sum{ animation:glyphSpin 1.5s cubic-bezier(.22,1,.36,1) 2.9s both; }
+  @keyframes glyphSpin{
+    0%{opacity:0; transform:translate(-70px,-95px) rotate(-34deg) scale(0.6);}
+    73%{opacity:1; transform:translate(0,0) rotate(0) scale(1);}
+    93%{opacity:1; transform:translate(0,0) rotate(0) scale(1);}
+    100%{opacity:0; transform:translate(0,0) rotate(0) scale(1);}
+  }
+
+  .union-glow{ opacity:0; }
+  .stage.play .union-glow{ animation:unionPulse .55s ease-out 2.6s both; }
+  @keyframes unionPulse{
+    0%{opacity:0; transform:scale(0.5);}
+    45%{opacity:0.55; transform:scale(1.5);}
+    100%{opacity:0; transform:scale(2);}
+  }
+
+  .body-photo{ opacity:0; }
+  .stage.play .body-photo{
+    animation:shapeFadeIn .5s ease-out 3.9s both;
+  }
+  @keyframes shapeFadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+  }
+
+  .subword{
+    margin-top:22px;
+    font-weight:300;
+    font-size:26px;
+    letter-spacing:0.55em;
+    color:var(--muted);
+    opacity:0;
+    transform:translateY(10px);
+  }
+  .stage.play .subword{ animation:subFade .9s ease-out 6.5s both; }
+  @keyframes subFade{
+    0%{opacity:0; transform:translateY(10px); letter-spacing:0.62em;}
+    100%{opacity:1; transform:translateY(0); letter-spacing:0.42em;}
+  }
+
+  .tagline{
+    margin-top:34px;
+    font-weight:300;
+    font-size:13px;
+    letter-spacing:0.32em;
+    color:var(--faint);
+    opacity:0;
+  }
+  .stage.play .tagline{ animation:tagFade 1.0s ease-out 7.5s both; }
+  @keyframes tagFade{
+    0%{opacity:0;}
+    100%{opacity:0.85;}
+  }
+
+  .hint{
+    position:absolute;
+    right:22px;
+    bottom:16px;
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--faint);
+    font-family:'Poppins',sans-serif;
+    opacity:0.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <div class="stage" id="stage">
+    <div class="lockup">
+      <div class="icon-stage">
+        <div class="shadow-puddle"></div>
+      </div>
+
+      <div class="wordmark">
+        <span class="letter e">E</span>
+        <span class="letter n">N</span>
+        <span class="letter j">J</span>
+        <span class="symbol-slot">
+          <svg id="icon" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+            <g id="iconGroup">
+              <text class="glyph glyph-in" x="68" y="250" font-size="210">&#8712;</text>
+              <text class="glyph glyph-ex" x="172" y="250" font-size="210">&#8707;</text>
+              <text class="glyph glyph-sum" x="120" y="92" font-size="140">&#931;</text>
+
+              <circle class="union-glow" cx="120" cy="195" r="70" fill="none" stroke="var(--ink)" stroke-width="2"/>
+              <image class="body-photo" href="symbol-reference.png" x="11" y="4" width="218" height="309"
+                preserveAspectRatio="xMidYMid meet"/>
+            </g>
+          </svg>
+        </span>
+        <span class="letter y">Y</span>
+      </div>
+
+      <div class="subword">PINEAPPLE</div>
+      <div class="tagline">EXISTIR &nbsp;·&nbsp; PERTENCER &nbsp;·&nbsp; SOMAR</div>
+    </div>
+    <div class="hint">clique para reiniciar</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const icon = document.getElementById('icon');
+
+  function measureAndPlay(){
+    icon.style.setProperty('--big-x', '0px');
+    icon.style.setProperty('--big-y', '0px');
+    icon.style.setProperty('--big-scale', '1');
+
+    const stageRect = stage.getBoundingClientRect();
+    const naturalRect = icon.getBoundingClientRect();
+
+    const naturalCX = naturalRect.left + naturalRect.width / 2 - stageRect.left;
+    const naturalCY = naturalRect.top + naturalRect.height / 2 - stageRect.top;
+
+    const bigWidth = stageRect.height * 0.30;
+    const bigCX = stageRect.width / 2;
+    const bigCY = stageRect.height * 0.40;
+
+    const scale = bigWidth / naturalRect.width;
+    const dx = bigCX - naturalCX;
+    const dy = bigCY - naturalCY;
+
+    icon.style.setProperty('--big-x', dx.toFixed(2) + 'px');
+    icon.style.setProperty('--big-y', dy.toFixed(2) + 'px');
+    icon.style.setProperty('--big-scale', scale.toFixed(4));
+
+    setTimeout(function(){
+      stage.classList.add('play');
+    }, 30);
+  }
+
+  function restart(){
+    stage.classList.remove('play');
+    void stage.offsetWidth;
+    measureAndPlay();
+  }
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(measureAndPlay);
+  } else {
+    window.addEventListener('load', measureAndPlay);
+  }
+  window.addEventListener('resize', function(){
+    if (stage.classList.contains('play')) restart();
+  });
+  stage.addEventListener('click', restart);
+})();
+</script>
+
+</body>
+</html>

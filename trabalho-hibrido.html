@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Escritório ou casa? A pergunta errada sobre trabalho híbrido — Enjoy Pineapple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="O trabalho híbrido não é sobre escolher entre escritório e casa — é sobre entender o que cada lugar faz bem, e o que ainda falta resolver entre os dois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  --accent:#C9A227;--border:rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+a{color:inherit}
+
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 3rem;border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.4s;transform-origin:center}
+.logo-anim .logo-sub{animation:logoSubIn .5s ease forwards;animation-delay:.7s}
+@keyframes logoLetterIn{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes logoOIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}70%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes logoSubIn{0%{opacity:0;transform:translateX(6px)}100%{opacity:1;transform:translateX(0)}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text2)}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
+
+article{max-width:720px;margin:0 auto;padding:5rem 1.5rem 6rem}
+.article-label{
+  font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;
+}
+.article-title{
+  font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:1.08;
+  margin:0 0 2.5rem;max-width:640px;
+}
+.article-meta{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);
+  font-family:'DM Mono',monospace;font-size:.72rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;}
+
+.article-quote{
+  margin:0 0 3rem;padding:1.5rem 0;
+  border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);
+}
+.article-quote p{
+  font-family:'Syne',sans-serif;font-weight:700;font-style:italic;
+  font-size:1.3rem;line-height:1.45;margin:0;
+}
+
+article h2{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;
+  margin:2.75rem 0 1.25rem;
+}
+article p{font-size:1.05rem;line-height:1.8;color:var(--text2);margin-bottom:1.4rem;font-weight:400}
+article p strong{color:var(--text);font-weight:600}
+article ul{margin:0 0 1.4rem;padding-left:1.25rem}
+article li{font-size:1.05rem;line-height:1.8;color:var(--text2);margin-bottom:.5rem}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.split-col{padding:1.5rem;background:#fafafa;border:1px solid var(--border);border-radius:10px}
+.split-col h3{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin:0 0 .9rem}
+.split-col ul{margin:0;padding-left:1.1rem}
+.split-col li{font-size:.92rem;color:var(--text2);line-height:1.7;margin-bottom:.4rem}
+
+footer{background:#000;padding:15px 3rem}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.df-footer-brand{display:flex;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
+
+@media (max-width:720px){
+  nav{padding:1.25rem 1.5rem}
+  .logo-anim .logo-sub{display:none}
+  article{padding:3rem 1.5rem 4rem}
+  .article-title{font-size:2.1rem}
+  .split{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo logo-anim">
+    <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+    <span class="logo-sub">PINEAPPLE</span>
+  </a>
+  <a href="index.html#blog" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
+</nav>
+
+<article>
+  <div class="article-label">// Blog</div>
+  <h1 class="article-title">Escritório ou casa? A pergunta errada sobre trabalho híbrido</h1>
+
+  <div class="article-meta">Enjoy Pineapple · Reflexão · 09/08/2026 · 11:40</div>
+
+  <div class="article-quote">
+    <p>O trabalho híbrido não fracassa porque as pessoas escolhem o lugar errado. Fracassa porque a gente ainda trata "onde" como se fosse a mesma pergunta que "como".</p>
+  </div>
+
+  <p>Depois que o trabalho remoto deixou de ser exceção, quase toda empresa passou a discutir a mesma coisa: quantos dias no escritório, quantos dias em casa. É uma discussão de calendário. Mas o que realmente separa um dia produtivo de um dia perdido raramente é o endereço — é se o tipo de trabalho combinava com o lugar onde ele foi feito.</p>
+
+  <h2>O que o escritório ainda faz melhor que ninguém</h2>
+  <p>Tem coisa que só acontece perto de gente: a conversa de corredor que resolve um impasse em cinco minutos, o alinhamento que não precisa de agenda, a sensação de time que nenhuma videochamada reproduz de verdade. O escritório é bom pra decisão coletiva, pra cultura, pra quem está aprendendo observando os outros trabalharem.</p>
+
+  <h2>O que a casa ainda faz melhor que o escritório</h2>
+  <p>Por outro lado, tem trabalho que só rende de verdade em silêncio, sem interrupção, sem deslocamento roubando duas horas do dia. Escrever, analisar, programar, planejar — tarefas de foco profundo costumam ir melhor longe do ruído do escritório aberto.</p>
+
+  <div class="split">
+    <div class="split-col">
+      <h3>Escritório rende mais em</h3>
+      <ul>
+        <li>Decisões em grupo</li>
+        <li>Onboarding e mentoria</li>
+        <li>Alinhamento rápido</li>
+        <li>Construção de cultura</li>
+      </ul>
+    </div>
+    <div class="split-col">
+      <h3>Casa rende mais em</h3>
+      <ul>
+        <li>Foco profundo</li>
+        <li>Trabalho analítico</li>
+        <li>Tarefas solitárias longas</li>
+        <li>Flexibilidade de horário</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>O problema não é o modelo, é a falta de intenção</h2>
+  <p>A maioria das empresas híbridas hoje decide "onde" por regra fixa — três dias aqui, dois lá — sem olhar pra que tipo de trabalho está sendo feito naquele dia. O resultado é gente indo ao escritório pra fazer tarefa de foco (e sendo interrompida o tempo todo), ou ficando em casa justamente no dia que precisava estar junto do time pra decidir algo importante.</p>
+  <p>O trabalho híbrido bem feito não é sobre dividir a semana em dois lugares. É sobre casar o tipo de tarefa com o ambiente certo pra ela — e isso muda de pessoa pra pessoa, de time pra time, de semana pra semana.</p>
+
+  <h2>O que vem a seguir</h2>
+  <p>Achamos esse problema interessante o suficiente pra pensar em como resolvê-lo de verdade — não com mais uma regra de calendário, mas com algo que ajude cada time a decidir melhor onde cada tipo de trabalho deveria acontecer. Em breve contamos mais sobre isso por aqui.</p>
+</article>
+
+<footer>
+  <div class="df-footer">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="index.html#tese">Sobre nós</a>
+        <a href="parceiros.html">Seja parceiro</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="suporte.html">Suporte</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
+});
+</script>
+
+</body>
+</html>

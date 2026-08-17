@@ -1,394 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suporte — Enjoy Pineapple</title>
-  <meta name="description" content="Central de suporte do BORA. Tire suas dúvidas, fale com a gente ou consulte o FAQ.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
-      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-      --accent:#FFD600;--accent2:#e6bf00;
-      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
-      --green:#00e5a0;
-      --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
-      --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+<meta charset="UTF-8">
+<title>Suporte — Enjoy Pineapple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Central de ajuda da Enjoy Pineapple — dúvidas sobre o site, o app BORA e o app Divide Aí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  --accent:#C9A227;--border:rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7}
+a{color:inherit}
 
-    nav{position:sticky;top:0;z-index:100;background:rgba(7,9,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
-    .nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:50%}
-    .logo-text{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
-    .logo-text span{color:var(--accent)}
-    .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
-    .nav-back:hover{color:var(--accent)}
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 3rem;border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.4s;transform-origin:center}
+.logo-anim .logo-sub{animation:logoSubIn .5s ease forwards;animation-delay:.7s}
+@keyframes logoLetterIn{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes logoOIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}70%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes logoSubIn{0%{opacity:0;transform:translateX(6px)}100%{opacity:1;transform:translateX(0)}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text2)}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
 
-    .page-header{border-bottom:1px solid var(--border);padding:4rem 3rem 3rem;max-width:960px;margin:0 auto}
-    .page-tag{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-    .page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:0.02em;line-height:1;color:#fff;margin-bottom:1rem}
-    .page-sub{font-size:1rem;color:var(--text2);max-width:520px;line-height:1.65}
+.page-header{max-width:860px;margin:0 auto;padding:4rem 1.5rem 2rem}
+.page-tag{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1.25rem}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;margin:0 0 1rem}
+.page-meta{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3)}
+.page-meta span{color:var(--accent)}
 
-    .content{max-width:960px;margin:0 auto;padding:3rem 3rem 6rem}
+.tabs{
+  max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.6rem;
+  border-bottom:1px solid var(--border);
+}
+.tab-btn{
+  font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.04em;
+  padding:.75rem 1.25rem;border:none;background:none;cursor:pointer;
+  color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .15s,border-color .15s;
+}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--text);border-color:var(--accent)}
 
-    /* STATUS */
-    .status-bar{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.25rem 1.5rem;margin-bottom:4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,229,160,0.5);flex-shrink:0;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-    .status-text{font-family:var(--font-mono);font-size:0.8rem;color:var(--text)}
-    .status-text span{color:var(--text2)}
+.tab-panel{display:none;max-width:860px;margin:0 auto;padding:3rem 1.5rem 6rem}
+.tab-panel.active{display:block}
 
-    /* CONTACT CARDS */
-    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:4rem}
-    .contact-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid transparent;border-radius:8px;padding:2rem;transition:border-color 0.25s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
-    .contact-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,214,0,0.04) 0%,transparent 65%);pointer-events:none}
-    .contact-card:hover{border-top-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
-    .card-icon{width:40px;height:40px;background:rgba(255,214,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
-    .card-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .card-title{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
-    .card-desc{font-size:0.875rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
-    .card-action{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);text-decoration:none;background:rgba(255,214,0,0.06);border:1px solid rgba(255,214,0,0.2);padding:0.55rem 1rem;border-radius:4px;transition:background 0.2s,border-color 0.2s;word-break:break-all}
-    .card-action:hover{background:rgba(255,214,0,0.12);border-color:rgba(255,214,0,0.45)}
+.toc{background:#fafafa;border:1px solid var(--border);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:3rem;border-radius:6px}
+.toc-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.toc ol{padding-left:1.2rem;margin:0}
+.toc li{margin-bottom:.35rem}
+.toc a{color:var(--text2);text-decoration:none;font-size:.875rem;transition:color .15s}
+.toc a:hover{color:var(--accent)}
 
-    /* FAQ */
-    .faq-header{font-family:var(--font-display);font-size:2.2rem;letter-spacing:0.04em;color:#fff;margin-bottom:0.5rem}
-    .faq-sub{font-family:var(--font-mono);font-size:0.78rem;color:var(--text2);margin-bottom:2.5rem}
+.section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+h2{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;margin:0 0 1.1rem;line-height:1.1}
+.section-number{color:var(--accent);margin-right:.3em}
 
-    .cat-section{margin-bottom:3rem}
-    .cat-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+p{color:var(--text2);margin-bottom:1rem;font-size:.95rem}
+ul,ol{padding-left:1.4rem;margin-bottom:1rem}
+li{margin-bottom:.5rem;font-size:.95rem;color:var(--text2)}
+strong{color:var(--text);font-weight:600}
 
-    .faq-item{border-bottom:1px solid var(--border);overflow:hidden}
-    .faq-question{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:1.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:var(--text);font-family:var(--font-body);font-size:0.95rem;font-weight:500;transition:color 0.2s}
-    .faq-question:hover{color:var(--accent)}
-    .faq-icon{font-family:var(--font-mono);font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform 0.3s;line-height:1}
-    .faq-item.open .faq-icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
-    .faq-item.open .faq-answer{max-height:500px}
-    .faq-answer-inner{padding-bottom:1.5rem;font-size:0.9rem;color:var(--text2);line-height:1.7}
-    .faq-answer-inner a{color:var(--accent);text-decoration:none}
-    .faq-answer-inner strong{color:var(--text)}
+.highlight-box{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.25);border-radius:8px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.highlight-box p{margin-bottom:0;font-size:.9rem}
 
-    p{color:var(--text);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
-    strong{color:#fff;font-weight:600}
+.faq-item{margin-bottom:1.5rem}
+.faq-item h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.4rem}
+.faq-item p{margin-bottom:0}
 
-    footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
-    .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
-    .footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
-    .footer-text a:hover{color:var(--accent)}
-  </style>
+.contact-block{background:#fafafa;border:1px solid var(--border);padding:1.5rem 2rem;border-radius:8px;margin-top:1.5rem}
+.contact-block p{margin-bottom:.5rem}
+.contact-block a{color:var(--accent);text-decoration:none;font-family:'DM Mono',monospace;font-size:.85rem}
+
+footer{background:#000;padding:15px 3rem}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.df-footer-brand{display:flex;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
+
+@media (max-width:720px){
+  nav{padding:1.25rem 1.5rem}
+  .logo-anim .logo-sub{display:none}
+  .page-title{font-size:2.4rem}
+  .tabs{overflow-x:auto}
+}
+
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
-      <span class="logo-text">Enjoy <span>Pineapple</span></span>
-    </a>
-    <a href="index.html" class="nav-back">← Voltar ao início</a>
-  </nav>
+<nav>
+  <a href="#" class="nav-logo logo-anim">
+    <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+    <span class="logo-sub">PINEAPPLE</span>
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
+</nav>
 
-  <div class="page-header">
-    <div class="page-tag">// suporte</div>
-    <h1 class="page-title">Central de Suporte</h1>
-    <p class="page-sub">Tem alguma dúvida ou problema? Estamos aqui. Encontre a resposta no FAQ ou fale diretamente com a gente.</p>
+<div class="page-header">
+  <div class="page-tag">// central de ajuda</div>
+  <h1 class="page-title">Suporte</h1>
+  <p class="page-meta">Respondemos em até <span>2 dias úteis</span></p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="site">Site</button>
+  <button class="tab-btn" data-tab="bora">BORA</button>
+  <button class="tab-btn" data-tab="divide-ai">Divide Aí</button>
+</div>
+
+<!-- SITE -->
+<div class="tab-panel active" id="tab-site">
+  <div class="highlight-box">
+    <p>Dúvidas gerais sobre a Enjoy Pineapple, o site ou algum dos produtos — comece por aqui.</p>
   </div>
 
-  <div class="content">
-
-    <div class="status-bar">
-      <div class="status-dot"></div>
-      <div class="status-text">
-        Todos os sistemas operacionais &nbsp;·&nbsp; <span>Último verificado: Junho 2026</span>
-      </div>
+  <div class="section">
+    <h2><span class="section-number">01.</span> Como podemos ajudar</h2>
+    <div class="faq-item">
+      <h3>Não sei pra qual time mandar minha dúvida</h3>
+      <p>Sem problema — manda pro nosso e-mail geral que a gente direciona pro time certo.</p>
     </div>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        </div>
-        <div class="card-title">Suporte</div>
-        <p class="card-desc">Para dúvidas gerais, problemas de conta ou sugestões. Respondemos em até 2 dias úteis.</p>
-        <a href="mailto:suporte@enjoypineapple.com.br" class="card-action">suporte@enjoypineapple.com.br</a>
-      </div>
-
-      <div class="contact-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <div class="card-title">Privacidade</div>
-        <p class="card-desc">Para exercer seus direitos sob a LGPD: acesso, correção, exclusão de dados ou retirada de consentimento.</p>
-        <a href="mailto:privacidade@enjoypineapple.com.br" class="card-action">privacidade@enjoypineapple.com.br</a>
-      </div>
-
-      <div class="contact-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-        </div>
-        <div class="card-title">Prefeituras</div>
-        <p class="card-desc">Sua cidade quer integrar ao BORA ou atualizar dados de licenciamento? Fale com nosso time de parcerias.</p>
-        <a href="mailto:parcerias@enjoypineapple.com.br" class="card-action">parcerias@enjoypineapple.com.br</a>
-      </div>
+    <div class="faq-item">
+      <h3>Quero saber mais sobre a Enjoy Pineapple</h3>
+      <p>Dá uma olhada na seção "Sobre nós" na página inicial — tem a tese da empresa, missão, visão e a carta do fundador.</p>
     </div>
-
-    <div class="faq-header">Perguntas frequentes</div>
-    <p class="faq-sub">// FAQ — as dúvidas mais comuns dos usuários</p>
-
-    <div class="cat-section">
-      <div class="cat-label">conta e cadastro</div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Como crio minha conta no BORA?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Baixe o app na App Store ou Google Play, abra e toque em "Criar conta". Você precisará de um e-mail válido e criará uma senha. Em seguida, o app guiará você por uma configuração rápida de perfil (apelido, município de interesse e profissão).
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Por que o BORA pede meu CPF?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            O CPF é usado <strong>apenas para verificar unicidade de cadastro</strong> — garantimos que cada pessoa tenha apenas uma conta. <strong>Nunca armazenamos seu número de CPF.</strong> Toda a verificação é feita localmente no seu dispositivo, e apenas um hash criptográfico (SHA-256) irreversível é enviado. Leia mais em nossa <a href="privacidade.html">Política de Privacidade</a>.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Esqueci minha senha. Como recupero?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Na tela de login, toque em "Esqueci minha senha". Você receberá um e-mail com o link de redefinição. Verifique também a pasta de spam. O link expira em 1 hora.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Como excluo minha conta?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Acesse o app → Perfil → Configurações → Excluir conta. A exclusão é permanente. Todos os seus dados serão removidos em até 30 dias, conforme nossa <a href="privacidade.html">Política de Privacidade</a>. Se preferir, envie um e-mail para <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a> solicitando a exclusão.
-          </div>
-        </div>
-      </div>
+    <div class="faq-item">
+      <h3>Quero virar parceiro</h3>
+      <p>Veja a página <a href="parceiros.html" style="color:var(--accent)">Seja Parceiro</a> pra conhecer as opções disponíveis.</p>
     </div>
-
-    <div class="cat-section">
-      <div class="cat-label">usando o app</div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          O que exatamente o BORA mostra para uma atividade?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Ao pesquisar uma atividade (por nome, sinônimo ou código CNAE), o BORA exibe:<br/><br/>
-            <strong>1. Classificação de risco</strong> — nível federal (CGSIM/REDESIM) e nível municipal para o município que você escolheu.<br/>
-            <strong>2. Licenças exigidas</strong> — quais licenças ambientais e sanitárias o município requer para o exercício da atividade.<br/>
-            <strong>3. Legislação de apoio</strong> — as normas federais e municipais que embasam cada classificação, com referência à fonte oficial.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          O que significa cada nível de risco (baixo, médio, alto)?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            A classificação segue o modelo da <strong>REDESIM</strong> e do CGSIM federal:<br/><br/>
-            <strong>Baixo risco:</strong> a atividade pode ser exercida com registro simplificado, sem necessidade de vistoria ou licença prévia — o empreendedor pode iniciar as operações com maior agilidade.<br/>
-            <strong>Médio risco:</strong> requer licença ou alvará municipal. Pode envolver vistoria prévia dependendo da legislação do município.<br/>
-            <strong>Alto risco:</strong> exige licenças específicas (sanitária, ambiental, corpo de bombeiros etc.) antes do início das atividades. O processo é mais longo e envolve mais órgãos.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Minha cidade não aparece no BORA. Por quê?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            O BORA expande por município conforme a demanda. <strong>Porto Alegre – RS</strong> é nossa cidade piloto, com dados completos disponíveis. Para outras cidades, precisamos atingir <strong>100 cadastros de usuários do mesmo município</strong> para iniciar a integração da legislação local — só assim garantimos que o esforço se justifica para os usuários daquela cidade. Quando sua cidade for ativada, você receberá uma notificação. Prefeituras podem acelerar esse processo diretamente — veja a seção de Prefeituras e Parceiros abaixo.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          As informações do BORA são oficiais?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Os dados são extraídos de fontes públicas oficiais (CGSIM federal, legislação municipal) e atualizados periodicamente. O BORA tem caráter <strong>informativo</strong> — não substitui consulta direta à prefeitura, a um contador ou a um advogado para decisões específicas. A legislação pode mudar e pode não estar imediatamente refletida no sistema. Sempre que possível, o app exibe a legislação de referência para que você possa verificar a fonte diretamente.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Por que algumas funcionalidades não aparecem para mim?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Algumas telas e recursos do BORA são exibidos de forma diferente conforme a <strong>profissão cadastrada</strong> no seu perfil. Isso garante que cada tipo de usuário veja o conteúdo mais relevante para sua atuação. Se acredita que houve um erro no seu perfil, você pode atualizá-lo nas configurações da conta ou entrar em contato com o suporte.
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="cat-section">
-      <div class="cat-label">privacidade e dados</div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Quais dados vocês coletam?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Coletamos apenas o necessário: e-mail, apelido, data de nascimento, profissão, ramo(s) de atividade e município de interesse. O CPF é validado localmente no seu dispositivo e <strong>nunca é armazenado</strong> — apenas um hash criptográfico irreversível é enviado para verificar unicidade de cadastro. Consulte a <a href="privacidade.html">Política de Privacidade completa</a> para todos os detalhes.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Como solicito acesso, correção ou exclusão dos meus dados?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Envie um e-mail para <a href="mailto:privacidade@enjoypineapple.com.br">privacidade@enjoypineapple.com.br</a> com o assunto "Direitos LGPD" e descreva sua solicitação. Responderemos em até 15 dias úteis conforme exigido pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          O BORA vende meus dados para terceiros?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <strong>Nunca.</strong> Não vendemos, alugamos nem comercializamos seus dados pessoais. Patrocinadores exibidos no app têm acesso apenas a dados agregados e anonimizados. Leia mais na <a href="privacidade.html">Política de Privacidade</a>.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cat-section">
-      <div class="cat-label">problemas técnicos</div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          O app travou ou está com erro. O que faço?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Tente: (1) fechar e reabrir o app, (2) verificar sua conexão com a internet, (3) atualizar o app para a versão mais recente. Se o problema persistir, envie um e-mail para <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a> descrevendo o que aconteceu, qual tela estava aberta e o modelo/sistema do seu celular.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          O app está disponível para iOS e Android?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Sim. O BORA está disponível na <strong>App Store</strong> (iOS 16+) e no <strong>Google Play</strong> (Android 8+). Se tiver dificuldades para encontrar, pesquise por "BORA atividade" ou acesse diretamente pelos links na <a href="index.html">página inicial</a>.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Encontrei um dado incorreto ou desatualizado. Como reporto?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Ajude a melhorar o BORA! Envie um e-mail para <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a> com o assunto "Dado incorreto" e informe: o código CNAE consultado, o município, o dado que você viu no BORA e o dado correto (com a fonte, se possível).
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cat-section">
-      <div class="cat-label">prefeituras e parceiros</div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Como minha cidade pode entrar no BORA?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Prefeituras e câmaras de dirigentes lojistas podem entrar em contato pelo e-mail <a href="mailto:parcerias@enjoypineapple.com.br">parcerias@enjoypineapple.com.br</a> para integrar sua legislação ao BORA e acelerar a ativação da cidade (sem depender do limite de 100 usuários). A integração é feita com dados públicos da legislação municipal de licenciamento.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Sou contador/a. Posso usar o BORA com meus clientes?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Sim! O BORA foi pensado também para profissionais contábeis. Cada usuário tem um código de indicação que pode ser compartilhado com clientes. Para integrações mais avançadas ou uso em escritórios com múltiplos usuários, entre em contato pelo e-mail de parcerias.
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <footer>
-    <p class="footer-text">
-      © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
-      <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
-      <a href="termos.html">Termos</a> &nbsp;·&nbsp;
-      <a href="suporte.html">Suporte</a>
-    </p>
-  </footer>
+  <div class="section">
+    <h2><span class="section-number">02.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:contato@enjoypineapple.com.br">contato@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
+    </div>
+  </div>
+</div>
 
-  <script>
-    function toggle(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
-  </script>
+<!-- BORA -->
+<div class="tab-panel" id="tab-bora">
+  <div class="highlight-box">
+    <p>Ajuda com o app <strong>BORA</strong> — classificação de risco de atividades econômicas por CNAE e município.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">01.</span> Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h3>Quais municípios o BORA cobre?</h3>
+      <p>O BORA está crescendo aos poucos, cidade por cidade. Se o seu município ainda não estiver disponível, escreva pra gente — priorizamos conforme a demanda dos usuários.</p>
+    </div>
+    <div class="faq-item">
+      <h3>A classificação de risco está errada ou desatualizada</h3>
+      <p>Isso pode acontecer quando a legislação muda antes de atualizarmos a base. Reporte pelo e-mail de suporte com o CNAE e o município — a gente confere e corrige.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como faço pra virar parceiro do BORA?</h3>
+      <p>Contadores, advogados e especialistas em licenciamento podem se cadastrar na página <a href="parceiros.html" style="color:var(--accent)">Seja Parceiro</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como excluo minha conta?</h3>
+      <p>Escreva pro e-mail de suporte pedindo a exclusão. Confirmamos a identidade e removemos sua conta e dados associados em até 30 dias — veja detalhes na <a href="privacidade.html#bora" style="color:var(--accent)">Política de Privacidade</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Esqueci minha senha</h3>
+      <p>Use a opção "Esqueci minha senha" na tela de login do app pra receber um link de redefinição por e-mail.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">02.</span> Reportar um problema</h2>
+    <p>Encontrou um bug, um dado incorreto ou algo que não funciona como deveria? Manda pra gente com o máximo de detalhes possível (o que você estava fazendo, o que esperava que acontecesse, o que aconteceu de fato) — isso agiliza muito a correção.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">03.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDE AÍ -->
+<div class="tab-panel" id="tab-divide-ai">
+  <div class="highlight-box">
+    <p>Ajuda com o app <strong>Divide Aí</strong> — divisão de despesas entre amigos.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">01.</span> Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h3>Onde ficam salvos os dados dos meus eventos?</h3>
+      <p>Tudo fica salvo localmente no seu próprio celular — não existe conta nem servidor. Veja mais na <a href="privacidade.html#divide-ai" style="color:var(--accent)">Política de Privacidade</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Troquei de celular e perdi os eventos, tem como recuperar?</h3>
+      <p>Infelizmente não — como os dados ficam só no aparelho, sem backup em nuvem hoje, trocar de celular ou desinstalar o app apaga o histórico local.</p>
+    </div>
+    <div class="faq-item">
+      <h3>O app funciona sem internet?</h3>
+      <p>Sim. Como não depende de servidor, você pode criar eventos, registrar pagamentos e calcular a divisão totalmente offline.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como compartilho o resultado com o grupo?</h3>
+      <p>Na tela de resultado do evento, use o botão de compartilhar pra gerar uma imagem ou texto formatado pronto pra colar no WhatsApp.</p>
+    </div>
+    <div class="faq-item">
+      <h3>O app faz o pagamento por mim?</h3>
+      <p>Não — o Divide Aí só calcula quem deve pra quem. O pagamento em si (Pix, dinheiro etc.) é combinado entre vocês fora do app.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">02.</span> Reportar um problema</h2>
+    <p>Achou um cálculo estranho ou algo travando? Nos conta o que aconteceu — se puder, print da tela ajuda bastante.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-number">03.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="df-footer">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="index.html#tese">Sobre nós</a>
+        <a href="parceiros.html">Seja parceiro</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function activateTab(target, scroll){
+  var btn = document.querySelector('.tab-btn[data-tab="' + target + '"]');
+  if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.toggle('active', p.id === 'tab-' + target); });
+  if(scroll) window.scrollTo({top: document.querySelector('.tabs').offsetTop, behavior:'smooth'});
+}
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    activateTab(btn.getAttribute('data-tab'), true);
+  });
+});
+var initialTab = window.location.hash.replace('#', '');
+if(['site','bora','divide-ai'].includes(initialTab)){
+  activateTab(initialTab, false);
+}
+
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
+});
+</script>
 
 </body>
 </html>

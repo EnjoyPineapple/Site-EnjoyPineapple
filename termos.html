@@ -1,288 +1,423 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Termos de Uso — Enjoy Pineapple</title>
-  <meta name="description" content="Termos de Uso do aplicativo BORA, desenvolvido pela Enjoy Pineapple.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#07090c;--bg2:#0c1017;--surface:#141d28;--surface2:#1a2535;
-      --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-      --accent:#FFD600;--accent2:#e6bf00;
-      --text:#f0f4f8;--text2:#8a9bac;--text3:#4a5c6c;
-      --font-head:'Syne',sans-serif;--font-display:'Bebas Neue',sans-serif;
-      --font-mono:'DM Mono',monospace;--font-body:'Inter',sans-serif
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+<meta charset="UTF-8">
+<title>Termos de Uso — Enjoy Pineapple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Termos de Uso do site institucional, do app BORA e do app Divide Aí, da Enjoy Pineapple.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;--text:#000000;--text2:#3a3c40;--text3:#7a7c78;
+  --accent:#C9A227;--border:rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7}
+a{color:inherit}
 
-    nav{position:sticky;top:0;z-index:100;background:rgba(7,9,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
-    .nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:50%}
-    .logo-text{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
-    .logo-text span{color:var(--accent)}
-    .nav-back{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
-    .nav-back:hover{color:var(--accent)}
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 3rem;border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.logo-anim .logo-l,.logo-anim .logo-o{display:inline-block;opacity:0;transform:translateY(-14px)}
+.logo-anim .logo-sub{display:inline-block;opacity:0;transform:translateX(6px);margin-left:.4em}
+.logo-anim .logo-l{animation:logoLetterIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.logo-anim .l1{animation-delay:.1s}
+.logo-anim .l2{animation-delay:.2s}
+.logo-anim .l3{animation-delay:.3s}
+.logo-anim .l4{animation-delay:.55s}
+.logo-anim .logo-o{animation:logoOIn .5s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.4s;transform-origin:center}
+.logo-anim .logo-sub{animation:logoSubIn .5s ease forwards;animation-delay:.7s}
+@keyframes logoLetterIn{0%{opacity:0;transform:translateY(-14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes logoOIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}70%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes logoSubIn{0%{opacity:0;transform:translateX(6px)}100%{opacity:1;transform:translateX(0)}}
+.nav-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text2)}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
 
-    .page-header{border-bottom:1px solid var(--border);padding:4rem 3rem 3rem;max-width:860px;margin:0 auto}
-    .page-tag{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-    .page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:0.02em;line-height:1;color:#fff;margin-bottom:1.5rem}
-    .page-meta{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2)}
-    .page-meta span{color:var(--accent)}
+.page-header{max-width:860px;margin:0 auto;padding:4rem 1.5rem 2rem}
+.page-tag{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1.25rem}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;margin:0 0 1rem}
+.page-meta{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3)}
+.page-meta span{color:var(--accent)}
 
-    .content{max-width:860px;margin:0 auto;padding:3rem 3rem 6rem}
+.tabs{
+  max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.6rem;
+  border-bottom:1px solid var(--border);
+}
+.tab-btn{
+  font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.04em;
+  padding:.75rem 1.25rem;border:none;background:none;cursor:pointer;
+  color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .15s,border-color .15s;
+}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--text);border-color:var(--accent)}
 
-    .toc{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:3rem;border-radius:4px}
-    .toc-title{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-    .toc ol{padding-left:1.2rem}
-    .toc li{margin-bottom:0.35rem}
-    .toc a{color:var(--text2);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
-    .toc a:hover{color:var(--accent)}
+.tab-panel{display:none;max-width:860px;margin:0 auto;padding:3rem 1.5rem 6rem}
+.tab-panel.active{display:block}
 
-    .section{margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border)}
-    .section:last-child{border-bottom:none}
+.toc{background:#fafafa;border:1px solid var(--border);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:3rem;border-radius:6px}
+.toc-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.toc ol{padding-left:1.2rem;margin:0}
+.toc li{margin-bottom:.35rem}
+.toc a{color:var(--text2);text-decoration:none;font-size:.875rem;transition:color .15s}
+.toc a:hover{color:var(--accent)}
 
-    h2{font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:#fff;margin-bottom:1.25rem;line-height:1.1}
-    .section-number{color:var(--accent);margin-right:0.3em}
+.section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+h2{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;margin:0 0 1.1rem;line-height:1.1}
+.section-number{color:var(--accent);margin-right:.3em}
 
-    p{color:var(--text);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
-    ul,ol{padding-left:1.5rem;margin-bottom:1rem}
-    li{margin-bottom:0.5rem;font-size:0.95rem;color:var(--text);line-height:1.65}
-    strong{color:#fff;font-weight:600}
+p{color:var(--text2);margin-bottom:1rem;font-size:.95rem}
+ul,ol{padding-left:1.4rem;margin-bottom:1rem}
+li{margin-bottom:.5rem;font-size:.95rem;color:var(--text2)}
+strong{color:var(--text);font-weight:600}
 
-    .highlight-box{background:rgba(255,214,0,0.06);border:1px solid rgba(255,214,0,0.2);border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
-    .highlight-box p{margin-bottom:0;font-size:0.9rem}
+.highlight-box{background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.25);border-radius:8px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.highlight-box p{margin-bottom:0;font-size:.9rem}
 
-    .warning-box{background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
-    .warning-box p{margin-bottom:0;font-size:0.9rem}
+.contact-block{background:#fafafa;border:1px solid var(--border);padding:1.5rem 2rem;border-radius:8px;margin-top:1.5rem}
+.contact-block p{margin-bottom:.5rem}
+.contact-block a{color:var(--accent);text-decoration:none;font-family:'DM Mono',monospace;font-size:.85rem}
 
-    .contact-block{background:var(--surface);border:1px solid var(--border);padding:1.5rem 2rem;border-radius:6px;margin-top:1.5rem}
-    .contact-block p{margin-bottom:0.5rem}
-    .contact-block a{color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:0.85rem}
+footer{background:#000;padding:15px 3rem}
+.df-footer{width:100%;max-width:1300px;margin:0;text-align:left;align-self:flex-start}
+.df-footer-top{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.df-footer-brand{display:flex;align-items:center;gap:.9rem}
+.df-footer-mark{height:64px;width:auto;mix-blend-mode:screen}
+.df-footer-brand-text{display:flex;flex-direction:column;gap:.6rem}
+.df-footer-cnpj{font-family:'DM Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.45)}
+.df-footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:1.75rem}
+.df-footer-links a{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s}
+.df-footer-links a:hover{color:#C9A227}
+.df-footer-social{display:flex;align-items:center;gap:.9rem}
+.df-footer-social-link{display:flex;color:rgba(255,255,255,.75);transition:color .2s}
+.df-footer-social-link:hover{color:#C9A227}
+.df-footer-social-link svg{width:18px;height:18px}
 
-    footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center}
-    .footer-text{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3)}
-    .footer-text a{color:var(--text2);text-decoration:none;transition:color 0.2s}
-    .footer-text a:hover{color:var(--accent)}
-  </style>
+@media (max-width:720px){
+  nav{padding:1.25rem 1.5rem}
+  .logo-anim .logo-sub{display:none}
+  .page-title{font-size:2.4rem}
+  .tabs{overflow-x:auto}
+}
+
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="enjoypineapple.jpeg" alt="Enjoy Pineapple">
-      <span class="logo-text">Enjoy <span>Pineapple</span></span>
-    </a>
-    <a href="index.html" class="nav-back">← Voltar ao início</a>
-  </nav>
+<nav>
+  <a href="#" class="nav-logo logo-anim">
+    <span class="logo-l l1">E</span><span class="logo-l l2">N</span><span class="logo-l l3">J</span><em class="logo-o">O</em><span class="logo-l l4">Y</span>
+    <span class="logo-sub">PINEAPPLE</span>
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
+</nav>
 
-  <div class="page-header">
-    <div class="page-tag">// legal</div>
-    <h1 class="page-title">Termos de Uso</h1>
-    <p class="page-meta">
-      Última atualização: <span>Junho de 2026</span> &nbsp;·&nbsp; Versão <span>1.0</span>
-    </p>
+<div class="page-header">
+  <div class="page-tag">// legal</div>
+  <h1 class="page-title">Termos de Uso</h1>
+  <p class="page-meta">Última atualização: <span>Agosto de 2026</span> &nbsp;·&nbsp; Versão <span>1.0</span></p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="site">Site</button>
+  <button class="tab-btn" data-tab="bora">BORA</button>
+  <button class="tab-btn" data-tab="divide-ai">Divide Aí</button>
+</div>
+
+<!-- SITE -->
+<div class="tab-panel active" id="tab-site">
+  <div class="toc">
+    <div class="toc-title">// sumário</div>
+    <ol>
+      <li><a href="#site-s1">Quem somos</a></li>
+      <li><a href="#site-s2">Aceitação dos termos</a></li>
+      <li><a href="#site-s3">Uso do site</a></li>
+      <li><a href="#site-s4">Propriedade intelectual</a></li>
+      <li><a href="#site-s5">Limitação de responsabilidade</a></li>
+      <li><a href="#site-s6">Alterações nestes termos</a></li>
+      <li><a href="#site-s7">Contato</a></li>
+    </ol>
   </div>
 
-  <div class="content">
+  <div class="highlight-box">
+    <p>Estes termos regem o uso do site institucional (enjoypineapple.com.br) — fora dos aplicativos BORA e Divide Aí, que têm termos próprios nas abas ao lado.</p>
+  </div>
 
-    <div class="toc">
-      <div class="toc-title">// sumário</div>
-      <ol>
-        <li><a href="#s1">Aceitação dos termos</a></li>
-        <li><a href="#s2">O que é o BORA</a></li>
-        <li><a href="#s3">Natureza informativa do conteúdo</a></li>
-        <li><a href="#s4">Cadastro e conta</a></li>
-        <li><a href="#s5">Uso permitido e proibido</a></li>
-        <li><a href="#s6">Programa de indicações</a></li>
-        <li><a href="#s7">Propriedade intelectual</a></li>
-        <li><a href="#s8">Disponibilidade do serviço</a></li>
-        <li><a href="#s9">Segurança</a></li>
-        <li><a href="#s10">Limitação de responsabilidade</a></li>
-        <li><a href="#s11">Suspensão e encerramento</a></li>
-        <li><a href="#s12">Alterações nos termos</a></li>
-        <li><a href="#s13">Lei aplicável e foro</a></li>
-        <li><a href="#s14">Contato</a></li>
-      </ol>
+  <div class="section" id="site-s1">
+    <h2><span class="section-number">01.</span> Quem somos</h2>
+    <p>Este site é operado pela <strong>Enjoy Pineapple</strong> (CNPJ 23.904.939/0001-86), empresa brasileira com sede em Porto Alegre – RS.</p>
+  </div>
+
+  <div class="section" id="site-s2">
+    <h2><span class="section-number">02.</span> Aceitação dos termos</h2>
+    <p>Ao acessar e navegar neste site, você concorda com estes Termos de Uso. Se você não concorda com algum ponto, pedimos que não utilize o site.</p>
+  </div>
+
+  <div class="section" id="site-s3">
+    <h2><span class="section-number">03.</span> Uso do site</h2>
+    <p>O site tem finalidade informativa: apresentar a Enjoy Pineapple e seus produtos (BORA, Divide Aí), e servir como canal de contato. Você concorda em não usar o site para fins ilegais, não tentar acessar áreas restritas sem autorização, e não interferir no funcionamento normal do site.</p>
+  </div>
+
+  <div class="section" id="site-s4">
+    <h2><span class="section-number">04.</span> Propriedade intelectual</h2>
+    <p>Textos, logotipos, imagens e demais conteúdos deste site pertencem à Enjoy Pineapple ou são usados sob licença. Reprodução, distribuição ou uso comercial sem autorização prévia não são permitidos.</p>
+  </div>
+
+  <div class="section" id="site-s5">
+    <h2><span class="section-number">05.</span> Limitação de responsabilidade</h2>
+    <p>O site é fornecido "como está". Fazemos o possível para manter as informações atualizadas e precisas, mas não garantimos disponibilidade ininterrupta nem ausência total de erros. A Enjoy Pineapple não se responsabiliza por danos decorrentes do uso ou da impossibilidade de uso do site.</p>
+  </div>
+
+  <div class="section" id="site-s6">
+    <h2><span class="section-number">06.</span> Alterações nestes termos</h2>
+    <p>Podemos atualizar estes termos periodicamente. A data da última atualização está sempre indicada no topo desta página. O uso continuado do site após alterações constitui aceitação dos novos termos.</p>
+  </div>
+
+  <div class="section" id="site-s7">
+    <h2><span class="section-number">07.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:contato@enjoypineapple.com.br">contato@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
     </div>
+  </div>
+</div>
 
+<!-- BORA -->
+<div class="tab-panel" id="tab-bora">
+  <div class="toc">
+    <div class="toc-title">// sumário</div>
+    <ol>
+      <li><a href="#bora-s1">Quem somos</a></li>
+      <li><a href="#bora-s2">Aceitação dos termos</a></li>
+      <li><a href="#bora-s3">Cadastro e conta</a></li>
+      <li><a href="#bora-s4">Natureza informativa do serviço</a></li>
+      <li><a href="#bora-s5">Uso adequado</a></li>
+      <li><a href="#bora-s6">Parceiros e conteúdo de terceiros</a></li>
+      <li><a href="#bora-s7">Propriedade intelectual</a></li>
+      <li><a href="#bora-s8">Limitação de responsabilidade</a></li>
+      <li><a href="#bora-s9">Suspensão e encerramento de conta</a></li>
+      <li><a href="#bora-s10">Alterações nestes termos</a></li>
+      <li><a href="#bora-s11">Lei aplicável</a></li>
+      <li><a href="#bora-s12">Contato</a></li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <p>Estes Termos de Uso regem o uso do aplicativo <strong>BORA</strong>. Ao criar uma conta ou usar o app, você concorda com o que está descrito aqui.</p>
+  </div>
+
+  <div class="section" id="bora-s1">
+    <h2><span class="section-number">01.</span> Quem somos</h2>
+    <p>O BORA é desenvolvido e operado pela <strong>Enjoy Pineapple</strong> (CNPJ 23.904.939/0001-86), empresa brasileira com sede em Porto Alegre – RS. O app organiza informações públicas sobre classificação de risco de atividades econômicas por CNAE e município.</p>
+  </div>
+
+  <div class="section" id="bora-s2">
+    <h2><span class="section-number">02.</span> Aceitação dos termos</h2>
+    <p>Ao criar uma conta ou usar o BORA, você declara ter pelo menos 16 anos e concorda com estes termos e com nossa Política de Privacidade. Se não concordar, não utilize o aplicativo.</p>
+  </div>
+
+  <div class="section" id="bora-s3">
+    <h2><span class="section-number">03.</span> Cadastro e conta</h2>
+    <p>Para usar o BORA, é necessário criar uma conta com e-mail e senha. Você é responsável por manter a confidencialidade das suas credenciais e por todas as atividades realizadas na sua conta. Informe dados verdadeiros no cadastro — contas com informações falsas podem ser suspensas.</p>
+  </div>
+
+  <div class="section" id="bora-s4">
+    <h2><span class="section-number">04.</span> Natureza informativa do serviço</h2>
     <div class="highlight-box">
-      <p>Ao criar uma conta ou usar o aplicativo BORA, você concorda com estes Termos de Uso. Se não concordar com algum ponto, não utilize o aplicativo. Estes termos formam um contrato legal entre você e a <strong>Enjoy Pineapple</strong> (CNPJ 23.904.939/0001-86).</p>
+      <p><strong>Importante:</strong> o BORA organiza informações públicas — ele não substitui órgãos públicos competentes, não substitui profissionais habilitados (contadores, advogados), não emite licenças ou alvarás, e não cria normas ou regulamentos.</p>
     </div>
-
-    <div class="section" id="s1">
-      <h2><span class="section-number">01.</span> Aceitação dos termos</h2>
-      <p>Estes Termos de Uso ("Termos") regulam o acesso e uso do aplicativo <strong>BORA</strong> e dos serviços associados, desenvolvidos e operados pela <strong>Enjoy Pineapple</strong> ("nós", "nosso" ou "Empresa"), com sede em Porto Alegre – RS, Brasil.</p>
-      <p>Ao utilizar o BORA — seja por download, cadastro ou simples uso do aplicativo — você declara ter lido, compreendido e aceito integralmente estes Termos e nossa <a href="privacidade.html" style="color:var(--accent);text-decoration:none;">Política de Privacidade</a>.</p>
-      <p>Você deve ter pelo menos <strong>16 anos</strong> para usar o BORA. O aplicativo valida a data de nascimento no momento do cadastro.</p>
-    </div>
-
-    <div class="section" id="s2">
-      <h2><span class="section-number">02.</span> O que é o BORA</h2>
-      <p>O BORA é um aplicativo de consulta regulatória que cruza dados públicos federais do <strong>CGSIM</strong> (Cadastro e Licenciamento de Empresas) com a legislação municipal brasileira, fornecendo:</p>
-      <ul>
-        <li>A <strong>classificação de risco</strong> de atividades econômicas por código CNAE no âmbito federal e municipal.</li>
-        <li>As <strong>licenças ambientais e sanitárias</strong> exigidas pelo município para o exercício da atividade.</li>
-        <li>A <strong>legislação de apoio</strong> (federal e municipal) que fundamenta cada classificação, com referência às normas vigentes.</li>
-      </ul>
-      <p>O aplicativo atende principalmente:</p>
-      <ul>
-        <li>Empreendedores que desejam entender os requisitos regulatórios antes de abrir ou regularizar um negócio.</li>
-        <li>Contadores, advogados e assessores empresariais que orientam clientes no processo de legalização.</li>
-        <li>Agentes fiscais municipais, servidores públicos e engenheiros em consultas rápidas de campo.</li>
-        <li>Qualquer cidadão que queira saber o que é necessário para exercer uma atividade econômica em seu município.</li>
-      </ul>
-    </div>
-
-    <div class="section" id="s3">
-      <h2><span class="section-number">03.</span> Natureza informativa do conteúdo</h2>
-      <div class="warning-box">
-        <p>⚠️ <strong>Atenção:</strong> As informações exibidas no BORA têm caráter estritamente <strong>informativo e educacional</strong>. Elas não constituem assessoria jurídica, contábil, fiscal ou empresarial.</p>
-      </div>
-      <p>O BORA apresenta dados com base na legislação vigente disponível em fontes públicas, mas:</p>
-      <ul>
-        <li>A legislação municipal pode ser alterada e pode não estar imediatamente atualizada no sistema.</li>
-        <li>Casos específicos de negócio podem ter tratamento diferenciado pela administração pública local.</li>
-        <li>A classificação de risco e as licenças exibidas consideram a atividade consultada de forma geral, podendo haver requisitos adicionais conforme as características específicas do estabelecimento.</li>
-        <li>A existência de legislação de apoio listada no app não substitui a leitura integral das normas originais pelos órgãos competentes.</li>
-      </ul>
-      <p>Para decisões importantes sobre abertura, regularização ou licenciamento de empresas, <strong>consulte sempre um contador, advogado ou a própria prefeitura do seu município</strong>. A Enjoy Pineapple não se responsabiliza por decisões tomadas com base exclusiva nas informações do BORA.</p>
-    </div>
-
-    <div class="section" id="s4">
-      <h2><span class="section-number">04.</span> Cadastro e conta</h2>
-      <p>Para usar o BORA, você precisa criar uma conta informando e-mail, senha, data de nascimento, profissão, ramo(s) de atividade e município de interesse. Você é responsável por:</p>
-      <ul>
-        <li>Manter a confidencialidade das suas credenciais de acesso.</li>
-        <li>Garantir que as informações fornecidas no cadastro sejam verdadeiras e atualizadas.</li>
-        <li>Toda atividade realizada na sua conta, mesmo que por terceiros.</li>
-        <li>Notificar imediatamente a Enjoy Pineapple em caso de uso não autorizado da sua conta.</li>
-      </ul>
-      <p>É permitida apenas <strong>uma conta por pessoa</strong>. O CPF é usado (em formato de hash irreversível) para garantir essa unicidade. Contas duplicadas podem ser removidas sem aviso prévio.</p>
-      <p>A profissão informada no cadastro determina quais funcionalidades do aplicativo ficam disponíveis para o seu perfil. Informações incorretas podem resultar em acesso inadequado a recursos do app.</p>
-    </div>
-
-    <div class="section" id="s5">
-      <h2><span class="section-number">05.</span> Uso permitido e proibido</h2>
-      <p><strong>Você pode:</strong></p>
-      <ul>
-        <li>Consultar classificações de risco de atividades econômicas para uso pessoal ou profissional.</li>
-        <li>Compartilhar informações obtidas no BORA, desde que citando a fonte e sem fins comerciais diretos de revenda do dado.</li>
-        <li>Usar o sistema de indicações para convidar colegas e clientes.</li>
-      </ul>
-      <p><strong>Você não pode:</strong></p>
-      <ul>
-        <li>Utilizar bots, scripts ou automações para acessar o BORA em massa.</li>
-        <li>Fazer engenharia reversa, descompilar ou tentar extrair o código-fonte do aplicativo.</li>
-        <li>Usar o BORA para fins ilegais ou que violem direitos de terceiros.</li>
-        <li>Criar contas falsas ou usar dados de terceiros sem autorização.</li>
-        <li>Tentar comprometer a segurança, disponibilidade ou integridade dos servidores do BORA.</li>
-        <li>Revender ou comercializar os dados obtidos no BORA sem autorização expressa e por escrito da Enjoy Pineapple.</li>
-      </ul>
-    </div>
-
-    <div class="section" id="s6">
-      <h2><span class="section-number">06.</span> Programa de indicações</h2>
-      <p>O BORA possui um programa de indicações onde cada usuário recebe um código único para compartilhar. Sobre o programa:</p>
-      <ul>
-        <li>O código de indicação é pessoal e intransferível.</li>
-        <li>Indicações são registradas no momento do cadastro do novo usuário, mediante informação do código.</li>
-        <li>Eventuais benefícios associados ao programa serão comunicados dentro do aplicativo e podem ser alterados ou encerrados pela Enjoy Pineapple a qualquer momento, com aviso prévio de 30 dias.</li>
-        <li>Não é permitido o uso de mecanismos automatizados para gerar indicações artificiais. Contas que adotem essa prática serão encerradas.</li>
-      </ul>
-    </div>
-
-    <div class="section" id="s7">
-      <h2><span class="section-number">07.</span> Propriedade intelectual</h2>
-      <p>Todo o conteúdo do BORA — incluindo mas não limitado a código-fonte, design, marca, logotipo, textos, estrutura de dados e funcionalidades — é de propriedade exclusiva da <strong>Enjoy Pineapple</strong> ou de seus licenciadores, protegido pela Lei de Propriedade Industrial (Lei nº 9.279/96) e pela Lei de Direitos Autorais (Lei nº 9.610/98).</p>
-      <p>Os dados públicos utilizados (CGSIM, CNAE, legislação municipal) pertencem aos seus respectivos órgãos emissores. O BORA realiza o cruzamento, organização e apresentação desses dados, não reivindicando propriedade sobre os dados brutos governamentais.</p>
-      <p>É vedada a reprodução, distribuição ou criação de obras derivadas a partir do BORA sem autorização prévia e por escrito da Enjoy Pineapple.</p>
-    </div>
-
-    <div class="section" id="s8">
-      <h2><span class="section-number">08.</span> Disponibilidade do serviço</h2>
-      <p>O BORA é oferecido "como está" e "conforme disponível". Nos esforçamos para manter alta disponibilidade, mas não garantimos que o serviço será ininterrupto, livre de erros ou completamente atualizado em tempo real.</p>
-      <p>Podemos, sem aviso prévio, realizar manutenções, atualizações ou suspender temporariamente o serviço. Em casos de interrupções prolongadas (superiores a 24 horas), comunicaremos via e-mail ou nas redes sociais do BORA.</p>
-      <p>A disponibilidade de informações por município depende da ativação da cidade no sistema (mínimo de 100 usuários cadastrados para cidades fora do piloto inicial em Porto Alegre – RS).</p>
-    </div>
-
-    <div class="section" id="s9">
-      <h2><span class="section-number">09.</span> Segurança</h2>
-      <p>A Enjoy Pineapple adota medidas técnicas e organizacionais para proteger sua conta e seus dados:</p>
-      <ul>
-        <li>Autenticação por e-mail e senha, com senhas armazenadas de forma criptografada (bcrypt) — nunca em texto simples.</li>
-        <li>Sessões gerenciadas por tokens JWT de curta duração, renovados automaticamente.</li>
-        <li>CPF processado exclusivamente no seu dispositivo — apenas o hash SHA-256 (irreversível) é transmitido e armazenado.</li>
-        <li>Banco de dados com Row Level Security (RLS): cada usuário acessa apenas seus próprios dados, mesmo em caso de falha de aplicação.</li>
-        <li>Comunicação entre app e servidores protegida por TLS 1.2 ou superior.</li>
-        <li>Infraestrutura hospedada no Supabase (AWS), certificado SOC 2 Type II.</li>
-      </ul>
-      <p><strong>Suas responsabilidades:</strong> a segurança da sua conta também depende de você. Escolha uma senha forte, não a compartilhe e notifique-nos imediatamente em caso de acesso suspeito pelo e-mail <a href="mailto:suporte@enjoypineapple.com.br" style="color:var(--accent);text-decoration:none;">suporte@enjoypineapple.com.br</a>.</p>
-      <p>Nenhum sistema é 100% seguro. Em caso de incidente de segurança que afete seus dados, notificaremos você e a ANPD o mais breve possível, conforme exigido pela LGPD.</p>
-    </div>
-
-    <div class="section" id="s10">
-      <h2><span class="section-number">10.</span> Limitação de responsabilidade</h2>
-      <p>Na máxima extensão permitida pela lei brasileira, a Enjoy Pineapple não será responsável por:</p>
-      <ul>
-        <li>Decisões tomadas com base nas informações exibidas no BORA.</li>
-        <li>Prejuízos decorrentes de imprecisões ou desatualizações das informações legislativas.</li>
-        <li>Danos indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou impossibilidade de uso do aplicativo.</li>
-        <li>Falhas de terceiros, incluindo provedores de internet e infraestrutura de nuvem.</li>
-        <li>Acessos não autorizados à sua conta decorrentes de falha sua em proteger suas credenciais.</li>
-      </ul>
-      <p>A responsabilidade total da Enjoy Pineapple perante você ficará sempre limitada ao valor eventualmente pago pelo uso do serviço nos 12 meses anteriores ao evento que originou o dano.</p>
-    </div>
-
-    <div class="section" id="s11">
-      <h2><span class="section-number">11.</span> Suspensão e encerramento</h2>
-      <p>A Enjoy Pineapple pode suspender ou encerrar sua conta, sem aviso prévio, se você violar estes Termos, especialmente nos casos de:</p>
-      <ul>
-        <li>Uso fraudulento ou criação de contas duplicadas.</li>
-        <li>Uso de automações ou práticas abusivas.</li>
-        <li>Tentativas de comprometimento da segurança do sistema.</li>
-        <li>Uso do BORA para fins ilegais.</li>
-      </ul>
-      <p>Você pode encerrar sua conta a qualquer momento diretamente pelo aplicativo ou solicitando pelo e-mail de suporte. Após o encerramento, seus dados serão tratados conforme a Política de Privacidade.</p>
-    </div>
-
-    <div class="section" id="s12">
-      <h2><span class="section-number">12.</span> Alterações nos termos</h2>
-      <p>Podemos revisar estes Termos periodicamente. Comunicaremos alterações materiais com pelo menos <strong>30 dias de antecedência</strong> por e-mail e/ou notificação no aplicativo. A versão vigente sempre estará disponível em <strong>enjoypineapple.com.br/termos</strong>.</p>
-      <p>Caso não concorde com as alterações, você poderá encerrar sua conta antes da data de vigência. O uso continuado após essa data implica aceitação dos novos termos.</p>
-    </div>
-
-    <div class="section" id="s13">
-      <h2><span class="section-number">13.</span> Lei aplicável e foro</h2>
-      <p>Estes Termos são regidos pela legislação brasileira. As partes elegem o foro da comarca de <strong>Porto Alegre – RS</strong> para dirimir quaisquer controvérsias decorrentes deste instrumento, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
-      <p>Em caso de conflito entre a versão destes Termos em português e qualquer tradução, prevalecerá a versão em português.</p>
-    </div>
-
-    <div class="section" id="s14">
-      <h2><span class="section-number">14.</span> Contato</h2>
-      <p>Para dúvidas, sugestões ou questões relacionadas a estes Termos:</p>
-      <div class="contact-block">
-        <p><strong>Enjoy Pineapple</strong></p>
-        <p>E-mail: <a href="mailto:contato@enjoypineapple.com.br">contato@enjoypineapple.com.br</a></p>
-        <p>Suporte: <a href="suporte.html">enjoypineapple.com.br/suporte</a></p>
-        <p>Porto Alegre – RS – Brasil</p>
-      </div>
-    </div>
-
+    <p>As orientações apresentadas no app buscam estar fundamentadas em legislação oficial vigente, e cada uma pode ser conferida diretamente na fonte. Ainda assim, recomendamos sempre confirmar o caso específico com a prefeitura, órgão competente ou profissional habilitado antes de tomar decisões com base apenas no app.</p>
+    <p>A Enjoy Pineapple não garante que as informações estejam livres de erros ou desatualizações, já que dependem de fontes públicas externas que podem mudar sem aviso prévio.</p>
   </div>
 
-  <footer>
-    <p class="footer-text">
-      © 2026 <a href="index.html">Enjoy Pineapple</a> &nbsp;·&nbsp; BORA App &nbsp;·&nbsp;
-      <a href="privacidade.html">Privacidade</a> &nbsp;·&nbsp;
-      <a href="termos.html">Termos</a> &nbsp;·&nbsp;
-      <a href="suporte.html">Suporte</a>
-    </p>
-  </footer>
+  <div class="section" id="bora-s5">
+    <h2><span class="section-number">05.</span> Uso adequado</h2>
+    <p>Ao usar o BORA, você concorda em não:</p>
+    <ul>
+      <li>Usar o app para fins ilegais ou fraudulentos.</li>
+      <li>Tentar acessar dados de outros usuários ou áreas restritas do sistema.</li>
+      <li>Fazer engenharia reversa, copiar ou redistribuir o app sem autorização.</li>
+      <li>Criar múltiplas contas para burlar o controle de unicidade de cadastro.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="bora-s6">
+    <h2><span class="section-number">06.</span> Parceiros e conteúdo de terceiros</h2>
+    <p>O BORA pode exibir conteúdo ou ofertas de parceiros relevantes ao seu perfil. A Enjoy Pineapple não se responsabiliza pela qualidade, veracidade ou resultado dos serviços prestados por parceiros — a relação comercial, se houver, é diretamente entre você e o parceiro.</p>
+  </div>
+
+  <div class="section" id="bora-s7">
+    <h2><span class="section-number">07.</span> Propriedade intelectual</h2>
+    <p>O BORA, sua marca, design e código pertencem à Enjoy Pineapple. Você recebe uma licença pessoal, não exclusiva e intransferível para usar o app conforme estes termos — não para copiá-lo, revendê-lo ou explorá-lo comercialmente.</p>
+  </div>
+
+  <div class="section" id="bora-s8">
+    <h2><span class="section-number">08.</span> Limitação de responsabilidade</h2>
+    <p>O BORA é fornecido "como está". Na máxima extensão permitida por lei, a Enjoy Pineapple não se responsabiliza por decisões tomadas com base nas informações do app, nem por danos indiretos decorrentes do uso ou impossibilidade de uso do serviço.</p>
+  </div>
+
+  <div class="section" id="bora-s9">
+    <h2><span class="section-number">09.</span> Suspensão e encerramento de conta</h2>
+    <p>Podemos suspender ou encerrar contas que violem estes termos. Você pode solicitar a exclusão da sua conta a qualquer momento pelo e-mail de suporte — veja a página de Suporte para o passo a passo.</p>
+  </div>
+
+  <div class="section" id="bora-s10">
+    <h2><span class="section-number">10.</span> Alterações nestes termos</h2>
+    <p>Podemos atualizar estes termos periodicamente. Mudanças materiais serão notificadas por e-mail ou dentro do app com pelo menos 15 dias de antecedência.</p>
+  </div>
+
+  <div class="section" id="bora-s11">
+    <h2><span class="section-number">11.</span> Lei aplicável</h2>
+    <p>Estes termos são regidos pelas leis brasileiras. Fica eleito o foro da comarca de Porto Alegre/RS para dirimir eventuais controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+
+  <div class="section" id="bora-s12">
+    <h2><span class="section-number">12.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDE AÍ -->
+<div class="tab-panel" id="tab-divide-ai">
+  <div class="toc">
+    <div class="toc-title">// sumário</div>
+    <ol>
+      <li><a href="#da-s1">Quem somos</a></li>
+      <li><a href="#da-s2">Aceitação dos termos</a></li>
+      <li><a href="#da-s3">Como o app funciona</a></li>
+      <li><a href="#da-s4">Responsabilidade sobre os dados</a></li>
+      <li><a href="#da-s5">Uso adequado</a></li>
+      <li><a href="#da-s6">Propriedade intelectual</a></li>
+      <li><a href="#da-s7">Limitação de responsabilidade</a></li>
+      <li><a href="#da-s8">Alterações nestes termos</a></li>
+      <li><a href="#da-s9">Contato</a></li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <p>O <strong>Divide Aí</strong> roda inteiramente no seu celular, sem servidor e sem conta. Estes termos são mais curtos porque o app faz bem menos coisa com os seus dados.</p>
+  </div>
+
+  <div class="section" id="da-s1">
+    <h2><span class="section-number">01.</span> Quem somos</h2>
+    <p>O Divide Aí é desenvolvido e operado pela <strong>Enjoy Pineapple</strong> (CNPJ 23.904.939/0001-86), empresa brasileira com sede em Porto Alegre – RS.</p>
+  </div>
+
+  <div class="section" id="da-s2">
+    <h2><span class="section-number">02.</span> Aceitação dos termos</h2>
+    <p>Ao instalar e usar o Divide Aí, você concorda com estes termos. Se não concordar, não utilize o aplicativo.</p>
+  </div>
+
+  <div class="section" id="da-s3">
+    <h2><span class="section-number">03.</span> Como o app funciona</h2>
+    <p>O Divide Aí ajuda a organizar e dividir despesas entre amigos em eventos. Ele calcula quem deve pra quem com base nos valores que você mesmo registra — <strong>não movimenta dinheiro real</strong> e não processa pagamentos. Qualquer acerto financeiro entre os participantes é combinado fora do app (Pix, dinheiro, etc.).</p>
+  </div>
+
+  <div class="section" id="da-s4">
+    <h2><span class="section-number">04.</span> Responsabilidade sobre os dados</h2>
+    <p>Todos os grupos, participantes e valores ficam salvos apenas no armazenamento local do seu aparelho. Isso significa que <strong>você é responsável por seus próprios dados</strong>: se desinstalar o app, trocar de celular ou limpar o armazenamento sem fazer backup, essas informações são perdidas — a Enjoy Pineapple não guarda cópia e não consegue recuperá-las.</p>
+  </div>
+
+  <div class="section" id="da-s5">
+    <h2><span class="section-number">05.</span> Uso adequado</h2>
+    <p>Ao usar o Divide Aí, você concorda em não tentar fazer engenharia reversa, copiar ou redistribuir o app sem autorização, nem usá-lo para fins ilegais.</p>
+  </div>
+
+  <div class="section" id="da-s6">
+    <h2><span class="section-number">06.</span> Propriedade intelectual</h2>
+    <p>O Divide Aí, sua marca, design e código pertencem à Enjoy Pineapple. Você recebe uma licença pessoal e não exclusiva para usar o app conforme estes termos.</p>
+  </div>
+
+  <div class="section" id="da-s7">
+    <h2><span class="section-number">07.</span> Limitação de responsabilidade</h2>
+    <p>O Divide Aí é fornecido "como está". A Enjoy Pineapple não se responsabiliza por perda de dados locais, cálculos incorretos decorrentes de valores inseridos errados pelo usuário, ou desentendimentos financeiros entre participantes de um evento — o app apenas organiza a divisão, quem paga o quê é sempre combinado entre vocês.</p>
+  </div>
+
+  <div class="section" id="da-s8">
+    <h2><span class="section-number">08.</span> Alterações nestes termos</h2>
+    <p>Se o Divide Aí passar a ter conta ou sincronização em nuvem no futuro, estes termos serão atualizados antes disso entrar em vigor.</p>
+  </div>
+
+  <div class="section" id="da-s9">
+    <h2><span class="section-number">09.</span> Contato</h2>
+    <div class="contact-block">
+      <p><strong>Enjoy Pineapple</strong></p>
+      <p>E-mail: <a href="mailto:suporte@enjoypineapple.com.br">suporte@enjoypineapple.com.br</a></p>
+      <p>Cidade: Porto Alegre – RS – Brasil</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="df-footer">
+    <div class="df-footer-top">
+      <div class="df-footer-brand">
+        <img src="ep-symbol.png" alt="Enjoy Pineapple" class="df-footer-mark">
+        <div class="df-footer-brand-text">
+          <div class="df-footer-cnpj">CNPJ 23.904.939/0001-86 · Porto Alegre/RS<br>© <span class="cyear"></span> Enjoy Pineapple. Todos os direitos reservados.</div>
+          <span class="df-footer-social">
+            <a href="https://www.youtube.com" class="df-footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5v-5z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com" class="df-footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.x.com" class="df-footer-social-link" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H1.6l7.5-8.6L1.2 3h6.6l4.5 6 5.2-6z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="df-footer-links">
+        <a href="index.html#tese">Sobre nós</a>
+        <a href="parceiros.html">Seja parceiro</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="suporte.html">Suporte</a>
+        <a href="contato.html">Contato</a>
+        <a href="shopping.html">Shopping</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function activateTab(target, scroll){
+  var btn = document.querySelector('.tab-btn[data-tab="' + target + '"]');
+  if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.toggle('active', p.id === 'tab-' + target); });
+  if(scroll) window.scrollTo({top: document.querySelector('.tabs').offsetTop, behavior:'smooth'});
+}
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    activateTab(btn.getAttribute('data-tab'), true);
+  });
+});
+var initialTab = window.location.hash.replace('#', '');
+if(['site','bora','divide-ai'].includes(initialTab)){
+  activateTab(initialTab, false);
+}
+
+document.querySelectorAll('.cyear').forEach(function(el){
+  el.textContent = new Date().getFullYear();
+});
+</script>
 
 </body>
 </html>
