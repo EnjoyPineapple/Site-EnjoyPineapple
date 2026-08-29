@@ -145,7 +145,7 @@ assets/
 
 ## O QUE PODE SER MELHORADO (pendências conhecidas)
 
-- [ ] Link real da Play Store (atualmente aponta para play.google.com/store sem URL do app)
+- [x] Link real da Play Store — `bora.html` já aponta para `play.google.com/store/apps/details?id=com.enjoypineapple.bora`
 - [ ] Página de parceiros (`parceiros.html`) — verificar se formulário está funcional
 - [ ] Mobile: nav sem menu hamburguer (links somem em telas pequenas)
 - [ ] Admin (`admin.html`) — painel de gestão dos leads/parceiros
